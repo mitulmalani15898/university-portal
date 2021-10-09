@@ -43,5 +43,5 @@ deploy:
   tags:
     - ugrad
   script:
-    - ssh -o StrictHostKeyChecking=no manikandan@timberlea.cs.dal.ca "mkdir group-9"
-    - scp -r -o StrictHostKeyChecking=no /target/group-9-1.0-SNAPSHOT.jar "manikandan@timberlea.cs.dal.ca:group-9/group-9-1.0-SNAPSHOT.jar"
+    - ssh -o StrictHostKeyChecking=no manikandan@timberlea.cs.dal.ca
+    - scp -r -o StrictHostKeyChecking=no /target/group-9-1.0-SNAPSHOT.jar "manikandan@timberlea.cs.dal.ca:manikandan/group-9-1.0-SNAPSHOT.jar"
