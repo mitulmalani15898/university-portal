@@ -38,7 +38,7 @@ package:
       - "./target/*.jar"
 
 deploy:
-  stage: deploy_prod
+  stage: deploy
   image: ruby:latest
   tags:
     - ugrad
