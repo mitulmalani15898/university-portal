@@ -3,6 +3,7 @@ image: java-latest
 stages:
   - build
   - test
+  - package
 
 build:
   stage: build
@@ -24,4 +25,14 @@ test:
       junit:
         - "./target/surefire-reports/TEST-*.xml"
 
+package:
+  stage: package
+  tags:
+    - ugrad
+  script:
+    - "mvn package"
+  artifacts:
+    when: on_success
+    paths:
+      - "./target/*.jar"
 
