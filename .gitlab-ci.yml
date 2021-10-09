@@ -1,0 +1,27 @@
+image: java-latest
+
+stages:
+  - build
+  - test
+
+build:
+  stage: build
+  tags:
+    - ugrad
+  script:
+    - "mvn compile"
+
+test:
+  stage: test
+  tags:
+    - ugrad
+  script:
+    - "mvn clean test"
+  artifacts:
+    paths:
+      - "./A1/target/surefire-reports/TEST-*.xml"
+    reports:
+      junit:
+        - "./A1/target/surefire-reports/TEST-*.xml"
+
+
