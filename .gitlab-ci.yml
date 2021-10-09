@@ -45,7 +45,7 @@ deploy:
   before_script:
     - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
     - eval $(ssh-agent -s)
-    - echo "$SSH_KEY"
+    - echo "$SSH_KEY" | tr -d '\r' | ssh-add -
   script:
     - ssh -o StrictHostKeyChecking=no manikandan@timberlea.cs.dal.ca
     - scp -r -o StrictHostKeyChecking=no /target/group-9-1.0-SNAPSHOT.jar "manikandan@timberlea.cs.dal.ca:manikandan/group-9-1.0-SNAPSHOT.jar"
