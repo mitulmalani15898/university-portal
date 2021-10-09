@@ -35,7 +35,7 @@ package:
   artifacts:
     when: on_success
     paths:
-      - "./target/*.jar"
+      - target/*.jar
 
 deploy:
   stage: deploy
@@ -47,5 +47,5 @@ deploy:
     - eval $(ssh-agent -s)
     - echo "$SSH_KEY" | tr -d '\r' | ssh-add -
   script:
-    - ssh -o StrictHostKeyChecking=no manikandan@timberlea.cs.dal.ca
-    - scp -r -o StrictHostKeyChecking=no "./target/group-9-1.0-SNAPSHOT.jar" "manikandan@timberlea.cs.dal.ca:manikandan/group-9-1.0-SNAPSHOT.jar"
+    - ssh -o StrictHostKeyChecking=no manikandan@timberlea.cs.dal.ca "mkdir project"
+    - scp -r -o StrictHostKeyChecking=no target/group-9-1.0-SNAPSHOT.jar "manikandan@timberlea.cs.dal.ca:manikandan/project/group-9-1.0-SNAPSHOT.jar"
