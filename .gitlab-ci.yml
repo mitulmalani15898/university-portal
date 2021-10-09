@@ -19,9 +19,9 @@ test:
     - "mvn clean test"
   artifacts:
     paths:
-      - "./A1/target/surefire-reports/TEST-*.xml"
+      - "./target/surefire-reports/TEST-*.xml"
     reports:
       junit:
-        - "./A1/target/surefire-reports/TEST-*.xml"
+        - "./target/surefire-reports/TEST-*.xml"
 
 
