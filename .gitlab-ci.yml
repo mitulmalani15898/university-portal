@@ -4,6 +4,7 @@ stages:
   - build
   - test
   - package
+  - deploy
 
 build:
   stage: build
@@ -36,3 +37,11 @@ package:
     paths:
       - "./target/*.jar"
 
+deploy:
+  stage: deploy_prod
+  image: ruby:latest
+  tags:
+    - ugrad
+  script:
+    - ssh -o StrictHostKeyChecking=no manikandan@timberlea.cs.dal.ca "mkdir group-9"
+    - scp -r -o StrictHostKeyChecking=no /target/group-9-1.0-SNAPSHOT.jar "manikandan@timberlea.cs.dal.ca:group-9/group-9-1.0-SNAPSHOT.jar"
