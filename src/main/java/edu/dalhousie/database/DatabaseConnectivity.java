@@ -10,8 +10,8 @@ public class DatabaseConnectivity {
             Class.forName("com.mysql.cj.jdbc.Driver");
             System.out.println("CLASS LOADED");
             connection = DriverManager
-                    .getConnection("jdbc:mysql://db-5308.cs.dal.ca/CSCI5308_9_DEVINT?"
-                            + "user=CSCI5308_9_DEVINT_USER&password=zoDooSheupaefau1");
+                    .getConnection("jdbc:mysql://db-5308.cs.dal.ca:3306/CSCI5308_9_DEVINT"
+                            ,"CSCI5308_9_DEVINT_USER","zoDooSheupaefau1");
 
             System.out.println("DATABASE CONNECTIVITY ESTABLISHED");
 
