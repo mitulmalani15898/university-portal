@@ -8,7 +8,6 @@ public class DatabaseConnectivity {
         try {
 
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
-            System.out.println("CLASS LOADED");
             connection = DriverManager
                     .getConnection("jdbc:mysql://db-5308.cs.dal.ca:3306/CSCI5308_9_DEVINT"
                             ,"CSCI5308_9_DEVINT_USER","zoDooSheupaefau1");
