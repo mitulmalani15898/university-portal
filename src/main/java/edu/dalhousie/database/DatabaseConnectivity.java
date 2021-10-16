@@ -7,7 +7,7 @@ public class DatabaseConnectivity {
     public void connectWithDataBase() throws Exception {
         try {
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
+//            Class.forName("com.mysql.cj.jdbc.Driver");
             System.out.println("CLASS LOADED");
             connection = DriverManager
                     .getConnection("jdbc:mysql://db-5308.cs.dal.ca:3306/CSCI5308_9_DEVINT"
