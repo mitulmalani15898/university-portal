@@ -29,9 +29,8 @@ public class WelcomeClass {
         switch(choice) {
             case 1:
                 //call method
-//                StudentMainClass student = new StudentMainClass();
-//                student.displayStudentMenu();
-                System.out.println("You selected 1");break;
+                StudentMainClass student = new StudentMainClass();
+                student.displayStudentMenu();
             case 2:
                 //call method
                 System.out.println("You selected 2");break;
