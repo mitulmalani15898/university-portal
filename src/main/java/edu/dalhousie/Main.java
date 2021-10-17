@@ -2,6 +2,7 @@ package edu.dalhousie;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello world");
+        WelcomeClass welcome = new WelcomeClass();
+        welcome.displayWelcomeScreen();
     }
 }
