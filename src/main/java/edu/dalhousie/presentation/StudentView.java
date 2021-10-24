@@ -8,10 +8,16 @@ public class StudentView {
         System.out.println(message);
     }
 
-    public int getMessage() {
+    public int getInt() {
         Scanner scanner = new Scanner(System.in);
-        int choice = scanner.nextInt();
-        return choice;
+        int input = scanner.nextInt();
+        return input;
+    }
+
+    public String getString() {
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        return input;
     }
 
 }

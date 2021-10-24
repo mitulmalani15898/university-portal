@@ -1,7 +1,7 @@
-package edu.dalhousie;
+package edu.dalhousie.controllers;
+import edu.dalhousie.controllers.StudentMainClass;
 import edu.dalhousie.presentation.StudentView;
 
-import java.io.Console;
 import java.util.Scanner;
 
 public class WelcomeClass {
@@ -14,30 +14,26 @@ public class WelcomeClass {
 
     public void displayWelcomeScreen() {
         StudentView view = new StudentView();
+        StudentMainClass student = new StudentMainClass();
         Scanner sc = new Scanner(System.in);
         view.showMessage("WELCOME TO UNIVERSITY PORTAL");
-        view.showMessage("1 \" + kRegisterAsStudent + \"\\n\" + \"2 \" + kRegisterAsFaculty + \"\\n\" + \"3 \" + kLoginAsStudent + \"\\n\" + \"4 \" + kLoginAsFaculty + \"\\n\" + \"5 \" + kExit \n");
+        view.showMessage("1 " + kRegisterAsStudent + "\n" + "2 " + kRegisterAsFaculty + "\n" + "3 " + kLoginAsStudent + "\n" + "4 " + kLoginAsFaculty + "\n" + "5 " + kExit + "\n");
         view.showMessage("Enter your choice");
-        choice = view.getMessage();
+        choice = view.getInt();
 
         switch(choice) {
             case 1:
-                //call method
-//                StudentMainClass student = new StudentMainClass();
-//                student.displayStudentMenu();
-                view.showMessage("selected 1"); break;
+                student.displayStudentMenu();
             case 2:
                 //call method
                 view.showMessage("selected 2"); break;
             case 3:
-                //call method
-                view.showMessage("selected 3"); break;
+                student.displayStudentMenu();
             case 4:
                 //call method
                 view.showMessage("selected 4"); break;
             case 5:
-                //call method
-                view.showMessage(" selected 5"); break;
+                System.exit(0);
             default: break;
         }
 
