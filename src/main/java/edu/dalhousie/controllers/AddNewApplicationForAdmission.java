@@ -58,11 +58,11 @@ public class AddNewApplicationForAdmission {
         addNewApplication.setIELTS(view.getString());
         view.showMessage(kEigthQuestion);
         addNewApplication.setGRE(view.getString());
-        eighthQuestionInput = view.getString();
         view.showMessage(kNinethQuestion);
         addNewApplication.setResearchPapers(view.getString());
 
         view.showMessage(kTenthQuestion);
+        addNewApplication.setWorkExp(view.getString());
         view.showMessage(kEleventhQuestion);
         addNewApplication.setGMAT(view.getString());
         view.showMessage(kTwelfthQuestion);
