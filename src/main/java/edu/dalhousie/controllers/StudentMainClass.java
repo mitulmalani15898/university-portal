@@ -1,4 +1,6 @@
-package edu.dalhousie;
+package edu.dalhousie.controllers;
+
+import edu.dalhousie.controllers.AddNewApplicationForAdmission;
 
 import java.util.Scanner;
 
@@ -30,9 +32,8 @@ public class StudentMainClass {
         switch(choice) {
             case 1:
                 //call method
-//                AddNewApplicationForAdmission addNew = new AddNewApplicationForAdmission();
-//                addNew.showNewForm();
-                System.out.println("You selected 1");break;
+                AddNewApplicationForAdmission addNew = new AddNewApplicationForAdmission();
+                addNew.showNewForm();
             case 2:
                 //call method
                 System.out.println("You selected 2");break;
