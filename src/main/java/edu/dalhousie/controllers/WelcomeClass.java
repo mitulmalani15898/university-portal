@@ -10,12 +10,11 @@ public class WelcomeClass {
     private String kRegisterAsFaculty = "Register as a Faculty";
     private String kLoginAsStudent = "Login as a Student";
     private String kLoginAsFaculty = "Login as a Faculty";
-    private String kExit = "Login as a Faculty";
+    private String kExit = "Exit";
 
     public void displayWelcomeScreen() {
         StudentView view = new StudentView();
         StudentMainClass student = new StudentMainClass();
-        Scanner sc = new Scanner(System.in);
         view.showMessage("WELCOME TO UNIVERSITY PORTAL");
         view.showMessage("1 " + kRegisterAsStudent + "\n" + "2 " + kRegisterAsFaculty + "\n" + "3 " + kLoginAsStudent + "\n" + "4 " + kLoginAsFaculty + "\n" + "5 " + kExit + "\n");
         view.showMessage("Enter your choice");

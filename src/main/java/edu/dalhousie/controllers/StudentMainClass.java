@@ -48,7 +48,8 @@ public class StudentMainClass {
                 System.out.println("You selected 5");break;
             case 6:
                 //call method
-                System.out.println("You selected 6");break;
+                ScholarshipMenu scholarshipMenu = new ScholarshipMenu();
+                scholarshipMenu.displayMenu();
             case 7:
                 //call method
                 System.out.println("You selected 7");break;

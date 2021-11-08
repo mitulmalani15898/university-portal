@@ -1,4 +1,4 @@
-package edu.dalhousie;
+package edu.dalhousie.controllers;
 
 import edu.dalhousie.controllers.WelcomeClass;
 

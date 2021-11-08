@@ -13,6 +13,7 @@ public class AddNewApplicationFormObject {
     String workExp;
     String GMAT;
     String GATE;
+    String score;
 
     public String getCourse() {
         return course;
@@ -106,8 +107,16 @@ public class AddNewApplicationFormObject {
         return GATE;
     }
 
-    public void setGATE(String GMAT) {
+    public void setGATE(String GATE) {
         this.GATE = GATE;
+    }
+
+    public String getResult() {
+        return score;
+    }
+
+    public void setResult(String score) {
+        this.score = score;
     }
 
 }

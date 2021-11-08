@@ -72,6 +72,9 @@ public class AddNewApplicationForAdmission {
         view.showMessage("Result will be shown in some time...");
         String result = computeAdmissionResult.computeResult(addNewApplication);
         view.showMessage("Result is" + result);
+
+        StudentMainClass student = new StudentMainClass();
+        student.displayStudentMenu();
     }
 
 }
