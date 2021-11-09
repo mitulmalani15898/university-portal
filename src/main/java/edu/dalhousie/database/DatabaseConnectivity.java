@@ -17,9 +17,7 @@ public class DatabaseConnectivity {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             throw e;
-        } finally {
-            connection.close();
-        }
+        } 
 
     }
     public Connection getDatabaseConnection() throws Exception {

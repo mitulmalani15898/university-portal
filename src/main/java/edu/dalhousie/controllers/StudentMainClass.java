@@ -42,7 +42,9 @@ public class StudentMainClass {
                 System.out.println("You selected 3");break;
             case 4:
                 //call method
-                System.out.println("You selected 4");break;
+                FeesPaymentDetails feesPaymentDetails = new FeesPaymentDetails();
+                feesPaymentDetails.showPaymentInformation();
+                break;
             case 5:
                 //call method
                 System.out.println("You selected 5");break;
