@@ -12,6 +12,8 @@ build:
     - ugrad
   script:
     - "mvn compile"
+  only:
+    - development
 
 test:
   stage: test
@@ -25,7 +27,8 @@ test:
     reports:
       junit:
         - "./target/surefire-reports/TEST-*.xml"
-
+  only:
+    - development
 package:
   stage: package
   tags:
@@ -36,9 +39,12 @@ package:
     when: on_success
     paths:
       - target/*.jar
-
+  only:
+    - development
 deploy:
   stage: deploy
+  only:
+    - development
   image: ruby:latest
   tags:
     - ugrad
