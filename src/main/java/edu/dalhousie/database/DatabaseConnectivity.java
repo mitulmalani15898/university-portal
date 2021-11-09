@@ -2,7 +2,7 @@ package edu.dalhousie.database;
 import java.sql.*;
 public class DatabaseConnectivity {
     private Connection connection = null;
-    public void connectWithDataBase() throws Exception {
+    public Connection connectWithDataBase() throws Exception {
         try {
 
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
@@ -12,6 +12,8 @@ public class DatabaseConnectivity {
 
             System.out.println("DATABASE CONNECTIVITY ESTABLISHED");
 
+            return connection;
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
             throw e;
@@ -19,6 +21,18 @@ public class DatabaseConnectivity {
             connection.close();
         }
 
+    }
+    public Connection getDatabaseConnection() throws Exception {
+        try {
+            if (connection != null) {
+                connection.close();
+            }
+            connection = connectWithDataBase();
+        } catch (Exception e) {
+            connection = null;
+            e.printStackTrace();
+        }
+        return connection;
     }
 
 }
