@@ -8,7 +8,7 @@ public class ScholarshipMenu {
     private String backToStudentMenu = "Back to student menu";
     int choice;
 
-    public void displayMenu() {
+    public void displayMenu() throws Exception {
         StudentView view = new StudentView();
 
         view.showMessage("1. " + applyForScholarship);

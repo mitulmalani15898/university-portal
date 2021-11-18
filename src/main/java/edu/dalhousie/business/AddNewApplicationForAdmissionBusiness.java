@@ -172,6 +172,8 @@ public class AddNewApplicationForAdmissionBusiness {
 
         addNewApplicationFormObject.setResult(String.valueOf(score));
         System.out.println("Score is " + score);
+        addNewApplicationFormObject.setResult(String.valueOf(score));
+
         if (score>350) {
             return "Congratulations! You're application is approved.";
         } else {

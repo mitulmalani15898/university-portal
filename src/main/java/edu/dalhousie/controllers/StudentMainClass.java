@@ -20,7 +20,7 @@ public class StudentMainClass {
     private String kNominationForSports = "Nomination for sports";
     private String kLogout = "Logout";
 
-    public void displayStudentMenu() {
+    public void displayStudentMenu() throws Exception {
         Scanner sc = new Scanner(System.in);
         System.out.println("STUDENT MENU");
         System.out.println("1 " + kAddNewApplication + "\n" + "2 " + kProfile + "\n" + "3 " + kListOfCourses + "\n" + "4 " + kFeePaymentDetails + "\n" + "5 " + kFeedback

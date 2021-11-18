@@ -1,6 +1,7 @@
 package edu.dalhousie.controllers;
 
 import edu.dalhousie.business.AddNewApplicationForAdmissionBusiness;
+import edu.dalhousie.database.AddNewApplicationForAdmissionData;
 import edu.dalhousie.models.AddNewApplicationFormObject;
 import edu.dalhousie.presentation.StudentView;
 
@@ -35,10 +36,11 @@ public class AddNewApplicationForAdmission {
     private String kResultWillBeShownInSometime = "Result will be shown in sometime...";
     private String kResultIs = "Result is:";
 
-    public void showNewForm() {
+    public void showNewForm() throws Exception {
         StudentView view = new StudentView();
         AddNewApplicationFormObject addNewApplication = new AddNewApplicationFormObject();
         AddNewApplicationForAdmissionBusiness computeAdmissionResult = new AddNewApplicationForAdmissionBusiness();
+        AddNewApplicationForAdmissionData storeAdmissionInfo = new AddNewApplicationForAdmissionData();
 
         view.showMessage(kFirstQuestion);
         addNewApplication.setCourse(view.getString());
@@ -70,8 +72,12 @@ public class AddNewApplicationForAdmission {
 
         view.showMessage("Calculation in progress...");
         view.showMessage("Result will be shown in some time...");
+
+        storeAdmissionInfo.storeData(addNewApplication);
         String result = computeAdmissionResult.computeResult(addNewApplication);
-        view.showMessage("Result is" + result);
+        String score = addNewApplication.getResult();
+        storeAdmissionInfo.storeScore(addNewApplication);
+        view.showMessage("Decision: " + result);
 
         StudentMainClass student = new StudentMainClass();
         student.displayStudentMenu();
