@@ -12,9 +12,8 @@ public class ExecuteQuery {
     private Statement statement = null;
 
     public ExecuteQuery() {
-        DatabaseConnectivity connectivity = new DatabaseConnectivity();
         try {
-            connection = connectivity.getDatabaseConnection();
+            connection = DatabaseConnectivity.getInstance().getConnection();
         } catch (Exception e) {
             e.printStackTrace();
         }

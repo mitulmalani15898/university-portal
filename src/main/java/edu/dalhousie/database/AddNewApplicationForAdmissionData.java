@@ -22,7 +22,7 @@ public class AddNewApplicationForAdmissionData {
     private String GATE;
    //private String score;
 
-    public AddNewApplicationForAdmissionData() {
+    public AddNewApplicationForAdmissionData() throws SQLException {
         executeQuery = new ExecuteQuery();
     }
 

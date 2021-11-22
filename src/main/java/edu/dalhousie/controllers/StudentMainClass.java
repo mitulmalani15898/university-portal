@@ -54,8 +54,8 @@ public class StudentMainClass {
                 //call method
                 System.out.println("You selected 7");break;
             case 8:
-                //call method
-                System.out.println("You selected 8");break;
+                RoommateFinder roommateFinder = new RoommateFinder();
+                roommateFinder.displayForm();
             case 9:
                 //call method
                 System.out.println("You selected 9");break;

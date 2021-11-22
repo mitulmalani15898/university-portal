@@ -9,7 +9,7 @@ public class ScholarshipData {
     String courseName;
 
     ExecuteQuery executeQuery;
-    public ScholarshipData(String userID, String courseName) {
+    public ScholarshipData(String userID, String courseName) throws SQLException {
         executeQuery = new ExecuteQuery();
         this.userID = userID;
         this.courseName = courseName;
