@@ -1,7 +1,5 @@
 package edu.dalhousie.controllers;
 
-import edu.dalhousie.controllers.AddNewApplicationForAdmission;
-
 import java.util.Scanner;
 
 public class StudentMainClass {
@@ -34,6 +32,7 @@ public class StudentMainClass {
                 //call method
                 AddNewApplicationForAdmission addNew = new AddNewApplicationForAdmission();
                 addNew.showNewForm();
+                break;
             case 2:
                 //call method
                 System.out.println("You selected 2");break;
@@ -42,7 +41,7 @@ public class StudentMainClass {
                 System.out.println("You selected 3");break;
             case 4:
                 //call method
-                FeesPaymentDetails feesPaymentDetails = new FeesPaymentDetails();
+                FeesPaymentDetailsMenu feesPaymentDetails = new FeesPaymentDetailsMenu();
                 feesPaymentDetails.showPaymentInformation();
                 break;
             case 5:

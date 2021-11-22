@@ -24,11 +24,13 @@ public class WelcomeClass {
         switch(choice) {
             case 1:
                 student.displayStudentMenu();
+                break;
             case 2:
                 //call method
                 view.showMessage("selected 2"); break;
             case 3:
                 student.displayStudentMenu();
+                break;
             case 4:
                 //call method
                 view.showMessage("selected 4"); break;
