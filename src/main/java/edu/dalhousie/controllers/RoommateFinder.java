@@ -1,10 +1,12 @@
 package edu.dalhousie.controllers;
 
+import edu.dalhousie.business.RoommateFinderBusiness;
 import edu.dalhousie.database.RoommateFinderData;
 import edu.dalhousie.models.RoommateFinderObject;
 import edu.dalhousie.presentation.StudentView;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class RoommateFinder {
     String kFood = "1. Enter your food preference: (1. Veg, 2. Non-Veg, 3. No preference)";
@@ -20,6 +22,7 @@ public class RoommateFinder {
         StudentView view = new StudentView();
         RoommateFinderObject roommateFinderObject = new RoommateFinderObject();
         RoommateFinderData roommateFinderData = new RoommateFinderData();
+        RoommateFinderBusiness roommateFinderBusiness = new RoommateFinderBusiness();
 
 
         view.showMessage(kFood);
@@ -42,9 +45,15 @@ public class RoommateFinder {
 
         roommateFinderData.storeData(roommateFinderObject);
 
-        view.showMessage(kLoading);
+        // TODO - username!=current (take from preferences)
+        List<String> matches = roommateFinderData.retrieveData(roommateFinderObject);
+        List<String> filteredMatches = roommateFinderBusiness.filterData(roommateFinderObject, matches);
 
+        view.showMessage(kLoading);
         view.showMessage(kSuggestions);
+        for(String match: filteredMatches) {
+            view.showMessage(match);
+        }
     }
 
 }
