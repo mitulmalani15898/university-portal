@@ -18,7 +18,6 @@ public class RoommateFinderBusiness {
         for(String match: matches) {
             filteredMatches.add(match);
         }
-        System.out.println("fk " + roommateFinderObject.getUserName());
         return filteredMatches;
     }
 }

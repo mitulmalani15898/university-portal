@@ -9,8 +9,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class RoommateFinder {
+    String kGender = "Enter your gender: ";
     String kFood = "1. Enter your food preference: (1. Veg, 2. Non-Veg, 3. No preference)";
-    String kGender = "2. Enter your gender preference: (1. Male, 2. Female, 3. No preference)";
+    String kGenderPreference = "2. Enter your gender preference: (1. Male, 2. Female, 3. No preference)";
     String kHobbies = "3. Mention your hobbies: (eg. cooking, travelling, football) ";
     String kCampus = "4. Do you prefer staying on-campus or off-campus?: (1. Off-campus, 2. On-campus)";
     String kAccomodation = "5. Would you like to share the room? (1. Yes, 2. No)";
@@ -25,10 +26,13 @@ public class RoommateFinder {
         RoommateFinderBusiness roommateFinderBusiness = new RoommateFinderBusiness();
 
 
+        view.showMessage(kGender);
+        roommateFinderObject.setGender(view.getInt());
+
         view.showMessage(kFood);
         roommateFinderObject.setFoodPreference(view.getInt());
 
-        view.showMessage(kGender);
+        view.showMessage(kGenderPreference);
         roommateFinderObject.setGenderPreference(view.getInt());
 
         view.showMessage(kHobbies);

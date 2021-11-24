@@ -2,6 +2,7 @@ package edu.dalhousie.models;
 
 public class RoommateFinderObject {
     String userName;
+    int gender;
     int foodPreference;
     int genderPreference;
     String hobbies;
@@ -11,6 +12,14 @@ public class RoommateFinderObject {
 
     public int getPriority() {
         return priority;
+    }
+
+    public int getGender() {
+        return gender;
+    }
+
+    public void setGender(int gender) {
+        this.gender = gender;
     }
 
     public void setPriority(int priority) {
