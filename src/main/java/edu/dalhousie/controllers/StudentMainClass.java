@@ -4,28 +4,36 @@ import java.util.Scanner;
 
 public class StudentMainClass {
 
-    private int choice;
-
-    private String kAddNewApplication = "Add new application for admission";
-    private String kProfile = "Profile (Personal information and course details)";
-    private String kListOfCourses = "List of courses for registration";
-    private String kFeePaymentDetails = "Fee payment details";
-    private String kFeedback = "Feedback";
-    private String kApplyForScholarship = "Apply for scholarships";
-    private String kOrganizeEvents = "Organize events";
-    private String kRoommateFinder = "Roommate finder";
-    private String kHealthReimbursement = "Health Reimbursement";
-    private String kNominationForSports = "Nomination for sports";
-    private String kLogout = "Logout";
-
-    public void displayStudentMenu() {
+    public void displayStudentMenu() throws Exception {
         Scanner sc = new Scanner(System.in);
         System.out.println("STUDENT MENU");
-        System.out.println("1 " + kAddNewApplication + "\n" + "2 " + kProfile + "\n" + "3 " + kListOfCourses + "\n" + "4 " + kFeePaymentDetails + "\n" + "5 " + kFeedback
-                + "\n" + "6 " + kApplyForScholarship + "\n" + "7 " + kOrganizeEvents + "\n" + "8 " + kRoommateFinder + "\n" + "9 " + kHealthReimbursement + "\n" + "10 " + kNominationForSports + "\n" + "11 " + kLogout);
+        
+        String kAddNewApplication = "Add new application for admission";
+        String kApplyForScholarship = "Apply for scholarships";
+        String kFeePaymentDetails = "Fee payment details";
+        String kListOfCourses = "List of courses for registration";
+        String kProfile = "Profile (Personal information and course details)";
+        String kHealthReimbursement = "Health Reimbursement";
+        String kLogout = "Logout";
+        String kNominationForSports = "Nomination for sports";
+        String kRoommateFinder = "Roommate finder";
+        String kOrganizeEvents = "Organize events";
+        String kFeedback = "Feedback";
+
+        System.out.println("1 " + kAddNewApplication + "\n" +
+                "2 " + kProfile + "\n" +
+                "3 " + kListOfCourses + "\n" +
+                "4 " + kFeePaymentDetails + "\n" +
+                "5 " + kFeedback + "\n" +
+                "6 " + kApplyForScholarship + "\n" +
+                "7 " + kOrganizeEvents + "\n" +
+                "8 " + kRoommateFinder + "\n" +
+                "9 " + kHealthReimbursement + "\n" +
+                "10 " + kNominationForSports + "\n" +
+                "11 " + kLogout);
 
         System.out.println("Enter your choice\n");
-        choice = sc.nextInt();
+        int choice = sc.nextInt();
 
         switch(choice) {
             case 1:
@@ -42,7 +50,7 @@ public class StudentMainClass {
             case 4:
                 //call method
                 FeesPaymentDetailsMenu feesPaymentDetails = new FeesPaymentDetailsMenu();
-                feesPaymentDetails.showPaymentInformation();
+                feesPaymentDetails.showPaymentInformationMenu();
                 break;
             case 5:
                 //call method
@@ -64,6 +72,7 @@ public class StudentMainClass {
                 System.out.println("You selected 10");break;
             case 11:
                 //call method
+                System.exit(0);
                 System.out.println("You selected 11");break;
             default: break;
         }

@@ -12,7 +12,7 @@ public class WelcomeClass {
     private String kLoginAsFaculty = "Login as a Faculty";
     private String kExit = "Login as a Faculty";
 
-    public void displayWelcomeScreen() {
+    public void displayWelcomeScreen() throws Exception {
         StudentView view = new StudentView();
         StudentMainClass student = new StudentMainClass();
         Scanner sc = new Scanner(System.in);

@@ -23,7 +23,7 @@ public class DatabaseConnectivity implements DatabaseConnection{
             }
             return databaseConnectivity;
     }
-    public Connection connectWithDataBase() throws Exception {
+    public Connection connectWithDataBase() throws DatabaseException{
         try(final InputStream inputStream = new FileInputStream(DATABASE_CONFIG_FILE)) {
             final Properties ConfigProperties = new Properties();
             ConfigProperties.load(inputStream);
@@ -36,18 +36,15 @@ public class DatabaseConnectivity implements DatabaseConnection{
                             ,ConfigProperties.getProperty(databaseType+"Username"),
                             ConfigProperties.getProperty(databaseType+"Password"));
 
-            System.out.println("DATABASE CONNECTIVITY ESTABLISHED");
-
             return connection;
 
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            throw e;
+            throw new DatabaseException(e.getMessage(),e);
         }
 
     }
     @Override
-    public Connection getDatabaseConnection() throws Exception {
+    public Connection getDatabaseConnection() throws DatabaseException {
         clearDatabaseConnection();
         connection = connectWithDataBase();
         return connection;
