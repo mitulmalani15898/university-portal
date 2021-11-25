@@ -19,6 +19,7 @@ public class StudentMainClass {
         String kRoommateFinder = "Roommate finder";
         String kOrganizeEvents = "Organize events";
         String kFeedback = "Feedback";
+        String kTender = "Organize e-tender";
 
         System.out.println("1 " + kAddNewApplication + "\n" +
                 "2 " + kProfile + "\n" +
@@ -30,7 +31,8 @@ public class StudentMainClass {
                 "8 " + kRoommateFinder + "\n" +
                 "9 " + kHealthReimbursement + "\n" +
                 "10 " + kNominationForSports + "\n" +
-                "11 " + kLogout);
+                "11 " + kTender + "\n" +
+                "12 " + kLogout);
 
         System.out.println("Enter your choice\n");
         int choice = sc.nextInt();
@@ -71,6 +73,9 @@ public class StudentMainClass {
                 //call method
                 System.out.println("You selected 10");break;
             case 11:
+                //call method
+                System.out.println("You selected 11");break;
+            case 12:
                 //call method
                 System.exit(0);
                 System.out.println("You selected 11");break;
