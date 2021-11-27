@@ -5,6 +5,8 @@ import edu.dalhousie.presentation.StudentView;
 import java.util.Scanner;
 
 public class WelcomeClass {
+    LogIn login = new LogIn();
+
     private int choice;
     private String kRegisterAsStudent = "Register as a Student";
     private String kRegisterAsFaculty = "Register as a Faculty";
@@ -27,10 +29,11 @@ public class WelcomeClass {
                 //call method
                 view.showMessage("selected 2"); break;
             case 3:
-                student.displayStudentMenu();
+                login.loginUser("student");
+                break;
             case 4:
-                //call method
-                view.showMessage("selected 4"); break;
+                login.loginUser("faculty");
+                break;
             case 5:
                 System.exit(0);
             default: break;

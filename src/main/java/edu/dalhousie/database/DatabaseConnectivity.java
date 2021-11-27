@@ -7,7 +7,8 @@ public class DatabaseConnectivity {
     private static DatabaseConnectivity dbInstance;
     private static Connection connection;
 
-    private DatabaseConnectivity() {
+    private DatabaseConnectivity()
+    {
 
     }
 
