@@ -1,12 +1,14 @@
 package edu.dalhousie.business.Tender.controller;
 
+import edu.dalhousie.business.Tender.controller.AbstractTender;
+import edu.dalhousie.business.Tender.controller.BiddingComparator;
 import edu.dalhousie.business.Tender.model.Bidder;
 
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Tender extends AbstractTender{
+public class Tender extends AbstractTender {
     @Override
     public Bidder findWinner() throws Exception {
         Set<Bidder> activeBidders = new HashSet<Bidder>(bidders);
