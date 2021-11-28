@@ -4,7 +4,6 @@ import edu.dalhousie.presentation.StudentView;
 import edu.dalhousie.utilities.Utility;
 
 public class StudentMainClass {
-    Utility utility = new Utility();
     StudentView view = new StudentView();
 
     private int userChoice;
@@ -21,7 +20,7 @@ public class StudentMainClass {
     private static final String logout = "Logout";
 
     public void displayStudentMenu() throws Exception {
-        utility.printHeadingForTheScreen("Student Menu", 45);
+        Utility.printHeadingForTheScreen("Student Menu", 45);
 
         view.showMessage("1. " + addNewApplication);
         view.showMessage("2. " + profile);

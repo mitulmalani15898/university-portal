@@ -1,6 +1,5 @@
 package edu.dalhousie.database;
 
-import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;

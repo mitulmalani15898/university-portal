@@ -1,89 +1,50 @@
 package edu.dalhousie.controllers;
 
+import edu.dalhousie.database.RegistrationApi;
+import edu.dalhousie.models.RegistrationModel;
+import edu.dalhousie.presentation.RegistrationView;
 import edu.dalhousie.presentation.StudentView;
 import edu.dalhousie.utilities.Utility;
 
 public class Registration {
-    Utility utility = new Utility();
-    StudentView view = new StudentView();
-    WelcomeClass welcome = new WelcomeClass();
+    StudentView view;
+    WelcomeClass welcome;
+    RegistrationModel registrationModel;
+    RegistrationView registrationView;
+    RegistrationApi registrationApi;
 
-    private int userChoice;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String contactNumber;
-    private String password;
-    private String confirmPassword;
-    private String dateOfBirth;
-    private String gender;
-    private String streetAddress;
-    private String apartmentNumber;
-    private String city;
-    private String province;
-    private String zipcode;
-    private String username;
+    public Registration() {
+        view = new StudentView();
+        welcome = new WelcomeClass();
+        registrationModel = new RegistrationModel();
+        registrationView = new RegistrationView();
+        registrationApi = new RegistrationApi();
+    }
 
     private String createUsername(String firstName, String lastName) {
         return firstName + "." + lastName;
     }
 
-    private void getUserInputs() {
-        System.out.println("Enter your first name: ");
-        firstName = view.getString();
-
-        System.out.println("Enter your last name: ");
-        lastName = view.getString();
-
-        System.out.println("Enter your email address: ");
-        email = view.getString();
-
-        System.out.println("Enter your contact number: ");
-        contactNumber = view.getString();
-
-        System.out.println("Enter your password (Must include uppercase, lowercase letters along with numeric and special characters): ");
-        password = view.getString();
-
-        System.out.println("Verify your Password: ");
-        confirmPassword = view.getString();
-
-        System.out.println("Enter your Date of Birth: (MM-DD-YYYY): ");
-        dateOfBirth = view.getString();
-
-        System.out.println("Enter your gender (1: Male, 2: Female, 3: Other): ");
-        gender = view.getString();
-
-        System.out.println("Enter your street address: ");
-        streetAddress = view.getString();
-
-        System.out.println("Enter your apartment number (if any): ");
-        apartmentNumber = view.getString();
-
-        System.out.println("Enter your city: ");
-        city = view.getString();
-
-        System.out.println("Enter your province/state: ");
-        province = view.getString();
-
-        System.out.println("Enter your zip code: ");
-        zipcode = view.getString();
-    }
-
     public void registerUser(String typeOfRegistration) {
+        int userChoice;
         String title = typeOfRegistration.equals("student") ? "Register as a student" : "Register as a faculty";
-        utility.printHeadingForTheScreen(title, 38);
 
-        getUserInputs();
+        Utility.printHeadingForTheScreen(title, 38);
 
-        System.out.println("\nVerifying your details...");
-        System.out.println("Details verified...\n");
+        registrationView.renderRegistrationForm(registrationModel);
+        registrationModel.setUsername(createUsername(registrationModel.getFirstName(), registrationModel.getLastName()));
 
-        username = createUsername(firstName, lastName);
+        view.showMessage("\nVerifying your details...");
+        int result = registrationApi.saveUserDetails(registrationModel);
+        if (result == 0) {
+            view.showMessage("Details verified...\n");
+            view.showMessage("Your username is \"" + registrationModel.getUsername() + "\".");
+            view.showMessage("\nPlease login using your username and password to access your portal.\n");
+        } else {
+            view.showMessage("Something went wrong, please try again...\n");
+        }
 
-        System.out.println("Your username is \"" + username + "\"");
-        System.out.println("\nPlease login using your username and password to access your portal.\n");
-        System.out.println("Press '0' to go back\n");
-
+        view.showMessage("Press '0' to go back");
         userChoice = view.getInt();
         if (userChoice == 0) {
             welcome.displayWelcomeScreen();

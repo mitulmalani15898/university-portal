@@ -4,9 +4,6 @@ import edu.dalhousie.presentation.StudentView;
 import edu.dalhousie.utilities.Utility;
 
 public class WelcomeClass {
-    Utility utility = new Utility();
-    Registration registration = new Registration();
-
     private int userChoice;
     private static final String registerAsStudent = "Register as a Student";
     private static final String registerAsFaculty = "Register as a Faculty";
@@ -17,7 +14,7 @@ public class WelcomeClass {
     public void displayWelcomeScreen() {
         StudentView view = new StudentView();
 
-        utility.printHeadingForTheScreen("Welcome to university portal", 35);
+        Utility.printHeadingForTheScreen("Welcome to university portal", 35);
 
         view.showMessage("1. " + registerAsStudent);
         view.showMessage("2. " + registerAsFaculty);
@@ -25,15 +22,17 @@ public class WelcomeClass {
         view.showMessage("4. " + loginAsFaculty);
         view.showMessage("5. " + exit);
 
-        view.showMessage("\nEnter your choice: ");
+        System.out.print("\nEnter your choice: ");
         userChoice = view.getInt();
 
         switch (userChoice) {
             case 1:
-                registration.registerUser("student");
+                Registration studentRegistration = new Registration();
+                studentRegistration.registerUser("student");
                 break;
             case 2:
-                registration.registerUser("faculty");
+                Registration facultyRegistration = new Registration();
+                facultyRegistration.registerUser("faculty");
                 break;
             case 3:
                 //call method
