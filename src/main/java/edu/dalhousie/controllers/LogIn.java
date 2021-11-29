@@ -61,10 +61,8 @@ public class LogIn {
         userdetails = getUserLoginDetails();
 
         ExecuteQuery executeQuery = new ExecuteQuery();
-        String SQL = String.format("SELECT user_name, password FROM users WHERE user_name = '%s' AND password = '%s'", userdetails[0], userdetails[1]);
-        //String SQL = "SELECT user_name, password FROM users WHERE %s, %s";
+        String SQL = String.format("SELECT user_name, password FROM users WHERE user_name = '%s' AND password = '%s' AND type_of_user = '%s'", userdetails[0], userdetails[1], typeOfLogIn);
         ResultSet rs = executeQuery.executeUpdateSQL(SQL);
-
 
         String username = null;
         String userpassword = null;
