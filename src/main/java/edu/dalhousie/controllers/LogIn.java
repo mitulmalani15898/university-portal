@@ -1,33 +1,32 @@
 package edu.dalhousie.controllers;
 
 import edu.dalhousie.database.ExecuteQuery;
-
+import edu.dalhousie.presentation.StudentView;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
-import java.util.Scanner;
 
 public class LogIn {
-    /*private static String UserName = "raj.patel";
-    private static String UserPassword = "rp12345";
-    private static String hashedUserPassword = doPasswordHashing(UserPassword);*/
 
-    public static String[] getUserLoginDetails() {
-        /*System.out.println("******************************************************************");
-        System.out.println("\t \t \t \t \t \t Student Login \t");
-        System.out.println("******************************************************************");*/
+    StudentView view;
+    StudentMainClass studentmenu;
+    String username;
+    //FacultyMainClass facultymenu;
 
-        /*System.out.println("******************************************************************");
-        System.out.println("\t \t \t \t \t \t Faculty Login \t");
-        System.out.println("******************************************************************");*/
+    public LogIn() {
+        view = new StudentView();
+        studentmenu = new StudentMainClass();
+        //facultymenu = new FacultyMainClass();
+    }
 
-        System.out.print("Enter your Username: ");
-        Scanner enterusername = new Scanner(System.in);
-        String username = enterusername.nextLine();
 
-        System.out.print("Enter your Password: ");
-        Scanner enterpassword = new Scanner(System.in);
-        String userpassword = enterpassword.nextLine();
+    public String[] getUserLoginDetails() {
+
+        view.showMessage("Enter your Username: ");
+        username = view.getString();
+
+        view.showMessage("Enter your Password: ");
+        String userpassword = view.getString();
 
         String hashedpassword = doPasswordHashing(userpassword);
 
@@ -55,34 +54,44 @@ public class LogIn {
     }
 
     public void loginUser(String typeOfLogIn) throws Exception {
-        String title = typeOfLogIn.equals("student") ? "LogIn as a student" : "LogIn as a faculty";
-        //utility.printHeadingForTheScreen(title, 38);
-        ExecuteQuery executeQuery = new ExecuteQuery();
-        String SQL = "SELECT userName, userPassword FROM users";
-        ResultSet rs = executeQuery.executeUpdateSQL(SQL);
-
+        boolean isStudent = typeOfLogIn.equals("student");
+        String title = isStudent ? "LogIn as a student" : "LogIn as a faculty";
+        //Utility.printHeadingForTheScreen(title, 38);
         String[] userdetails;
         userdetails = getUserLoginDetails();
 
+        ExecuteQuery executeQuery = new ExecuteQuery();
+        String SQL = String.format("SELECT user_name, password FROM users WHERE user_name = '%s' AND password = '%s'", userdetails[0], userdetails[1]);
+        //String SQL = "SELECT user_name, password FROM users WHERE %s, %s";
+        ResultSet rs = executeQuery.executeUpdateSQL(SQL);
 
-        while (rs.next()) {
-            String username = rs.getString("userName");
-            String userpassword = rs.getString("userPassword");
 
-            if (userdetails[0].equals(username) && userdetails[1].equals(userpassword)) {
-                System.out.println("Verifying your credentials. . .");
-                System.out.println("Credentials verified. . .");
-                System.out.println("\nForwarding you to the main page. . .");
+        String username = null;
+        String userpassword = null;
+        while(rs.next()) {
+            username = rs.getString("user_name");
+            userpassword = rs.getString("password");
+        }
 
-                if (typeOfLogIn.equals("student")) {
-                    //call Student method
-                    //StudentMainClass.displayStudentMenu();
-                } else {
-                    //call Faculty method
-                }
+        if (userdetails[0].equals(username) && userdetails[1].equals(userpassword)) {
+            view.showMessage("Verifying your credentials. . .");
+            view.showMessage("Credentials verified. . .");
+            view.showMessage("\nForwarding you to the main page. . .");
+
+            if (typeOfLogIn.equals("student")) {
+                //call Student method
+                studentmenu.displayStudentMenu();
             } else {
-                System.out.println("You have entered the wrong credentials.");
-                System.out.println("Please try again.\n");
+                //call Faculty method
+                //facultymenu.displayFacultyMenu();
+            }
+        } else {
+            view.showMessage("You have entered the wrong credentials.");
+            view.showMessage("Please try again.\n");
+            if (typeOfLogIn.equals("student")) {
+                loginUser("student");
+            } else {
+                loginUser("faculty");
             }
         }
 
