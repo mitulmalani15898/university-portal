@@ -30,6 +30,8 @@ public class ExecuteQuery {
         try {
             result = statement.executeUpdate(query); //insert, update, delete
         } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+            System.out.println(sqlException.getMessage());
             connection.close();
         }
         return result;
@@ -39,8 +41,10 @@ public class ExecuteQuery {
     public ResultSet executeUpdateSQL(String query) throws SQLException {
         ResultSet resultSet = null;
         try {
-            resultSet= statement.executeQuery(query); //retrieve - select
+            resultSet = statement.executeQuery(query); //retrieve - select
         } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+            System.out.println(sqlException.getMessage());
             connection.close();
         }
         return resultSet;

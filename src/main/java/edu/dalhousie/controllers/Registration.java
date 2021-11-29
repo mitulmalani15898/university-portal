@@ -6,6 +6,8 @@ import edu.dalhousie.presentation.RegistrationView;
 import edu.dalhousie.presentation.StudentView;
 import edu.dalhousie.utilities.Utility;
 
+import java.sql.SQLException;
+
 public class Registration {
     StudentView view;
     WelcomeClass welcome;
@@ -25,18 +27,22 @@ public class Registration {
         return firstName + "." + lastName;
     }
 
-    public void registerUser(String typeOfRegistration) {
+    public void registerUser(String typeOfRegistration) throws SQLException {
         int userChoice;
-        String title = typeOfRegistration.equals("student") ? "Register as a student" : "Register as a faculty";
+        boolean isStudent = typeOfRegistration.equals("student");
+
+        String title = isStudent ? "Register as a student" : "Register as a faculty";
 
         Utility.printHeadingForTheScreen(title, 38);
 
         registrationView.renderRegistrationForm(registrationModel);
         registrationModel.setUsername(createUsername(registrationModel.getFirstName(), registrationModel.getLastName()));
+        registrationModel.setTypeOfUser(isStudent ? "student" : "faculty");
 
         view.showMessage("\nVerifying your details...");
         int result = registrationApi.saveUserDetails(registrationModel);
-        if (result == 0) {
+        System.out.println("result: " + result);
+        if (result == 1) {
             view.showMessage("Details verified...\n");
             view.showMessage("Your username is \"" + registrationModel.getUsername() + "\".");
             view.showMessage("\nPlease login using your username and password to access your portal.\n");

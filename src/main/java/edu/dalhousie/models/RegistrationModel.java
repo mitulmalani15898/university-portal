@@ -15,6 +15,7 @@ public class RegistrationModel {
     private String province;
     private String zipcode;
     private String username;
+    private String typeOfUser;
 
     public String getFirstName() {
         return firstName;
@@ -126,5 +127,13 @@ public class RegistrationModel {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getTypeOfUser() {
+        return typeOfUser;
+    }
+
+    public void setTypeOfUser(String typeOfUser) {
+        this.typeOfUser = typeOfUser;
     }
 }

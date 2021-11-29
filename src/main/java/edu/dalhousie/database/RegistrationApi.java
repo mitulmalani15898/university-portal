@@ -3,6 +3,8 @@ package edu.dalhousie.database;
 import edu.dalhousie.models.RegistrationModel;
 import edu.dalhousie.utilities.Constants;
 
+import java.sql.SQLException;
+
 public class RegistrationApi {
     ExecuteQuery executeQuery;
 
@@ -10,7 +12,7 @@ public class RegistrationApi {
         executeQuery = new ExecuteQuery();
     }
 
-    public int saveUserDetails(RegistrationModel registrationModel) {
+    public int saveUserDetails(RegistrationModel registrationModel) throws SQLException {
         String firstName = registrationModel.getFirstName();
         String lastName = registrationModel.getLastName();
         String email = registrationModel.getEmail();
@@ -24,9 +26,10 @@ public class RegistrationApi {
         String province = registrationModel.getProvince();
         String zipcode = registrationModel.getZipcode();
         String username = registrationModel.getUsername();
+        String typeOfUser = registrationModel.getTypeOfUser();
 
-        String query = String.format("INSERT INTO %s VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", Constants.UsersTable, firstName, lastName, email, contactNumber, password, dateOfBirth, gender, streetAddress, apartmentNumber, city, province, zipcode, username);
+        String query = String.format("INSERT INTO %s(first_name, last_name, email_address, contact_number, password, dob, gender, address, apartment_number, city, province, zip_code, user_name, type_of_user) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", Constants.UsersTable, firstName, lastName, email, contactNumber, password, dateOfBirth, gender, streetAddress, apartmentNumber, city, province, zipcode, username, typeOfUser);
 
-        return 0;
+        return executeQuery.executeSQL(query);
     }
 }
