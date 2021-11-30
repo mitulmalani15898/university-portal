@@ -1,6 +1,7 @@
 package edu.dalhousie.controllers;
 
 import edu.dalhousie.business.RoommateFinderBusiness;
+import edu.dalhousie.constants.StringConstants;
 import edu.dalhousie.database.RoommateFinderData;
 import edu.dalhousie.models.RoommateFinderObject;
 import edu.dalhousie.presentation.StudentView;
@@ -9,43 +10,93 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class RoommateFinder {
-    String kGender = "Enter your gender: ";
-    String kFood = "1. Enter your food preference: (1. Veg, 2. Non-Veg, 3. No preference)";
-    String kGenderPreference = "2. Enter your gender preference: (1. Male, 2. Female, 3. No preference)";
-    String kHobbies = "3. Mention your hobbies: (eg. cooking, travelling, football) ";
-    String kCampus = "4. Do you prefer staying on-campus or off-campus?: (1. Off-campus, 2. On-campus)";
-    String kAccomodation = "5. Would you like to share the room? (1. Yes, 2. No)";
-    String kPriority = "6. Enter the priority of the above questions on which you would like to consider your roommate: (eg. 23145)";
-    String kLoading = "Finding your roommates..";
-    String kSuggestions = "Here are the suggestions for roommates:";
 
-    public void displayForm() throws SQLException {
-        StudentView view = new StudentView();
+    StudentView view;
+
+    public RoommateFinder() {
+        view = new StudentView();
+    }
+
+    public void displayForm() throws Exception {
         RoommateFinderObject roommateFinderObject = new RoommateFinderObject();
         RoommateFinderData roommateFinderData = new RoommateFinderData();
         RoommateFinderBusiness roommateFinderBusiness = new RoommateFinderBusiness();
 
+        view.showMessage(StringConstants.kGender);
+        int gender = view.getInt();
+        boolean genderVerified = roommateFinderBusiness.verifyGender(gender);
+        if (!genderVerified) {
+            while(!genderVerified) {
+                view.showMessage("Wrong input");
+                view.showMessage(StringConstants.kGender);
+                gender = view.getInt();
+                genderVerified = roommateFinderBusiness.verifyGender(gender);
+            }
+        }
+        view.showMessage(String.valueOf(gender));
+        roommateFinderObject.setGender(gender);
 
-        view.showMessage(kGender);
-        roommateFinderObject.setGender(view.getInt());
+        view.showMessage(StringConstants.kFood);
+        int food = view.getInt();
+        boolean foodVerified = roommateFinderBusiness.verifyFood(food);
+        if (!foodVerified) {
+            while(!foodVerified) {
+                view.showMessage("Wrong input");
+                view.showMessage(StringConstants.kFood);
+                food = view.getInt();
+                foodVerified = roommateFinderBusiness.verifyGender(food);
+            }
+        }
+        view.showMessage(String.valueOf(food));
+        roommateFinderObject.setFoodPreference(food);
 
-        view.showMessage(kFood);
-        roommateFinderObject.setFoodPreference(view.getInt());
+        view.showMessage(StringConstants.kGenderPreference);
+        int genderPreference = view.getInt();
+        boolean genderPreferenceVerified = roommateFinderBusiness.verifyGenderPreference(genderPreference);
+        if (!genderPreferenceVerified) {
+            while(!genderPreferenceVerified) {
+                view.showMessage("Wrong input");
+                view.showMessage(StringConstants.kGenderPreference);
+                genderPreference = view.getInt();
+                genderPreferenceVerified = roommateFinderBusiness.verifyGenderPreference(genderPreference);
+            }
+        }
+        view.showMessage(String.valueOf(genderPreference));
+        roommateFinderObject.setGenderPreference(genderPreference);
 
-        view.showMessage(kGenderPreference);
-        roommateFinderObject.setGenderPreference(view.getInt());
-
-        view.showMessage(kHobbies);
+        view.showMessage(StringConstants.kHobbies);
         roommateFinderObject.setHobbies(view.getString());
 
-        view.showMessage(kCampus);
-        roommateFinderObject.setCampusPreference(view.getInt());
+        view.showMessage(StringConstants.kCampus);
+        int campus = view.getInt();
+        boolean campusVerified = roommateFinderBusiness.verifyCampus(campus);
+        if (!campusVerified) {
+            while(!campusVerified) {
+                view.showMessage("Wrong input");
+                view.showMessage(StringConstants.kCampus);
+                campus = view.getInt();
+                campusVerified = roommateFinderBusiness.verifyCampus(campus);
+            }
+        }
+        view.showMessage(String.valueOf(campus));
+        roommateFinderObject.setCampusPreference(campus);
 
-        view.showMessage(kAccomodation);
-        roommateFinderObject.setAccomodationPreference(view.getInt());
+        view.showMessage(StringConstants.kAccomodation);
+        int accomodation = view.getInt();
+        boolean accomodationVerified = roommateFinderBusiness.verifyAccomodation(accomodation);
+        if (!accomodationVerified) {
+            while(!accomodationVerified) {
+                view.showMessage("Wrong input");
+                view.showMessage(StringConstants.kAccomodation);
+                accomodation = view.getInt();
+                accomodationVerified = roommateFinderBusiness.verifyAccomodation(accomodation);
+            }
+        }
+        view.showMessage(String.valueOf(accomodation));
+        roommateFinderObject.setAccomodationPreference(accomodation);
 
-        view.showMessage(kPriority);
-        roommateFinderObject.setPriority(view.getInt());
+//        view.showMessage(StringConstants.kPriority);
+//        roommateFinderObject.setPriority(view.getInt());
 
         roommateFinderData.storeData(roommateFinderObject);
 
@@ -53,11 +104,11 @@ public class RoommateFinder {
         List<String> matches = roommateFinderData.retrieveData(roommateFinderObject);
         List<String> filteredMatches = roommateFinderBusiness.filterData(roommateFinderObject, matches);
 
-        view.showMessage(kLoading);
-        view.showMessage(kSuggestions);
+        view.showMessage(StringConstants.kLoading);
+        view.showMessage(StringConstants.kSuggestions);
+
         for(String match: filteredMatches) {
             view.showMessage(match);
         }
     }
-
 }
