@@ -6,8 +6,6 @@ import edu.dalhousie.presentation.RegistrationView;
 import edu.dalhousie.presentation.StudentView;
 import edu.dalhousie.utilities.Utility;
 
-import java.sql.SQLException;
-
 public class Registration {
     StudentView view;
     WelcomeClass welcome;
@@ -27,7 +25,7 @@ public class Registration {
         return firstName + "." + lastName;
     }
 
-    public void registerUser(String typeOfRegistration) throws SQLException {
+    public void registerUser(String typeOfRegistration) throws Exception {
         int userChoice;
         boolean isStudent = typeOfRegistration.equals("student");
 

@@ -3,8 +3,6 @@ package edu.dalhousie.controllers;
 import edu.dalhousie.presentation.StudentView;
 import edu.dalhousie.utilities.Utility;
 
-import java.sql.SQLException;
-
 public class WelcomeClass {
     private int userChoice;
     private static final String registerAsStudent = "Register as a Student";
@@ -13,7 +11,7 @@ public class WelcomeClass {
     private static final String loginAsFaculty = "Login as a Faculty";
     private static final String exit = "Exit";
 
-    public void displayWelcomeScreen() throws SQLException {
+    public void displayWelcomeScreen() throws Exception {
         StudentView view = new StudentView();
 
         Utility.printHeadingForTheScreen("Welcome to university portal", 35);
@@ -29,8 +27,10 @@ public class WelcomeClass {
 
         switch (userChoice) {
             case 1:
-                Registration studentRegistration = new Registration();
-                studentRegistration.registerUser("student");
+                StudentMainClass studentMainClass = new StudentMainClass();
+                studentMainClass.displayStudentMenu();
+//                Registration studentRegistration = new Registration();
+//                studentRegistration.registerUser("student");
                 break;
             case 2:
                 Registration facultyRegistration = new Registration();

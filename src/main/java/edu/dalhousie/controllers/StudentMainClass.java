@@ -41,13 +41,14 @@ public class StudentMainClass {
             case 1:
                 AddNewApplicationForAdmission addNew = new AddNewApplicationForAdmission();
                 addNew.showNewForm();
+                break;
             case 2:
                 //call method
                 view.showMessage("You selected 2");
                 break;
             case 3:
-                //call method
-                view.showMessage("You selected 3");
+                CourseRegistration courseRegistration = new CourseRegistration();
+                courseRegistration.registerForCourses();
                 break;
             case 4:
                 //call method
@@ -60,6 +61,7 @@ public class StudentMainClass {
             case 6:
                 ScholarshipMenu scholarshipMenu = new ScholarshipMenu();
                 scholarshipMenu.displayMenu();
+                break;
             case 7:
                 //call method
                 view.showMessage("You selected 7");
@@ -67,6 +69,7 @@ public class StudentMainClass {
             case 8:
                 RoommateFinder roommateFinder = new RoommateFinder();
                 roommateFinder.displayForm();
+                break;
             case 9:
                 //call method
                 view.showMessage("You selected 9");
