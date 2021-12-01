@@ -3,7 +3,6 @@ package edu.dalhousie.presentation;
 import edu.dalhousie.database.CourseRegistrationApi;
 import edu.dalhousie.models.CourseRegistrationModel;
 
-import java.sql.SQLException;
 import java.util.Map;
 
 public class CourseRegistrationView {
@@ -17,53 +16,61 @@ public class CourseRegistrationView {
     }
 
     public boolean checkInvalidCourseId(String courseId) {
-        System.out.println("hey " + courseRegistrationModel.getCourses().containsKey(Integer.parseInt(courseId)));
         return !courseRegistrationModel.getCourses().containsKey(Integer.parseInt(courseId));
     }
 
-    public void registerForSpecificCourse() throws Exception {
+    public int registerForSpecificCourse() throws Exception {
         String courseID = "";
         System.out.println("Enter course id for which you would like to enroll:");
-        courseID = view.getString();
-        if (courseID.toLowerCase().equals("no")) {
-            return;
+        courseID = view.getString().toLowerCase();
+        if (courseID.equals("no")) {
+            return -1;
         } else if (checkInvalidCourseId(courseID)) {
-            System.out.println("\nPlease try again and provide valid course id for registration.");
+            System.out.println("\nPlease try again and provide valid course id for registration.\n");
         } else {
-            courseRegistrationApi.registerForSpecificCourse(Integer.parseInt(courseID));
+            return courseRegistrationApi.registerForSpecificCourse(Integer.parseInt(courseID));
         }
+        return -1;
     }
 
-    public void renderRegisterForSpecificCourseForm() {
+    public void renderRegisterForSpecificCourseForm() throws Exception {
         String userChoice = "";
         System.out.println("\n\nDo you want to register for courses? (Yes, No: quit)");
         userChoice = view.getString().toLowerCase();
-        while (!userChoice.equals("yes") && !userChoice.equals("no")) {
-            System.out.println("\nDo you want to search for particular course? (Yes, No: View complete list)");
+        while (!userChoice.equals("no")) {
+            if (userChoice.equals("yes")) {
+                int result = registerForSpecificCourse();
+                if (result == 1) {
+                    System.out.println("\nRegistration successful.");
+                }
+            }
+            System.out.println("\nDo you want to register for course? (Yes, No: quit)");
             userChoice = view.getString().toLowerCase();
         }
-        if (userChoice.equals("yes")) {
-            registerForSpecificCourse();
+    }
 
-        } else {
-
+    public void renderSearchForParticularCourseView() throws Exception {
+        String keyword = "";
+        System.out.println("\nEnter keyword for searching course(s)? (type 'quit' to exit search)");
+        keyword = view.getString().toLowerCase();
+        while (!keyword.equals("quit")) {
+            if (!keyword.equals("quit")) {
+                courseRegistrationApi.getCoursesByKeyword(keyword);
+                renderCourseListView();
+            }
+            System.out.println("\nEnter keyword for searching course(s)? (type 'quit' to exit search)");
+            keyword = view.getString().toLowerCase();
         }
 
     }
 
-    public void renderSearchForParticularCourseView() {
-
-    }
-
-    public void renderCompleteCourseListView() throws SQLException {
-        courseRegistrationApi.getCompleteCourseList();
-        System.out.format("%25s\n", "List of all courses".toUpperCase());
+    public void renderCourseListView() {
+        System.out.format("\n%25s\n", "List of all courses".toUpperCase());
         System.out.format("%5s %15s\n", "ID", "Course name");
         int count = 0;
         for (Map.Entry<Integer, String> course : courseRegistrationModel.getCourses().entrySet()) {
             System.out.format("%s.  %s | %s\n", ++count, course.getKey(), course.getValue());
         }
-        renderRegisterForSpecificCourseForm();
     }
 
     public String renderCourseRegistrationForm() {

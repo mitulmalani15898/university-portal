@@ -23,12 +23,14 @@ public class CourseRegistration {
 
         userChoice = courseRegistrationView.renderCourseRegistrationForm();
 
-        if (userChoice.equals("yes")) {
-            courseRegistrationView.renderCompleteCourseListView();
+        if (userChoice.equals("no")) {
+            courseRegistrationApi.getCompleteCourseList();
+            courseRegistrationView.renderCourseListView();
+            courseRegistrationView.renderRegisterForSpecificCourseForm();
         } else if (userChoice.equals("yes")) {
-
+            courseRegistrationView.renderSearchForParticularCourseView();
         } else {
-
+            studentMainClass.displayStudentMenu();
         }
         studentMainClass.displayStudentMenu();
 

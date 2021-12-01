@@ -29,8 +29,17 @@ public class CourseRegistrationApi {
 
     public int registerForSpecificCourse(int courseId) throws SQLException {
         int studentId = 2;
-        String query = "INSERT INTO %s(student_id, course_id) VALUES(" + Constants.CourseEnrolled + ", " + studentId + ", " + courseId + ")";
-
+        String query = "INSERT INTO " + Constants.CourseEnrolled + "(student_id, course_id) VALUES(" + studentId + ", " + courseId + ")";
         return executeQuery.executeSQL(query);
+    }
+
+    public void getCoursesByKeyword(String keyword) throws SQLException {
+        Map<Integer, String> courses = new HashMap<>();
+        String query = "SELECT * from " + Constants.CoursesTable + " WHERE course_name LIKE '%" + keyword + "%'";
+        ResultSet rs = executeQuery.executeUpdateSQL(query);
+        while (rs.next()) {
+            courses.put(rs.getInt("course_id"), rs.getString("course_name"));
+        }
+        courseRegistrationModel.setCourses(courses);
     }
 }
