@@ -25,7 +25,8 @@ public class CourseRegistration {
 
         if (userChoice.equals("no")) {
             courseRegistrationApi.getCompleteCourseList();
-            courseRegistrationView.renderCourseListView();
+            courseRegistrationApi.getRegisteredCourseList();
+            courseRegistrationView.renderCourseListView(courseRegistrationModel.getCourses());
             courseRegistrationView.renderRegisterForSpecificCourseForm();
         } else if (userChoice.equals("yes")) {
             courseRegistrationView.renderSearchForParticularCourseView();
