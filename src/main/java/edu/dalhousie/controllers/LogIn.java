@@ -1,6 +1,7 @@
 package edu.dalhousie.controllers;
 
 import edu.dalhousie.database.ExecuteQuery;
+import edu.dalhousie.models.LogInModel;
 import edu.dalhousie.presentation.StudentView;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -9,44 +10,42 @@ import java.sql.ResultSet;
 public class LogIn {
 
     StudentView view;
-    StudentMainClass studentmenu;
-    String username;
-    //FacultyMainClass facultymenu;
+    LogInModel loginModel;
+    StudentMainClass studentMenu;
+    //FacultyMainClass facultyMenu;
 
     public LogIn() {
         view = new StudentView();
-        studentmenu = new StudentMainClass();
-        //facultymenu = new FacultyMainClass();
+        loginModel = new LogInModel();
+        studentMenu = new StudentMainClass();
+        //facultyMenu = new FacultyMainClass();
     }
-
 
     public String[] getUserLoginDetails() {
 
         view.showMessage("Enter your Username: ");
-        username = view.getString();
+        loginModel.setUserName(view.getString());
 
         view.showMessage("Enter your Password: ");
-        String userpassword = view.getString();
+        loginModel.setUserPassword(view.getString());
 
-        String hashedpassword = doPasswordHashing(userpassword);
+        loginModel.setHashedPassword(doPasswordHashing(loginModel.getUserPassword()));
+        loginModel.setUserCredentials(loginModel.getUserName(),loginModel.getHashedPassword());
 
-        String[] input = new String[2];
-        input[0] = username;
-        input[1] = hashedpassword;
-        return input;
+        return loginModel.getUserCredentials();
     }
 
-    public static String doPasswordHashing(String hashpassword) {
+    public String doPasswordHashing(String hashPassword) {
         try {
             MessageDigest passwordDigest = MessageDigest.getInstance("SHA");
-            passwordDigest.update(hashpassword.getBytes());
+            passwordDigest.update(hashPassword.getBytes());
             byte[] resultPassword = passwordDigest.digest();
-            StringBuilder strbuild = new StringBuilder();
+            StringBuilder strBuild = new StringBuilder();
 
             for (byte pwd : resultPassword) {
-                strbuild.append(String.format("%02x", pwd));
+                strBuild.append(String.format("%02x", pwd));
             }
-            return strbuild.toString();
+            return strBuild.toString();
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
@@ -57,31 +56,29 @@ public class LogIn {
         boolean isStudent = typeOfLogIn.equals("student");
         String title = isStudent ? "LogIn as a student" : "LogIn as a faculty";
         //Utility.printHeadingForTheScreen(title, 38);
-        String[] userdetails;
-        userdetails = getUserLoginDetails();
+        String[] userLoginDetails;
+        userLoginDetails = getUserLoginDetails();
 
         ExecuteQuery executeQuery = new ExecuteQuery();
-        String SQL = String.format("SELECT user_name, password FROM users WHERE user_name = '%s' AND password = '%s' AND type_of_user = '%s'", userdetails[0], userdetails[1], typeOfLogIn);
+        String SQL = String.format("SELECT user_name, password FROM users WHERE user_name = '%s' AND password = '%s' AND type_of_user = '%s'", userLoginDetails[0], userLoginDetails[1], typeOfLogIn);
         ResultSet rs = executeQuery.executeUpdateSQL(SQL);
 
-        String username = null;
-        String userpassword = null;
         while(rs.next()) {
-            username = rs.getString("user_name");
-            userpassword = rs.getString("password");
+            loginModel.setStoredUserName(rs.getString("user_name"));
+            loginModel.setStoredUserPassword(rs.getString("password"));
         }
 
-        if (userdetails[0].equals(username) && userdetails[1].equals(userpassword)) {
-            view.showMessage("Verifying your credentials. . .");
+        if (userLoginDetails[0].equals(loginModel.getStoredUserName()) && userLoginDetails[1].equals(loginModel.getStoredUserPassword())) {
+            view.showMessage("\nVerifying your credentials. . .");
             view.showMessage("Credentials verified. . .");
-            view.showMessage("\nForwarding you to the main page. . .");
+            view.showMessage("\nForwarding you to the main page. . .\n");
 
             if (typeOfLogIn.equals("student")) {
                 //call Student method
-                studentmenu.displayStudentMenu();
+                studentMenu.displayStudentMenu();
             } else {
                 //call Faculty method
-                //facultymenu.displayFacultyMenu();
+                //facultyMenu.displayFacultyMenu();
             }
         } else {
             view.showMessage("You have entered the wrong credentials.");
