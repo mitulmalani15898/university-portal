@@ -6,7 +6,6 @@ import edu.dalhousie.database.RoommateFinderData;
 import edu.dalhousie.models.RoommateFinderObject;
 import edu.dalhousie.presentation.StudentView;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class RoommateFinder {
