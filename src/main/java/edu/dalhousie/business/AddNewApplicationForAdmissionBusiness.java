@@ -1,13 +1,13 @@
 package edu.dalhousie.business;
 
 import edu.dalhousie.constants.StringConstants;
-import edu.dalhousie.controllers.StudentMainClass;
 import edu.dalhousie.models.AddNewApplicationFormObject;
 import edu.dalhousie.models.AddNewApplicationFormValidation;
 import edu.dalhousie.presentation.StudentView;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 public class AddNewApplicationForAdmissionBusiness {
 
@@ -82,7 +82,9 @@ public class AddNewApplicationForAdmissionBusiness {
     }
 
     public AddNewApplicationFormValidation verifyGRE(String gre) {
-        if (gre.length() == 3 && (Integer.parseInt(gre)>=260 && Integer.parseInt(gre)<=340) && !gre.contains(".")) {
+        if (gre.length() == 1 && gre.contains("0")) {
+            return new AddNewApplicationFormValidation(true, StringConstants.kSuccess);
+        } else if (gre.length() == 3 && (Integer.parseInt(gre)>=260 && Integer.parseInt(gre)<=340) && !gre.contains(".")) {
             return new AddNewApplicationFormValidation(true, StringConstants.kSuccess);
         } else if (gre.length() == 3 && (Integer.parseInt(gre)<=260 && Integer.parseInt(gre)>=340)) {
             return new AddNewApplicationFormValidation(false, "Please enter score in the range of 260-340");
@@ -105,7 +107,9 @@ public class AddNewApplicationForAdmissionBusiness {
     }
 
     public AddNewApplicationFormValidation verifyGMAT(String gmat) {
-        if (gmat.length() == 3 && (Integer.parseInt(gmat)>=200 && Integer.parseInt(gmat)<=800) && !gmat.contains(".")) {
+        if (gmat.length() == 1 && gmat.contains("0")) {
+            return new AddNewApplicationFormValidation(true, StringConstants.kSuccess);
+        } else if (gmat.length() == 3 && (Integer.parseInt(gmat)>=200 && Integer.parseInt(gmat)<=800) && !gmat.contains(".")) {
             return new AddNewApplicationFormValidation(true, StringConstants.kSuccess);
         } else if (gmat.length() == 3 && (Integer.parseInt(gmat)<=200 || Integer.parseInt(gmat)>=800)) {
             return new AddNewApplicationFormValidation(false, "Please enter score in the range of 200-800");
@@ -135,6 +139,7 @@ public class AddNewApplicationForAdmissionBusiness {
         String workExp=addNewApplicationFormObject.getWorkExp();
         String gmat=addNewApplicationFormObject.getGMAT();
         String gate=addNewApplicationFormObject.getGATE();
+        final float approvalMarks = 320;
         final float satisfactoryMarks = 20;
         final float belowAverageMarks = 25;
         final float averageMarks = 30;
@@ -146,41 +151,48 @@ public class AddNewApplicationForAdmissionBusiness {
         boolean pass = true;
 
         // University
-        if (addNewApplicationFormObject.getUniversity().contains("IIT") || addNewApplicationFormObject.getUniversity().contains("Indian Institute of Technology")){
+        if (addNewApplicationFormObject.getUniversity().toLowerCase(Locale.ROOT).contains(StringConstants.kIIT) || addNewApplicationFormObject.getUniversity().toLowerCase(Locale.ROOT).contains(StringConstants.kIndianInstituteOfTechnology)) {
             score += outstandingMarks;
             view.showMessage(String.valueOf(score));
-        }else{
-            score += belowAverageMarks;
+        } else if (addNewApplicationFormObject.getUniversity().toLowerCase(Locale.ROOT).contains(StringConstants.kNIT) || addNewApplicationFormObject.getUniversity().toLowerCase(Locale.ROOT).contains(StringConstants.kNationalInstituteOfTechnology)) {
+            score += veryGoodMarks;
+            view.showMessage(String.valueOf(score));
+        } else {
+            score += averageMarks;
             view.showMessage(String.valueOf(score));
         }
 
-//        if (course == "Master of Applied Computer Science") {
             // Education
-            if (addNewApplicationFormObject.getEducation() == "2") {
+            if (addNewApplicationFormObject.getEducation().equals("1")) {
                 score += belowAverageMarks;
                 view.showMessage(String.valueOf(score));
-            } else if (addNewApplicationFormObject.getEducation() == "3") {
+            } else if (addNewApplicationFormObject.getEducation().equals("2")) {
                 score += aboveAverage;
                 view.showMessage(String.valueOf(score));
+            } else if (addNewApplicationFormObject.getEducation().equals("3")){
+                score += goodMarks;
+                view.showMessage(String.valueOf(score));
             } else {
-                score += satisfactoryMarks;
+                score += veryGoodMarks;
                 view.showMessage(String.valueOf(score));
             }
 
-            // GPA
-            if (Float.parseFloat(addNewApplicationFormObject.getGpa()) >= Float.parseFloat("8.5")) {
-                score += averageMarks;
-                view.showMessage(String.valueOf(score));
-            } else if (Float.parseFloat(addNewApplicationFormObject.getGpa()) >= Float.parseFloat("9")) {
-                score += outstandingMarks;
-                view.showMessage(String.valueOf(score));
-            } else if (Float.parseFloat(addNewApplicationFormObject.getGpa()) <= Float.parseFloat("8")) {
-                score += satisfactoryMarks;
-                view.showMessage(String.valueOf(score));
-            } else if ((Float.parseFloat(addNewApplicationFormObject.getGpa()) >= Float.parseFloat("8")) && (Float.parseFloat(addNewApplicationFormObject.getGpa()) <= Integer.parseInt("8.5"))) {
-                score += satisfactoryMarks;
-                view.showMessage(String.valueOf(score));
-            }
+        // GPA
+        if (((Float.parseFloat(gpa)) >= 8.5) && ((Float.parseFloat(gpa)) <= 9)) {
+            score += aboveAverage;
+            view.showMessage(String.valueOf(score));
+        } else if (((Float.parseFloat(gpa)) > 9) && ((Float.parseFloat(gpa)) <= 9.5)) {
+            score += veryGoodMarks;
+            view.showMessage(String.valueOf(score));
+        } else if ((Float.parseFloat(gpa)) > 9.5) {
+            score += outstandingMarks;
+            view.showMessage(String.valueOf(score));
+        } else if (((Float.parseFloat(gpa)) > 8) && (((Float.parseFloat(gpa)) < 8.5))){
+            score += satisfactoryMarks;
+            view.showMessage(String.valueOf(score));
+        } else {
+            pass = false;
+        }
 
             // 10th
             if (((Float.parseFloat(tenth)) >= 85) && ((Float.parseFloat(tenth)) <= 90)) {
@@ -192,9 +204,11 @@ public class AddNewApplicationForAdmissionBusiness {
             } else if ((Float.parseFloat(tenth)) > 95) {
                 score += outstandingMarks;
                 view.showMessage(String.valueOf(score));
-            } else {
+            } else if (((Float.parseFloat(tenth)) > 45) && (((Float.parseFloat(tenth)) < 85))){
                 score += satisfactoryMarks;
                 view.showMessage(String.valueOf(score));
+            } else {
+                pass = false;
             }
 
             // 12th
@@ -207,9 +221,11 @@ public class AddNewApplicationForAdmissionBusiness {
             } else if ((Float.parseFloat(twelfth)) > 95) {
                 score += outstandingMarks;
                 view.showMessage(String.valueOf(score));
-            } else {
+            } else if (((Float.parseFloat(twelfth)) > 45) && (((Float.parseFloat(twelfth)) < 85))){
                 score += satisfactoryMarks;
                 view.showMessage(String.valueOf(score));
+            } else {
+                pass = false;
             }
 
             // IELTS
@@ -245,11 +261,14 @@ public class AddNewApplicationForAdmissionBusiness {
             if ((Integer.parseInt(research)) == 1) {
                 score += aboveAverage;
                 view.showMessage(String.valueOf(score));
-            } else if ((Integer.parseInt(gre)) == 2) {
+            } else if ((Integer.parseInt(research)) == 2) {
                 score += veryGoodMarks;
                 view.showMessage(String.valueOf(score));
-            } else if ((Integer.parseInt(gre)) > 3) {
+            } else if ((Integer.parseInt(research)) > 3) {
                 score += outstandingMarks;
+                view.showMessage(String.valueOf(score));
+            } else {
+                score += satisfactoryMarks;
                 view.showMessage(String.valueOf(score));
             }
 
@@ -262,6 +281,9 @@ public class AddNewApplicationForAdmissionBusiness {
                 view.showMessage(String.valueOf(score));
             } else if ((Float.parseFloat(workExp)) > 4) {
                 score += outstandingMarks;
+                view.showMessage(String.valueOf(score));
+            } else {
+                score += satisfactoryMarks;
                 view.showMessage(String.valueOf(score));
             }
 
@@ -281,22 +303,19 @@ public class AddNewApplicationForAdmissionBusiness {
             }
 
             // GATE
-            if (((Integer.parseInt(gate)) >= 290) && ((Integer.parseInt(gate)) <= 300)) {
+            if (((Integer.parseInt(gate)) >= 0) && ((Integer.parseInt(gate)) <= 30)) {
                 score += averageMarks;
-            } else if (((Integer.parseInt(gate)) > 300) && ((Integer.parseInt(gate)) <= 310)) {
+            } else if (((Integer.parseInt(gate)) > 30) && ((Integer.parseInt(gate)) <= 60)) {
                 score += goodMarks;
-            } else if ((Integer.parseInt(gate)) > 310) {
+            } else if ((Integer.parseInt(gate)) > 60) {
                 score += outstandingMarks;
-            } else {
-                score += satisfactoryMarks;
             }
-//        }
 
         addNewApplicationFormObject.setResult(String.valueOf(score));
         System.out.println("Score is " + score);
         addNewApplicationFormObject.setResult(String.valueOf(score));
 
-        if (score>350) {
+        if (score>approvalMarks && pass) {
             return "Congratulations! You're application is approved.";
         } else {
             return "Sorry, you're application has been denied.";

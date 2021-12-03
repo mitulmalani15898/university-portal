@@ -26,7 +26,7 @@ public class RoommateFinder {
         boolean genderVerified = roommateFinderBusiness.verifyGender(gender);
         if (!genderVerified) {
             while(!genderVerified) {
-                view.showMessage("Wrong input");
+                view.showMessage(StringConstants.kWrongInput);
                 view.showMessage(StringConstants.kGender);
                 gender = view.getInt();
                 genderVerified = roommateFinderBusiness.verifyGender(gender);
@@ -40,7 +40,7 @@ public class RoommateFinder {
         boolean foodVerified = roommateFinderBusiness.verifyFood(food);
         if (!foodVerified) {
             while(!foodVerified) {
-                view.showMessage("Wrong input");
+                view.showMessage(StringConstants.kWrongInput);
                 view.showMessage(StringConstants.kFood);
                 food = view.getInt();
                 foodVerified = roommateFinderBusiness.verifyGender(food);
@@ -54,7 +54,7 @@ public class RoommateFinder {
         boolean genderPreferenceVerified = roommateFinderBusiness.verifyGenderPreference(genderPreference);
         if (!genderPreferenceVerified) {
             while(!genderPreferenceVerified) {
-                view.showMessage("Wrong input");
+                view.showMessage(StringConstants.kWrongInput);
                 view.showMessage(StringConstants.kGenderPreference);
                 genderPreference = view.getInt();
                 genderPreferenceVerified = roommateFinderBusiness.verifyGenderPreference(genderPreference);
@@ -71,7 +71,7 @@ public class RoommateFinder {
         boolean campusVerified = roommateFinderBusiness.verifyCampus(campus);
         if (!campusVerified) {
             while(!campusVerified) {
-                view.showMessage("Wrong input");
+                view.showMessage(StringConstants.kWrongInput);
                 view.showMessage(StringConstants.kCampus);
                 campus = view.getInt();
                 campusVerified = roommateFinderBusiness.verifyCampus(campus);
@@ -85,7 +85,7 @@ public class RoommateFinder {
         boolean accomodationVerified = roommateFinderBusiness.verifyAccomodation(accomodation);
         if (!accomodationVerified) {
             while(!accomodationVerified) {
-                view.showMessage("Wrong input");
+                view.showMessage(StringConstants.kWrongInput);
                 view.showMessage(StringConstants.kAccomodation);
                 accomodation = view.getInt();
                 accomodationVerified = roommateFinderBusiness.verifyAccomodation(accomodation);

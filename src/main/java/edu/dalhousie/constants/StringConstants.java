@@ -12,6 +12,7 @@ public class StringConstants {
     public static final String kLoading = "Finding your roommates..";
     public static final String kSuggestions = "Here are the suggestions for roommates:";
     public static final String kNoBuddies = "Sorry, no buddies found. Please try with different preferences";
+    public static final String kWrongInput = "Wrong input";
 //  AddNewApplication
     public static String kFirstQuestion = "Enter your preferred course name";
     public static String kSecondQuestion = "Enter your previous university/College name";
@@ -22,9 +23,9 @@ public class StringConstants {
     public static String kSeventhQuestion = "Enter your IELTS";
     public static String kEigthQuestion = "Enter your GRE";
     public static String kNinethQuestion = "Enter the number of research publications you have published";
-    public static String kTenthQuestion = "Enter work experience in years: (If any)";
-    public static String kEleventhQuestion = "Enter your GMAT score: (If any)";
-    public static String kTwelfthQuestion = "Enter your GATE score: (If any)";
+    public static String kTenthQuestion = "Enter work experience in years: (If any else enter 0)";
+    public static String kEleventhQuestion = "Enter your GMAT score: (If any else enter 0)";
+    public static String kTwelfthQuestion = "Enter your GATE score: (If any else enter 0)";
     public static String kCalculationInProgress = "Calculation in progress...";
     public static String kResultWillBeShownInSometime = "Result will be shown in sometime...";
     public static String kDecision = "Decision: ";
@@ -40,6 +41,30 @@ public class StringConstants {
     public static String kTenthPercentageInNumericsOnly = "Please enter tenth percentage in numerics only";
     public static String kTwelfthPercentageInNumericsOnly = "Please enter twelfth percentage in numerics only";
     public static String kValidTwelfthPercentage = "Please enter valid twelfth percentage";
-
-
+    public static String kIIT = "iit";
+    public static String kIndianInstituteOfTechnology = "indian institute of technology";
+    public static String kNIT = "nit";
+    public static String kNationalInstituteOfTechnology = "national institute of technology";
+    // Feedback
+    public static String kProvideFeedback = "1. Provide feedback";
+    public static String kReadFeedbackOfTheCourse = "2. Read feedback of the course";
+    public static String kSentimentalAnalysisOfFeedback = "3. Sentimental analysis of the feedback";
+    public static String kBackToStudentMenu = "4. Back to student main menu";
+    public static String kEnterYourChoice = "Enter your choice";
+    public static String kEnterCourseId = "Enter the course id for which you want to provide feedback";
+    public static String kProvideYourFeedback = "Please provide your feedback";
+    public static String kRateYourProfessor = "How would you rate your professor on a scale of 1-5?";
+    public static String kLevelOfDifficulty = "How would you rate the level of difficulty of this course on a scale of 1-5?";
+    public static String kRecommendThisCourse = "How likely would you recommend this course to others on a scale of 1-5?";
+    public static String kDevelopProfessionally = "How did this course develop you professionally on a scale of 1-5?";
+    public static String kMeetYourNeeds = "How much did the course meet your needs on a scale of 1-5?";
+    public static String kThankYouForFeedback = "Thank you for your feedback";
+    public static String kEnterCourseIDForFeedbackRetrieval = "Enter the course ID";
+    public static String kEnterCourseIDForSentimentalAnalysisOfFeedback = "Enter the course ID for Sentimental Analysis of the feedback: ";
+    public static String kPolarity = "The polarity of this course is : ";
+    public static String kNegativePolarity = "Negative";
+    public static String kPositivePolarity = "Positive";
+    public static String kNeutralPolarity = "Neutral";
+    public static String kPositiveWords = "Positive words: ";
+    public static String kNegativeWords = "Negative words: ";
 }

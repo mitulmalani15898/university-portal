@@ -44,8 +44,9 @@ public class StudentMainClass {
                 //call method
                 System.out.println("You selected 4");break;
             case 5:
-                //call method
-                System.out.println("You selected 5");break;
+                FeedbackMenu feedbackMenu = new FeedbackMenu();
+                feedbackMenu.displayFeedbackMenu();
+                break;
             case 6:
                 //call method
                 ScholarshipMenu scholarshipMenu = new ScholarshipMenu();
