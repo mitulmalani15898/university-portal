@@ -9,7 +9,9 @@ import org.apache.logging.log4j.Logger;
 
 public class Main {
 
-    private static ILogger logger = LoggerAbstractFactory.getFactory().newLoggerInstance();
+    private static ILogger logger = LoggerAbstractFactory
+            .getFactory().newLoggerInstance();
+
     public static void main(String[] args) throws Exception {
         logger.info(Main.class.toString(),"Main class");
         WelcomeClass welcome = new WelcomeClass();

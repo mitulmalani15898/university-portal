@@ -2,44 +2,76 @@ package edu.dalhousie.controllers;
 
 import edu.dalhousie.business.DalMembership.controller.menu.MenuImplementation;
 import edu.dalhousie.business.Events.controller.EventApplication;
+import edu.dalhousie.business.Feedback.controllers.FeedbackMenu;
+import edu.dalhousie.business.RoommateFinder.controller.RoommateFinder;
+import edu.dalhousie.business.Scholarship.ScholarshipMenu;
 import edu.dalhousie.business.Tender.controller.Tender.Tender;
+import edu.dalhousie.business.courseregistration.CourseRegistration;
+import edu.dalhousie.business.facilitybooking.FacilityBooking;
+import edu.dalhousie.business.viewprofile.ViewProfile;
+import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.Utility;
 
 import java.util.Scanner;
 
 public class StudentMainClass {
-
+    StudentView view = new StudentView();
+    private static final String addNewApplication = "Add new application for admission";
+    private static final String profile = "Profile (Personal information and course details)";
+    private static final String listOfCourses = "List of courses for registration";
+    private static final String feePaymentDetails = "Fee payment details";
+    private static final String feedback = "Feedback";
+    private static final String applyForScholarship = "Apply for scholarships";
+    private static final String organizeEvents = "Organize events";
+    private static final String roommateFinder = "Roommate finder";
+    private static final String healthReimbursement = "Health Reimbursement";
+    private static final String nominationForSports = "Nomination for sports";
+    private static final String facilityBooking = "Facility booking";
+    private static final String logout = "Logout";
     public void displayStudentMenu() throws Exception {
         Scanner sc = new Scanner(System.in);
-        System.out.println("STUDENT MENU");
-        
-        String kAddNewApplication = "Add new application for admission";
-        String kApplyForScholarship = "Apply for scholarships";
-        String kFeePaymentDetails = "Fee payment details";
-        String kListOfCourses = "List of courses for registration";
-        String kProfile = "Profile (Personal information and course details)";
-        String kHealthReimbursement = "Health Reimbursement";
-        String kLogout = "Logout";
-        String kNominationForSports = "Nomination for sports";
-        String kRoommateFinder = "Roommate finder";
-        String kOrganizeEvents = "Organize events";
-        String kFeedback = "Feedback";
-        String kTender = "Organize e-tender";
-        String kDalMembership = "Dalhousie student card";
+//        System.out.println("STUDENT MENU");
+        Utility.printHeadingForTheScreen("Student Menu", 45);
+//        String kAddNewApplication = "Add new application for admission";
+//        String kApplyForScholarship = "Apply for scholarships";
+//        String kFeePaymentDetails = "Fee payment details";
+//        String kListOfCourses = "List of courses for registration";
+//        String kProfile = "Profile (Personal information and course details)";
+//        String kHealthReimbursement = "Health Reimbursement";
+//        String kLogout = "Logout";
+//        String kNominationForSports = "Nomination for sports";
+//        String kRoommateFinder = "Roommate finder";
+//        String kOrganizeEvents = "Organize events";
+//        String kFeedback = "Feedback";
+//        String kTender = "Organize e-tender";
+//        String kDalMembership = "Dalhousie student card";
 
-        System.out.println("1 " + kAddNewApplication + "\n" +
-                "2 " + kProfile + "\n" +
-                "3 " + kListOfCourses + "\n" +
-                "4 " + kFeePaymentDetails + "\n" +
-                "5 " + kFeedback + "\n" +
-                "6 " + kApplyForScholarship + "\n" +
-                "7 " + kOrganizeEvents + "\n" +
-                "8 " + kRoommateFinder + "\n" +
-                "9 " + kHealthReimbursement + "\n" +
-                "10 " + kNominationForSports + "\n" +
-                "11 " + kTender + "\n" +
-                "12 "+kDalMembership+ "\n" +
-                "13 " + kLogout);
-
+//
+//        System.out.println("1 " + kAddNewApplication + "\n" +
+//                "2 " + kProfile + "\n" +
+//                "3 " + kListOfCourses + "\n" +
+//                "4 " + kFeePaymentDetails + "\n" +
+//                "5 " + kFeedback + "\n" +
+//                "6 " + kApplyForScholarship + "\n" +
+//                "7 " + kOrganizeEvents + "\n" +
+//                "8 " + kRoommateFinder + "\n" +
+//                "9 " + kHealthReimbursement + "\n" +
+//                "10 " + kNominationForSports + "\n" +
+//                "11 " + kTender + "\n" +
+//                "12 "+kDalMembership+ "\n" +
+//                "13 " + kLogout);
+        view.showMessage("1. " + addNewApplication);
+        view.showMessage("2. " + profile);
+        view.showMessage("3. " + listOfCourses);
+        view.showMessage("4. " + feePaymentDetails);
+        view.showMessage("5. " + feedback);
+        view.showMessage("6. " + applyForScholarship);
+        view.showMessage("7. " + organizeEvents);
+        view.showMessage("8. " + roommateFinder);
+        view.showMessage("9. " + healthReimbursement);
+        view.showMessage("10. " + nominationForSports);
+        view.showMessage("13." + facilityBooking);
+        view.showMessage("12. " + logout);
         while(true){
             System.out.println("Enter your choice\n");
             int choice = sc.nextInt();
@@ -50,30 +82,34 @@ public class StudentMainClass {
                     addNew.showNewForm();
                     break;
                 case 2:
-                    //call method
-                    System.out.println("You selected 2");break;
+                    ViewProfile viewProfile = new ViewProfile();
+                    viewProfile.viewProfilePage("student");
+                    break;
                 case 3:
-                    //call method
-                    System.out.println("You selected 3");break;
+                    CourseRegistration courseRegistration = new CourseRegistration();
+                    courseRegistration.registerForCourses();
+                    break;
                 case 4:
                     //call method
                     FeesPaymentDetailsMenu feesPaymentDetails = new FeesPaymentDetailsMenu();
                     feesPaymentDetails.showPaymentInformationMenu();
                     break;
                 case 5:
-                    //call method
-                    System.out.println("You selected 5");break;
+                    FeedbackMenu feedbackMenu = new FeedbackMenu();
+                    feedbackMenu.displayFeedbackMenu();
+                    break;
                 case 6:
-                    //call method
-                    System.out.println("You selected 6");break;
+                    ScholarshipMenu scholarshipMenu = new ScholarshipMenu();
+                    scholarshipMenu.displayMenu();
+                    break;
                 case 7:
-                    //call method
                     EventApplication eventApplication = new EventApplication();
                     eventApplication.hostEvent();
                     break;
                 case 8:
-                    //call method
-                    System.out.println("You selected 8");break;
+                    RoommateFinder roommateFinder = new RoommateFinder();
+                    roommateFinder.displayForm();
+                    break;
                 case 9:
                     //call method
                     System.out.println("You selected 9");break;
@@ -89,6 +125,11 @@ public class StudentMainClass {
                     //call method
                     MenuImplementation menu = new MenuImplementation();
                     menu.start();
+                    break;
+                case 14:
+                    FacilityBooking facilityBooking = new FacilityBooking();
+                    facilityBooking.startFacilityBookingService();
+                    break;
                 case 13:
                     //call method
                     System.exit(0);
