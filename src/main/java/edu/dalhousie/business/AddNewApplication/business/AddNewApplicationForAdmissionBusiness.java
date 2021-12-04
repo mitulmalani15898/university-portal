@@ -38,7 +38,7 @@ public class AddNewApplicationForAdmissionBusiness {
         final float veryGoodMarks = 45;
         final float outstandingMarks = 50;
         float score = 0;
-        boolean pass = true;
+        boolean isPass = true;
 
         // University
         if (addNewApplicationFormObject.getUniversity().toLowerCase(Locale.ROOT).contains(StringConstants.kIIT) || addNewApplicationFormObject.getUniversity().toLowerCase(Locale.ROOT).contains(StringConstants.kIndianInstituteOfTechnology)) {
@@ -77,11 +77,11 @@ public class AddNewApplicationForAdmissionBusiness {
         } else if ((Float.parseFloat(gpa)) > 9.5) {
             score += outstandingMarks;
             view.showMessage(String.valueOf(score));
-        } else if (((Float.parseFloat(gpa)) > 8) && (((Float.parseFloat(gpa)) < 8.5))){
+        } else if (((Float.parseFloat(gpa)) >= 8) && (((Float.parseFloat(gpa)) < 8.5))){
             score += satisfactoryMarks;
             view.showMessage(String.valueOf(score));
         } else {
-            pass = false;
+            isPass = false;
         }
 
             // 10th
@@ -98,7 +98,7 @@ public class AddNewApplicationForAdmissionBusiness {
                 score += satisfactoryMarks;
                 view.showMessage(String.valueOf(score));
             } else {
-                pass = false;
+                isPass = false;
             }
 
             // 12th
@@ -115,7 +115,7 @@ public class AddNewApplicationForAdmissionBusiness {
                 score += satisfactoryMarks;
                 view.showMessage(String.valueOf(score));
             } else {
-                pass = false;
+                isPass = false;
             }
 
             // IELTS
@@ -129,7 +129,7 @@ public class AddNewApplicationForAdmissionBusiness {
                 score += outstandingMarks;
                 view.showMessage(String.valueOf(score));
             } else {
-                pass = false;
+                isPass = false;
             }
 
             // GRE
@@ -205,10 +205,10 @@ public class AddNewApplicationForAdmissionBusiness {
         System.out.println("Score is " + score);
         addNewApplicationFormObject.setResult(String.valueOf(score));
 
-        if (score>approvalMarks && pass) {
-            return "Congratulations! You're application is approved.";
+        if (score>approvalMarks && isPass) {
+            return StringConstants.kApplicationApproved;
         } else {
-            return "Sorry, you're application has been denied.";
+            return StringConstants.kApplicationDenied;
         }
     }
 }

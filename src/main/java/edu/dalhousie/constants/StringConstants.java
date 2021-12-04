@@ -45,6 +45,8 @@ public class StringConstants {
     public static String kIndianInstituteOfTechnology = "indian institute of technology";
     public static String kNIT = "nit";
     public static String kNationalInstituteOfTechnology = "national institute of technology";
+    public static String kApplicationApproved = "Congratulations! You're application is approved.";
+    public static String kApplicationDenied = "Sorry, you're application has been denied.";
     // Feedback
     public static String kProvideFeedback = "1. Provide feedback";
     public static String kReadFeedbackOfTheCourse = "2. Read feedback of the course";
@@ -67,4 +69,5 @@ public class StringConstants {
     public static String kNeutralPolarity = "Neutral";
     public static String kPositiveWords = "Positive words: ";
     public static String kNegativeWords = "Negative words: ";
+
 }
