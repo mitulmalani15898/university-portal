@@ -12,14 +12,12 @@ import java.util.List;
 
 public class CourseRegistration {
     StudentView view;
-    CourseRegistrationView courseRegistrationView;
     CourseRegistrationModel courseRegistrationModel;
     CourseRegistrationApi courseRegistrationApi;
     ValidateCourseRegistration validate;
 
     public CourseRegistration() {
         view = new StudentView();
-        courseRegistrationView = new CourseRegistrationView();
         courseRegistrationModel = new CourseRegistrationModel();
         courseRegistrationApi = new CourseRegistrationApi();
     }

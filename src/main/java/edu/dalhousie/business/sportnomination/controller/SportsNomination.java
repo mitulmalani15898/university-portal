@@ -3,7 +3,7 @@ package edu.dalhousie.business.sportnomination.controller;
 import edu.dalhousie.controllers.StudentMainClass;
 import edu.dalhousie.business.sportnomination.model.SportsNominationModel;
 import edu.dalhousie.presentation.StudentView;
-import edu.dalhousie.utilities.Utility;
+import edu.dalhousie.utilities.PrintHeading;
 
 import java.util.Calendar;
 
@@ -136,7 +136,7 @@ public class SportsNomination implements ISportsNomination
     public void viewSportsNomination()
     {
         String title = "Nomination for Sports";
-        Utility.printHeadingForTheScreen(title, 38);
+        PrintHeading.printHeadingForTheScreen(title, 38);
 
         sportsNomination();
     }
