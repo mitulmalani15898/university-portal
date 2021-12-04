@@ -2,11 +2,11 @@ package edu.dalhousie.business.AddNewApplication.controller;
 
 import edu.dalhousie.business.AddNewApplication.business.AddNewApplicationForAdmissionBusiness;
 import edu.dalhousie.business.AddNewApplication.business.AddNewApplicationForAdmissionValidation;
-import edu.dalhousie.constants.StringConstants;
-import edu.dalhousie.controllers.StudentMainClass;
 import edu.dalhousie.business.AddNewApplication.data.AddNewApplicationForAdmissionData;
 import edu.dalhousie.business.AddNewApplication.model.AddNewApplicationFormObject;
 import edu.dalhousie.business.AddNewApplication.model.AddNewApplicationFormValidation;
+import edu.dalhousie.business.AddNewApplication.constants.StringConstants;
+import edu.dalhousie.controllers.StudentMainClass;
 import edu.dalhousie.presentation.StudentView;
 
 import java.sql.SQLException;

@@ -1,7 +1,7 @@
 package edu.dalhousie.business.Feedback.controllers;
 
-import edu.dalhousie.constants.StringConstants;
 import edu.dalhousie.business.Feedback.data.FeedbackData;
+import edu.dalhousie.business.AddNewApplication.constants.StringConstants;
 import edu.dalhousie.presentation.StudentView;
 
 import java.sql.SQLException;

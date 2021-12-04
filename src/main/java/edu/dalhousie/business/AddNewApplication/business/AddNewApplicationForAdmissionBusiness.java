@@ -1,7 +1,7 @@
 package edu.dalhousie.business.AddNewApplication.business;
 
-import edu.dalhousie.constants.StringConstants;
 import edu.dalhousie.business.AddNewApplication.model.AddNewApplicationFormObject;
+import edu.dalhousie.constants.StringConstants;
 import edu.dalhousie.presentation.StudentView;
 
 import java.util.Locale;

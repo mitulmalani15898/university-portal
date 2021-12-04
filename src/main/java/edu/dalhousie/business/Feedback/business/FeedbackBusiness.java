@@ -1,13 +1,15 @@
 package edu.dalhousie.business.Feedback.business;
 
 import edu.dalhousie.business.Feedback.model.SentimentAnalysisFeedback;
-import edu.dalhousie.constants.StringConstants;
+import edu.dalhousie.business.AddNewApplication.constants.StringConstants;
 import edu.dalhousie.presentation.StudentView;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
-public class FeedbackBusiness {
+public class FeedbackBusiness implements IFeedbackBusiness {
 
     StudentView studentView;
     SentimentAnalysisFeedback sentimentAnalysisFeedback;
@@ -48,17 +50,17 @@ public class FeedbackBusiness {
         Set<String> wordSet2 = new HashSet<String>(positiveWordList.size());
         wordSet2.addAll(positiveWordList);
 
-        for(i =0; i< feedbacks.size();i++){
+        for (i = 0; i < feedbacks.size(); i++) {
             String[] feedbackParts = feedbacks.get(i).split(" ");
-            for (String word: feedbackParts) {
+            for (String word : feedbackParts) {
                 if (wordSet.contains(word)) {
                     negativeWord += 1;
-                    if(!negativeWordsList.contains(word)){
+                    if (!negativeWordsList.contains(word)) {
                         negativeWordsList.add(word);
                     }
                 } else if (wordSet2.contains(word)) {
                     positiveWord += 1;
-                    if(!positiveWordsList.contains(word)){
+                    if (!positiveWordsList.contains(word)) {
                         positiveWordsList.add(word);
                     }
                 } else {
@@ -69,7 +71,7 @@ public class FeedbackBusiness {
 
         if (negativeWord > positiveWord) {
             return new SentimentAnalysisFeedback(StringConstants.kNegativePolarity, negativeWordsList, positiveWordsList);
-        } else if (positiveWord > negativeWord){
+        } else if (positiveWord > negativeWord) {
             return new SentimentAnalysisFeedback(StringConstants.kPositivePolarity, negativeWordsList, positiveWordsList);
         }
         return new SentimentAnalysisFeedback(StringConstants.kNeutralPolarity, negativeWordsList, positiveWordsList);
