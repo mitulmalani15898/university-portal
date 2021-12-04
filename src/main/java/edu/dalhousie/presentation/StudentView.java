@@ -2,11 +2,12 @@ package edu.dalhousie.presentation;
 
 import java.util.Scanner;
 
-public class StudentView {
+public class StudentView implements IStudentView{
 
     public void showMessage(String message) {
         System.out.println(message);
     }
+
 
     public int getInt() {
         Scanner scanner = new Scanner(System.in);
