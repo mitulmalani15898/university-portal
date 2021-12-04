@@ -1,14 +1,17 @@
 package edu.dalhousie.business.RoommateFinder.data;
-import edu.dalhousie.business.RoommateFinder.IRoommateFinderData;
 import edu.dalhousie.business.RoommateFinder.model.RoommateFinderObject;
-import edu.dalhousie.database.ExecuteQuery;
+import edu.dalhousie.database.DatabaseConnection;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RoommateFinderData implements IRoommateFinderData {
+
+    private static DatabaseConnection databaseConnection;
 
     public void storeData(RoommateFinderObject roommateFinderObject) throws SQLException {
         String userName = "";
@@ -19,9 +22,18 @@ public class RoommateFinderData implements IRoommateFinderData {
         int campus = roommateFinderObject.getCampusPreference();
         int accomodation = roommateFinderObject.getAccomodationPreference();
 
-        ExecuteQuery executeQuery = new ExecuteQuery();
+//        ExecuteQuery executeQuery = new ExecuteQuery();
         String query = "insert into roommates " + " values ('"+ "vignesh2" +"', '" + gender+ "', '" + campus+ "', '" + accomodation+ "', '" +genderPreference+ "', '"+foodPreference+"', '"+hobbies+"')";
-        executeQuery.executeSQL(query);
+//        executeQuery.executeSQL(query);
+
+        try {
+            final Connection connection = databaseConnection.getDatabaseConnection();
+            final Statement statement = connection.createStatement();
+            statement.executeUpdate(query);
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
+            exception.printStackTrace();
+        }
     }
 
     public List<String> retrieveData(RoommateFinderObject roommateFinderObject) throws SQLException {
@@ -38,7 +50,7 @@ public class RoommateFinderData implements IRoommateFinderData {
         int accomodation = roommateFinderObject.getAccomodationPreference();
 
 
-        ExecuteQuery executeQuery = new ExecuteQuery();
+//        ExecuteQuery executeQuery = new ExecuteQuery();
         if (foodPreference == 3) {
             if (genderPreference == 3) {
                 query = "select userName from roommates where genderpref > 0 && campus = '" + campus + "' && accomodationType = '" + accomodation + "' && gender > 0 && foodpref > 0 && hobbies LIKE '%" + hobbies + "%' ";
@@ -51,10 +63,26 @@ public class RoommateFinderData implements IRoommateFinderData {
         }
 
 
-        ResultSet rs = executeQuery.executeUpdateSQL(query);
-        while (rs.next()) {
-            matches.add(rs.getString("userName"));
+//        ResultSet rs = executeQuery.executeUpdateSQL(query);
+//        while (rs.next()) {
+//            matches.add(rs.getString("userName"));
+//        }
+//        return matches;
+
+        try {
+            final Connection connection = databaseConnection.getDatabaseConnection();
+            final Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+            while (rs.next()) {
+                matches.add(rs.getString("userName"));
+            }
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
+            exception.printStackTrace();
         }
         return matches;
+
+
+
     }
 }

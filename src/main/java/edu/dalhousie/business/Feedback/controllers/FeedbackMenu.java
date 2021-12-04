@@ -6,7 +6,7 @@ import edu.dalhousie.presentation.StudentView;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class FeedbackMenu {
+public class FeedbackMenu implements IFeedbackMenu{
 
     StudentView view;
     int choice = 0;
@@ -24,10 +24,10 @@ public class FeedbackMenu {
         choice = view.getInt();
 
         switch(choice){
-            case 1: ProvideFeedback provideFeedback = new ProvideFeedback();
+            case 1: IProvideFeedback provideFeedback = new ProvideFeedback();
                     provideFeedback.displayProvideFeedbackMenu();
                     break;
-            case 2: DisplayFeedback displayFeedback = new DisplayFeedback();
+            case 2: IDisplayFeedback displayFeedback = new DisplayFeedback();
                     displayFeedback.displayFeedback();
                     break;
             case 3: new SentimentalAnalysisOfFeedback();

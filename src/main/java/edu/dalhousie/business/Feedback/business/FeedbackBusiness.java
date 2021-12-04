@@ -31,7 +31,7 @@ public class FeedbackBusiness implements IFeedbackBusiness {
         int i;
 
         BufferedReader negativeWordsBufferedReader = new BufferedReader(new FileReader("negative-words.txt"));
-        List<String> negativeWordList = new LinkedList<String>(); // You do not know word count, LinkedList is a better way.
+        List<String> negativeWordList = new LinkedList<String>();
         String line = null;
         while ((line = negativeWordsBufferedReader.readLine()) != null) {
             String[] words = line.toLowerCase().split("\\W+");
@@ -41,7 +41,7 @@ public class FeedbackBusiness implements IFeedbackBusiness {
         wordSet.addAll(negativeWordList);
 
         BufferedReader positiveWordsBufferedReader = new BufferedReader(new FileReader("positive-words.txt"));
-        List<String> positiveWordList = new LinkedList<String>(); // You do not know word count, LinkedList is a better way.
+        List<String> positiveWordList = new LinkedList<String>();
         String line2 = null;
         while ((line2 = positiveWordsBufferedReader.readLine()) != null) {
             String[] words = line2.toLowerCase().split("\\W+");

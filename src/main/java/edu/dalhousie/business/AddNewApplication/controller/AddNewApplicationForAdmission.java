@@ -11,7 +11,7 @@ import edu.dalhousie.presentation.StudentView;
 
 import java.sql.SQLException;
 
-public class AddNewApplicationForAdmission {
+public class AddNewApplicationForAdmission implements IAddNewApplicationForAdmission{
     StudentView view;
     AddNewApplicationFormObject addNewApplication;
     AddNewApplicationForAdmissionValidation addNewApplicationForAdmissionValidation;

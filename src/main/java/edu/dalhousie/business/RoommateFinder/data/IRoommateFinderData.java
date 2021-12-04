@@ -1,4 +1,4 @@
-package edu.dalhousie.business.RoommateFinder;
+package edu.dalhousie.business.RoommateFinder.data;
 
 import edu.dalhousie.business.RoommateFinder.model.RoommateFinderObject;
 
