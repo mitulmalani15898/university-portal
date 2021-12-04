@@ -26,7 +26,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>edu.dalhousie.Main</mainClass>
+                  <mainClass>edu.dalhousie.controllers.Main</mainClass>
                 </transformer>
               </transformers>
             </configuration>
