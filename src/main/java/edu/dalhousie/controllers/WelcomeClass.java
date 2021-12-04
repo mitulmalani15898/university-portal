@@ -13,6 +13,7 @@ public class WelcomeClass {
     private String kExit = "Exit";
 
     public void displayWelcomeScreen() throws Exception {
+
         StudentView view = new StudentView();
         StudentMainClass student = new StudentMainClass();
         view.showMessage("WELCOME TO UNIVERSITY PORTAL");
@@ -27,10 +28,13 @@ public class WelcomeClass {
                 //call method
                 view.showMessage("selected 2"); break;
             case 3:
-                student.displayStudentMenu();
+                LogIn studentLogin = new LogIn();
+                studentLogin.loginUser("student");
+                break;
             case 4:
-                //call method
-                view.showMessage("selected 4"); break;
+                LogIn facultyLogin = new LogIn();
+                facultyLogin.loginUser("faculty");
+                break;
             case 5:
                 System.exit(0);
             default: break;

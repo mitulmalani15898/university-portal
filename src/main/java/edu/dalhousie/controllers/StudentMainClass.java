@@ -5,7 +5,6 @@ import edu.dalhousie.controllers.AddNewApplicationForAdmission;
 import java.util.Scanner;
 
 public class StudentMainClass {
-
     private int choice;
 
     private String kAddNewApplication = "Add new application for admission";
@@ -35,8 +34,9 @@ public class StudentMainClass {
                 AddNewApplicationForAdmission addNew = new AddNewApplicationForAdmission();
                 addNew.showNewForm();
             case 2:
-                //call method
-                System.out.println("You selected 2");break;
+                ViewProfile viewProfile = new ViewProfile();
+                viewProfile.viewProfilePage("student");
+                break;
             case 3:
                 //call method
                 System.out.println("You selected 3");break;
