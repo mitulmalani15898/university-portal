@@ -5,7 +5,7 @@ import edu.dalhousie.business.Feedback.business.IFeedbackBusiness;
 import edu.dalhousie.business.Feedback.data.FeedbackData;
 import edu.dalhousie.business.Feedback.data.IFeedbackData;
 import edu.dalhousie.business.Feedback.model.SentimentAnalysisFeedback;
-import edu.dalhousie.business.AddNewApplication.constants.StringConstants;
+import edu.dalhousie.business.Feedback.constants.StringConstants;
 import edu.dalhousie.presentation.StudentView;
 
 import java.io.IOException;

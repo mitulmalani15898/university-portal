@@ -1,7 +1,7 @@
 package edu.dalhousie.business.Feedback.controllers;
 
 import edu.dalhousie.business.Feedback.data.FeedbackData;
-import edu.dalhousie.business.AddNewApplication.constants.StringConstants;
+import edu.dalhousie.business.Feedback.constants.StringConstants;
 import edu.dalhousie.business.Feedback.data.IFeedbackData;
 import edu.dalhousie.presentation.StudentView;
 

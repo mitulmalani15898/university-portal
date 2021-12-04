@@ -1,7 +1,7 @@
 package edu.dalhousie.business.Feedback.business;
 
 import edu.dalhousie.business.Feedback.model.SentimentAnalysisFeedback;
-import edu.dalhousie.business.AddNewApplication.constants.StringConstants;
+import edu.dalhousie.business.Feedback.constants.StringConstants;
 import edu.dalhousie.presentation.StudentView;
 
 import java.io.BufferedReader;
