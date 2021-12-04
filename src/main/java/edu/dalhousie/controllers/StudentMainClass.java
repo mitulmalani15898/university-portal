@@ -11,8 +11,7 @@ import edu.dalhousie.business.courseregistration.controller.CourseRegistration;
 import edu.dalhousie.business.facilitybooking.controller.FacilityBooking;
 import edu.dalhousie.business.viewprofile.ViewProfile;
 import edu.dalhousie.presentation.StudentView;
-
-import java.util.Scanner;
+import edu.dalhousie.utilities.PrintHeading;
 
 public class StudentMainClass {
     StudentView view = new StudentView();
@@ -30,30 +29,29 @@ public class StudentMainClass {
     private static final String dalMembership = "Dalhousie student card";
     private static final String facilityBooking = "Facility booking";
     private static final String logout = "Logout";
+
     public void displayStudentMenu() throws Exception {
-        Scanner sc = new Scanner(System.in);
+        while (true) {
+            PrintHeading.printHeadingForTheScreen("Student Menu", 45);
 
-        PrintHeading.printHeadingForTheScreen("Student Menu", 45);
+            view.showMessage("1. " + addNewApplication);
+            view.showMessage("2. " + profile);
+            view.showMessage("3. " + listOfCourses);
+            view.showMessage("4. " + feePaymentDetails);
+            view.showMessage("5. " + feedback);
+            view.showMessage("6. " + applyForScholarship);
+            view.showMessage("7. " + organizeEvents);
+            view.showMessage("8. " + roommateFinder);
+            view.showMessage("10. " + nominationForSports);
+            view.showMessage("11. " + tender);
+            view.showMessage("12. " + dalMembership);
+            view.showMessage("13." + facilityBooking);
+            view.showMessage("14. " + logout);
 
-        view.showMessage("1. " + addNewApplication);
-        view.showMessage("2. " + profile);
-        view.showMessage("3. " + listOfCourses);
-        view.showMessage("4. " + feePaymentDetails);
-        view.showMessage("5. " + feedback);
-        view.showMessage("6. " + applyForScholarship);
-        view.showMessage("7. " + organizeEvents);
-        view.showMessage("8. " + roommateFinder);
-        view.showMessage("10. " + nominationForSports);
-        view.showMessage("11. " + tender);
-        view.showMessage("12. " + dalMembership);
-        view.showMessage("13." + facilityBooking);
-        view.showMessage("14. " + logout);
-        while(true){
             System.out.println("Enter your choice\n");
-            int choice = sc.nextInt();
-            switch(choice) {
+            int choice = view.getInt();
+            switch (choice) {
                 case 1:
-                    //call method
                     AddNewApplicationForAdmission addNew = new AddNewApplicationForAdmission();
                     addNew.showNewForm();
                     break;
@@ -66,7 +64,6 @@ public class StudentMainClass {
                     courseRegistration.registerForCourses();
                     break;
                 case 4:
-                    //call method
                     FeesPaymentDetailsMenu feesPaymentDetails = new FeesPaymentDetailsMenu();
                     feesPaymentDetails.showPaymentInformationMenu();
                     break;
@@ -88,17 +85,17 @@ public class StudentMainClass {
                     break;
                 case 9:
                     //call method
-                    System.out.println("You selected 9");break;
+                    System.out.println("You selected 9");
+                    break;
                 case 10:
                     //call method
-                    System.out.println("You selected 10");break;
+                    System.out.println("You selected 10");
+                    break;
                 case 11:
-                    //call method
-                    Tender tender =new Tender();
+                    Tender tender = new Tender();
                     tender.getTenderData();
                     break;
                 case 12:
-                    //call method
                     MenuImplementation menu = new MenuImplementation();
                     menu.start();
                     break;
@@ -107,13 +104,11 @@ public class StudentMainClass {
                     facilityBooking.startFacilityBookingService();
                     break;
                 case 14:
-                    //call method
                     System.exit(0);
-                    System.out.println("You selected 11");break;
-                default: break;
+                    break;
+                default:
+                    break;
             }
         }
-
-
     }
 }

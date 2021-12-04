@@ -2,6 +2,7 @@ package edu.dalhousie.controllers;
 
 import edu.dalhousie.business.registration.controller.Registration;
 import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.PrintHeading;
 
 public class WelcomeClass {
     private int choice;
@@ -15,13 +16,10 @@ public class WelcomeClass {
     public void displayWelcomeScreen() throws Exception {
         StudentView view = new StudentView();
         StudentMainClass student = new StudentMainClass();
+        FacultyMainClass faculty = new FacultyMainClass();
         Login login = new Login();
         User user;
         UserSession userSession = UserSession.getInstance();
-//        Scanner sc = new Scanner(System.in);
-//        view.showMessage("WELCOME TO UNIVERSITY PORTAL");
-//        view.showMessage("1 " + kRegisterAsStudent + "\n" + "2 " + kRegisterAsFaculty + "\n" + "3 " + kLoginAsStudent + "\n" + "4 " + kLoginAsFaculty + "\n" + "5 " + kExit + "\n");
-
 
         PrintHeading.printHeadingForTheScreen("Welcome to university portal", 35);
 
@@ -36,8 +34,8 @@ public class WelcomeClass {
         switch (choice) {
             case 1:
                 student.displayStudentMenu();
-                //                Registration studentRegistration = new Registration();
-//                studentRegistration.registerUser("student");
+                // Registration studentRegistration = new Registration();
+                // studentRegistration.registerUser("student");
                 break;
             case 2:
                 Registration facultyRegistration = new Registration();
@@ -51,11 +49,12 @@ public class WelcomeClass {
                 }
                 break;
             case 4:
-                //call method
                 user = login.loginUser("faculty");
                 if (user != null) {
                     userSession.newUserSession(user);
+                    faculty.displayFacultyMenu();
                 }
+                break;
             case 5:
                 System.exit(0);
             default:
