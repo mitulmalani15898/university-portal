@@ -2,6 +2,7 @@ package edu.dalhousie.controllers;
 
 import com.mysql.cj.x.protobuf.MysqlxDatatypes;
 import edu.dalhousie.business.AddNewApplicationForAdmissionBusiness;
+import edu.dalhousie.business.AddNewApplicationForAdmissionValidation;
 import edu.dalhousie.constants.StringConstants;
 import edu.dalhousie.database.AddNewApplicationForAdmissionData;
 import edu.dalhousie.models.AddNewApplicationFormObject;
@@ -13,6 +14,7 @@ import java.sql.SQLException;
 public class AddNewApplicationForAdmission {
     StudentView view;
     AddNewApplicationFormObject addNewApplication;
+    AddNewApplicationForAdmissionValidation addNewApplicationForAdmissionValidation;
     AddNewApplicationForAdmissionBusiness addNewApplicationForAdmissionBusiness;
     AddNewApplicationForAdmissionData storeAdmissionInfo;
     AddNewApplicationFormValidation validation;
@@ -21,6 +23,7 @@ public class AddNewApplicationForAdmission {
     public AddNewApplicationForAdmission() throws SQLException {
         view = new StudentView();
         addNewApplication = new AddNewApplicationFormObject();
+        addNewApplicationForAdmissionValidation = new AddNewApplicationForAdmissionValidation();
         addNewApplicationForAdmissionBusiness = new AddNewApplicationForAdmissionBusiness(addNewApplication);
         storeAdmissionInfo = new AddNewApplicationForAdmissionData();
         validation = new AddNewApplicationFormValidation();
@@ -31,156 +34,156 @@ public class AddNewApplicationForAdmission {
 
         view.showMessage(StringConstants.kFirstQuestion);
         String courseName = view.getString();
-        validation = addNewApplicationForAdmissionBusiness.verifyCourseName(courseName);
+        validation = addNewApplicationForAdmissionValidation.verifyCourseName(courseName);
         if (!validation.getValid()) {
             while(!validation.getValid()) {
                 view.showMessage(validation.getMessage());
                 view.showMessage(StringConstants.kFirstQuestion);
                 courseName = view.getString();
-                validation = addNewApplicationForAdmissionBusiness.verifyCourseName(courseName);
+                validation = addNewApplicationForAdmissionValidation.verifyCourseName(courseName);
             }
         }
         addNewApplication.setCourse(courseName);
 
         view.showMessage(StringConstants.kSecondQuestion);
         String previousSchoolName = view.getString();
-        validation = addNewApplicationForAdmissionBusiness.verifyPreviousSchoolName(previousSchoolName);
+        validation = addNewApplicationForAdmissionValidation.verifyPreviousSchoolName(previousSchoolName);
         if (!validation.getValid()) {
             while(!validation.getValid()) {
                 view.showMessage(validation.getMessage());
                 view.showMessage(StringConstants.kSecondQuestion);
                 previousSchoolName = view.getString();
-                validation = addNewApplicationForAdmissionBusiness.verifyPreviousSchoolName(previousSchoolName);
+                validation = addNewApplicationForAdmissionValidation.verifyPreviousSchoolName(previousSchoolName);
             }
         }
         addNewApplication.setUniversity(previousSchoolName);
 
         view.showMessage(StringConstants.kThirdQuestion);
         String previousLevelOfEducation = view.getString();
-        validation = addNewApplicationForAdmissionBusiness.verifypreviousLevelOfEducation(previousLevelOfEducation);
+        validation = addNewApplicationForAdmissionValidation.verifypreviousLevelOfEducation(previousLevelOfEducation);
         if (!validation.getValid()) {
             while(!validation.getValid()) {
                 view.showMessage(validation.getMessage());
                 view.showMessage(StringConstants.kThirdQuestion);
                 previousLevelOfEducation = view.getString();
-                validation = addNewApplicationForAdmissionBusiness.verifypreviousLevelOfEducation(previousLevelOfEducation);
+                validation = addNewApplicationForAdmissionValidation.verifypreviousLevelOfEducation(previousLevelOfEducation);
             }
         }
         addNewApplication.setEducation(previousLevelOfEducation);
 
         view.showMessage(StringConstants.kFourthQuestion);
         String cgpa = view.getString();
-        validation = addNewApplicationForAdmissionBusiness.verifyCGPA(cgpa);
+        validation = addNewApplicationForAdmissionValidation.verifyCGPA(cgpa);
         if (!validation.getValid()) {
             while(!validation.getValid()) {
                 view.showMessage(validation.getMessage());
                 view.showMessage(StringConstants.kFourthQuestion);
                 cgpa = view.getString();
-                validation = addNewApplicationForAdmissionBusiness.verifyCGPA(cgpa);
+                validation = addNewApplicationForAdmissionValidation.verifyCGPA(cgpa);
             }
         }
         addNewApplication.setGpa(cgpa);
 
         view.showMessage(StringConstants.kFifthQuestion);
         String tenthPercentage = view.getString();
-        validation = addNewApplicationForAdmissionBusiness.verifyTenthPercentage(tenthPercentage);
+        validation = addNewApplicationForAdmissionValidation.verifyTenthPercentage(tenthPercentage);
         if (!validation.getValid()) {
             while(!validation.getValid()) {
                 view.showMessage(validation.getMessage());
                 view.showMessage(StringConstants.kFifthQuestion);
                 tenthPercentage = view.getString();
-                validation = addNewApplicationForAdmissionBusiness.verifyTenthPercentage(tenthPercentage);
+                validation = addNewApplicationForAdmissionValidation.verifyTenthPercentage(tenthPercentage);
             }
         }
         addNewApplication.setTenthMarks(tenthPercentage);
 
         view.showMessage(StringConstants.kSixthQuestion);
         String twelfthPercentage = view.getString();
-        validation = addNewApplicationForAdmissionBusiness.verifyTwelfthPercentage(twelfthPercentage);
+        validation = addNewApplicationForAdmissionValidation.verifyTwelfthPercentage(twelfthPercentage);
         if (!validation.getValid()) {
             while(!validation.getValid()) {
                 view.showMessage(validation.getMessage());
                 view.showMessage(StringConstants.kSixthQuestion);
                 twelfthPercentage = view.getString();
-                validation = addNewApplicationForAdmissionBusiness.verifyTwelfthPercentage(twelfthPercentage);
+                validation = addNewApplicationForAdmissionValidation.verifyTwelfthPercentage(twelfthPercentage);
             }
         }
         addNewApplication.setTwelfthMarks(twelfthPercentage);
 
         view.showMessage(StringConstants.kSeventhQuestion);
         String ielts = view.getString();
-        validation = addNewApplicationForAdmissionBusiness.verifyIELTS(ielts);
+        validation = addNewApplicationForAdmissionValidation.verifyIELTS(ielts);
         if (!validation.getValid()) {
             while(!validation.getValid()) {
                 view.showMessage(validation.getMessage());
                 view.showMessage(StringConstants.kSeventhQuestion);
                 ielts = view.getString();
-                validation = addNewApplicationForAdmissionBusiness.verifyIELTS(ielts);
+                validation = addNewApplicationForAdmissionValidation.verifyIELTS(ielts);
             }
         }
         addNewApplication.setIELTS(ielts);
 
         view.showMessage(StringConstants.kEigthQuestion);
         String gre = view.getString();
-        validation = addNewApplicationForAdmissionBusiness.verifyGRE(gre);
+        validation = addNewApplicationForAdmissionValidation.verifyGRE(gre);
         if (!validation.getValid()) {
             while(!validation.getValid()) {
                 view.showMessage(validation.getMessage());
                 view.showMessage(StringConstants.kEigthQuestion);
                 gre = view.getString();
-                validation = addNewApplicationForAdmissionBusiness.verifyGRE(gre);
+                validation = addNewApplicationForAdmissionValidation.verifyGRE(gre);
             }
         }
         addNewApplication.setGRE(gre);
 
         view.showMessage(StringConstants.kNinethQuestion);
         String researchPapers = view.getString();
-        validation = addNewApplicationForAdmissionBusiness.verifyReasearchPapers(researchPapers);
+        validation = addNewApplicationForAdmissionValidation.verifyReasearchPapers(researchPapers);
         if (!validation.getValid()) {
             while(!validation.getValid()) {
                 view.showMessage(validation.getMessage());
                 view.showMessage(StringConstants.kNinethQuestion);
                 researchPapers = view.getString();
-                validation = addNewApplicationForAdmissionBusiness.verifyReasearchPapers(researchPapers);
+                validation = addNewApplicationForAdmissionValidation.verifyReasearchPapers(researchPapers);
             }
         }
         addNewApplication.setResearchPapers(researchPapers);
 
         view.showMessage(StringConstants.kTenthQuestion);
         String workExperience = view.getString();
-        validation = addNewApplicationForAdmissionBusiness.verifyWorkExperience(workExperience);
+        validation = addNewApplicationForAdmissionValidation.verifyWorkExperience(workExperience);
         if (!validation.getValid()) {
             while(!validation.getValid()) {
                 view.showMessage(validation.getMessage());
                 view.showMessage(StringConstants.kTenthQuestion);
                 workExperience = view.getString();
-                validation = addNewApplicationForAdmissionBusiness.verifyWorkExperience(workExperience);
+                validation = addNewApplicationForAdmissionValidation.verifyWorkExperience(workExperience);
             }
         }
         addNewApplication.setWorkExp(workExperience);
 
         view.showMessage(StringConstants.kEleventhQuestion);
         String gmat = view.getString();
-        validation = addNewApplicationForAdmissionBusiness.verifyGMAT(gmat);
+        validation = addNewApplicationForAdmissionValidation.verifyGMAT(gmat);
         if (!validation.getValid()) {
             while(!validation.getValid()) {
                 view.showMessage(validation.getMessage());
                 view.showMessage(StringConstants.kEleventhQuestion);
                 gmat = view.getString();
-                validation = addNewApplicationForAdmissionBusiness.verifyGMAT(gmat);
+                validation = addNewApplicationForAdmissionValidation.verifyGMAT(gmat);
             }
         }
         addNewApplication.setGMAT(gmat);
 
         view.showMessage(StringConstants.kTwelfthQuestion);
         String gate = view.getString();
-        validation = addNewApplicationForAdmissionBusiness.verifyGATE(gate);
+        validation = addNewApplicationForAdmissionValidation.verifyGATE(gate);
         if (!validation.getValid()) {
             while(!validation.getValid()) {
                 view.showMessage(validation.getMessage());
                 view.showMessage(StringConstants.kTwelfthQuestion);
                 gate = view.getString();
-                validation = addNewApplicationForAdmissionBusiness.verifyGATE(gate);
+                validation = addNewApplicationForAdmissionValidation.verifyGATE(gate);
             }
         }
         addNewApplication.setGATE(gate);
