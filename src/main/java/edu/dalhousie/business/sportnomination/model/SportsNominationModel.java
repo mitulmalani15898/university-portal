@@ -1,4 +1,4 @@
-package edu.dalhousie.business.sportnomination;
+package edu.dalhousie.business.sportnomination.model;
 
 public class SportsNominationModel
 {

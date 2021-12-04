@@ -1,5 +1,7 @@
 package edu.dalhousie.controllers;
 
+import edu.dalhousie.business.viewprofile.controller.ViewProfile;
+import edu.dalhousie.business.viewprofile.controller.ViewProfile;
 import edu.dalhousie.presentation.StudentView;
 import edu.dalhousie.utilities.PrintHeading;
 
@@ -30,8 +32,8 @@ public class FacultyMainClass {
                     System.out.println("You selected 1");
                     break;
                 case 2:
-                    //call method
-                    System.out.println("You selected 2");
+                    ViewProfile viewProfile = new ViewProfile();
+                    viewProfile.viewProfilePage("faculty");
                     break;
                 case 3:
                     //call method

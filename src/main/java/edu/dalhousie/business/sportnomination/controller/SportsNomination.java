@@ -1,12 +1,13 @@
-package edu.dalhousie.business.sportnomination;
+package edu.dalhousie.business.sportnomination.controller;
 
 import edu.dalhousie.controllers.StudentMainClass;
-import edu.dalhousie.models.SportsNominationModel;
+import edu.dalhousie.business.sportnomination.model.SportsNominationModel;
 import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.Utility;
 
 import java.util.Calendar;
 
-public class SportsNomination
+public class SportsNomination implements ISportsNomination
 {
     StudentView view;
     StudentMainClass studentMenu;
@@ -105,18 +106,15 @@ public class SportsNomination
 
         }
 
-        //System.out.println(overallScore);
-
         if(overallScore >= 10)
         {
             view.showMessage("\nCongratulations! You are eligible to be a part of our " + sportsNominationModel.getSport() + " sports club.");
-            goBack();
         }
         else
         {
             view.showMessage("\nSorry! You are not eligible since you have more than 5 years of gap being an active participant in sports activities.");
-            goBack();
         }
+        goBack();
     }
 
     public void goBack()
@@ -138,14 +136,14 @@ public class SportsNomination
     public void viewSportsNomination()
     {
         String title = "Nomination for Sports";
-        //Utility.printHeadingForTheScreen(title, 38);
+        Utility.printHeadingForTheScreen(title, 38);
 
         sportsNomination();
     }
 
-    public static void main(String[] args)
+    /*public static void main(String[] args)
     {
         SportsNomination sn = new SportsNomination();
         sn.sportsNomination();
-    }
+    }*/
 }

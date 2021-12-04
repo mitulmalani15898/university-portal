@@ -1,15 +1,15 @@
-//package edu.dalhousie.business.Scholarship;
+package edu.dalhousie.business.Scholarship;
 //
 //import edu.dalhousie.controllers.StudentMainClass;
 //import edu.dalhousie.presentation.StudentView;
 //
-//public class ScholarshipMenu {
+public class ScholarshipMenu {
 //    private String applyForScholarship = "Apply for scholarship";
 //    private String applyForEmergencyGrants = "Apply for emergency grants";
 //    private String backToStudentMenu = "Back to student menu";
 //    int choice;
 //
-//    public void displayMenu() throws Exception {
+    public void displayMenu() throws Exception {
 //        StudentView view = new StudentView();
 //
 //        view.showMessage("1. " + applyForScholarship);
@@ -28,5 +28,5 @@
 //                StudentMainClass studentMainClass = new StudentMainClass();
 //                studentMainClass.displayStudentMenu();
 //            }
-//    }
-//}
+    }
+}
