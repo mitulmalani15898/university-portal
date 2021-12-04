@@ -1,6 +1,7 @@
-package edu.dalhousie.database;
-import edu.dalhousie.controllers.IRoommateFinderData;
-import edu.dalhousie.models.RoommateFinderObject;
+package edu.dalhousie.business.RoommateFinder.data;
+import edu.dalhousie.business.RoommateFinder.IRoommateFinderData;
+import edu.dalhousie.business.RoommateFinder.model.RoommateFinderObject;
+import edu.dalhousie.database.ExecuteQuery;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

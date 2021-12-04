@@ -1,9 +1,9 @@
-package edu.dalhousie.controllers;
+package edu.dalhousie.business.RoommateFinder.controller;
 
-import edu.dalhousie.business.RoommateFinderBusiness;
+import edu.dalhousie.business.RoommateFinder.business.RoommateFinderBusiness;
+import edu.dalhousie.business.RoommateFinder.model.RoommateFinderObject;
 import edu.dalhousie.constants.StringConstants;
-import edu.dalhousie.database.RoommateFinderData;
-import edu.dalhousie.models.RoommateFinderObject;
+import edu.dalhousie.business.RoommateFinder.data.RoommateFinderData;
 import edu.dalhousie.presentation.StudentView;
 
 import java.util.List;

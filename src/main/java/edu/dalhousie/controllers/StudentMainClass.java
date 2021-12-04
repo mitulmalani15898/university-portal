@@ -1,6 +1,8 @@
 package edu.dalhousie.controllers;
 
-import edu.dalhousie.controllers.AddNewApplicationForAdmission;
+import edu.dalhousie.business.AddNewApplication.controller.AddNewApplicationForAdmission;
+import edu.dalhousie.business.Feedback.controllers.FeedbackMenu;
+import edu.dalhousie.business.RoommateFinder.controller.RoommateFinder;
 
 import java.util.Scanner;
 

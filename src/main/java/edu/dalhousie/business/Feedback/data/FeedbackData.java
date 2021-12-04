@@ -1,6 +1,7 @@
-package edu.dalhousie.database;
+package edu.dalhousie.business.Feedback.data;
 
-import edu.dalhousie.models.FeedbackObjectModel;
+import edu.dalhousie.business.Feedback.model.FeedbackObjectModel;
+import edu.dalhousie.database.ExecuteQuery;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -1,9 +1,9 @@
-package edu.dalhousie.controllers;
+package edu.dalhousie.business.Feedback.controllers;
 
-import edu.dalhousie.business.FeedbackBusiness;
+import edu.dalhousie.business.Feedback.business.FeedbackBusiness;
 import edu.dalhousie.constants.StringConstants;
-import edu.dalhousie.database.FeedbackData;
-import edu.dalhousie.models.SentimentAnalysisFeedback;
+import edu.dalhousie.business.Feedback.data.FeedbackData;
+import edu.dalhousie.business.Feedback.model.SentimentAnalysisFeedback;
 import edu.dalhousie.presentation.StudentView;
 
 import java.io.IOException;

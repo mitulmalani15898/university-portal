@@ -1,12 +1,9 @@
-package edu.dalhousie.business;
+package edu.dalhousie.business.AddNewApplication.business;
 
 import edu.dalhousie.constants.StringConstants;
-import edu.dalhousie.models.AddNewApplicationFormObject;
-import edu.dalhousie.models.AddNewApplicationFormValidation;
+import edu.dalhousie.business.AddNewApplication.model.AddNewApplicationFormObject;
 import edu.dalhousie.presentation.StudentView;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Locale;
 
 public class AddNewApplicationForAdmissionBusiness {

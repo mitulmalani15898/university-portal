@@ -1,6 +1,7 @@
-package edu.dalhousie.database;
+package edu.dalhousie.business.AddNewApplication.data;
 
-import edu.dalhousie.models.AddNewApplicationFormObject;
+import edu.dalhousie.business.AddNewApplication.model.AddNewApplicationFormObject;
+import edu.dalhousie.database.ExecuteQuery;
 
 import java.sql.SQLException;
 

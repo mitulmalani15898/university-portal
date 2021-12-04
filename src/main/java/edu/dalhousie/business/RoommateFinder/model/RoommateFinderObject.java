@@ -1,4 +1,4 @@
-package edu.dalhousie.models;
+package edu.dalhousie.business.RoommateFinder.model;
 
 public class RoommateFinderObject {
     String userName;

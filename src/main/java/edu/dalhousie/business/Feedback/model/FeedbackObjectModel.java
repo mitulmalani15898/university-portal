@@ -1,4 +1,4 @@
-package edu.dalhousie.models;
+package edu.dalhousie.business.Feedback.model;
 
 public class FeedbackObjectModel {
 

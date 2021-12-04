@@ -1,4 +1,4 @@
-package edu.dalhousie.models;
+package edu.dalhousie.business.Feedback.model;
 
 import java.util.ArrayList;
 import java.util.List;

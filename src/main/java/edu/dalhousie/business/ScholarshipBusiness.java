@@ -1,13 +1,9 @@
 package edu.dalhousie.business;
 
-import edu.dalhousie.database.DatabaseConnectivity;
 import edu.dalhousie.database.ExecuteQuery;
-import edu.dalhousie.models.AddNewApplicationFormObject;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 public class ScholarshipBusiness {
 

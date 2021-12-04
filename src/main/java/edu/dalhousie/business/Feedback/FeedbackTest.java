@@ -1,7 +1,8 @@
-package edu.dalhousie.business;
+package edu.dalhousie.business.Feedback;
 
+import edu.dalhousie.business.Feedback.business.FeedbackBusiness;
+import edu.dalhousie.business.Feedback.model.SentimentAnalysisFeedback;
 import edu.dalhousie.constants.StringConstants;
-import edu.dalhousie.models.SentimentAnalysisFeedback;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -10,7 +11,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FeedbackBusinessTest {
+class FeedbackTest {
 
     @Test
     public void testNegativeSentimentalAnalysis() throws IOException {

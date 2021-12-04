@@ -1,7 +1,7 @@
-package edu.dalhousie.business;
+package edu.dalhousie.business.RoommateFinder.business;
 
+import edu.dalhousie.business.RoommateFinder.model.RoommateFinderObject;
 import edu.dalhousie.constants.StringConstants;
-import edu.dalhousie.models.RoommateFinderObject;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package edu.dalhousie.controllers;
+package edu.dalhousie.business.Feedback.controllers;
 
 import edu.dalhousie.constants.StringConstants;
 import edu.dalhousie.presentation.StudentView;

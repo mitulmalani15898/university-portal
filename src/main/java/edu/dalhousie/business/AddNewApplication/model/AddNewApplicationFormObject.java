@@ -1,4 +1,4 @@
-package edu.dalhousie.models;
+package edu.dalhousie.business.AddNewApplication.model;
 
 public class AddNewApplicationFormObject {
     String course;
