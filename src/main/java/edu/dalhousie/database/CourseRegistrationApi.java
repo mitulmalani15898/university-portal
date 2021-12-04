@@ -7,9 +7,7 @@ import edu.dalhousie.utilities.Constants;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class CourseRegistrationApi {
     ExecuteQuery executeQuery;
@@ -20,7 +18,7 @@ public class CourseRegistrationApi {
         courseRegistrationModel = new CourseRegistrationModel();
     }
 
-    public List<Course> makeCousesListFromResultSet(ResultSet rs) throws SQLException {
+    public List<Course> makeCoursesListFromResultSet(ResultSet rs) throws SQLException {
         List<Course> courses = new ArrayList<>();
         while (rs.next()) {
             Course course = new Course();
@@ -36,7 +34,7 @@ public class CourseRegistrationApi {
     public void getCompleteCourseList() throws SQLException {
         String query = String.format("SELECT * from %s", Constants.CoursesTable);
         ResultSet rs = executeQuery.executeUpdateSQL(query);
-        List<Course> courses = makeCousesListFromResultSet(rs);
+        List<Course> courses = makeCoursesListFromResultSet(rs);
         courseRegistrationModel.setCourses(courses);
     }
 
@@ -49,14 +47,14 @@ public class CourseRegistrationApi {
     public void getCoursesByKeyword(String keyword) throws SQLException {
         String query = "SELECT * from " + Constants.CoursesTable + " WHERE course_name LIKE '%" + keyword + "%'";
         ResultSet rs = executeQuery.executeUpdateSQL(query);
-        List<Course> courses = makeCousesListFromResultSet(rs);
+        List<Course> courses = makeCoursesListFromResultSet(rs);
         courseRegistrationModel.setCourses(courses);
     }
 
     public void getRegisteredCourseList() throws SQLException {
         String query = "SELECT * from " + Constants.CoursesTable + " JOIN " + Constants.CourseEnrolledTable + " ON " + Constants.CoursesTable + ".course_id=" + Constants.CourseEnrolledTable + ".course_id WHERE " + Constants.CourseEnrolledTable + ".student_id=2";
         ResultSet rs = executeQuery.executeUpdateSQL(query);
-        List<Course> courses = makeCousesListFromResultSet(rs);
+        List<Course> courses = makeCoursesListFromResultSet(rs);
         courseRegistrationModel.setRegisteredCourses(courses);
     }
 }

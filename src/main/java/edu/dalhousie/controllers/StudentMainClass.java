@@ -17,6 +17,7 @@ public class StudentMainClass {
     private static final String roommateFinder = "Roommate finder";
     private static final String healthReimbursement = "Health Reimbursement";
     private static final String nominationForSports = "Nomination for sports";
+    private static final String facilityBooking = "Facility booking";
     private static final String logout = "Logout";
 
     public void displayStudentMenu() throws Exception {
@@ -32,7 +33,8 @@ public class StudentMainClass {
         view.showMessage("8. " + roommateFinder);
         view.showMessage("9. " + healthReimbursement);
         view.showMessage("10. " + nominationForSports);
-        view.showMessage("11. " + logout);
+        view.showMessage("11." + facilityBooking);
+        view.showMessage("12. " + logout);
 
         view.showMessage("\nEnter your choice: ");
         userChoice = view.getInt();
@@ -79,8 +81,12 @@ public class StudentMainClass {
                 view.showMessage("You selected 10");
                 break;
             case 11:
+                FacilityBooking facilityBooking = new FacilityBooking();
+                facilityBooking.startFacilityBookingService();
+                break;
+            case 12:
                 //call method
-                view.showMessage("You selected 11");
+                view.showMessage("You selected 12");
                 break;
             default:
                 break;

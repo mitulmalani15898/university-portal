@@ -7,11 +7,12 @@ import edu.dalhousie.models.CourseRegistrationModel;
 import java.util.List;
 
 public class CourseRegistrationView {
-    StudentView view = new StudentView();
+    StudentView view;
     CourseRegistrationApi courseRegistrationApi;
     CourseRegistrationModel courseRegistrationModel;
 
     public CourseRegistrationView() {
+        view = new StudentView();
         courseRegistrationApi = new CourseRegistrationApi();
         courseRegistrationModel = new CourseRegistrationModel();
     }
