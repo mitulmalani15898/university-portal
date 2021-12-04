@@ -53,8 +53,8 @@ public class CourseRegistrationApi {
 
     public void getRegisteredCourseList() throws SQLException {
         String query = "SELECT * from " + Constants.CoursesTable + " JOIN " + Constants.CourseEnrolledTable + " ON " + Constants.CoursesTable + ".course_id=" + Constants.CourseEnrolledTable + ".course_id WHERE " + Constants.CourseEnrolledTable + ".student_id=2";
-        ResultSet rs = executeQuery.executeUpdateSQL(query);
-        List<Course> courses = makeCoursesListFromResultSet(rs);
+        ResultSet resultSet = executeQuery.executeUpdateSQL(query);
+        List<Course> courses = makeCoursesListFromResultSet(resultSet);
         courseRegistrationModel.setRegisteredCourses(courses);
     }
 }

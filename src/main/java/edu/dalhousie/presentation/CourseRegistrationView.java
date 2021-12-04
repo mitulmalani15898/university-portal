@@ -62,10 +62,8 @@ public class CourseRegistrationView {
         System.out.println("\nEnter keyword for searching courses? (type 'quit' to exit search)");
         keyword = view.getString().toLowerCase();
         while (!keyword.equals("quit")) {
-            if (!keyword.equals("quit")) {
-                courseRegistrationApi.getCoursesByKeyword(keyword);
-                renderCourseListView(courseRegistrationModel.getRegisteredCourses());
-            }
+            courseRegistrationApi.getCoursesByKeyword(keyword);
+            renderCourseListView(courseRegistrationModel.getRegisteredCourses());
             System.out.println("\nEnter keyword for searching courses? (type 'quit' to exit search)");
             keyword = view.getString().toLowerCase();
         }
