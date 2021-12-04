@@ -1,124 +1,129 @@
 package edu.dalhousie.business.Events.controller;
 
 import edu.dalhousie.business.Events.controller.Cost.EventCost;
-import edu.dalhousie.business.Events.controller.Event.Event;
-import edu.dalhousie.business.Events.controller.Student.Student;
-import edu.dalhousie.business.Events.controller.University.model.UniversityDetails;
+import edu.dalhousie.business.Events.model.Event.Event;
+import edu.dalhousie.business.Events.model.Student.Student;
+import edu.dalhousie.business.Events.model.University.UniversityDetails;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class EventApplication {
-    public static void main(String[] args) {
-        UniversityDetails[] schools = new UniversityDetails[3];
+    static Event event;
+    static boolean eventFlag = false;
+    public EventApplication(){
+        event = new Event();
 
-        //store school names
-        String[] schoolName = new String[schools.length];
-        Scanner scan = new Scanner(System.in);
-        Event event;
-        EventCost payment = new EventCost();
-        boolean eventFlag = false;
+    }
+    static String[] getUniversityDetails(UniversityDetails[] universities, Scanner sc){
 
-        System.out.print("***** School Registration *****");
-
-        for(int i=0; i<schools.length;  i++ )
+        String[] universityName = new String[universities.length];
+        System.out.println("University Registration");
+        System.out.println("========================================");
+        for(int i=0; i<universities.length;  i++ )
         {
-            System.out.print("Please Enter School Name : ");
-            schoolName[i] = scan.nextLine();
-
-            schools[0] = new UniversityDetails(schoolName[i]);
-            System.out.println(schools[0]);
+            System.out.print("Please enter university name : ");
+            universityName[i] = sc.next();
+            universities[0] = new UniversityDetails(universityName[i]);
         }
 
-        for(int i=0; i<schools.length;  i++ )
+        for(int i=0; i<universities.length;  i++ )
         {
-            System.out.print("\n***** Student and Parent Registration for "+schoolName[i]+ " *****");
+            System.out.println("Student Registration for "+universityName[i]);
+            System.out.println("========================================");
+            for(int j=0; j<universities.length;  j++ ){
+                universities[0].addStudent();
+            }
 
-            System.out.print("\nAdd Students and Parents : \n");
-            schools[0].addStudent();
-            schools[0].addStudent();
-            schools[0].addStudent();
-
-            System.out.print("\n***** Display Student Info "+schoolName[i]+" *****\n");
-            schools[0].studentInfo();
-
-
+            System.out.println("Student Information "+universityName[i]);
+            System.out.println("========================================");
+            universities[0].studentInfo();
         }
 
-        System.out.print("\n***** Display Registered School List *****\n");
-        for (String school : schoolName) {
-            System.out.println(school);
+        System.out.println("Display Registered University List");
+        System.out.println("==============================");
+        for (String university : universityName) {
+            System.out.println(university);
         }
 
-        //organize the event
-        System.out.print("\nPlease Enter Event Name : ");
-        String eventName = scan.nextLine();
+        return universityName;
+    }
 
-        System.out.print("\nPlease Enter Event Location : ");
-        String eventLocation = scan.nextLine();
+    public void hostEvent() throws Exception {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the number of universities " +
+                "going to participate in the event: ");
+        int size = sc.nextInt();
+        UniversityDetails[] universities = new UniversityDetails[size];
 
-        System.out.print("\nPlease Enter Event Date : ");
-        String eventDate = scan.nextLine();
+        String[] universityName = getUniversityDetails(universities,sc);
 
-        System.out.print("\nPlease Enter Event Time : ");
-        String eventTime = scan.nextLine();
+        System.out.println("Please Enter Event Name : ");
+        String eventName = sc.next();
 
-        System.out.print("\nPlease Enter Event Description : ");
-        String eventDesc = scan.nextLine();
+        System.out.println("Please Enter Event Location : ");
+        String eventLocation = sc.next();
 
-        System.out.print("\nPlease Enter Organizing School Name : ");
-        String eventSchool = scan.nextLine();
+        System.out.println("Please Enter Event Date : ");
+        String eventDate = sc.next();
 
-        System.out.print("\n");
+        System.out.println("Please Enter Event Time : ");
+        String eventTime = sc.next();
 
-        if(Arrays.asList(schoolName).contains(eventSchool)) {
+        System.out.println("Please Enter Event Description : ");
+        String eventDesc = sc.next();
+
+        System.out.println("Please Enter Organizing School Name : ");
+        String universityNameForEvent = sc.next();
+
+
+        if(Arrays.asList(universityName).contains(universityNameForEvent)) {
             event = new Event(eventName, eventLocation, eventDate, eventTime, eventDesc);
 
-            //event
-            System.out.print(("\n "+eventSchool+" organizes technical event\n"));
+            System.out.println(("\n "+universityNameForEvent+
+                    " organizes technical event\n"));
 
-            System.out.print("\n***** Display Event Info *****\n");
+            System.out.println("Event information");
+            System.out.println("=================");
             event.getEventInfo();
 
-            //send invitation to other school
-            for(int i=0; i< schoolName.length; i++)
-            {
-                if(!schoolName[i].equals(eventSchool)){
-                    if(schools[0].sendNotificationToSchool(schoolName[i])) {
-                        System.out.print("Invitation Accepted by " + schoolName[i] + " \n");
+            for (String s : universityName) {
+                if (!s.equals(universityNameForEvent)) {
+                    if (universities[0]
+                            .sendNotificationToSchool(s)) {
+                        System.out.println("Invitation Accepted by "
+                                + s + " \n");
                         eventFlag = true;
-                    }
-                    else
-                        System.out.print("Invitation Rejected by "+ schoolName[i] +" \n");
+                    } else
+                        System.out.println("Invitation Rejected by " +
+                                s + " \n");
                 }
 
             }
 
-            System.out.print("\nEnter number of student volunteers for event : ");
-            int num = scan.nextInt();
+            System.out.println("Enter number of student volunteers for event : ");
+            int num = sc.nextInt();
 
-            System.out.print("\n***** Payment *****");
-            System.out.print("\ncost for student to attend the event : $10 ");
-            System.out.print("\nEvent is free for volunteer students ");
-
+            System.out.println("Payment");
+            System.out.println("Cost for student to attend the event : $10 ");
+            System.out.println("Event is free for volunteer students ");
+            EventCost payment = new EventCost();
             payment.studentPayment(num);
-
 
             if(eventFlag)
             {
                 Student student = new Student();
                 student.sendNotificationToStudents();
-
-                System.out.print("\n****** Event State *****");
-                System.out.print("\nEvent Starts\n");
+                System.out.println("Event Starts");
                 event.EventProgress();
+
             }
             else {
-                System.out.print("No one accept your invitation");
+                System.out.println("No one has accepted your invitation");
             }
 
         }else {
-            System.out.print("\nPlease First Register your school..!! ");
+            System.out.println("Please Register. ");
         }
     }
 }

@@ -4,18 +4,21 @@
  * */
 package edu.dalhousie.database;
 
+import edu.dalhousie.logger.ILogger;
+import edu.dalhousie.logger.LoggerAbstractFactory;
+
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.*;
 import java.util.Properties;
 
 public class DatabaseConnectivity implements DatabaseConnection{
-
+    private ILogger logger;
     private static final String DATABASE_CONFIG_FILE = "./database.properties";
     private Connection connection = null;
     private static DatabaseConnectivity databaseConnectivity;
     private DatabaseConnectivity(){
-
+        logger = LoggerAbstractFactory.getFactory().newLoggerInstance();
     }
     public static DatabaseConnectivity getInstance(){
             if(databaseConnectivity==null){
@@ -39,6 +42,7 @@ public class DatabaseConnectivity implements DatabaseConnection{
             return connection;
 
         } catch (Exception e) {
+            logger.error(DatabaseConnectivity.class.toString(), e.getMessage());
             throw new DatabaseException(e.getMessage(),e);
         }
 

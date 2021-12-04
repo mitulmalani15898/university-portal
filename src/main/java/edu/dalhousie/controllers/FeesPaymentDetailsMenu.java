@@ -4,11 +4,15 @@
  * */
 package edu.dalhousie.controllers;
 
-import edu.dalhousie.business.Payment.controller.EMIPaymentPlans;
-import edu.dalhousie.business.Payment.controller.FullPayment;
-import edu.dalhousie.business.Payment.controller.ShowPaymentInformation;
-import edu.dalhousie.business.Payment.database.PaymentDetailsDAOQueryBuilder;
-import edu.dalhousie.business.Payment.database.PaymentDetailsQueryBuilder;
+import edu.dalhousie.business.Payment.controller.EMIPayment.EMIPaymentPlans;
+import edu.dalhousie.business.Payment.controller.FullPayment.FullPayment;
+import edu.dalhousie.business.Payment.controller.PaymentInformation.ShowPaymentInformation;
+import edu.dalhousie.business.Payment.database.PaymentDetails.PaymentDetailsDAOQueryBuilder;
+import edu.dalhousie.business.Payment.database.PaymentDetails.PaymentDetailsQueryBuilder;
+import edu.dalhousie.business.Payment.database.PaymentStatus.IPaymentStatusDAOQueryBuilder;
+import edu.dalhousie.business.Payment.database.PaymentStatus.IUpdatePaymentStatusDAOQueryBuilder;
+import edu.dalhousie.business.Payment.database.PaymentStatus.PaymentStatusQueryBuilder;
+import edu.dalhousie.business.Payment.database.PaymentStatus.UpdatePaymentStatusQueryBuilder;
 import edu.dalhousie.database.DatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
 import edu.dalhousie.presentation.StudentView;
@@ -16,18 +20,18 @@ import edu.dalhousie.presentation.StudentView;
 public class FeesPaymentDetailsMenu {
     private final StudentView view;
     private final StudentMainClass studentMenu;
-    private final FullPayment fullPayment;
-    private final EMIPaymentPlans emiPaymentPlans;
     private final DatabaseConnection databaseConnection;
-    private final PaymentDetailsDAOQueryBuilder feesCourseQueryBuilder;
-
+    private final PaymentDetailsDAOQueryBuilder paymentDetailsDAOQueryBuilder;
+    private final IPaymentStatusDAOQueryBuilder iPaymentStatusDAOQueryBuilder;
+    private final IUpdatePaymentStatusDAOQueryBuilder iUpdatePaymentStatusDAOQueryBuilder;
     FeesPaymentDetailsMenu(){
-        this.emiPaymentPlans = new EMIPaymentPlans();
         this.view = new StudentView();
         this.studentMenu = new StudentMainClass();
-        this.fullPayment = new FullPayment();
         databaseConnection = DatabaseConnectivity.getInstance();
-        this.feesCourseQueryBuilder = PaymentDetailsQueryBuilder.getInstance();
+        this.paymentDetailsDAOQueryBuilder = PaymentDetailsQueryBuilder.getInstance();
+        this.iPaymentStatusDAOQueryBuilder = new PaymentStatusQueryBuilder();
+        this.iUpdatePaymentStatusDAOQueryBuilder = new UpdatePaymentStatusQueryBuilder();
+
     }
 
     void showPaymentInformationMenu() throws Exception {
@@ -42,16 +46,23 @@ public class FeesPaymentDetailsMenu {
                 case 1:
                     ShowPaymentInformation showPaymentInformation =
                             new ShowPaymentInformation(databaseConnection,
-                                    feesCourseQueryBuilder);
+                                    paymentDetailsDAOQueryBuilder,
+                                    iPaymentStatusDAOQueryBuilder);
                     showPaymentInformation.showFeeDetails();
                     break;
                 case 2:
                     this.view.showMessage("Full payment");
-                    this.fullPayment.deductTotalAmount();
+                    FullPayment fullPayment = new FullPayment(databaseConnection,
+                            iUpdatePaymentStatusDAOQueryBuilder);
+                    fullPayment.deductTotalAmount();
                     break;
                 case 3:
                     this.view.showMessage("EMI");
-                    this.emiPaymentPlans.showEMIStructure();
+                    EMIPaymentPlans emiPaymentPlans = new EMIPaymentPlans(
+                            databaseConnection,
+                            paymentDetailsDAOQueryBuilder,
+                            iPaymentStatusDAOQueryBuilder);
+                    emiPaymentPlans.showEMIStructure();
                     break;
                 case 4:
                     this.studentMenu.displayStudentMenu();

@@ -1,8 +1,8 @@
 package edu.dalhousie.business.Tender;
 
-import edu.dalhousie.business.Tender.controller.ITender;
-import edu.dalhousie.business.Tender.controller.Tender;
-import edu.dalhousie.business.Tender.model.Bidder;
+import edu.dalhousie.business.Tender.controller.Tender.ITender;
+import edu.dalhousie.business.Tender.controller.Tender.Tender;
+import edu.dalhousie.business.Tender.model.Auctioneer;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -12,25 +12,25 @@ import java.util.Collection;
 
 public class TenderTest {
     static ITender tender = null;
-    static Collection<Bidder> bidders = null;
+    static Collection<Auctioneer> Auctioneers = null;
 
     @BeforeAll
-    public static void setUp() throws Exception {
+    public static void setUp(){
         tender =new Tender();
-        bidders = new ArrayList<Bidder>();
+        Auctioneers = new ArrayList<>();
     }
 
     @Test
     public void auctionTest() throws Exception {
-        tender.setTenderEvent("Dalhousie Meals");
+        tender.setTenderEvent("Canteen");
 
-        bidders.add(new Bidder("Tim Horton's", 50, 80, 3));
-        bidders.add(new Bidder("Adda", 60, 82, 2));
-        bidders.add(new Bidder("Passage to India", 55, 85, 5));
+        Auctioneers.add(new Auctioneer("Tim Horton's", 50, 80, 3));
+        Auctioneers.add(new Auctioneer("Adda", 60, 82, 2));
+        Auctioneers.add(new Auctioneer("Passage to India", 55, 85, 5));
 
-        tender.addNewBidders(bidders);
+        tender.addNewAuctioneers(Auctioneers);
 
-        Bidder winner = tender.startTender();
+        Auctioneer winner = tender.startTender();
 
         Assertions.assertEquals(85, winner.getBid());
         Assertions.assertEquals("Passage to India", winner.getName());

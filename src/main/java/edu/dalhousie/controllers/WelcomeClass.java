@@ -15,6 +15,9 @@ public class WelcomeClass {
     public void displayWelcomeScreen() throws Exception {
         StudentView view = new StudentView();
         StudentMainClass student = new StudentMainClass();
+        Login login = new Login();
+        User user;
+        UserSession userSession = UserSession.getInstance();
         Scanner sc = new Scanner(System.in);
         view.showMessage("WELCOME TO UNIVERSITY PORTAL");
         view.showMessage("1 " + kRegisterAsStudent + "\n" + "2 " + kRegisterAsFaculty + "\n" + "3 " + kLoginAsStudent + "\n" + "4 " + kLoginAsFaculty + "\n" + "5 " + kExit + "\n");
@@ -29,11 +32,18 @@ public class WelcomeClass {
                 //call method
                 view.showMessage("selected 2"); break;
             case 3:
-                student.displayStudentMenu();
+                user = login.loginUser("student");
+                if(user!=null) {
+                    userSession.newUserSession(user);
+                    student.displayStudentMenu();
+                }
                 break;
             case 4:
                 //call method
-                view.showMessage("selected 4"); break;
+                user = login.loginUser("faculty");
+                if(user!=null) {
+                    userSession.newUserSession(user);
+                }
             case 5:
                 System.exit(0);
             default: break;
