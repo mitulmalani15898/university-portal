@@ -3,15 +3,15 @@ package edu.dalhousie.business.Feedback;
 import edu.dalhousie.business.Feedback.business.FeedbackBusiness;
 import edu.dalhousie.business.Feedback.model.SentimentAnalysisFeedback;
 import edu.dalhousie.constants.StringConstants;
-import org.junit.jupiter.api.Test;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 class FeedbackTest {
 
     @Test

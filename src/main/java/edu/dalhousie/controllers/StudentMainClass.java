@@ -1,5 +1,6 @@
 package edu.dalhousie.controllers;
 
+import edu.dalhousie.business.AddNewApplication.controller.AddNewApplicationForAdmission;
 import edu.dalhousie.business.DalMembership.controller.menu.MenuImplementation;
 import edu.dalhousie.business.Events.controller.EventApplication;
 import edu.dalhousie.business.Feedback.controllers.FeedbackMenu;
@@ -26,40 +27,15 @@ public class StudentMainClass {
     private static final String roommateFinder = "Roommate finder";
     private static final String healthReimbursement = "Health Reimbursement";
     private static final String nominationForSports = "Nomination for sports";
+    private static final String tender = "Organize e-tender";
+    private static final String dalMembership = "Dalhousie student card";
     private static final String facilityBooking = "Facility booking";
     private static final String logout = "Logout";
     public void displayStudentMenu() throws Exception {
         Scanner sc = new Scanner(System.in);
-//        System.out.println("STUDENT MENU");
-        Utility.printHeadingForTheScreen("Student Menu", 45);
-//        String kAddNewApplication = "Add new application for admission";
-//        String kApplyForScholarship = "Apply for scholarships";
-//        String kFeePaymentDetails = "Fee payment details";
-//        String kListOfCourses = "List of courses for registration";
-//        String kProfile = "Profile (Personal information and course details)";
-//        String kHealthReimbursement = "Health Reimbursement";
-//        String kLogout = "Logout";
-//        String kNominationForSports = "Nomination for sports";
-//        String kRoommateFinder = "Roommate finder";
-//        String kOrganizeEvents = "Organize events";
-//        String kFeedback = "Feedback";
-//        String kTender = "Organize e-tender";
-//        String kDalMembership = "Dalhousie student card";
 
-//
-//        System.out.println("1 " + kAddNewApplication + "\n" +
-//                "2 " + kProfile + "\n" +
-//                "3 " + kListOfCourses + "\n" +
-//                "4 " + kFeePaymentDetails + "\n" +
-//                "5 " + kFeedback + "\n" +
-//                "6 " + kApplyForScholarship + "\n" +
-//                "7 " + kOrganizeEvents + "\n" +
-//                "8 " + kRoommateFinder + "\n" +
-//                "9 " + kHealthReimbursement + "\n" +
-//                "10 " + kNominationForSports + "\n" +
-//                "11 " + kTender + "\n" +
-//                "12 "+kDalMembership+ "\n" +
-//                "13 " + kLogout);
+        Utility.printHeadingForTheScreen("Student Menu", 45);
+
         view.showMessage("1. " + addNewApplication);
         view.showMessage("2. " + profile);
         view.showMessage("3. " + listOfCourses);
@@ -68,10 +44,11 @@ public class StudentMainClass {
         view.showMessage("6. " + applyForScholarship);
         view.showMessage("7. " + organizeEvents);
         view.showMessage("8. " + roommateFinder);
-        view.showMessage("9. " + healthReimbursement);
         view.showMessage("10. " + nominationForSports);
+        view.showMessage("11. " + tender);
+        view.showMessage("12. " + dalMembership);
         view.showMessage("13." + facilityBooking);
-        view.showMessage("12. " + logout);
+        view.showMessage("14. " + logout);
         while(true){
             System.out.println("Enter your choice\n");
             int choice = sc.nextInt();
@@ -126,11 +103,11 @@ public class StudentMainClass {
                     MenuImplementation menu = new MenuImplementation();
                     menu.start();
                     break;
-                case 14:
+                case 13:
                     FacilityBooking facilityBooking = new FacilityBooking();
                     facilityBooking.startFacilityBookingService();
                     break;
-                case 13:
+                case 14:
                     //call method
                     System.exit(0);
                     System.out.println("You selected 11");break;
