@@ -1,6 +1,6 @@
 package edu.dalhousie.utilities;
 
-public class Utility {
+public class PrintHeading {
     private static String starSeparator = new String(new char[100]).replace("\0", "*");
 
     public static void printHeadingForTheScreen(String title, int leftPadding) {

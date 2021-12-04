@@ -5,7 +5,6 @@ import edu.dalhousie.database.ExecuteQuery;
 import edu.dalhousie.models.LogInModel;
 import edu.dalhousie.models.ViewProfileModel;
 import edu.dalhousie.presentation.StudentView;
-import edu.dalhousie.utilities.Utility;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -184,7 +183,7 @@ public class ViewProfile
     {
         boolean isStudent = typeOfLogIn.equals("student");
         String title = isStudent ? "View Student Profile" : "View Faculty Profile";
-        Utility.printHeadingForTheScreen(title, 38);
+        PrintHeading.printHeadingForTheScreen(title, 38);
         displayProfile();
     }
 }

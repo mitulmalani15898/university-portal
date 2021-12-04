@@ -1,4 +1,4 @@
-package edu.dalhousie.business.facilitybooking;
+package edu.dalhousie.business.facilitybooking.model;
 
 public class Facility {
     private int facilityId;

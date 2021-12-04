@@ -7,11 +7,10 @@ import edu.dalhousie.business.Feedback.controllers.FeedbackMenu;
 import edu.dalhousie.business.RoommateFinder.controller.RoommateFinder;
 import edu.dalhousie.business.Scholarship.ScholarshipMenu;
 import edu.dalhousie.business.Tender.controller.Tender.Tender;
-import edu.dalhousie.business.courseregistration.CourseRegistration;
-import edu.dalhousie.business.facilitybooking.FacilityBooking;
+import edu.dalhousie.business.courseregistration.controller.CourseRegistration;
+import edu.dalhousie.business.facilitybooking.controller.FacilityBooking;
 import edu.dalhousie.business.viewprofile.ViewProfile;
 import edu.dalhousie.presentation.StudentView;
-import edu.dalhousie.utilities.Utility;
 
 import java.util.Scanner;
 
@@ -34,7 +33,7 @@ public class StudentMainClass {
     public void displayStudentMenu() throws Exception {
         Scanner sc = new Scanner(System.in);
 
-        Utility.printHeadingForTheScreen("Student Menu", 45);
+        PrintHeading.printHeadingForTheScreen("Student Menu", 45);
 
         view.showMessage("1. " + addNewApplication);
         view.showMessage("2. " + profile);
