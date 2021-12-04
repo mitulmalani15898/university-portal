@@ -1,4 +1,4 @@
-package edu.dalhousie.business.registration;
+package edu.dalhousie.business.registration.model;
 
 public class RegistrationModel {
     private String firstName;

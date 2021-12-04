@@ -1,10 +1,10 @@
-package edu.dalhousie.business.facilitybooking;
+package edu.dalhousie.business.facilitybooking.controller;
 
+import edu.dalhousie.business.facilitybooking.databse.FacilityBookingApi;
+import edu.dalhousie.business.facilitybooking.FacilityBookingView;
+import edu.dalhousie.business.facilitybooking.model.FacilityBookingModel;
 import edu.dalhousie.controllers.StudentMainClass;
-import edu.dalhousie.database.FacilityBookingApi;
-import edu.dalhousie.models.FacilityBookingModel;
-import edu.dalhousie.presentation.FacilityBookingView;
-import edu.dalhousie.utilities.Utility;
+import edu.dalhousie.utilities.PrintHeading;
 
 public class FacilityBooking {
     FacilityBookingView facilityBookingView;
@@ -19,7 +19,7 @@ public class FacilityBooking {
 
     public void startFacilityBookingService() throws Exception {
         StudentMainClass studentMainClass = new StudentMainClass();
-        Utility.printHeadingForTheScreen("Facility booking", 42);
+        PrintHeading.printHeadingForTheScreen("Facility booking", 42);
         facilityBookingView.renderFacilityBookingForm();
         studentMainClass.displayStudentMenu();
     }

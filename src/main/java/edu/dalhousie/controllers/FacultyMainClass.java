@@ -1,7 +1,6 @@
 package edu.dalhousie.controllers;
 
 import edu.dalhousie.presentation.StudentView;
-import edu.dalhousie.utilities.Utility;
 
 public class FacultyMainClass {
     StudentView view = new StudentView();
@@ -13,7 +12,7 @@ public class FacultyMainClass {
     private static final String logout = "Logout";
 
     public void displayFacultyMenu() {
-        Utility.printHeadingForTheScreen("Faculty Menu", 45);
+        PrintHeading.printHeadingForTheScreen("Faculty Menu", 45);
 
         System.out.println("1. " + profile);
         System.out.println("2. " + studentGrading);

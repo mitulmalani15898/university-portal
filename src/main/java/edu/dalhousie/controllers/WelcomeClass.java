@@ -1,11 +1,7 @@
 package edu.dalhousie.controllers;
 
-import edu.dalhousie.business.registration.Registration;
-import edu.dalhousie.controllers.StudentMainClass;
+import edu.dalhousie.business.registration.controller.Registration;
 import edu.dalhousie.presentation.StudentView;
-import edu.dalhousie.utilities.Utility;
-
-import java.util.Scanner;
 
 public class WelcomeClass {
     private int choice;
@@ -27,7 +23,7 @@ public class WelcomeClass {
 //        view.showMessage("1 " + kRegisterAsStudent + "\n" + "2 " + kRegisterAsFaculty + "\n" + "3 " + kLoginAsStudent + "\n" + "4 " + kLoginAsFaculty + "\n" + "5 " + kExit + "\n");
 
 
-        Utility.printHeadingForTheScreen("Welcome to university portal", 35);
+        PrintHeading.printHeadingForTheScreen("Welcome to university portal", 35);
 
         view.showMessage("1. " + registerAsStudent);
         view.showMessage("2. " + registerAsFaculty);
@@ -65,6 +61,5 @@ public class WelcomeClass {
             default:
                 break;
         }
-
     }
 }

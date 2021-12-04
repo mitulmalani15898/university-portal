@@ -1,4 +1,4 @@
-package edu.dalhousie.business.courseregistration;
+package edu.dalhousie.business.courseregistration.model;
 
 public class Course {
     private int courseId;

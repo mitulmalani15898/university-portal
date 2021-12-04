@@ -1,4 +1,4 @@
-package edu.dalhousie.business.facilitybooking;
+package edu.dalhousie.business.facilitybooking.model;
 
 import java.util.List;
 

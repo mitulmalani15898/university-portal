@@ -1,4 +1,4 @@
-package edu.dalhousie.business.courseregistration;
+package edu.dalhousie.business.courseregistration.model;
 
 import java.util.List;
 

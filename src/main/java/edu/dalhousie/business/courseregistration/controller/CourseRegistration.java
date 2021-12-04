@@ -1,28 +1,27 @@
-package edu.dalhousie.business.courseregistration;
+package edu.dalhousie.business.courseregistration.controller;
 
-import edu.dalhousie.models.Course;
+import edu.dalhousie.business.courseregistration.business.ValidateCourseRegistration;
+import edu.dalhousie.business.courseregistration.database.CourseRegistrationApi;
+import edu.dalhousie.business.courseregistration.model.Course;
+import edu.dalhousie.business.courseregistration.model.CourseRegistrationModel;
+import edu.dalhousie.controllers.StudentMainClass;
 import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.PrintHeading;
 
 import java.util.List;
 
-public class CourseRegistrationView {
+public class CourseRegistration {
     StudentView view;
-    CourseRegistrationApi courseRegistrationApi;
+    CourseRegistrationView courseRegistrationView;
     CourseRegistrationModel courseRegistrationModel;
+    CourseRegistrationApi courseRegistrationApi;
+    ValidateCourseRegistration validate;
 
-    public CourseRegistrationView() {
+    public CourseRegistration() {
         view = new StudentView();
-        courseRegistrationApi = new CourseRegistrationApi();
+        courseRegistrationView = new CourseRegistrationView();
         courseRegistrationModel = new CourseRegistrationModel();
-    }
-
-    public boolean isValidCourseId(String courseId) {
-        for (Course course : courseRegistrationModel.getCourses()) {
-            if (course.getCourseId() == Integer.parseInt(courseId)) {
-                return true;
-            }
-        }
-        return false;
+        courseRegistrationApi = new CourseRegistrationApi();
     }
 
     public int registerForSpecificCourse() throws Exception {
@@ -31,7 +30,7 @@ public class CourseRegistrationView {
         courseID = view.getString().toLowerCase();
         if (courseID.equals("no")) {
             return -1;
-        } else if (isValidCourseId(courseID)) {
+        } else if (validate.isValidCourseId(courseID)) {
             System.out.println("\nPlease try again and provide valid course id for registration.\n");
         } else {
             return courseRegistrationApi.registerForSpecificCourse(Integer.parseInt(courseID));
@@ -86,5 +85,25 @@ public class CourseRegistrationView {
             userChoice = view.getString().toLowerCase();
         }
         return userChoice;
+    }
+
+    public void registerForCourses() throws Exception {
+        StudentMainClass studentMainClass = new StudentMainClass();
+        String userChoice = "";
+        PrintHeading.printHeadingForTheScreen("List of courses for registration", 38);
+
+        userChoice = renderCourseRegistrationForm();
+
+        if (userChoice.equals("no")) {
+            courseRegistrationApi.getCompleteCourseList();
+            courseRegistrationApi.getRegisteredCourseList();
+            renderCourseListView(courseRegistrationModel.getCourses());
+            renderRegisterForSpecificCourseForm();
+        } else if (userChoice.equals("yes")) {
+            renderSearchForParticularCourseView();
+        } else {
+            studentMainClass.displayStudentMenu();
+        }
+        studentMainClass.displayStudentMenu();
     }
 }
