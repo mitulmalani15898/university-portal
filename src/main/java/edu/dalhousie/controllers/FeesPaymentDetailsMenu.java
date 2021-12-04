@@ -34,7 +34,7 @@ public class FeesPaymentDetailsMenu {
 
     }
 
-    void showPaymentInformationMenu() throws Exception {
+    protected void showPaymentInformationMenu() throws Exception {
         this.view.showMessage("**************************************");
         this.view.showMessage("\t \t Fees payment Menu \t");
         this.view.showMessage("**************************************");

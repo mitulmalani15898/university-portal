@@ -17,12 +17,6 @@ public class GetBalanceQueryBuilder implements IGetBalanceDAOQueryBuilder {
         return instance;
     }
 
-    public String rechargeBalance(int id, double amount){
-        return "update membership_details \n" +
-                "set balance = balance + " + amount +" \n"+
-                "where member_id = "+ id;
-    }
-
     @Override
     public String selectBalanceQuery(int id) {
         return "SELECT "+
