@@ -1,12 +1,13 @@
 package edu.dalhousie.business.RoommateFinder.business;
 
+import edu.dalhousie.business.RoommateFinder.data.IRoommateFinderData;
 import edu.dalhousie.business.RoommateFinder.model.RoommateFinderObject;
-import edu.dalhousie.business.AddNewApplication.constants.StringConstants;
+import edu.dalhousie.constants.StringConstants;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RoommateFinderBusiness {
+public class RoommateFinderBusiness implements IRoommateFinderBusiness {
 
     public boolean verifyGender(int input) {
         if (input == 1 || input == 2) {

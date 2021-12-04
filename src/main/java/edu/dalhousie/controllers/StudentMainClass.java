@@ -1,18 +1,18 @@
 package edu.dalhousie.controllers;
 
+import edu.dalhousie.business.AddNewApplication.controller.AddNewApplicationForAdmission;
 import edu.dalhousie.business.DalMembership.controller.menu.MenuImplementation;
 import edu.dalhousie.business.Events.controller.EventApplication;
 import edu.dalhousie.business.Feedback.controllers.FeedbackMenu;
 import edu.dalhousie.business.RoommateFinder.controller.RoommateFinder;
-import edu.dalhousie.business.Scholarship.ScholarshipMenu;
 import edu.dalhousie.business.Tender.controller.Tender.Tender;
-import edu.dalhousie.business.courseregistration.CourseRegistration;
-import edu.dalhousie.business.facilitybooking.FacilityBooking;
-import edu.dalhousie.business.viewprofile.ViewProfile;
+import edu.dalhousie.business.Scholarship.ScholarshipMenu;
+import edu.dalhousie.business.courseregistration.controller.CourseRegistration;
+import edu.dalhousie.business.facilitybooking.controller.FacilityBooking;
+import edu.dalhousie.business.sportnomination.controller.SportsNomination;
+import edu.dalhousie.business.viewprofile.controller.ViewProfile;
 import edu.dalhousie.presentation.StudentView;
-import edu.dalhousie.utilities.Utility;
-
-import java.util.Scanner;
+import edu.dalhousie.utilities.PrintHeading;
 
 public class StudentMainClass {
     StudentView view = new StudentView();
@@ -26,56 +26,32 @@ public class StudentMainClass {
     private static final String roommateFinder = "Roommate finder";
     private static final String healthReimbursement = "Health Reimbursement";
     private static final String nominationForSports = "Nomination for sports";
+    private static final String tender = "Organize e-tender";
+    private static final String dalMembership = "Dalhousie student card";
     private static final String facilityBooking = "Facility booking";
     private static final String logout = "Logout";
-    public void displayStudentMenu() throws Exception {
-        Scanner sc = new Scanner(System.in);
-//        System.out.println("STUDENT MENU");
-        Utility.printHeadingForTheScreen("Student Menu", 45);
-//        String kAddNewApplication = "Add new application for admission";
-//        String kApplyForScholarship = "Apply for scholarships";
-//        String kFeePaymentDetails = "Fee payment details";
-//        String kListOfCourses = "List of courses for registration";
-//        String kProfile = "Profile (Personal information and course details)";
-//        String kHealthReimbursement = "Health Reimbursement";
-//        String kLogout = "Logout";
-//        String kNominationForSports = "Nomination for sports";
-//        String kRoommateFinder = "Roommate finder";
-//        String kOrganizeEvents = "Organize events";
-//        String kFeedback = "Feedback";
-//        String kTender = "Organize e-tender";
-//        String kDalMembership = "Dalhousie student card";
 
-//
-//        System.out.println("1 " + kAddNewApplication + "\n" +
-//                "2 " + kProfile + "\n" +
-//                "3 " + kListOfCourses + "\n" +
-//                "4 " + kFeePaymentDetails + "\n" +
-//                "5 " + kFeedback + "\n" +
-//                "6 " + kApplyForScholarship + "\n" +
-//                "7 " + kOrganizeEvents + "\n" +
-//                "8 " + kRoommateFinder + "\n" +
-//                "9 " + kHealthReimbursement + "\n" +
-//                "10 " + kNominationForSports + "\n" +
-//                "11 " + kTender + "\n" +
-//                "12 "+kDalMembership+ "\n" +
-//                "13 " + kLogout);
-        view.showMessage("1. " + addNewApplication);
-        view.showMessage("2. " + profile);
-        view.showMessage("3. " + listOfCourses);
-        view.showMessage("4. " + feePaymentDetails);
-        view.showMessage("5. " + feedback);
-        view.showMessage("6. " + applyForScholarship);
-        view.showMessage("7. " + organizeEvents);
-        view.showMessage("8. " + roommateFinder);
-        view.showMessage("9. " + healthReimbursement);
-        view.showMessage("10. " + nominationForSports);
-        view.showMessage("13." + facilityBooking);
-        view.showMessage("12. " + logout);
-        while(true){
+    public void displayStudentMenu() throws Exception {
+        while (true) {
+            PrintHeading.printHeadingForTheScreen("Student Menu", 45);
+
+            view.showMessage("1. " + addNewApplication);
+            view.showMessage("2. " + profile);
+            view.showMessage("3. " + listOfCourses);
+            view.showMessage("4. " + feePaymentDetails);
+            view.showMessage("5. " + feedback);
+            view.showMessage("6. " + applyForScholarship);
+            view.showMessage("7. " + organizeEvents);
+            view.showMessage("8. " + roommateFinder);
+            view.showMessage("10. " + nominationForSports);
+            view.showMessage("11. " + tender);
+            view.showMessage("12. " + dalMembership);
+            view.showMessage("13." + facilityBooking);
+            view.showMessage("14. " + logout);
+
             System.out.println("Enter your choice\n");
-            int choice = sc.nextInt();
-            switch(choice) {
+            int choice = view.getInt();
+            switch (choice) {
                 case 1:
                     //call method
                     AddNewApplicationForAdmission addNew = new AddNewApplicationForAdmission();
@@ -90,7 +66,6 @@ public class StudentMainClass {
                     courseRegistration.registerForCourses();
                     break;
                 case 4:
-                    //call method
                     FeesPaymentDetailsMenu feesPaymentDetails = new FeesPaymentDetailsMenu();
                     feesPaymentDetails.showPaymentInformationMenu();
                     break;
@@ -112,32 +87,30 @@ public class StudentMainClass {
                     break;
                 case 9:
                     //call method
-                    System.out.println("You selected 9");break;
+                    System.out.println("You selected 9");
+                    break;
                 case 10:
-                    //call method
-                    System.out.println("You selected 10");break;
+                    SportsNomination sportsNomination = new SportsNomination();
+                    sportsNomination.viewSportsNomination();
+                    break;
                 case 11:
-                    //call method
-                    Tender tender =new Tender();
+                    Tender tender = new Tender();
                     tender.getTenderData();
                     break;
                 case 12:
-                    //call method
                     MenuImplementation menu = new MenuImplementation();
                     menu.start();
                     break;
-                case 14:
+                case 13:
                     FacilityBooking facilityBooking = new FacilityBooking();
                     facilityBooking.startFacilityBookingService();
                     break;
-                case 13:
-                    //call method
+                case 14:
                     System.exit(0);
-                    System.out.println("You selected 11");break;
-                default: break;
+                    break;
+                default:
+                    break;
             }
         }
-
-
     }
 }

@@ -1,26 +1,30 @@
 package edu.dalhousie.business.RoommateFinder.controller;
 
+import edu.dalhousie.business.RoommateFinder.business.IRoommateFinderBusiness;
 import edu.dalhousie.business.RoommateFinder.business.RoommateFinderBusiness;
+import edu.dalhousie.business.RoommateFinder.data.IRoommateFinderData;
 import edu.dalhousie.business.RoommateFinder.data.RoommateFinderData;
 import edu.dalhousie.business.RoommateFinder.model.RoommateFinderObject;
-import edu.dalhousie.business.AddNewApplication.constants.StringConstants;
+import edu.dalhousie.business.RoommateFinder.constants.StringConstants;
 import edu.dalhousie.presentation.StudentView;
 
 import java.util.List;
 
-public class RoommateFinder {
+public class RoommateFinder implements IRoommateFinder{
 
     StudentView view;
+    RoommateFinderObject roommateFinderObject;
+    IRoommateFinderData roommateFinderData;
+    IRoommateFinderBusiness roommateFinderBusiness;
 
     public RoommateFinder() {
         view = new StudentView();
+        roommateFinderObject = new RoommateFinderObject();
+        roommateFinderData = new RoommateFinderData();
+        roommateFinderBusiness = new RoommateFinderBusiness();
     }
 
     public void displayForm() throws Exception {
-        RoommateFinderObject roommateFinderObject = new RoommateFinderObject();
-        RoommateFinderData roommateFinderData = new RoommateFinderData();
-        RoommateFinderBusiness roommateFinderBusiness = new RoommateFinderBusiness();
-
         view.showMessage(StringConstants.kGender);
         int gender = view.getInt();
         boolean genderVerified = roommateFinderBusiness.verifyGender(gender);
@@ -93,9 +97,6 @@ public class RoommateFinder {
         }
         view.showMessage(String.valueOf(accomodation));
         roommateFinderObject.setAccomodationPreference(accomodation);
-
-//        view.showMessage(StringConstants.kPriority);
-//        roommateFinderObject.setPriority(view.getInt());
 
         roommateFinderData.storeData(roommateFinderObject);
 

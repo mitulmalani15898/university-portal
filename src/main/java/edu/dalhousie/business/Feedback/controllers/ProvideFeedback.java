@@ -1,17 +1,18 @@
 package edu.dalhousie.business.Feedback.controllers;
 
 import edu.dalhousie.business.Feedback.data.FeedbackData;
+import edu.dalhousie.business.Feedback.data.IFeedbackData;
 import edu.dalhousie.business.Feedback.model.FeedbackObjectModel;
-import edu.dalhousie.business.AddNewApplication.constants.StringConstants;
+import edu.dalhousie.business.Feedback.constants.StringConstants;
 import edu.dalhousie.presentation.StudentView;
 
 import java.sql.SQLException;
 
-public class ProvideFeedback {
+public class ProvideFeedback implements IProvideFeedback{
 
     StudentView view;
     FeedbackObjectModel feedbackObjectModel;
-    FeedbackData feedbackData;
+    IFeedbackData feedbackData;
 
     public ProvideFeedback() {
         view = new StudentView();

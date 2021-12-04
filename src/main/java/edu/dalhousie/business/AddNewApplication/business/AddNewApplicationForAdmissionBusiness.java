@@ -6,7 +6,7 @@ import edu.dalhousie.presentation.StudentView;
 
 import java.util.Locale;
 
-public class AddNewApplicationForAdmissionBusiness {
+public class AddNewApplicationForAdmissionBusiness implements IAddNewApplicationForAdmissionBusiness{
 
     StudentView view;
     AddNewApplicationFormObject addNewApplicationFormObject;
