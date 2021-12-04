@@ -1,4 +1,4 @@
-package edu.dalhousie.business.viewprofile;
+package edu.dalhousie.business.viewprofile.model;
 
 public class ViewProfileModel {
     private String username;
@@ -120,4 +120,5 @@ public class ViewProfileModel {
     }
 
 }
+
 

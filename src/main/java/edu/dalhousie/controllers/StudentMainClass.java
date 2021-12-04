@@ -5,11 +5,12 @@ import edu.dalhousie.business.DalMembership.controller.menu.MenuImplementation;
 import edu.dalhousie.business.Events.controller.EventApplication;
 import edu.dalhousie.business.Feedback.controllers.FeedbackMenu;
 import edu.dalhousie.business.RoommateFinder.controller.RoommateFinder;
-import edu.dalhousie.business.Scholarship.ScholarshipMenu;
 import edu.dalhousie.business.Tender.controller.Tender.Tender;
+import edu.dalhousie.business.Scholarship.ScholarshipMenu;
 import edu.dalhousie.business.courseregistration.controller.CourseRegistration;
 import edu.dalhousie.business.facilitybooking.controller.FacilityBooking;
-import edu.dalhousie.business.viewprofile.ViewProfile;
+import edu.dalhousie.business.sportnomination.controller.SportsNomination;
+import edu.dalhousie.business.viewprofile.controller.ViewProfile;
 import edu.dalhousie.presentation.StudentView;
 import edu.dalhousie.utilities.PrintHeading;
 
@@ -52,6 +53,7 @@ public class StudentMainClass {
             int choice = view.getInt();
             switch (choice) {
                 case 1:
+                    //call method
                     AddNewApplicationForAdmission addNew = new AddNewApplicationForAdmission();
                     addNew.showNewForm();
                     break;
@@ -88,8 +90,8 @@ public class StudentMainClass {
                     System.out.println("You selected 9");
                     break;
                 case 10:
-                    //call method
-                    System.out.println("You selected 10");
+                    SportsNomination sportsNomination = new SportsNomination();
+                    sportsNomination.viewSportsNomination();
                     break;
                 case 11:
                     Tender tender = new Tender();

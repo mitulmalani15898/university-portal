@@ -4,9 +4,9 @@ package edu.dalhousie.controllers;
 
 import edu.dalhousie.database.DatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import edu.dalhousie.utilities.Hashing;
+//import java.security.MessageDigest;
+//import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -14,8 +14,10 @@ import java.util.Scanner;
 
 public class Login {
     private DatabaseConnection databaseConnection;
+    Hashing performHashing;
     public Login(){
-         this.databaseConnection = DatabaseConnectivity.getInstance();
+        this.databaseConnection = DatabaseConnectivity.getInstance();
+        performHashing = new Hashing();
     }
     public static String[] getUserLoginDetails() {
 
@@ -27,29 +29,12 @@ public class Login {
         Scanner enterpassword = new Scanner(System.in);
         String userpassword = enterpassword.nextLine();
 
-//        String hashedpassword = doPasswordHashing(userpassword);
+        //String hashedpassword = performHashing.doPasswordHashing(userpassword);
 
         String[] input = new String[2];
         input[0] = username;
         input[1] = userpassword;
         return input;
-    }
-
-    public static String doPasswordHashing(String hashpassword) {
-        try {
-            MessageDigest passwordDigest = MessageDigest.getInstance("SHA");
-            passwordDigest.update(hashpassword.getBytes());
-            byte[] resultPassword = passwordDigest.digest();
-            StringBuilder strbuild = new StringBuilder();
-
-            for (byte pwd : resultPassword) {
-                strbuild.append(String.format("%02x", pwd));
-            }
-            return strbuild.toString();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        return "";
     }
 
     public User loginUser(String typeOfLogIn) throws Exception {
