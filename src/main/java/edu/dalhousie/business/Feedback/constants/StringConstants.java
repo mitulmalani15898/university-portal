@@ -24,4 +24,7 @@ public class StringConstants {
     public static String kNeutralPolarity = "Neutral";
     public static String kPositiveWords = "Positive words: ";
     public static String kNegativeWords = "Negative words: ";
+    public static String kSuccess = "Success";
+    public static String kWrongInput = "Wrong input. Please select any one option from the above.";
+    public static String kEFeedbackMenuOptionsSuffix = "N";
 }
