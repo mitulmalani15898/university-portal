@@ -1,9 +1,6 @@
 package edu.dalhousie.business.AddNewApplication.controller;
 
-import edu.dalhousie.business.AddNewApplication.business.AddNewApplicationForAdmissionBusiness;
-import edu.dalhousie.business.AddNewApplication.business.AddNewApplicationForAdmissionValidation;
-import edu.dalhousie.business.AddNewApplication.business.IAddNewApplicationForAdmissionBusiness;
-import edu.dalhousie.business.AddNewApplication.business.IAddNewApplicationForAdmissionValidation;
+import edu.dalhousie.business.AddNewApplication.business.*;
 import edu.dalhousie.business.AddNewApplication.data.AddNewApplicationForAdmissionData;
 import edu.dalhousie.business.AddNewApplication.data.IAddNewApplicationForAdmissionData;
 import edu.dalhousie.business.AddNewApplication.model.AddNewApplicationFormObject;
@@ -18,7 +15,7 @@ public class AddNewApplicationForAdmission implements IAddNewApplicationForAdmis
     StudentView view;
     AddNewApplicationFormObject addNewApplication;
     IAddNewApplicationForAdmissionValidation addNewApplicationForAdmissionValidation;
-    IAddNewApplicationForAdmissionBusiness addNewApplicationForAdmissionBusiness;
+    AddNewApplicationForAdmissionTemplate addNewApplicationForAdmissionBusiness;
     IAddNewApplicationForAdmissionData storeAdmissionInfo;
     AddNewApplicationFormValidation validation;
     StudentMainClass student;
@@ -195,7 +192,7 @@ public class AddNewApplicationForAdmission implements IAddNewApplicationForAdmis
         view.showMessage(StringConstants.kResultWillBeShownInSometime);
 
         storeAdmissionInfo.storeData(addNewApplication);
-        String result = addNewApplicationForAdmissionBusiness.computeResult();
+        String result = addNewApplicationForAdmissionBusiness.calculateScore();
         String score = addNewApplication.getResult();
         storeAdmissionInfo.storeScore(addNewApplication);
         view.showMessage(StringConstants.kDecision + result);
