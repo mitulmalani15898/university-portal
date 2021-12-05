@@ -1,10 +1,17 @@
 package edu.dalhousie.controllers;
 
+import edu.dalhousie.business.AddNewApplication.constants.StringConstants;
 import edu.dalhousie.business.AddNewApplication.controller.AddNewApplicationForAdmission;
+import edu.dalhousie.business.AddNewApplication.controller.AddNewApplicationForAdmissionFactory;
+import edu.dalhousie.business.AddNewApplication.controller.IAddNewApplicationForAdmission;
 import edu.dalhousie.business.DalMembership.controller.menu.MenuImplementation;
 import edu.dalhousie.business.Events.controller.EventApplication;
 import edu.dalhousie.business.Feedback.controllers.FeedbackMenu;
+import edu.dalhousie.business.Feedback.controllers.FeedbackMenuFactory;
+import edu.dalhousie.business.Feedback.controllers.IFeedbackMenu;
+import edu.dalhousie.business.RoommateFinder.controller.IRoommateFinder;
 import edu.dalhousie.business.RoommateFinder.controller.RoommateFinder;
+import edu.dalhousie.business.RoommateFinder.controller.RoommateFinderFactory;
 import edu.dalhousie.business.Tender.controller.Tender.Tender;
 import edu.dalhousie.business.Scholarship.ScholarshipMenu;
 import edu.dalhousie.business.courseregistration.controller.CourseRegistration;
@@ -53,9 +60,8 @@ public class StudentMainClass {
             int choice = view.getInt();
             switch (choice) {
                 case 1:
-                    //call method
-                    AddNewApplicationForAdmission addNew = new AddNewApplicationForAdmission();
-                    addNew.showNewForm();
+                    IAddNewApplicationForAdmission addNewApplicationForAdmission = AddNewApplicationForAdmissionFactory.createAddNewApplicationForAdmission(StringConstants.kAddNewApplication);
+                    addNewApplicationForAdmission.showNewForm();
                     break;
                 case 2:
                     ViewProfile viewProfile = new ViewProfile();
@@ -70,7 +76,7 @@ public class StudentMainClass {
                     feesPaymentDetails.showPaymentInformationMenu();
                     break;
                 case 5:
-                    FeedbackMenu feedbackMenu = new FeedbackMenu();
+                    IFeedbackMenu feedbackMenu = FeedbackMenuFactory.getFeedbackMenu(StringConstants.kFeedbackMenu);
                     feedbackMenu.displayFeedbackMenu();
                     break;
                 case 6:
@@ -82,7 +88,7 @@ public class StudentMainClass {
                     eventApplication.hostEvent();
                     break;
                 case 8:
-                    RoommateFinder roommateFinder = new RoommateFinder();
+                    IRoommateFinder roommateFinder = RoommateFinderFactory.getRoommateFinder(StringConstants.kRoommateFinder);
                     roommateFinder.displayForm();
                     break;
                 case 9:

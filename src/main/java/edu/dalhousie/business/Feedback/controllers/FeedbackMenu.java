@@ -24,10 +24,12 @@ public class FeedbackMenu implements IFeedbackMenu{
         choice = view.getInt();
 
         switch(choice){
-            case 1: IProvideFeedback provideFeedback = new ProvideFeedback();
+            case 1:
+                    IProvideFeedback provideFeedback = ProvideFeedbackFactory.getProvideFeedback(StringConstants.kProvideFeedbac);
                     provideFeedback.displayProvideFeedbackMenu();
                     break;
-            case 2: IDisplayFeedback displayFeedback = new DisplayFeedback();
+            case 2:
+                    IDisplayFeedback displayFeedback = DisplayFeedbackFactory.getDisplayFeedback(StringConstants.kDisplayFeedback);
                     displayFeedback.displayFeedback();
                     break;
             case 3: new SentimentalAnalysisOfFeedback();

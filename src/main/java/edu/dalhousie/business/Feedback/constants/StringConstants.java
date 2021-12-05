@@ -1,7 +1,8 @@
 package edu.dalhousie.business.Feedback.constants;
 
 public class StringConstants {
-    // Feedback
+    public static String kProvideFeedbac = "ProvideFeedback";
+    public static String kDisplayFeedback = "DisplayFeedback";
     public static String kProvideFeedback = "1. Provide feedback";
     public static String kReadFeedbackOfTheCourse = "2. Read feedback of the course";
     public static String kSentimentalAnalysisOfFeedback = "3. Sentimental analysis of the feedback";

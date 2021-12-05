@@ -1,6 +1,9 @@
 package edu.dalhousie.business.AddNewApplication.constants;
 
 public class StringConstants {
+    public static String kAddNewApplication = "AddNewApplicationForAdmission";
+    public static String kFeedbackMenu = "FeedbackMenu";
+    public static String kRoommateFinder = "RoommateFinder";
     public static String kFirstQuestion = "Enter your preferred course name";
     public static String kSecondQuestion = "Enter your previous university/College name";
     public static String kThirdQuestion = "Enter your previous level of education: (1: Diploma, 2: UG, 3:PG, 4:PHD)";

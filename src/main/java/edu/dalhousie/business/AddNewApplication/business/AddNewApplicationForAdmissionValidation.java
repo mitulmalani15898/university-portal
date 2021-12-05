@@ -7,14 +7,13 @@ import edu.dalhousie.presentation.StudentView;
 import java.util.Arrays;
 import java.util.List;
 
-public class AddNewApplicationForAdmissionValidation {
+public class AddNewApplicationForAdmissionValidation implements IAddNewApplicationForAdmissionValidation{
 
     StudentView view;
 
     public AddNewApplicationForAdmissionValidation() {
         view = new StudentView();
     }
-
 
     public AddNewApplicationFormValidation verifyCourseName(String courseName) {
         if (courseName.length()>=4) {
