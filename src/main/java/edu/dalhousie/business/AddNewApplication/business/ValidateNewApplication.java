@@ -7,11 +7,11 @@ import edu.dalhousie.presentation.StudentView;
 import java.util.Arrays;
 import java.util.List;
 
-public class AddNewApplicationForAdmissionValidation implements IAddNewApplicationForAdmissionValidation{
+public class ValidateNewApplication implements IValidateNewApplication {
 
     StudentView view;
 
-    public AddNewApplicationForAdmissionValidation() {
+    public ValidateNewApplication() {
         view = new StudentView();
     }
 

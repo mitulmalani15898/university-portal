@@ -6,7 +6,7 @@ import edu.dalhousie.presentation.StudentView;
 
 import java.util.Locale;
 
-public class AddNewApplicationForAdmissionBusiness extends AddNewApplicationForAdmissionTemplate {
+public class ComputeScoreForNewApplication extends ComputeScoreForNewApplicationTemplate {
 
     private StudentView view;
     private AddNewApplicationFormObject addNewApplicationFormObject;
@@ -21,7 +21,7 @@ public class AddNewApplicationForAdmissionBusiness extends AddNewApplicationForA
     private float score = 0;
     private boolean isPass = true;
 
-    public AddNewApplicationForAdmissionBusiness(AddNewApplicationFormObject addNewApplicationFormObject) {
+    public ComputeScoreForNewApplication(AddNewApplicationFormObject addNewApplicationFormObject) {
         view = new StudentView();
         this.addNewApplicationFormObject = addNewApplicationFormObject;
     }

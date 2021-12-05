@@ -14,8 +14,8 @@ import java.sql.SQLException;
 public class AddNewApplicationForAdmission implements IAddNewApplicationForAdmission{
     StudentView view;
     AddNewApplicationFormObject addNewApplication;
-    IAddNewApplicationForAdmissionValidation addNewApplicationForAdmissionValidation;
-    AddNewApplicationForAdmissionTemplate addNewApplicationForAdmissionBusiness;
+    IValidateNewApplication addNewApplicationForAdmissionValidation;
+    ComputeScoreForNewApplicationTemplate addNewApplicationForAdmissionBusiness;
     IAddNewApplicationForAdmissionData storeAdmissionInfo;
     AddNewApplicationFormValidation validation;
     StudentMainClass student;
@@ -23,8 +23,8 @@ public class AddNewApplicationForAdmission implements IAddNewApplicationForAdmis
     public AddNewApplicationForAdmission() throws SQLException {
         view = new StudentView();
         addNewApplication = new AddNewApplicationFormObject();
-        addNewApplicationForAdmissionValidation = new AddNewApplicationForAdmissionValidation();
-        addNewApplicationForAdmissionBusiness = new AddNewApplicationForAdmissionBusiness(addNewApplication);
+        addNewApplicationForAdmissionValidation = new ValidateNewApplication();
+        addNewApplicationForAdmissionBusiness = new ComputeScoreForNewApplication(addNewApplication);
         storeAdmissionInfo = new AddNewApplicationForAdmissionData();
         validation = new AddNewApplicationFormValidation();
         student = new StudentMainClass();

@@ -2,7 +2,7 @@ package edu.dalhousie.business.AddNewApplication.business;
 
 import edu.dalhousie.business.AddNewApplication.model.AddNewApplicationFormValidation;
 
-public interface IAddNewApplicationForAdmissionValidation {
+public interface IValidateNewApplication {
     public AddNewApplicationFormValidation verifyCourseName(String courseName);
     public AddNewApplicationFormValidation verifyPreviousSchoolName(String previousSchoolName);
     public AddNewApplicationFormValidation verifypreviousLevelOfEducation(String previousLevelOfEducation);

@@ -1,10 +1,10 @@
 package edu.dalhousie.business.Feedback.controllers;
 
-import edu.dalhousie.business.Feedback.business.FeedbackBusiness;
-import edu.dalhousie.business.Feedback.business.IFeedbackBusiness;
+import edu.dalhousie.business.Feedback.business.SentimentalAnalysisForFeedback;
+import edu.dalhousie.business.Feedback.business.ISentimentalAnalysisForFeedback;
 import edu.dalhousie.business.Feedback.data.FeedbackData;
 import edu.dalhousie.business.Feedback.data.IFeedbackData;
-import edu.dalhousie.business.Feedback.model.SentimentAnalysisFeedback;
+import edu.dalhousie.business.Feedback.model.SentimentAnalysisFeedbackModel;
 import edu.dalhousie.business.Feedback.constants.StringConstants;
 import edu.dalhousie.presentation.StudentView;
 
@@ -16,14 +16,14 @@ public class SentimentalAnalysisOfFeedback implements ISentimentalAnalysisOfFeed
 
     StudentView studentView;
     IFeedbackData feedbackData;
-    IFeedbackBusiness feedbackBusiness;
+    ISentimentalAnalysisForFeedback feedbackBusiness;
 
     String courseID;
 
     public SentimentalAnalysisOfFeedback() throws SQLException, IOException {
         studentView = new StudentView();
         feedbackData = new FeedbackData();
-        feedbackBusiness = new FeedbackBusiness();
+        feedbackBusiness = new SentimentalAnalysisForFeedback();
         inputCourseID();
     }
 
@@ -35,7 +35,7 @@ public class SentimentalAnalysisOfFeedback implements ISentimentalAnalysisOfFeed
 
     public void displaySentimentalAnalysisOfFeedback(String courseID) throws SQLException, IOException {
         List<String> feedbacks = feedbackData.retrieveData(courseID);
-        SentimentAnalysisFeedback sentimentAnalysisFeedback = feedbackBusiness.computeSentimentalAnalysis(feedbacks);
+        SentimentAnalysisFeedbackModel sentimentAnalysisFeedback = feedbackBusiness.computeSentimentalAnalysis(feedbacks);
         studentView.showMessage(StringConstants.kPolarity + sentimentAnalysisFeedback.getPolarity());
         studentView.showMessage(StringConstants.kPositiveWords + sentimentAnalysisFeedback.getPositiveWords().toString());
         studentView.showMessage(StringConstants.kNegativeWords + sentimentAnalysisFeedback.getNegativeWords().toString());

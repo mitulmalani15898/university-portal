@@ -1,6 +1,6 @@
 package edu.dalhousie.business.AddNewApplication.business;
 
-public abstract class AddNewApplicationForAdmissionTemplate {
+public abstract class ComputeScoreForNewApplicationTemplate {
 
     public final String calculateScore() {
         computeUniversityScore();

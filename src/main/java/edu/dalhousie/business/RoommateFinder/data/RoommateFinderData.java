@@ -1,5 +1,5 @@
 package edu.dalhousie.business.RoommateFinder.data;
-import edu.dalhousie.business.RoommateFinder.model.RoommateFinderObject;
+import edu.dalhousie.business.RoommateFinder.model.RoommateFinderObjectModel;
 import edu.dalhousie.database.DatabaseConnection;
 
 import java.sql.Connection;
@@ -13,7 +13,7 @@ public class RoommateFinderData implements IRoommateFinderData {
 
     private static DatabaseConnection databaseConnection;
 
-    public void storeData(RoommateFinderObject roommateFinderObject) throws SQLException {
+    public void storeData(RoommateFinderObjectModel roommateFinderObject) throws SQLException {
         String userName = "";
         int gender = roommateFinderObject.getGender();
         int foodPreference = roommateFinderObject.getFoodPreference();
@@ -36,7 +36,7 @@ public class RoommateFinderData implements IRoommateFinderData {
         }
     }
 
-    public List<String> retrieveData(RoommateFinderObject roommateFinderObject) throws SQLException {
+    public List<String> retrieveData(RoommateFinderObjectModel roommateFinderObject) throws SQLException {
         List<String> matches = new ArrayList<>();
 
         String userName = "";

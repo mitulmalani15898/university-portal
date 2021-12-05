@@ -3,17 +3,17 @@ package edu.dalhousie.business.Feedback.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SentimentAnalysisFeedback {
+public class SentimentAnalysisFeedbackModel {
     String polarity;
     List<String> negativeWords;
     List<String> positiveWords;
 
-    public SentimentAnalysisFeedback() {
+    public SentimentAnalysisFeedbackModel() {
         negativeWords = new ArrayList<>();
         positiveWords = new ArrayList<>();
     }
 
-    public SentimentAnalysisFeedback(String polarity, List<String> negativeWords, List<String> positiveWords) {
+    public SentimentAnalysisFeedbackModel(String polarity, List<String> negativeWords, List<String> positiveWords) {
         this.polarity = polarity;
         this.negativeWords = negativeWords;
         this.positiveWords = positiveWords;

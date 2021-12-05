@@ -1,6 +1,6 @@
 package edu.dalhousie.business.RoommateFinder.model;
 
-public class RoommateFinderObject {
+public class RoommateFinderObjectModel {
     String userName;
     int gender;
     int foodPreference;
