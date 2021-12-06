@@ -1,6 +1,7 @@
 package edu.dalhousie.business.addnewapplication.model;
 
 public class AddNewApplicationFormObject {
+
     String course;
     String university;
     String education;
@@ -14,6 +15,25 @@ public class AddNewApplicationFormObject {
     String GMAT;
     String GATE;
     String score;
+
+
+    public AddNewApplicationFormObject() {
+    }
+
+    public AddNewApplicationFormObject(String course, String university, String education, String gpa, String tenthMarks, String twelfthMarks, String IELTS, String GRE, String researchPapers, String workExp, String GMAT, String GATE) {
+        this.course = course;
+        this.university = university;
+        this.education = education;
+        this.gpa = gpa;
+        this.tenthMarks = tenthMarks;
+        this.twelfthMarks = twelfthMarks;
+        this.IELTS = IELTS;
+        this.GRE = GRE;
+        this.researchPapers = researchPapers;
+        this.workExp = workExp;
+        this.GMAT = GMAT;
+        this.GATE = GATE;
+    }
 
     public String getCourse() {
         return course;

@@ -10,6 +10,19 @@ public class FeedbackObjectModel {
     int professionalDevelopment;
     int needsMet;
 
+    public FeedbackObjectModel() {
+    }
+
+    public FeedbackObjectModel(String courseID, String feedback, int professorRating, int difficultyLevel, int recommendation, int professionalDevelopment, int needsMet) {
+        this.courseID = courseID;
+        this.feedback = feedback;
+        this.professorRating = professorRating;
+        this.difficultyLevel = difficultyLevel;
+        this.recommendation = recommendation;
+        this.professionalDevelopment = professionalDevelopment;
+        this.needsMet = needsMet;
+    }
+
     public String getCourseID() {
         return courseID;
     }
