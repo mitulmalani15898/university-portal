@@ -4,15 +4,15 @@
  * */
 package edu.dalhousie.controllers;
 
-import edu.dalhousie.business.Payment.controller.EMIPayment.EMIPaymentPlans;
-import edu.dalhousie.business.Payment.controller.FullPayment.FullPayment;
-import edu.dalhousie.business.Payment.controller.PaymentInformation.ShowPaymentInformation;
-import edu.dalhousie.business.Payment.database.PaymentDetails.PaymentDetailsDAOQueryBuilder;
-import edu.dalhousie.business.Payment.database.PaymentDetails.PaymentDetailsQueryBuilder;
-import edu.dalhousie.business.Payment.database.PaymentStatus.IPaymentStatusDAOQueryBuilder;
-import edu.dalhousie.business.Payment.database.PaymentStatus.IUpdatePaymentStatusDAOQueryBuilder;
-import edu.dalhousie.business.Payment.database.PaymentStatus.PaymentStatusQueryBuilder;
-import edu.dalhousie.business.Payment.database.PaymentStatus.UpdatePaymentStatusQueryBuilder;
+import edu.dalhousie.business.payment.controller.EMIPayment.EMIPaymentPlans;
+import edu.dalhousie.business.payment.controller.FullPayment.FullPayment;
+import edu.dalhousie.business.payment.controller.PaymentInformation.ShowPaymentInformation;
+import edu.dalhousie.business.payment.database.PaymentDetails.PaymentDetailsDAOQueryBuilder;
+import edu.dalhousie.business.payment.database.PaymentDetails.PaymentDetailsQueryBuilder;
+import edu.dalhousie.business.payment.database.PaymentStatus.IPaymentStatusDAOQueryBuilder;
+import edu.dalhousie.business.payment.database.PaymentStatus.IUpdatePaymentStatusDAOQueryBuilder;
+import edu.dalhousie.business.payment.database.PaymentStatus.PaymentStatusQueryBuilder;
+import edu.dalhousie.business.payment.database.PaymentStatus.UpdatePaymentStatusQueryBuilder;
 import edu.dalhousie.database.DatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
 import edu.dalhousie.presentation.StudentView;
