@@ -1,3 +1,7 @@
+/**
+ * Author: Abhishek karthik Manikandan
+ * Banner ID: B00870510
+ */
 package edu.dalhousie.business.tender.controller;
 
 import edu.dalhousie.business.tender.model.Auctioneer;
@@ -10,7 +14,8 @@ public class TenderComparator implements Comparator<Auctioneer> {
         int comparison = auctioneer1.getBidAmount() - auctioneer2.getBidAmount();
 
         if (comparison == 0) {
-            comparison = (int) (auctioneer1.getTimeOfPlacingABid().getTime() - auctioneer2.getTimeOfPlacingABid().getTime());
+            comparison = (int) (auctioneer1.getTimeOfPlacingABid().getTime()
+                    - auctioneer2.getTimeOfPlacingABid().getTime());
         }
 
         return comparison;

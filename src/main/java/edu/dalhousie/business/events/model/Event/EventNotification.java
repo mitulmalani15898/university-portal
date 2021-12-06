@@ -1,3 +1,7 @@
+/**
+ * Author: Abhishek karthik Manikandan
+ * Banner ID: B00870510
+ * */
 package edu.dalhousie.business.events.model.Event;
 
 import edu.dalhousie.business.events.controller.email.EmailFactory;
@@ -8,16 +12,15 @@ import edu.dalhousie.presentation.StudentView;
 import java.util.Scanner;
 
 public class EventNotification {
-    private StudentView studentView;
-    private EmailFactory emailFactory;
-    private SendEmail Email;
-    private Scanner scanner;
+    private final StudentView studentView;
+    private final EmailFactory emailFactory;
+    private final SendEmail Email;
+    private final Scanner scanner = new Scanner(System.in);
 
     public EventNotification() {
         this.studentView = new StudentView();
         this.emailFactory = new EmailFactory();
         this.Email = new SendEmail();
-        this.scanner = new Scanner(System.in);
     }
 
     public void sendEventNotification(String schoolName) {
@@ -39,11 +42,7 @@ public class EventNotification {
     public boolean invitationStatus() {
         this.studentView.showMessage("Enter Event Invitation Status (Accepted/Rejected) : ");
         String status = this.studentView.getString();
-        if (status.equalsIgnoreCase("accepted")) {
-            return true;
-        } else {
-            return false;
-        }
+        return status.equalsIgnoreCase("accepted");
     }
 
     public void sendWinnerMessage(){

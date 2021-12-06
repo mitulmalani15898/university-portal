@@ -1,3 +1,7 @@
+/**
+ * Author: Abhishek karthik Manikandan
+ * Banner ID: B00870510
+ */
 package edu.dalhousie.business.tender.controller.Tender;
 
 import edu.dalhousie.business.tender.controller.TenderComparator;
@@ -15,10 +19,11 @@ public class Tender extends AbstractTender {
 
     private static ITenderWinnerDAOQueryBuilder iTenderWinnerDAOQueryBuilder;
     private static DatabaseConnection databaseConnection;
+
     @Override
     public Auctioneer findBestAuctioneer() {
         Set<Auctioneer> activeAuctioneers = new HashSet<>(bidders);
-        System.out.println("Starting auction for : "+ this.tenderEvent);
+        System.out.println("Starting auction for : " + this.tenderEvent);
         while (activeAuctioneers.size() > 1) {
             Auctioneer lowestAuctioneer = null;
 
@@ -57,7 +62,7 @@ public class Tender extends AbstractTender {
         List Auctioneers = new ArrayList<>();
         System.out.println("Enter the number of bidders:");
         int size = sc.nextInt();
-        for(int i=0;i<size;i++){
+        for (int i = 0; i < size; i++) {
             System.out.println("Enter Auctioneer name:");
             String auctioneerName = sc.next();
             System.out.println("Enter base amount:");
@@ -67,7 +72,7 @@ public class Tender extends AbstractTender {
             System.out.println("Enter incremental amount:");
             int incrementalValueForEachRound = sc.nextInt();
             Auctioneers.add(new Auctioneer(auctioneerName,
-                    biddingAmount,maximumBiddingAmount,incrementalValueForEachRound));
+                    biddingAmount, maximumBiddingAmount, incrementalValueForEachRound));
         }
         addNewAuctioneers(Auctioneers);
         Auctioneer winner = startTender();
@@ -76,8 +81,8 @@ public class Tender extends AbstractTender {
                 databaseConnection.getDatabaseConnection();
         final Statement statement =
                 connection.createStatement();
-                statement.executeUpdate(
-                        iTenderWinnerDAOQueryBuilder
-                                .updateWinner(winnerName));
+        statement.executeUpdate(
+                iTenderWinnerDAOQueryBuilder
+                        .updateWinner(winnerName));
     }
 }

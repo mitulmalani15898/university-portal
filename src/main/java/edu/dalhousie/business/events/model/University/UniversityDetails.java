@@ -1,3 +1,7 @@
+/**
+ * Author: Abhishek karthik Manikandan
+ * Banner ID: B00870510
+ * */
 package edu.dalhousie.business.events.model.University;
 
 import edu.dalhousie.business.events.model.Event.EventNotification;
@@ -40,7 +44,6 @@ public class UniversityDetails implements StudentIterator {
     public boolean sendNotificationToSchool(String schoolName){
         eventNotification = new EventNotification();
         eventNotification.sendEventNotification(schoolName);
-
         return eventNotification.invitationStatus();
     }
 }

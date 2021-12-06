@@ -1,3 +1,7 @@
+/**
+ * Author: Abhishek karthik Manikandan
+ * Banner ID: B00870510
+ */
 package edu.dalhousie.business.tender.controller.Tender;
 
 import edu.dalhousie.business.tender.model.Auctioneer;
@@ -8,6 +12,7 @@ public abstract class AbstractTender implements ITender {
     protected String tenderEvent = null;
     protected Collection<Auctioneer> bidders = new HashSet<>();
     Scanner sc = new Scanner(System.in);
+
     public abstract Auctioneer findBestAuctioneer() throws Exception;
 
     @Override
@@ -31,15 +36,14 @@ public abstract class AbstractTender implements ITender {
         }
         if (bidders.size() == 1) {
             Auctioneer winner = bidders.iterator().next();
-            System.out.println(winner.getName()+" won auction for" +this.tenderEvent);
+            System.out.println(winner.getName() + " won auction for" + this.tenderEvent);
             return winner;
         }
 
         Auctioneer winner = findBestAuctioneer();
-        System.out.println(winner.getName()+" won auction for " +this.tenderEvent);
+        System.out.println(winner.getName() + " won auction for " + this.tenderEvent);
         return winner;
     }
-
 
 
 }

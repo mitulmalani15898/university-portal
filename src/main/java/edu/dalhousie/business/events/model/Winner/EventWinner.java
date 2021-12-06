@@ -1,3 +1,7 @@
+/**
+ * Author: Abhishek karthik Manikandan
+ * Banner ID: B00870510
+ * */
 package edu.dalhousie.business.events.model.Winner;
 
 public class EventWinner {
