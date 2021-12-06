@@ -12,7 +12,8 @@ import edu.dalhousie.business.roommatefinder.controller.RoommateFinderFactory;
 import edu.dalhousie.business.scholarship.controller.ScholarshipMenu;
 import edu.dalhousie.business.tender.controller.Tender.Tender;
 import edu.dalhousie.business.courseregistration.controller.CourseRegistration;
-import edu.dalhousie.business.facilitybooking.controller.FacilityBooking;
+import edu.dalhousie.business.facilitybooking.controller.FacilityBookingFactory;
+import edu.dalhousie.business.facilitybooking.controller.IFacilityBooking;
 import edu.dalhousie.business.sportnomination.controller.SportsNomination;
 import edu.dalhousie.business.viewprofile.controller.ViewProfile;
 import edu.dalhousie.presentation.StudentView;
@@ -53,7 +54,7 @@ public class StudentMainClass {
             view.showMessage("13. " + facilityBooking);
             view.showMessage("14. " + logout);
 
-            System.out.println("Enter your choice\n");
+            System.out.println("\nEnter your choice:");
             int choice = view.getInt();
             switch (choice) {
                 case 1:
@@ -105,7 +106,7 @@ public class StudentMainClass {
                     menu.start();
                     break;
                 case 13:
-                    FacilityBooking facilityBooking = new FacilityBooking();
+                    IFacilityBooking facilityBooking = FacilityBookingFactory.initialize().getFacilityBooking();
                     facilityBooking.startFacilityBookingService();
                     break;
                 case 14:

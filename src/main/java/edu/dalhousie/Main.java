@@ -1,6 +1,7 @@
-package edu.dalhousie.controllers;
+package edu.dalhousie;
 
 
+import edu.dalhousie.controllers.WelcomeClass;
 import edu.dalhousie.logger.ILogger;
 import edu.dalhousie.logger.LoggerAbstractFactory;
 

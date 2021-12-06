@@ -1,6 +1,6 @@
 package edu.dalhousie.business.facilitybooking.model;
 
-public class Facility {
+public class Facility implements IFacility {
     private int facilityId;
     private String facilityName;
     private String availableDate;

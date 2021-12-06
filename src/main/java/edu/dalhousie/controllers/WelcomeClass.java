@@ -28,7 +28,7 @@ public class WelcomeClass {
         view.showMessage("3. " + loginAsStudent);
         view.showMessage("4. " + loginAsFaculty);
         view.showMessage("5. " + exit);
-        view.showMessage("Enter your choice");
+        view.showMessage("\nEnter your choice:");
         choice = view.getInt();
 
         switch (choice) {
