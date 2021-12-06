@@ -1,163 +1,113 @@
 package edu.dalhousie.business.viewprofile.controller;
 
-import edu.dalhousie.controllers.StudentMainClass;
-import edu.dalhousie.database.DatabaseConnection;
-import edu.dalhousie.database.DatabaseConnectivity;
+import edu.dalhousie.business.registration.business.ValidatePassword;
+import edu.dalhousie.business.viewprofile.constants.ViewProfileConstants;
+import edu.dalhousie.business.viewprofile.database.IUpdateProfileConnection;
+import edu.dalhousie.business.viewprofile.database.IViewProfileConnection;
+import edu.dalhousie.business.viewprofile.model.IViewProfileModel;
+import edu.dalhousie.presentation.IStudentView;
+import edu.dalhousie.presentation.StudentViewFactory;
 import edu.dalhousie.utilities.Hashing;
-import edu.dalhousie.controllers.User;
-import edu.dalhousie.business.viewprofile.model.ViewProfileModel;
-import edu.dalhousie.presentation.StudentView;
 import edu.dalhousie.utilities.PrintHeading;
-import edu.dalhousie.business.viewprofile.database.ViewProfileConnection;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-public class ViewProfile
-{
-    StudentView view;
-    StudentMainClass studentMenu;
+public class ViewProfile implements IViewProfile {
     Hashing performHashing;
-    //User userDetails;
-    ViewProfileModel viewProfileModel;
-    ViewProfileConnection viewProfileConnection;
-    private DatabaseConnection databaseConnection;
+    ValidatePassword validatePassword;
+    IStudentView view = StudentViewFactory.getInstance().getStudentView();
+    IViewProfileModel viewProfileModel = ViewProfileFactory.initialize().getViewProfileModel();
+    IViewProfileConnection viewProfileConnection = ViewProfileFactory.initialize().getViewProfileConnection();
+    IUpdateProfileConnection updateProfileConnection = ViewProfileFactory.initialize().getUpdateProfileConnection();
 
     public ViewProfile() {
-        this.databaseConnection = DatabaseConnectivity.getInstance();
-        view = new StudentView();
-        studentMenu = new StudentMainClass();
         performHashing = new Hashing();
-        viewProfileConnection = new ViewProfileConnection();
-        //userDetails = new User();
-        viewProfileModel = new ViewProfileModel();
-        //viewProfileModel.setUserID(userDetails.getUserName());
-        //viewProfileModel.setUserID("mitul.malani");
+        validatePassword = new ValidatePassword();
     }
 
-    public void displayProfile()
-    {
-        try
-        {
+    public void displayAndEditProfile() {
+        try {
             viewProfileConnection.executeViewTable();
 
-            view.showMessage("Username:\t\t\t" + viewProfileModel.getUsername());
-            view.showMessage("First name:\t\t\t" + viewProfileModel.getFirstName());
-            view.showMessage("Last name:\t\t\t" + viewProfileModel.getLastName());
-            view.showMessage("Email address:\t\t" + viewProfileModel.getEmail());
-            view.showMessage("Contact number:\t\t" + viewProfileModel.getContactNumber());
-            view.showMessage("Date of Birth:\t\t" + viewProfileModel.getDateOfBirth());
-            view.showMessage("Gender:\t\t\t\t" + viewProfileModel.getGender());
-            view.showMessage("Address:\t\t\t" + viewProfileModel.getStreetAddress());
-            view.showMessage("Apartment number:\t" + viewProfileModel.getApartmentNumber());
-            view.showMessage("City:\t\t\t\t" + viewProfileModel.getCity());
-            view.showMessage("Province:\t\t\t" + viewProfileModel.getProvince());
-            view.showMessage("Zip code:\t\t\t" + viewProfileModel.getZipcode());
-
-
-            view.showMessage("Do you want to update your details: (Yes, No)");
+            view.showMessage(ViewProfileConstants.updateOption);
             String choice = view.getString();
-            if(choice.equalsIgnoreCase("Yes")) {
+            if (choice.equalsIgnoreCase("Yes")) {
 
-                view.showMessage("Enter your first name:");
-                String firstName = view.getString();
-                viewProfileConnection.executeUpdateTable("first_name",firstName);
+                view.showMessage(ViewProfileConstants.enterFirstName);
+                viewProfileModel.setFirstName(view.getString());
+                updateProfileConnection.executeUpdateProfile("first_name", viewProfileModel.getFirstName());
 
-                view.showMessage("Enter your last name:");
-                String lastName = view.getString();
-                viewProfileConnection.executeUpdateTable("last_name",lastName);
+                view.showMessage(ViewProfileConstants.enterLastName);
+                viewProfileModel.setLastName(view.getString());
+                updateProfileConnection.executeUpdateProfile("last_name", viewProfileModel.getFirstName());
 
-                view.showMessage("Enter your contact number:");
-                String contactNumber = view.getString();
-                viewProfileConnection.executeUpdateTable("contact_number",contactNumber);
+                view.showMessage(ViewProfileConstants.enterContactNumber);
+                viewProfileModel.setContactNumber(view.getString());
+                updateProfileConnection.executeUpdateProfile("contact_number", viewProfileModel.getContactNumber());
 
-                view.showMessage("Enter your Password (Must include uppercase, lowercase letters along with numeric and special characters):");
+                view.showMessage(ViewProfileConstants.enterPassword);
                 String password = view.getString();
 
-                if(!password.equalsIgnoreCase("No"))
-                {
-                    while (!password.isEmpty() && isInvalidPassword(password))
-                    {
-                        view.showMessage("Enter your password (Must include uppercase, lowercase letters along with numeric and special characters): ");
+                if (!password.equalsIgnoreCase("No")) {
+                    while (!password.isEmpty() && validatePassword.isInvalidPassword(password)) {
+                        view.showMessage(ViewProfileConstants.enterPassword);
                         password = view.getString();
                     }
                 }
 
-                view.showMessage("Verify your Password:");
+                view.showMessage(ViewProfileConstants.enterVerifyPassword);
                 String verifyPassword = view.getString();
 
-                while (!verifyPassword.equals(password))
-                {
-                    view.showMessage("Verify your Password (confirm password should be match with password): ");
+                while (!verifyPassword.equals(password)) {
+                    view.showMessage(ViewProfileConstants.enterVerifyPasswordAgain);
                     verifyPassword = view.getString();
                 }
 
-                if(!password.equalsIgnoreCase("No") && !verifyPassword.equalsIgnoreCase("No"))
-                {
+                if (!password.equalsIgnoreCase("No") && !verifyPassword.equalsIgnoreCase("No")) {
                     String hashed_password = performHashing.doPasswordHashing(password);
-                    viewProfileConnection.executeUpdateTable("password",hashed_password);
+                    updateProfileConnection.executeUpdateProfile("password", hashed_password);
                 }
 
-                view.showMessage("Enter your Date of Birth: (MM-DD-YY)");
-                String dob = view.getString();
-                viewProfileConnection.executeUpdateTable("dob",dob);
+                view.showMessage(ViewProfileConstants.enterDateOfBirth);
+                viewProfileModel.setDateOfBirth(view.getString());
+                updateProfileConnection.executeUpdateProfile("dob", viewProfileModel.getDateOfBirth());
 
-                view.showMessage("Enter your gender: (M - Male, F - Female, O - Other)");
-                String gender = view.getString();
-                viewProfileConnection.executeUpdateTable("gender",gender);
+                view.showMessage(ViewProfileConstants.enterGender);
+                viewProfileModel.setGender(view.getString());
+                updateProfileConnection.executeUpdateProfile("gender", viewProfileModel.getGender());
 
-                view.showMessage("Enter your address:");
-                String address = view.getString();
-                viewProfileConnection.executeUpdateTable("address",address);
+                view.showMessage(ViewProfileConstants.enterAddress);
+                viewProfileModel.setStreetAddress(view.getString());
+                updateProfileConnection.executeUpdateProfile("address", viewProfileModel.getStreetAddress());
 
-                view.showMessage("Enter your apartment number: (if any)");
-                String apartmentNumber = view.getString();
-                viewProfileConnection.executeUpdateTable("apartment_number",apartmentNumber);
+                view.showMessage(ViewProfileConstants.enterApartmentNumber);
+                viewProfileModel.setApartmentNumber(view.getString());
+                updateProfileConnection.executeUpdateProfile("apartment_number", viewProfileModel.getApartmentNumber());
 
-                view.showMessage("Enter your city:");
-                String city = view.getString();
-                viewProfileConnection.executeUpdateTable("city",city);
+                view.showMessage(ViewProfileConstants.enterCity);
+                viewProfileModel.setCity(view.getString());
+                updateProfileConnection.executeUpdateProfile("city", viewProfileModel.getCity());
 
-                view.showMessage("Enter your province/state:");
-                String province = view.getString();
-                viewProfileConnection.executeUpdateTable("province",province);
+                view.showMessage(ViewProfileConstants.enterProvince);
+                viewProfileModel.setProvince(view.getString());
+                updateProfileConnection.executeUpdateProfile("province", viewProfileModel.getProvince());
 
-                view.showMessage("Enter your zip code:");
-                String zipCode = view.getString();
-                viewProfileConnection.executeUpdateTable("zip_code",zipCode);
+                view.showMessage(ViewProfileConstants.enterZipCode);
+                viewProfileModel.setZipcode(view.getString());
+                updateProfileConnection.executeUpdateProfile("zip_code", viewProfileModel.getZipcode());
 
-                view.showMessage("\nUpdating your details...\n");
-                view.showMessage("Details updated...\n");
+                view.showMessage(ViewProfileConstants.updating);
+                view.showMessage(ViewProfileConstants.updated);
 
-                view.showMessage("Press '0' to go back");
-                int userChoice = view.getInt();
-                if (userChoice == 0) {
-                    studentMenu.displayStudentMenu();
-                }
             }
-            else if(choice.equalsIgnoreCase("No"))
-            {
-                studentMenu.displayStudentMenu();
-            }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public boolean isInvalidPassword(String password) {
-        String passwordRegex = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!\"#$%&'()*+,-./:;<=>?@\\[\\]^_`{|}~]).{4,20}$";
-        Pattern pattern = Pattern.compile(passwordRegex);
-        Matcher matcher = pattern.matcher(password);
-        return !matcher.matches();
-    }
-
-    public void viewProfilePage(String typeOfLogIn)
-    {
+    public void viewProfilePage(String typeOfLogIn) {
         boolean isStudent = typeOfLogIn.equals("student");
         String title = isStudent ? "View Student Profile" : "View Faculty Profile";
         PrintHeading.printHeadingForTheScreen(title, 38);
-        displayProfile();
+        displayAndEditProfile();
     }
+
 }

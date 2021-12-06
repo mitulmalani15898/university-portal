@@ -1,6 +1,6 @@
 package edu.dalhousie.business.viewprofile.model;
 
-public class ViewProfileModel {
+public class ViewProfileModel implements IViewProfileModel {
     private String username;
     private String firstName;
     private String lastName;
@@ -120,5 +120,3 @@ public class ViewProfileModel {
     }
 
 }
-
-
