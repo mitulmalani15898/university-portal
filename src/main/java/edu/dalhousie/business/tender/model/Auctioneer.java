@@ -42,9 +42,9 @@ public class Auctioneer {
         return bidAmount;
     }
 
-    public Auctioneer(String name, int bid, int maximumAmount, int increment) {
+    public Auctioneer(String name, int bidAmount, int maximumAmount, int increment) {
         this.name = name;
-        this.bidAmount = bid;
+        this.bidAmount = bidAmount;
         this.maximumAmount = maximumAmount;
         this.increment = increment;
         this.timeOfPlacingABid = new Date();

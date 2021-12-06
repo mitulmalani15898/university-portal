@@ -10,7 +10,7 @@ import java.util.*;
 
 public abstract class AbstractTender implements ITender {
     protected String tenderEvent = null;
-    protected Collection<Auctioneer> bidders = new HashSet<>();
+    protected Collection<Auctioneer> auctioneers = new HashSet<>();
     Scanner sc = new Scanner(System.in);
 
     public abstract Auctioneer findBestAuctioneer() throws Exception;
@@ -21,8 +21,8 @@ public abstract class AbstractTender implements ITender {
     }
 
     @Override
-    public void addNewAuctioneers(Collection<Auctioneer> bidders) {
-        this.bidders.addAll(bidders);
+    public void addNewAuctioneers(Collection<Auctioneer> auctioneers) {
+        this.auctioneers.addAll(auctioneers);
     }
 
     @Override
@@ -31,11 +31,11 @@ public abstract class AbstractTender implements ITender {
             throw new Exception("Event is not set and hence tender is canceled.");
         }
 
-        if (bidders.size() == 0) {
-            throw new Exception("No bidders turned up and hence cancelling the auction.");
+        if (auctioneers.size() == 0) {
+            throw new Exception("No auctioneers turned up and hence cancelling the auction.");
         }
-        if (bidders.size() == 1) {
-            Auctioneer winner = bidders.iterator().next();
+        if (auctioneers.size() == 1) {
+            Auctioneer winner = auctioneers.iterator().next();
             System.out.println(winner.getName() + " won auction for" + this.tenderEvent);
             return winner;
         }

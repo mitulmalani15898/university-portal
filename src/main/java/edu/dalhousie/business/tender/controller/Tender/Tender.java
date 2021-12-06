@@ -17,32 +17,30 @@ import java.util.*;
 
 public class Tender extends AbstractTender {
 
-    private static ITenderWinnerDAOQueryBuilder iTenderWinnerDAOQueryBuilder;
-    private static DatabaseConnection databaseConnection;
-
     @Override
     public Auctioneer findBestAuctioneer() {
-        Set<Auctioneer> activeAuctioneers = new HashSet<>(bidders);
+        Set<Auctioneer> activeAuctioneers = new HashSet<>(auctioneers);
         System.out.println("Starting auction for : " + this.tenderEvent);
         while (activeAuctioneers.size() > 1) {
             Auctioneer lowestAuctioneer = null;
 
-            for (Auctioneer bidder : bidders) {
+            for (Auctioneer auctioneer : auctioneers) {
 
-                if (!activeAuctioneers.contains(bidder)) {
+                if (!activeAuctioneers.contains(auctioneer)) {
                     continue;
                 }
 
-                int nextBid = bidder.getBidAmount() + bidder.getIncrement();
+                int nextBid = auctioneer.getBidAmount() + auctioneer.getIncrement();
 
-                if (bidder.getMaximumAmount() < nextBid) {
-                    activeAuctioneers.remove(bidder);
+                if (auctioneer.getMaximumAmount() < nextBid) {
+                    activeAuctioneers.remove(auctioneer);
                     continue;
                 }
 
                 if (lowestAuctioneer == null ||
-                        (nextBid < lowestAuctioneer.getBidAmount() + lowestAuctioneer.getIncrement())) {
-                    lowestAuctioneer = bidder;
+                        (nextBid < lowestAuctioneer.getBidAmount()
+                                + lowestAuctioneer.getIncrement())) {
+                    lowestAuctioneer = auctioneer;
                 }
             }
 
@@ -50,29 +48,29 @@ public class Tender extends AbstractTender {
                 lowestAuctioneer.bid();
             }
         }
-        return Collections.max(bidders, new TenderComparator());
+        return Collections.max(auctioneers, new TenderComparator());
     }
 
     public void getTenderData() throws Exception {
-        iTenderWinnerDAOQueryBuilder = new TenderWinnerQueryBuilder();
-        databaseConnection = DatabaseConnectivity.getInstance();
+        ITenderWinnerDAOQueryBuilder iTenderWinnerDAOQueryBuilder = new TenderWinnerQueryBuilder();
+        DatabaseConnection databaseConnection = DatabaseConnectivity.getInstance();
         System.out.println("Enter the event name:");
         String eventName = sc.nextLine();
         setTenderEvent(eventName);
         List Auctioneers = new ArrayList<>();
-        System.out.println("Enter the number of bidders:");
+        System.out.println("Enter the number of Auctioneers:");
         int size = sc.nextInt();
         for (int i = 0; i < size; i++) {
             System.out.println("Enter Auctioneer name:");
             String auctioneerName = sc.next();
-            System.out.println("Enter base amount:");
-            int biddingAmount = sc.nextInt();
+            System.out.println("Enter initial amount:");
+            int initialAmount = sc.nextInt();
             System.out.println("Enter maximum amount:");
-            int maximumBiddingAmount = sc.nextInt();
+            int maximumAmount = sc.nextInt();
             System.out.println("Enter incremental amount:");
             int incrementalValueForEachRound = sc.nextInt();
             Auctioneers.add(new Auctioneer(auctioneerName,
-                    biddingAmount, maximumBiddingAmount, incrementalValueForEachRound));
+                    initialAmount, maximumAmount, incrementalValueForEachRound));
         }
         addNewAuctioneers(Auctioneers);
         Auctioneer winner = startTender();
