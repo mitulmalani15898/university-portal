@@ -90,7 +90,7 @@
                             <transformers>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>edu.dalhousie.Main</mainClass>
+                                    <mainClass>edu.dalhousie.controllers.Main</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

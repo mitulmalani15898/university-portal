@@ -1,15 +1,15 @@
 package edu.dalhousie.controllers;
 
-import edu.dalhousie.business.AddNewApplication.constants.StringConstants;
-import edu.dalhousie.business.AddNewApplication.controller.AddNewApplicationForAdmissionFactory;
-import edu.dalhousie.business.AddNewApplication.controller.IAddNewApplicationForAdmission;
+import edu.dalhousie.business.addnewapplication.constants.StringConstants;
+import edu.dalhousie.business.addnewapplication.controller.AddNewApplicationForAdmissionFactory;
+import edu.dalhousie.business.addnewapplication.controller.IAddNewApplicationForAdmission;
 import edu.dalhousie.business.dalmembership.controller.menu.MenuImplementation;
 import edu.dalhousie.business.events.controller.EventApplication;
-import edu.dalhousie.business.Feedback.controllers.FeedbackMenuFactory;
-import edu.dalhousie.business.Feedback.controllers.IFeedbackMenu;
-import edu.dalhousie.business.RoommateFinder.controller.IRoommateFinder;
-import edu.dalhousie.business.RoommateFinder.controller.RoommateFinderFactory;
-import edu.dalhousie.business.Scholarship.controller.ScholarshipMenu;
+import edu.dalhousie.business.feedback.controllers.FeedbackMenuFactory;
+import edu.dalhousie.business.feedback.controllers.IFeedbackMenu;
+import edu.dalhousie.business.roommatefinder.controller.IRoommateFinder;
+import edu.dalhousie.business.roommatefinder.controller.RoommateFinderFactory;
+import edu.dalhousie.business.scholarship.controller.ScholarshipMenu;
 import edu.dalhousie.business.tender.controller.Tender.Tender;
 import edu.dalhousie.business.courseregistration.controller.CourseRegistration;
 import edu.dalhousie.business.facilitybooking.controller.FacilityBooking;
