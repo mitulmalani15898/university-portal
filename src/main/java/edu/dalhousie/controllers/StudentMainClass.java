@@ -106,7 +106,7 @@ public class StudentMainClass {
                     menu.start();
                     break;
                 case 13:
-                    IFacilityBooking facilityBooking = FacilityBookingFactory.initialize().getFacilityBooking();
+                    IFacilityBooking facilityBooking = FacilityBookingFactory.getInstance().getFacilityBooking();
                     facilityBooking.startFacilityBookingService();
                     break;
                 case 14:

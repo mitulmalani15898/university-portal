@@ -13,9 +13,9 @@ import java.util.List;
 
 public class FacilityBooking implements IFacilityBooking {
     public void renderFacilityAvailability(String facility) {
-        IStudentView view = StudentViewFactory.initialize().getStudentView();
-        IGetFacilityAvailability facilityAvailability = FacilityBookingFactory.initialize().getGetFacilityAvailability();
-        IAvailableFacilitySlots facilitySlots = FacilityBookingFactory.initialize().getAvailableFacilitySlots();
+        IStudentView view = StudentViewFactory.getInstance().getStudentView();
+        IGetFacilityAvailability facilityAvailability = FacilityBookingFactory.getInstance().getGetFacilityAvailability();
+        IAvailableFacilitySlots facilitySlots = FacilityBookingFactory.getInstance().getAvailableFacilitySlots();
         facilityAvailability.getFacilityAvailability(facility);
         List<Facility> availableFacilitySlots = facilitySlots.getFacilitySlots();
         view.showFormattedMessage("\n%40s\n", FacilityBookingConstants.availableFacilityTitle.concat(facility).toUpperCase());
@@ -32,7 +32,7 @@ public class FacilityBooking implements IFacilityBooking {
     }
 
     public void bookFacilityForm() {
-        IStudentView view = StudentViewFactory.initialize().getStudentView();
+        IStudentView view = StudentViewFactory.getInstance().getStudentView();
         String facilityChoice = "";
         view.showMessage(FacilityBookingConstants.enterChoiceForFacility);
         facilityChoice = view.getString();
@@ -46,8 +46,8 @@ public class FacilityBooking implements IFacilityBooking {
     }
 
     public void renderFacilityBookingForm() {
-        IStudentView view = StudentViewFactory.initialize().getStudentView();
-        IValidateFacilityBooking validateFacilityBooking = FacilityBookingFactory.initialize().getValidateFacilityBooking();
+        IStudentView view = StudentViewFactory.getInstance().getStudentView();
+        IValidateFacilityBooking validateFacilityBooking = FacilityBookingFactory.getInstance().getValidateFacilityBooking();
         String username = "";
         System.out.println(FacilityBookingConstants.enterUsername);
         username = view.getString();

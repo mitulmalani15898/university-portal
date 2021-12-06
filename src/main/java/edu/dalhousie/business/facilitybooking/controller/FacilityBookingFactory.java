@@ -10,6 +10,7 @@ import edu.dalhousie.business.facilitybooking.model.*;
 
 public class FacilityBookingFactory {
     private static FacilityBookingFactory facilityBookingFactory = null;
+
     IFacilityBooking facilityBooking;
     IValidateFacilityBooking validateFacilityBooking;
     IGetAllUsers getAllUsers;
@@ -28,7 +29,7 @@ public class FacilityBookingFactory {
         bookedFacilities = new BookedFacilities();
     }
 
-    public static FacilityBookingFactory initialize() {
+    public static FacilityBookingFactory getInstance() {
         if (facilityBookingFactory == null) {
             facilityBookingFactory = new FacilityBookingFactory();
         }

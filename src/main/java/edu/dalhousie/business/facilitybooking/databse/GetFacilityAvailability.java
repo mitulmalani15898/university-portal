@@ -5,6 +5,8 @@ import edu.dalhousie.business.facilitybooking.model.Facility;
 import edu.dalhousie.business.facilitybooking.model.AvailableFacilitySlots;
 import edu.dalhousie.database.DatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
+import edu.dalhousie.logger.ILogger;
+import edu.dalhousie.logger.LoggerAbstractFactory;
 import edu.dalhousie.utilities.Constants;
 
 import java.sql.Connection;
@@ -44,6 +46,8 @@ public class GetFacilityAvailability implements IGetFacilityAvailability {
             }
             facilityBookingModel.setFacilitySlots(facilitySlots);
         } catch (Exception exception) {
+            ILogger logger = LoggerAbstractFactory.getFactory().newLoggerInstance();
+            logger.error(GetFacilityAvailability.class.toString(), exception.getMessage());
             System.out.println(exception.getMessage());
             exception.printStackTrace();
         }

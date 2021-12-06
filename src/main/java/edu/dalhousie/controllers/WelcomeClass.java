@@ -1,6 +1,8 @@
 package edu.dalhousie.controllers;
 
+import edu.dalhousie.business.registration.controller.IRegistration;
 import edu.dalhousie.business.registration.controller.Registration;
+import edu.dalhousie.business.registration.controller.RegistrationFactory;
 import edu.dalhousie.presentation.StudentView;
 import edu.dalhousie.utilities.PrintHeading;
 
@@ -33,12 +35,12 @@ public class WelcomeClass {
 
         switch (choice) {
             case 1:
-                student.displayStudentMenu();
-                // Registration studentRegistration = new Registration();
-                // studentRegistration.registerUser("student");
+//                student.displayStudentMenu();
+                 IRegistration studentRegistration = RegistrationFactory.getInstance().getRegistration();
+                 studentRegistration.registerUser("student");
                 break;
             case 2:
-                Registration facultyRegistration = new Registration();
+                IRegistration facultyRegistration = RegistrationFactory.getInstance().getRegistration();
                 facultyRegistration.registerUser("faculty");
                 break;
             case 3:

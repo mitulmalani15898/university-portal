@@ -3,6 +3,8 @@ package edu.dalhousie.business.facilitybooking.databse;
 import edu.dalhousie.business.facilitybooking.constants.FacilityBookingConstants;
 import edu.dalhousie.database.DatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
+import edu.dalhousie.logger.ILogger;
+import edu.dalhousie.logger.LoggerAbstractFactory;
 import edu.dalhousie.utilities.Constants;
 
 import java.sql.Connection;
@@ -27,7 +29,9 @@ public class GetAllUsers implements IGetAllUsers {
                 usernames.add(resultSet.getString(FacilityBookingConstants.usernameColumn));
             }
         } catch (Exception exception) {
-            System.out.println(exception.getMessage());
+            ILogger logger = LoggerAbstractFactory.getFactory().newLoggerInstance();
+            logger.error(GetAllUsers.class.toString(), exception.getMessage());
+            System.out.println();
             exception.printStackTrace();
         }
         return usernames;

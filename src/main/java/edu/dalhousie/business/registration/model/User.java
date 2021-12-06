@@ -1,6 +1,6 @@
 package edu.dalhousie.business.registration.model;
 
-public class RegistrationModel {
+public class User implements IUser {
     private String firstName;
     private String lastName;
     private String email;
