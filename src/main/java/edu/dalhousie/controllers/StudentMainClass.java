@@ -10,7 +10,7 @@ import edu.dalhousie.business.Feedback.controllers.IFeedbackMenu;
 import edu.dalhousie.business.RoommateFinder.controller.IRoommateFinder;
 import edu.dalhousie.business.RoommateFinder.controller.RoommateFinderFactory;
 import edu.dalhousie.business.Tender.controller.Tender.Tender;
-import edu.dalhousie.business.Scholarship.ScholarshipMenu;
+import edu.dalhousie.business.Scholarship.controller.ScholarshipMenu;
 import edu.dalhousie.business.courseregistration.controller.CourseRegistration;
 import edu.dalhousie.business.facilitybooking.controller.FacilityBooking;
 import edu.dalhousie.business.sportnomination.controller.SportsNomination;
@@ -50,7 +50,7 @@ public class StudentMainClass {
             view.showMessage("10. " + nominationForSports);
             view.showMessage("11. " + tender);
             view.showMessage("12. " + dalMembership);
-            view.showMessage("13." + facilityBooking);
+            view.showMessage("13. " + facilityBooking);
             view.showMessage("14. " + logout);
 
             System.out.println("Enter your choice\n");
