@@ -1,4 +1,4 @@
-package edu.dalhousie.business.feedback.data;
+package edu.dalhousie.business.feedback.database;
 
 import edu.dalhousie.business.feedback.model.FeedbackObjectModel;
 import edu.dalhousie.database.DatabaseConnection;
@@ -13,12 +13,9 @@ import java.util.List;
 
 public class FeedbackData implements IFeedbackData {
 
-//    ExecuteQuery executeQuery;
     private static DatabaseConnection databaseConnection;
 
-
     public FeedbackData() {
-//        executeQuery = new ExecuteQuery();
         databaseConnection = DatabaseConnectivity.getInstance();
     }
 
@@ -33,7 +30,6 @@ public class FeedbackData implements IFeedbackData {
         int needsMet = feedbackObjectModel.getNeedsMet();
 
         String query = "insert into feedback " +  "values ('"+ "vignesh2" +"', '" + courseID+ "','" + feedback+ "','" + professorRating + "', '" + difficultyLevel + "', '" + recommendation + "', '" + professionalDevelopment + "', '" + needsMet + "')";
-//        executeQuery.executeSQL(query);
         try {
             final Connection connection = databaseConnection.getDatabaseConnection();
             final Statement statement = connection.createStatement();
@@ -50,14 +46,6 @@ public class FeedbackData implements IFeedbackData {
 
         String feedback = "";
         String query = "select feedback from feedback where courseID = '" + courseID + "' ";
-//        ResultSet rs = executeQuery.executeUpdateSQL(query);
-//        while(rs.next()){
-//            feedback = rs.getString("feedback");
-//            System.out.println(feedback);
-//            feedbackList.add(feedback);
-//        }
-//        return feedbackList;
-
         try {
             final Connection connection = databaseConnection.getDatabaseConnection();
             final Statement statement = connection.createStatement();

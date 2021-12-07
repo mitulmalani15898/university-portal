@@ -1,7 +1,7 @@
 package edu.dalhousie.business.scholarship.controller;
 
 import edu.dalhousie.business.scholarship.constants.StringConstants;
-import edu.dalhousie.business.scholarship.data.ScholarshipData;
+import edu.dalhousie.business.scholarship.database.ScholarshipData;
 import edu.dalhousie.business.scholarship.business.ComputeScholarshipResult;
 import edu.dalhousie.presentation.StudentView;
 

@@ -1,4 +1,4 @@
-package edu.dalhousie.business.scholarship.data;
+package edu.dalhousie.business.scholarship.database;
 
 import edu.dalhousie.business.scholarship.constants.StringConstants;
 import edu.dalhousie.database.DatabaseConnection;

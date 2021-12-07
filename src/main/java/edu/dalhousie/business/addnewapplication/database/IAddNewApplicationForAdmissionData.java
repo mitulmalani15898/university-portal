@@ -1,4 +1,4 @@
-package edu.dalhousie.business.addnewapplication.data;
+package edu.dalhousie.business.addnewapplication.database;
 
 import edu.dalhousie.business.addnewapplication.model.AddNewApplicationFormObject;
 

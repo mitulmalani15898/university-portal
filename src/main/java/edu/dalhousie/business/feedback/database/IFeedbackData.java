@@ -1,4 +1,4 @@
-package edu.dalhousie.business.feedback.data;
+package edu.dalhousie.business.feedback.database;
 
 import edu.dalhousie.business.feedback.model.FeedbackObjectModel;
 

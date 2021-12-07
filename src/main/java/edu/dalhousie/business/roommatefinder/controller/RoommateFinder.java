@@ -4,8 +4,8 @@ import edu.dalhousie.business.roommatefinder.business.FilterRoommates;
 import edu.dalhousie.business.roommatefinder.business.IFilterRoommates;
 import edu.dalhousie.business.roommatefinder.business.IValidateRoommateFinder;
 import edu.dalhousie.business.roommatefinder.business.ValidateRoommateFinder;
-import edu.dalhousie.business.roommatefinder.data.IRoommateFinderData;
-import edu.dalhousie.business.roommatefinder.data.RoommateFinderData;
+import edu.dalhousie.business.roommatefinder.database.IRoommateFinderData;
+import edu.dalhousie.business.roommatefinder.database.RoommateFinderData;
 import edu.dalhousie.business.roommatefinder.model.RoommateFinderObjectModel;
 import edu.dalhousie.business.roommatefinder.constants.StringConstants;
 import edu.dalhousie.presentation.StudentView;
@@ -104,7 +104,6 @@ public class RoommateFinder implements IRoommateFinder{
 
         roommateFinderData.storeData(roommateFinderObject);
 
-        // TODO - username!=current (take from preferences)
         List<String> matches = roommateFinderData.retrieveData(roommateFinderObject);
         List<String> filteredMatches = filterRoommates.filterData(roommateFinderObject, matches);
 

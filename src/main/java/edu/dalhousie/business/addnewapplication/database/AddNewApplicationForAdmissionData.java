@@ -1,4 +1,4 @@
-package edu.dalhousie.business.addnewapplication.data;
+package edu.dalhousie.business.addnewapplication.database;
 
 import edu.dalhousie.business.addnewapplication.model.AddNewApplicationFormObject;
 import edu.dalhousie.database.DatabaseConnection;
@@ -11,22 +11,8 @@ import java.sql.Statement;
 public class AddNewApplicationForAdmissionData implements IAddNewApplicationForAdmissionData{
 
     private static DatabaseConnection databaseConnection;
-//    private String course;
-//    private String university;
-//    private String education;
-//    private String gpa;
-//    private String tenthMarks;
-//    private String twelfthMarks;
-//    private String IELTS;
-//    private String GRE;
-//    private String researchPapers;
-//    private String workExp;
-//    private String GMAT;
-//    private String GATE;
-   //private String score;
 
     public AddNewApplicationForAdmissionData() throws SQLException {
-//        executeQuery = new ExecuteQuery();
         databaseConnection = DatabaseConnectivity.getInstance();
     }
 
@@ -43,10 +29,8 @@ public class AddNewApplicationForAdmissionData implements IAddNewApplicationForA
         String workExp = newApplication.getWorkExp();
         String GMAT = newApplication.getGMAT();
         String GATE = newApplication.getGATE();
-        //score
 
         String query = "insert into new_application" + " values ('"+ "abhishek" + "','" + course+ "', '" + university + "', '"+education+"','" + Float.parseFloat(gpa) + "', '" + Float.parseFloat(tenthMarks) + "','" + Float.parseFloat(twelfthMarks) + "','" + Float.parseFloat(IELTS) + "','" + Integer.parseInt(GRE) + "', '" + Integer.parseInt(researchPapers) + "', '" + Float.parseFloat(workExp) + "', '" + Integer.parseInt(GMAT) + "', '" + Integer.parseInt(GATE) + "')";
-//        executeQuery.executeSQL(query);
         try {
             final Connection connection = databaseConnection.getDatabaseConnection();
             final Statement statement = connection.createStatement();
@@ -60,7 +44,6 @@ public class AddNewApplicationForAdmissionData implements IAddNewApplicationForA
     public void storeScore(AddNewApplicationFormObject newApplicationFormObject) throws SQLException {
         String score = newApplicationFormObject.getResult();
         String query = "insert into new_application_score " + " values ('"+ "vignesh" +"', '" + Float.parseFloat(score) + "')";
-//        executeQuery.executeSQL(query);
         try {
             final Connection connection = databaseConnection.getDatabaseConnection();
             final Statement statement = connection.createStatement();
