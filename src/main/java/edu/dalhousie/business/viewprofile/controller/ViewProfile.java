@@ -38,7 +38,7 @@ public class ViewProfile implements IViewProfile {
 
                 view.showMessage(ViewProfileConstants.enterLastName);
                 viewProfileModel.setLastName(view.getString());
-                updateProfileConnection.executeUpdateProfile(ViewProfileConstants.lastNameColumn, viewProfileModel.getFirstName());
+                updateProfileConnection.executeUpdateProfile(ViewProfileConstants.lastNameColumn, viewProfileModel.getLastName());
 
                 view.showMessage(ViewProfileConstants.enterContactNumber);
                 viewProfileModel.setContactNumber(view.getString());
@@ -115,7 +115,7 @@ public class ViewProfile implements IViewProfile {
     public static void main(String[] args)
     {
         ViewProfile vp = new ViewProfile();
-        vp.displayAndEditProfile();
+        vp.viewProfilePage("student");
     }
 
 }
