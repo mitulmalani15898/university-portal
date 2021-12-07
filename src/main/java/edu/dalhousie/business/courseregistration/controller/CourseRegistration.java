@@ -1,107 +1,116 @@
 package edu.dalhousie.business.courseregistration.controller;
 
-import edu.dalhousie.business.courseregistration.business.ValidateCourseRegistration;
-import edu.dalhousie.business.courseregistration.database.CourseRegistrationApi;
+import edu.dalhousie.business.courseregistration.business.IValidateCourse;
+import edu.dalhousie.business.courseregistration.constants.CourseRegistrationConstants;
+import edu.dalhousie.business.courseregistration.database.ICompleteCourseList;
+import edu.dalhousie.business.courseregistration.database.IRegisterCourse;
+import edu.dalhousie.business.courseregistration.database.IRegisteredCourseList;
+import edu.dalhousie.business.courseregistration.database.ISpecificCourseList;
 import edu.dalhousie.business.courseregistration.model.Course;
-import edu.dalhousie.business.courseregistration.model.CourseRegistrationModel;
-import edu.dalhousie.controllers.StudentMainClass;
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.business.courseregistration.model.ICourses;
+import edu.dalhousie.business.courseregistration.model.IRegisteredCourses;
+import edu.dalhousie.presentation.IStudentView;
+import edu.dalhousie.presentation.StudentViewFactory;
 import edu.dalhousie.utilities.PrintHeading;
 
 import java.util.List;
 
-public class CourseRegistration {
-    StudentView view;
-    CourseRegistrationModel courseRegistrationModel;
-    CourseRegistrationApi courseRegistrationApi;
-    ValidateCourseRegistration validate;
+public class CourseRegistration implements ICourseRegistration {
+    public int registerForSpecificCourse() {
+        IStudentView view = StudentViewFactory.getInstance().getStudentView();
+        IValidateCourse validateCourse = CourseRegistrationFactory.getInstance().getValidateCourse();
+        IRegisterCourse registerCourse = CourseRegistrationFactory.getInstance().getRegisterCourse();
 
-    public CourseRegistration() {
-        view = new StudentView();
-        courseRegistrationModel = new CourseRegistrationModel();
-        courseRegistrationApi = new CourseRegistrationApi();
-    }
-
-    public int registerForSpecificCourse() throws Exception {
         String courseID = "";
-        System.out.println("Enter course id for which you would like to enroll:");
+        view.showMessage(CourseRegistrationConstants.enterCourseIdForEnroll);
         courseID = view.getString().toLowerCase();
-        if (courseID.equals("no")) {
+        if (courseID.equals(CourseRegistrationConstants.no)) {
             return -1;
-        } else if (validate.isValidCourseId(courseID)) {
-            System.out.println("\nPlease try again and provide valid course id for registration.\n");
+        } else if (validateCourse.isValidCourseId(courseID)) {
+            view.showMessage(CourseRegistrationConstants.provideValidCourseId);
         } else {
-            return courseRegistrationApi.registerForSpecificCourse(Integer.parseInt(courseID));
+            return registerCourse.registerForSpecificCourse(Integer.parseInt(courseID));
         }
         return -1;
     }
 
-    public void renderRegisterForSpecificCourseForm() throws Exception {
+    public void renderRegisterForSpecificCourseForm() {
+        IStudentView view = StudentViewFactory.getInstance().getStudentView();
+        IRegisteredCourses registeredCourses = CourseRegistrationFactory.getInstance().getRegisteredCourses();
+
         String userChoice = "";
-        System.out.println("\n\nDo you want to register for courses? (Yes, No: quit)");
+        view.showMessage(CourseRegistrationConstants.wantToRegisterForCourse);
         userChoice = view.getString().toLowerCase();
-        while (!userChoice.equals("no")) {
-            if (userChoice.equals("yes")) {
+        while (!userChoice.equals(CourseRegistrationConstants.no)) {
+            if (userChoice.equals(CourseRegistrationConstants.yes)) {
                 int result = registerForSpecificCourse();
                 if (result == 1) {
-                    System.out.println("\nRegistration successful.");
-                    renderCourseListView(courseRegistrationModel.getRegisteredCourses());
+                    view.showMessage(CourseRegistrationConstants.registrationSuccessful);
+                    renderCourseListView(registeredCourses.getRegisteredCourses());
                 }
             }
-            System.out.println("\nDo you want to register for course? (Yes, No: quit)");
+            view.showMessage(CourseRegistrationConstants.wantToRegisterForCourse);
             userChoice = view.getString().toLowerCase();
         }
     }
 
-    public void renderSearchForParticularCourseView() throws Exception {
+    public void renderSearchForParticularCourseView() {
+        IStudentView view = StudentViewFactory.getInstance().getStudentView();
+        IRegisteredCourses registeredCourses = CourseRegistrationFactory.getInstance().getRegisteredCourses();
+        ISpecificCourseList specificCourseList = CourseRegistrationFactory.getInstance().getSpecificCourseList();
+
         String keyword = "";
-        System.out.println("\nEnter keyword for searching courses? (type 'quit' to exit search)");
+        view.showMessage(CourseRegistrationConstants.enterKeywordForSearchingCourse);
         keyword = view.getString().toLowerCase();
-        while (!keyword.equals("quit")) {
-            courseRegistrationApi.getCoursesByKeyword(keyword);
-            renderCourseListView(courseRegistrationModel.getRegisteredCourses());
-            System.out.println("\nEnter keyword for searching courses? (type 'quit' to exit search)");
+        while (!keyword.equals(CourseRegistrationConstants.quit)) {
+            specificCourseList.getCoursesByKeyword(keyword);
+            renderCourseListView(registeredCourses.getRegisteredCourses());
+            view.showMessage(CourseRegistrationConstants.enterKeywordForSearchingCourse);
             keyword = view.getString().toLowerCase();
         }
     }
 
     public void renderCourseListView(List<Course> courses) {
-        System.out.format("\n%25s\n", "List of all courses".toUpperCase());
-        System.out.format("%5s %15s\n", "ID", "Course name");
+        IStudentView view = StudentViewFactory.getInstance().getStudentView();
+        view.showFormattedMessage("\n%25s\n", CourseRegistrationConstants.listOfAllCourses.toUpperCase());
+        view.showFormattedMessage("%5s %15s\n", "ID", "Course name");
         int count = 0;
         for (Course course : courses) {
-            System.out.format("%s.  %s | %s\n", ++count, course.getCourseId(), course.getCourseName());
+            String counter = ++count + "";
+            String courseId = course.getCourseId() + "";
+            String courseName = course.getCourseName();
+            view.showFormattedMessage("%s.  %s | %s\n", counter, courseId, courseName);
         }
     }
 
     public String renderCourseRegistrationForm() {
+        IStudentView view = StudentViewFactory.getInstance().getStudentView();
         String userChoice = "";
-        System.out.println("Do you want to search for particular course? (Yes, No: View complete list)");
+        view.showMessage(CourseRegistrationConstants.wantToSearchForSpecificCourse);
         userChoice = view.getString().toLowerCase();
-        while (!userChoice.equals("yes") && !userChoice.equals("no")) {
-            System.out.println("Do you want to search for particular course? (Yes, No: View complete list)");
+        while (!userChoice.equals(CourseRegistrationConstants.yes) && !userChoice.equals(CourseRegistrationConstants.no)) {
+            view.showMessage(CourseRegistrationConstants.wantToSearchForSpecificCourse);
             userChoice = view.getString().toLowerCase();
         }
         return userChoice;
     }
 
-    public void registerForCourses() throws Exception {
-        StudentMainClass studentMainClass = new StudentMainClass();
+    @Override
+    public void registerForCourses() {
+        ICourses courses = CourseRegistrationFactory.getInstance().getCourses();
+        ICompleteCourseList completeCourseList = CourseRegistrationFactory.getInstance().getCompleteCourseList();
+        IRegisteredCourseList registeredCourseList = CourseRegistrationFactory.getInstance().getRegisteredCourseList();
+
         String userChoice = "";
-        PrintHeading.printHeadingForTheScreen("List of courses for registration", 38);
-
+        PrintHeading.printHeadingForTheScreen(CourseRegistrationConstants.listOfCoursesTitle, 38);
         userChoice = renderCourseRegistrationForm();
-
-        if (userChoice.equals("no")) {
-            courseRegistrationApi.getCompleteCourseList();
-            courseRegistrationApi.getRegisteredCourseList();
-            renderCourseListView(courseRegistrationModel.getCourses());
+        if (userChoice.equals(CourseRegistrationConstants.no)) {
+            completeCourseList.getCompleteCourseList();
+            registeredCourseList.getRegisteredCourseList();
+            renderCourseListView(courses.getCourses());
             renderRegisterForSpecificCourseForm();
-        } else if (userChoice.equals("yes")) {
+        } else if (userChoice.equals(CourseRegistrationConstants.yes)) {
             renderSearchForParticularCourseView();
-        } else {
-            studentMainClass.displayStudentMenu();
         }
-        studentMainClass.displayStudentMenu();
     }
 }

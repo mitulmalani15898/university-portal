@@ -13,9 +13,9 @@ import java.util.List;
 
 public class FacilityBooking implements IFacilityBooking {
     public void renderFacilityAvailability(String facility) {
-        IStudentView view = StudentViewFactory.initialize().getStudentView();
-        IGetFacilityAvailability facilityAvailability = FacilityBookingFactory.initialize().getGetFacilityAvailability();
-        IAvailableFacilitySlots facilitySlots = FacilityBookingFactory.initialize().getAvailableFacilitySlots();
+        IStudentView view = StudentViewFactory.getInstance().getStudentView();
+        IGetFacilityAvailability facilityAvailability = FacilityBookingFactory.getInstance().getGetFacilityAvailability();
+        IAvailableFacilitySlots facilitySlots = FacilityBookingFactory.getInstance().getAvailableFacilitySlots();
         facilityAvailability.getFacilityAvailability(facility);
         List<Facility> availableFacilitySlots = facilitySlots.getFacilitySlots();
         view.showFormattedMessage("\n%40s\n", FacilityBookingConstants.availableFacilityTitle.concat(facility).toUpperCase());
@@ -32,13 +32,13 @@ public class FacilityBooking implements IFacilityBooking {
     }
 
     public void bookFacilityForm() {
-        IStudentView view = StudentViewFactory.initialize().getStudentView();
+        IStudentView view = StudentViewFactory.getInstance().getStudentView();
         String facilityChoice = "";
         view.showMessage(FacilityBookingConstants.enterChoiceForFacility);
         facilityChoice = view.getString();
         while (!facilityChoice.equals("1") && !facilityChoice.equals("2") && !facilityChoice.equals("3") && !facilityChoice.equals("4")) {
-            System.out.println(FacilityBookingConstants.provideValidChoice);
-            System.out.println(FacilityBookingConstants.enterChoiceForFacility);
+            view.showMessage(FacilityBookingConstants.provideValidChoice);
+            view.showMessage(FacilityBookingConstants.enterChoiceForFacility);
             facilityChoice = view.getString();
         }
         facilityChoice = FacilityBookingConstants.facilities.get(Integer.parseInt(facilityChoice));
@@ -46,15 +46,15 @@ public class FacilityBooking implements IFacilityBooking {
     }
 
     public void renderFacilityBookingForm() {
-        IStudentView view = StudentViewFactory.initialize().getStudentView();
-        IValidateFacilityBooking validateFacilityBooking = FacilityBookingFactory.initialize().getValidateFacilityBooking();
+        IStudentView view = StudentViewFactory.getInstance().getStudentView();
+        IValidateFacilityBooking validateFacilityBooking = FacilityBookingFactory.getInstance().getValidateFacilityBooking();
         String username = "";
-        System.out.println(FacilityBookingConstants.enterUsername);
+        view.showMessage(FacilityBookingConstants.enterUsername);
         username = view.getString();
         if (validateFacilityBooking.isValidUsername(username)) {
             bookFacilityForm();
         } else {
-            System.out.println(FacilityBookingConstants.provideValidUsername);
+            view.showMessage(FacilityBookingConstants.provideValidUsername);
         }
     }
 

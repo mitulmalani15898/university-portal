@@ -1,6 +1,6 @@
 package edu.dalhousie.business.courseregistration.model;
 
-public class Course {
+public class Course implements ICourse {
     private int courseId;
     private String courseName;
     private int availableSeats;

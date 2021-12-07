@@ -3,6 +3,8 @@ package edu.dalhousie.controllers;
 import edu.dalhousie.business.addnewapplication.constants.StringConstants;
 import edu.dalhousie.business.addnewapplication.controller.AddNewApplicationForAdmissionFactory;
 import edu.dalhousie.business.addnewapplication.controller.IAddNewApplicationForAdmission;
+import edu.dalhousie.business.courseregistration.controller.CourseRegistrationFactory;
+import edu.dalhousie.business.courseregistration.controller.ICourseRegistration;
 import edu.dalhousie.business.dalmembership.controller.menu.MenuImplementation;
 import edu.dalhousie.business.events.controller.EventApplication;
 import edu.dalhousie.business.feedback.controllers.FeedbackMenuFactory;
@@ -11,10 +13,10 @@ import edu.dalhousie.business.roommatefinder.controller.IRoommateFinder;
 import edu.dalhousie.business.roommatefinder.controller.RoommateFinderFactory;
 import edu.dalhousie.business.scholarship.controller.ScholarshipMenu;
 import edu.dalhousie.business.tender.controller.Tender.Tender;
-import edu.dalhousie.business.courseregistration.controller.CourseRegistration;
 import edu.dalhousie.business.facilitybooking.controller.FacilityBookingFactory;
 import edu.dalhousie.business.facilitybooking.controller.IFacilityBooking;
 import edu.dalhousie.business.sportnomination.controller.SportsNomination;
+import edu.dalhousie.business.viewprofile.controller.IViewProfile;
 import edu.dalhousie.business.viewprofile.controller.ViewProfile;
 import edu.dalhousie.presentation.StudentView;
 import edu.dalhousie.utilities.PrintHeading;
@@ -62,11 +64,11 @@ public class StudentMainClass {
                     addNewApplicationForAdmission.showNewForm();
                     break;
                 case 2:
-                    ViewProfile viewProfile = new ViewProfile();
+                    IViewProfile viewProfile = new ViewProfile();
                     viewProfile.viewProfilePage("student");
                     break;
                 case 3:
-                    CourseRegistration courseRegistration = new CourseRegistration();
+                    ICourseRegistration courseRegistration = CourseRegistrationFactory.getInstance().getCourseRegistration();
                     courseRegistration.registerForCourses();
                     break;
                 case 4:
@@ -106,7 +108,7 @@ public class StudentMainClass {
                     menu.start();
                     break;
                 case 13:
-                    IFacilityBooking facilityBooking = FacilityBookingFactory.initialize().getFacilityBooking();
+                    IFacilityBooking facilityBooking = FacilityBookingFactory.getInstance().getFacilityBooking();
                     facilityBooking.startFacilityBookingService();
                     break;
                 case 14:

@@ -8,7 +8,7 @@ import java.util.List;
 public class ValidateFacilityBooking implements IValidateFacilityBooking {
     @Override
     public boolean isValidUsername(String username) {
-        IGetAllUsers users = FacilityBookingFactory.initialize().getGetAllUsers();
+        IGetAllUsers users = FacilityBookingFactory.getInstance().getGetAllUsers();
         List<String> usernames = users.getAllUsers();
         return usernames.contains(username);
     }

@@ -1,23 +1,23 @@
 package edu.dalhousie.business.facilitybooking.model;
 
 public interface IFacility {
-    public int getFacilityId();
+    int getFacilityId();
 
-    public void setFacilityId(int facilityId);
+    void setFacilityId(int facilityId);
 
-    public String getFacilityName();
+    String getFacilityName();
 
-    public void setFacilityName(String facilityName);
+    void setFacilityName(String facilityName);
 
-    public String getAvailableDate();
+    String getAvailableDate();
 
-    public void setAvailableDate(String availableDate);
+    void setAvailableDate(String availableDate);
 
-    public String getAvailableTime();
+    String getAvailableTime();
 
-    public void setAvailableTime(String availableTime);
+    void setAvailableTime(String availableTime);
 
-    public int getAvailableSlots();
+    int getAvailableSlots();
 
-    public void setAvailableSlots(int availableSlots);
+    void setAvailableSlots(int availableSlots);
 }
