@@ -112,10 +112,4 @@ public class ViewProfile implements IViewProfile {
         displayAndEditProfile();
     }
 
-    public static void main(String[] args)
-    {
-        ViewProfile vp = new ViewProfile();
-        vp.viewProfilePage("STUDENT");
-    }
-
 }

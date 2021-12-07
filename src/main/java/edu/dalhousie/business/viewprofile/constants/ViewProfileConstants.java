@@ -9,7 +9,6 @@ public class ViewProfileConstants {
     public static final String enterLastName = "Enter your last name: ";
     public static final String enterContactNumber = "Enter your contact number: ";
     public static final String enterPassword = "Enter your Password (Must include uppercase, lowercase letters along with numeric and special characters): ";
-
     public static final String enterVerifyPassword = "Verify your Password: ";
     public static final String enterVerifyPasswordAgain = "Verify your Password (Your verify password should match with password): ";
     public static final String enterDateOfBirth = "Enter your Date of Birth (MM-DD-YY): ";

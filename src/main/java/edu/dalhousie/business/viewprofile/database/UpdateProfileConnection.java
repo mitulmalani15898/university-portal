@@ -2,7 +2,6 @@ package edu.dalhousie.business.viewprofile.database;
 
 import edu.dalhousie.business.viewprofile.controller.ViewProfileFactory;
 import edu.dalhousie.business.viewprofile.model.IViewProfileModel;
-import edu.dalhousie.business.viewprofile.model.ViewProfileModel;
 import edu.dalhousie.controllers.UserSession;
 import edu.dalhousie.database.DatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
@@ -19,14 +18,12 @@ public class UpdateProfileConnection implements IUpdateProfileConnection {
         userSession = new UserSession();
     }
 
-    public void executeUpdateProfile(String column_name, String update_value)
-    {
+    public void executeUpdateProfile(String column_name, String update_value) {
         IViewProfileModel viewProfileModel = ViewProfileFactory.initialize().getViewProfileModel();
-        //viewProfileModel.setUserID(userSession.getUser().getUserName());
-        viewProfileModel.setUserID("viren.malavia");
+        viewProfileModel.setUserID(userSession.getUser().getUserName());
+        //viewProfileModel.setUserID("viren.malavia");
 
-        if (!update_value.equalsIgnoreCase("No"))
-        {
+        if (!update_value.equalsIgnoreCase("No")) {
             try {
                 final Connection connection =
                         databaseConnection.getDatabaseConnection();
@@ -34,8 +31,7 @@ public class UpdateProfileConnection implements IUpdateProfileConnection {
                         connection.createStatement();
                 String SQL_Update = String.format("UPDATE users SET %s = '%s' WHERE user_name = '%s'", column_name, update_value, viewProfileModel.getUserID());
                 statement.executeUpdate(SQL_Update);
-            } catch (Exception e)
-            {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

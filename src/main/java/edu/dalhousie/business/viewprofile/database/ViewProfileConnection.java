@@ -12,8 +12,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class ViewProfileConnection implements IViewProfileConnection
-{
+public class ViewProfileConnection implements IViewProfileConnection {
     private DatabaseConnection databaseConnection;
     UserSession userSession;
 
@@ -22,15 +21,13 @@ public class ViewProfileConnection implements IViewProfileConnection
         userSession = UserSession.getInstance();
     }
 
-    public void executeViewTable()
-    {
+    public void executeViewTable() {
         IStudentView view = StudentViewFactory.getInstance().getStudentView();
         IViewProfileModel viewProfileModel = ViewProfileFactory.initialize().getViewProfileModel();
-        //viewProfileModel.setUserID(userSession.getUser().getUserName());
-        viewProfileModel.setUserID("viren.malavia");
+        viewProfileModel.setUserID(userSession.getUser().getUserName());
+        //viewProfileModel.setUserID("viren.malavia");
 
-        try
-        {
+        try {
             final Connection connection =
                     databaseConnection.getDatabaseConnection();
             final Statement statement =
@@ -38,7 +35,7 @@ public class ViewProfileConnection implements IViewProfileConnection
             String SQL_View = String.format("SELECT * FROM users WHERE user_name = '%s'", viewProfileModel.getUserID());
             ResultSet rs_view = statement.executeQuery(SQL_View);
 
-            while(rs_view.next()) {
+            while (rs_view.next()) {
                 viewProfileModel.setUsername(rs_view.getString("user_name"));
                 viewProfileModel.setFirstName(rs_view.getString("first_name"));
                 viewProfileModel.setLastName(rs_view.getString("last_name"));
