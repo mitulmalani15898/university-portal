@@ -1,60 +1,60 @@
 package edu.dalhousie.business.sportnomination.controller;
 
+import edu.dalhousie.business.sportnomination.constants.SportsNominationConstants;
+import edu.dalhousie.business.sportnomination.model.ISportsNominationModel;
 import edu.dalhousie.controllers.StudentMainClass;
-import edu.dalhousie.business.sportnomination.model.SportsNominationModel;
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.presentation.IStudentView;
+import edu.dalhousie.presentation.StudentViewFactory;
 import edu.dalhousie.utilities.PrintHeading;
 
 import java.util.Calendar;
 
 public class SportsNomination implements ISportsNomination
 {
-    StudentView view;
+    IStudentView view = StudentViewFactory.getInstance().getStudentView();
     StudentMainClass studentMenu;
-    SportsNominationModel sportsNominationModel;
+    ISportsNominationModel sportsNominationModel = SportsNominationFactory.initialize().getSportsNominationModel();
 
     public SportsNomination()
     {
-        view = new StudentView();
         studentMenu = new StudentMainClass();
-        sportsNominationModel = new SportsNominationModel();
     }
 
     public void sportsNomination()
     {
         int overallScore = 0;
 
-        view.showMessage("1. Enter your username: ");
+        view.showMessage(SportsNominationConstants.enterUsername);
         sportsNominationModel.setUsername(view.getString());
 
-        view.showMessage("2. Enter the name of sport: ");
+        view.showMessage(SportsNominationConstants.enterSportName);
         sportsNominationModel.setSport(view.getString());
 
-        view.showMessage("3. Enter the number of awards received in this sport: (if you have not received any award please enter '0')");
+        view.showMessage(SportsNominationConstants.enterAwards);
         sportsNominationModel.setAwards(view.getInt());
 
-        view.showMessage("4. Enter the highest level of achievement received: (0: None, 1: International, 2: National, 3: State, 4: District) ");
+        view.showMessage(SportsNominationConstants.enterAchievement);
         sportsNominationModel.setAchievementLevel(view.getInt());
 
-        view.showMessage("5. Enter the medal received: (0: None, 1: Gold, 2: Silver, 3: Bronze) ");
+        view.showMessage(SportsNominationConstants.enterMedal);
         sportsNominationModel.setMedal(view.getInt());
 
-        view.showMessage("6. Enter the year in which you have received your last medal: ");
+        view.showMessage(SportsNominationConstants.enterYear);
         sportsNominationModel.setYear(view.getInt());
 
-        view.showMessage("\nChecking your eligibility for procuring a spot in the club...");
+        view.showMessage(SportsNominationConstants.checkingEligibility);
 
         sportsNominationModel.setMaxGapYear(2016);
         if (sportsNominationModel.getYear() <= sportsNominationModel.getMaxGapYear())
         {
-            view.showMessage("\nSorry! You are not eligible since you have more than 5 years of gap being an active participant in sports activities.");
-            goBack();
+            view.showMessage(SportsNominationConstants.notEligibleGap);
+            //goBack();
         }
         else
         {
             if(sportsNominationModel.getAwards() > 6)
             {
-                overallScore += 6;
+                overallScore += 10;
             }
             else
             {
@@ -108,16 +108,16 @@ public class SportsNomination implements ISportsNomination
 
         if(overallScore >= 10)
         {
-            view.showMessage("\nCongratulations! You are eligible to be a part of our " + sportsNominationModel.getSport() + " sports club.");
+            view.showMessage(SportsNominationConstants.eligible + sportsNominationModel.getSport() + SportsNominationConstants.eligibleClub);
         }
         else
         {
-            view.showMessage("\nSorry! You are not eligible since you have more than 5 years of gap being an active participant in sports activities.");
+            view.showMessage(SportsNominationConstants.notEligible);
         }
-        goBack();
+        //goBack();
     }
 
-    public void goBack()
+    /*public void goBack()
     {
         view.showMessage("\nPress '0' to go back");
         int userChoice = view.getInt();
@@ -131,19 +131,17 @@ public class SportsNomination implements ISportsNomination
                 e.printStackTrace();
             }
         }
-    }
+    }*/
 
     public void viewSportsNomination()
     {
-        String title = "Nomination for Sports";
-        PrintHeading.printHeadingForTheScreen(title, 38);
-
+        PrintHeading.printHeadingForTheScreen(SportsNominationConstants.sportsNominationTitle, 38);
         sportsNomination();
     }
 
     /*public static void main(String[] args)
     {
         SportsNomination sn = new SportsNomination();
-        sn.sportsNomination();
+        sn.viewSportsNomination();
     }*/
 }

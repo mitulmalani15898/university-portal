@@ -1,6 +1,6 @@
 package edu.dalhousie.business.sportnomination.model;
 
-public class SportsNominationModel
+public class SportsNominationModel implements ISportsNominationModel
 {
     private String username;
     private String sport;
