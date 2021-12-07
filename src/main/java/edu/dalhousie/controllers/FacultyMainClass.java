@@ -33,7 +33,7 @@ public class FacultyMainClass {
                     break;
                 case 2:
                     ViewProfile viewProfile = new ViewProfile();
-                    viewProfile.viewProfilePage("faculty");
+                    viewProfile.viewProfilePage("FACULTY");
                     break;
                 case 3:
                     //call method

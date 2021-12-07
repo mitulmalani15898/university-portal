@@ -9,7 +9,7 @@ import edu.dalhousie.business.dalmembership.controller.inMemoryDatabase.MasterDB
 public abstract class MainMenu {
 
     private void welcomeMessage() {
-        System.out.println("Welcome to Dalhousie student Membership");
+        System.out.println("Welcome to Dalhousie STUDENT Membership");
     }
 
     public void printMenu() {

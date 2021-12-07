@@ -34,7 +34,7 @@ public class StudentMainClass {
     private static final String healthReimbursement = "Health Reimbursement";
     private static final String nominationForSports = "Nomination for sports";
     private static final String tender = "Organize e-tender";
-    private static final String dalMembership = "Dalhousie student card";
+    private static final String dalMembership = "Dalhousie STUDENT card";
     private static final String facilityBooking = "Facility booking";
     private static final String logout = "Logout";
 
@@ -65,7 +65,7 @@ public class StudentMainClass {
                     break;
                 case 2:
                     IViewProfile viewProfile = new ViewProfile();
-                    viewProfile.viewProfilePage("student");
+                    viewProfile.viewProfilePage("STUDENT");
                     break;
                 case 3:
                     ICourseRegistration courseRegistration = CourseRegistrationFactory.getInstance().getCourseRegistration();

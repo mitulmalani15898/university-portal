@@ -17,7 +17,7 @@ public class SaveUser implements ISaveUser {
         int result = -1;
         IUser user = RegistrationFactory.getInstance().getUser();
 
-        String query = RegistrationConstants.insertUserQuery
+        String query = RegistrationConstants.INSERT_USER_QUERY
             .replace("tableName", Constants.UsersTable)
             .replace("firstName", user.getFirstName())
             .replace("lastName", user.getLastName())

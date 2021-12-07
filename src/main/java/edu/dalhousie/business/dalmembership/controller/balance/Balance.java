@@ -34,7 +34,7 @@ public class Balance implements IBalance{
                             .selectBalanceQuery(userSession.getUser().getUserId())
             );
             while (balanceAmount.next()) {
-                System.out.println("The balance available in your account is: "
+                System.out.println("The balance AVAILABLE in your account is: "
                         + balanceAmount.getInt("balance"));
             }
 

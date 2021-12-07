@@ -24,7 +24,7 @@ public class CompleteCourseList implements ICompleteCourseList {
         List<Course> courses = new ArrayList<>();
         ICourses coursesList = CourseRegistrationFactory.getInstance().getCourses();
 
-        String query = CourseRegistrationConstants.selectCoursesQuery.replace("tableName", Constants.CoursesTable);
+        String query = CourseRegistrationConstants.SELECT_COURSES_QUERY.replace("tableName", Constants.CoursesTable);
         try {
             databaseConnection = DatabaseConnectivity.getInstance();
             final Connection connection = databaseConnection.getDatabaseConnection();

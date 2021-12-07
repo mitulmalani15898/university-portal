@@ -35,7 +35,7 @@ public class MasterDB {
     private final static String[] Menu =
             { "View current balance",
             "Recharge dal card",
-            "View available services",
+            "View AVAILABLE services",
             "Upgrade membership plans",
             "Exit" };
 

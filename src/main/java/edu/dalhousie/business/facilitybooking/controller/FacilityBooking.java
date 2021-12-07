@@ -9,36 +9,39 @@ import edu.dalhousie.presentation.IStudentView;
 import edu.dalhousie.presentation.StudentViewFactory;
 import edu.dalhousie.utilities.PrintHeading;
 
-import java.util.List;
-
 public class FacilityBooking implements IFacilityBooking {
     public void renderFacilityAvailability(String facility) {
         IStudentView view = StudentViewFactory.getInstance().getStudentView();
         IGetFacilityAvailability facilityAvailability = FacilityBookingFactory.getInstance().getGetFacilityAvailability();
         IAvailableFacilitySlots facilitySlots = FacilityBookingFactory.getInstance().getAvailableFacilitySlots();
+
         facilityAvailability.getFacilityAvailability(facility);
-        List<Facility> availableFacilitySlots = facilitySlots.getFacilitySlots();
-        view.showFormattedMessage("\n%40s\n", FacilityBookingConstants.availableFacilityTitle.concat(facility).toUpperCase());
+
+        view.showFormattedMessage("\n%40s\n", FacilityBookingConstants.AVAILABILITY_FOR.concat(facility).toUpperCase());
         view.showFormattedMessage("%8s %10s %13s %16s %6s\n", "ID", "Date", "Time", "Availability", "Slots");
         int count = 0;
-        for (Facility slot : availableFacilitySlots) {
+        for (Facility slot : facilitySlots.getFacilitySlots()) {
             String counter = ++count + "";
             String facilityId = slot.getFacilityId() + "";
             String availableDate = slot.getAvailableDate();
             String availableTime = slot.getAvailableTime();
+            String availableOrNot = slot.getAvailableSlots() > 0 ? FacilityBookingConstants.AVAILABLE : FacilityBookingConstants.BOOKED;
             String availableSlots = slot.getAvailableSlots() + "";
-            view.showFormattedMessage("%s. %4s | %12s | %9s | %8s\n", counter, facilityId, availableDate, availableTime, availableSlots);
+
+            view.showFormattedMessage("%s. %4s | %12s | %9s | %12s | %4s\n", counter, facilityId, availableDate, availableTime, availableSlots, availableOrNot);
         }
     }
 
     public void bookFacilityForm() {
         IStudentView view = StudentViewFactory.getInstance().getStudentView();
         String facilityChoice = "";
-        view.showMessage(FacilityBookingConstants.enterChoiceForFacility);
+
+        view.showMessage(FacilityBookingConstants.ENTER_CHOICE_FOR_FACILITY);
         facilityChoice = view.getString();
+
         while (!facilityChoice.equals("1") && !facilityChoice.equals("2") && !facilityChoice.equals("3") && !facilityChoice.equals("4")) {
-            view.showMessage(FacilityBookingConstants.provideValidChoice);
-            view.showMessage(FacilityBookingConstants.enterChoiceForFacility);
+            view.showMessage(FacilityBookingConstants.PLEASE_PROVIDE_VALID_CHOICE);
+            view.showMessage(FacilityBookingConstants.ENTER_CHOICE_FOR_FACILITY);
             facilityChoice = view.getString();
         }
         facilityChoice = FacilityBookingConstants.facilities.get(Integer.parseInt(facilityChoice));
@@ -49,17 +52,19 @@ public class FacilityBooking implements IFacilityBooking {
         IStudentView view = StudentViewFactory.getInstance().getStudentView();
         IValidateFacilityBooking validateFacilityBooking = FacilityBookingFactory.getInstance().getValidateFacilityBooking();
         String username = "";
-        view.showMessage(FacilityBookingConstants.enterUsername);
+
+        view.showMessage(FacilityBookingConstants.ENTER_YOUR_USERNAME);
         username = view.getString();
+
         if (validateFacilityBooking.isValidUsername(username)) {
             bookFacilityForm();
         } else {
-            view.showMessage(FacilityBookingConstants.provideValidUsername);
+            view.showMessage(FacilityBookingConstants.PLEASE_PROVIDE_VALID_USERNAME);
         }
     }
 
     public void startFacilityBookingService() {
-        PrintHeading.printHeadingForTheScreen(FacilityBookingConstants.serviceTitle, 42);
+        PrintHeading.printHeadingForTheScreen(FacilityBookingConstants.FACILITY_BOOKING, 42);
         renderFacilityBookingForm();
     }
 }

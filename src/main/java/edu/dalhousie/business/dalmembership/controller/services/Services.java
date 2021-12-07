@@ -10,7 +10,7 @@ public class Services implements IServices{
     @Override
     public void getListOfServices() {
         MasterDB.servicesMap.keySet().forEach(membership->{
-            System.out.println("Services available under "
+            System.out.println("Services AVAILABLE under "
                     + membership.name() +" plan:" );
             System.out.println("===========================");
             MasterDB.servicesMap.get(membership)

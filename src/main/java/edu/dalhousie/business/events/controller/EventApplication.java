@@ -104,11 +104,11 @@ public class EventApplication {
 
             }
 
-            System.out.println("Enter number of student volunteers for event : ");
+            System.out.println("Enter number of STUDENT volunteers for event : ");
             int num = sc.nextInt();
 
             System.out.println("Payment");
-            System.out.println("Cost for student to attend the event : $10 ");
+            System.out.println("Cost for STUDENT to attend the event : $10 ");
             System.out.println("Event is free for volunteer students ");
             EventCost payment = new EventCost();
             payment.studentPayment(num);

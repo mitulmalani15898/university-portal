@@ -22,12 +22,12 @@ public class CourseRegistration implements ICourseRegistration {
         IRegisterCourse registerCourse = CourseRegistrationFactory.getInstance().getRegisterCourse();
 
         String courseID = "";
-        view.showMessage(CourseRegistrationConstants.enterCourseIdForEnroll);
+        view.showMessage(CourseRegistrationConstants.ENTER_COURSE_ID_FOR_ENROLL);
         courseID = view.getString().toLowerCase();
-        if (courseID.equals(CourseRegistrationConstants.no)) {
+        if (courseID.equals(CourseRegistrationConstants.NO)) {
             return -1;
         } else if (validateCourse.isValidCourseId(courseID)) {
-            view.showMessage(CourseRegistrationConstants.provideValidCourseId);
+            view.showMessage(CourseRegistrationConstants.PROVIDE_VALID_COURSE_ID);
         } else {
             return registerCourse.registerForSpecificCourse(Integer.parseInt(courseID));
         }
@@ -39,17 +39,17 @@ public class CourseRegistration implements ICourseRegistration {
         IRegisteredCourses registeredCourses = CourseRegistrationFactory.getInstance().getRegisteredCourses();
 
         String userChoice = "";
-        view.showMessage(CourseRegistrationConstants.wantToRegisterForCourse);
+        view.showMessage(CourseRegistrationConstants.WANT_TO_REGISTER_FOR_COURSE);
         userChoice = view.getString().toLowerCase();
-        while (!userChoice.equals(CourseRegistrationConstants.no)) {
-            if (userChoice.equals(CourseRegistrationConstants.yes)) {
+        while (!userChoice.equals(CourseRegistrationConstants.NO)) {
+            if (userChoice.equals(CourseRegistrationConstants.YES)) {
                 int result = registerForSpecificCourse();
                 if (result == 1) {
-                    view.showMessage(CourseRegistrationConstants.registrationSuccessful);
+                    view.showMessage(CourseRegistrationConstants.REGISTRATION_SUCCESSFUL);
                     renderCourseListView(registeredCourses.getRegisteredCourses());
                 }
             }
-            view.showMessage(CourseRegistrationConstants.wantToRegisterForCourse);
+            view.showMessage(CourseRegistrationConstants.WANT_TO_REGISTER_FOR_COURSE);
             userChoice = view.getString().toLowerCase();
         }
     }
@@ -60,19 +60,19 @@ public class CourseRegistration implements ICourseRegistration {
         ISpecificCourseList specificCourseList = CourseRegistrationFactory.getInstance().getSpecificCourseList();
 
         String keyword = "";
-        view.showMessage(CourseRegistrationConstants.enterKeywordForSearchingCourse);
+        view.showMessage(CourseRegistrationConstants.ENTER_KEYWORD_FOR_SEARCHING_COURSE);
         keyword = view.getString().toLowerCase();
-        while (!keyword.equals(CourseRegistrationConstants.quit)) {
+        while (!keyword.equals(CourseRegistrationConstants.QUIT)) {
             specificCourseList.getCoursesByKeyword(keyword);
             renderCourseListView(registeredCourses.getRegisteredCourses());
-            view.showMessage(CourseRegistrationConstants.enterKeywordForSearchingCourse);
+            view.showMessage(CourseRegistrationConstants.ENTER_KEYWORD_FOR_SEARCHING_COURSE);
             keyword = view.getString().toLowerCase();
         }
     }
 
     public void renderCourseListView(List<Course> courses) {
         IStudentView view = StudentViewFactory.getInstance().getStudentView();
-        view.showFormattedMessage("\n%25s\n", CourseRegistrationConstants.listOfAllCourses.toUpperCase());
+        view.showFormattedMessage("\n%25s\n", CourseRegistrationConstants.LIST_OF_ALL_COURSES.toUpperCase());
         view.showFormattedMessage("%5s %15s\n", "ID", "Course name");
         int count = 0;
         for (Course course : courses) {
@@ -86,10 +86,10 @@ public class CourseRegistration implements ICourseRegistration {
     public String renderCourseRegistrationForm() {
         IStudentView view = StudentViewFactory.getInstance().getStudentView();
         String userChoice = "";
-        view.showMessage(CourseRegistrationConstants.wantToSearchForSpecificCourse);
+        view.showMessage(CourseRegistrationConstants.WANT_TO_SEARCH_FOR_SPECIFIC_COURSE);
         userChoice = view.getString().toLowerCase();
-        while (!userChoice.equals(CourseRegistrationConstants.yes) && !userChoice.equals(CourseRegistrationConstants.no)) {
-            view.showMessage(CourseRegistrationConstants.wantToSearchForSpecificCourse);
+        while (!userChoice.equals(CourseRegistrationConstants.YES) && !userChoice.equals(CourseRegistrationConstants.NO)) {
+            view.showMessage(CourseRegistrationConstants.WANT_TO_SEARCH_FOR_SPECIFIC_COURSE);
             userChoice = view.getString().toLowerCase();
         }
         return userChoice;
@@ -102,14 +102,14 @@ public class CourseRegistration implements ICourseRegistration {
         IRegisteredCourseList registeredCourseList = CourseRegistrationFactory.getInstance().getRegisteredCourseList();
 
         String userChoice = "";
-        PrintHeading.printHeadingForTheScreen(CourseRegistrationConstants.listOfCoursesTitle, 38);
+        PrintHeading.printHeadingForTheScreen(CourseRegistrationConstants.LIST_OF_COURSES_FOR_REGISTRATION, 38);
         userChoice = renderCourseRegistrationForm();
-        if (userChoice.equals(CourseRegistrationConstants.no)) {
+        if (userChoice.equals(CourseRegistrationConstants.NO)) {
             completeCourseList.getCompleteCourseList();
             registeredCourseList.getRegisteredCourseList();
             renderCourseListView(courses.getCourses());
             renderRegisterForSpecificCourseForm();
-        } else if (userChoice.equals(CourseRegistrationConstants.yes)) {
+        } else if (userChoice.equals(CourseRegistrationConstants.YES)) {
             renderSearchForParticularCourseView();
         }
     }

@@ -20,13 +20,13 @@ public class GetAllUsers implements IGetAllUsers {
     public List<String> getAllUsers() {
         List<String> usernames = new ArrayList<>();
         databaseConnection = DatabaseConnectivity.getInstance();
-        String query = FacilityBookingConstants.selectAllUsersQuery.replace("tableName", Constants.UsersTable);
+        String query = FacilityBookingConstants.SELECT_ALL_USERS_QUERY.replace("tableName", Constants.UsersTable);
         try {
             final Connection connection = databaseConnection.getDatabaseConnection();
             final Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
-                usernames.add(resultSet.getString(FacilityBookingConstants.usernameColumn));
+                usernames.add(resultSet.getString(FacilityBookingConstants.USER_NAME));
             }
         } catch (Exception exception) {
             ILogger logger = LoggerAbstractFactory.getFactory().newLoggerInstance();
