@@ -24,7 +24,7 @@ public class SpecificCourseList implements ISpecificCourseList {
         List<Course> courses = new ArrayList<>();
         ICourses coursesList = CourseRegistrationFactory.getInstance().getCourses();
 
-        String query = CourseRegistrationConstants.SEARCH_SPECIFIC_COURSE_QUERY.replace("coursesTable", Constants.CoursesTable).replace("keyword", keyword);
+        String query = CourseRegistrationConstants.SEARCH_SPECIFIC_COURSE_QUERY.replace("coursesTable", Constants.COURSES_TABLE).replace("keyword", keyword);
 
         try {
             databaseConnection = DatabaseConnectivity.getInstance();

@@ -8,31 +8,27 @@ import edu.dalhousie.logger.LoggerAbstractFactory;
 import edu.dalhousie.utilities.Constants;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
-public class GetAllUsers implements IGetAllUsers {
+public class UpdateAvailability implements IUpdateAvailability {
     private static DatabaseConnection databaseConnection;
 
     @Override
-    public List<String> getAllUsers() {
-        List<String> usernames = new ArrayList<>();
-        databaseConnection = DatabaseConnectivity.getInstance();
-        String query = FacilityBookingConstants.SELECT_ALL_USERS_QUERY.replace("tableName", Constants.USERS_TABLE);
+    public void updateSlotsAvailability(int facilityId, int availableSlots) {
+        String query = FacilityBookingConstants.UPDATE_FACILITY_SLOTS_QUERY
+            .replace("tableName", Constants.FACILITIES_TABLE)
+            .replace("availableSlots", availableSlots + "")
+            .replace("facilityId", facilityId + "");
+
         try {
+            databaseConnection = DatabaseConnectivity.getInstance();
             final Connection connection = databaseConnection.getDatabaseConnection();
             final Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
-            while (resultSet.next()) {
-                usernames.add(resultSet.getString(FacilityBookingConstants.USER_NAME));
-            }
+            statement.executeUpdate(query);
         } catch (Exception exception) {
             ILogger logger = LoggerAbstractFactory.getFactory().newLoggerInstance();
-            logger.error(GetAllUsers.class.toString(), exception.getMessage());
+            logger.error(UpdateAvailability.class.toString(), exception.getMessage());
             exception.printStackTrace();
         }
-        return usernames;
     }
 }
