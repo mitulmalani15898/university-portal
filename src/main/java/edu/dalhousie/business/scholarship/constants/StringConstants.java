@@ -9,6 +9,6 @@ public class StringConstants {
     public static final String kCalculatingEligibility = "Calculating your eligibility for scholarship";
     public static final String kAccepted = "Congratulations! You're eligible for scholarship";
     public static final String kApplyForScholarship = "1. Apply for scholarship";
-    public static final String kBackToStudentMenu = "2. Back to student menu";
+    public static final String kBackToStudentMenu = "2. Back to STUDENT menu";
     public static final String kScholarshipMenuOptionsSuffix = "N";
 }

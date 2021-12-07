@@ -6,7 +6,7 @@ public class StringConstants {
     public static String kProvideFeedback = "1. Provide feedback";
     public static String kReadFeedbackOfTheCourse = "2. Read feedback of the course";
     public static String kSentimentalAnalysisOfFeedback = "3. Sentimental analysis of the feedback";
-    public static String kBackToStudentMenu = "4. Back to student main menu";
+    public static String kBackToStudentMenu = "4. Back to STUDENT main menu";
     public static String kEnterYourChoice = "Enter your choice";
     public static String kEnterCourseId = "Enter the course id for which you want to provide feedback";
     public static String kProvideYourFeedback = "Please provide your feedback";

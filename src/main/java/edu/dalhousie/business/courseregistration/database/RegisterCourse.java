@@ -17,7 +17,7 @@ public class RegisterCourse implements IRegisterCourse {
     public int registerForSpecificCourse(int courseId) {
         int result = -1;
         int studentId = 2;
-        String query = CourseRegistrationConstants.registerCourseQuery
+        String query = CourseRegistrationConstants.REGISTER_COURSE_QUERY
             .replace("tableName", Constants.CourseEnrolledTable)
             .replace("studentId", studentId + "")
             .replace("courseId", courseId + "");

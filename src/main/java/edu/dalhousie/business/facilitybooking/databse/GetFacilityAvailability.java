@@ -25,7 +25,7 @@ public class GetFacilityAvailability implements IGetFacilityAvailability {
 
     @Override
     public void getFacilityAvailability(String facilityName) {
-        String query = FacilityBookingConstants.selectFacilityAvailabilityQuery
+        String query = FacilityBookingConstants.SELECT_FACILITY_AVAILABILITY_QUERY
             .replace("tableName", Constants.FacilitiesTable)
             .replace("facilityName", facilityName);
 
@@ -37,11 +37,11 @@ public class GetFacilityAvailability implements IGetFacilityAvailability {
             List<Facility> facilitySlots = new ArrayList<>();
             while (resultSet.next()) {
                 Facility facility = new Facility();
-                facility.setFacilityId(resultSet.getInt(FacilityBookingConstants.facilityIdColumn));
-                facility.setFacilityName(resultSet.getString(FacilityBookingConstants.facilityNameColumn));
-                facility.setAvailableDate(resultSet.getString(FacilityBookingConstants.facilityAvailableDateColumn));
-                facility.setAvailableTime(resultSet.getString(FacilityBookingConstants.facilityAvailableTimeColumn));
-                facility.setAvailableSlots(resultSet.getInt(FacilityBookingConstants.facilityAvailableSlotsColumn));
+                facility.setFacilityId(resultSet.getInt(FacilityBookingConstants.FACILITY_ID_COLUMN));
+                facility.setFacilityName(resultSet.getString(FacilityBookingConstants.FACILITY_NAME_COLUMN));
+                facility.setAvailableDate(resultSet.getString(FacilityBookingConstants.FACILITY_AVAILABLE_DATE_COLUMN));
+                facility.setAvailableTime(resultSet.getString(FacilityBookingConstants.FACILITY_AVAILABLE_TIME_COLUMN));
+                facility.setAvailableSlots(resultSet.getInt(FacilityBookingConstants.FACILITY_AVAILABLE_SLOTS_COLUMN));
                 facilitySlots.add(facility);
             }
             facilityBookingModel.setFacilitySlots(facilitySlots);

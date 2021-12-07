@@ -36,5 +36,5 @@ public class ViewProfileConstants {
 
     public static final String studentTitle = "View Student Profile";
     public static final String facultyTitle = "View Faculty Profile";
-    public static final String userTypeStudent = "student";
+    public static final String userTypeStudent = "STUDENT";
 }

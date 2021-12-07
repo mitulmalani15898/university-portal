@@ -115,7 +115,7 @@ public class ViewProfile implements IViewProfile {
     public static void main(String[] args)
     {
         ViewProfile vp = new ViewProfile();
-        vp.viewProfilePage("student");
+        vp.viewProfilePage("STUDENT");
     }
 
 }

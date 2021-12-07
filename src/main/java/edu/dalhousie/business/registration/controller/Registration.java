@@ -19,55 +19,55 @@ public class Registration implements IRegistration {
 
         String password = "", confirmPassword = "", gender = "";
 
-        view.showMessage(RegistrationConstants.enterFirstName);
+        view.showMessage(RegistrationConstants.ENTER_FIRST_NAME);
         user.setFirstName(view.getString());
 
-        view.showMessage(RegistrationConstants.enterLastName);
+        view.showMessage(RegistrationConstants.ENTER_LAST_NAME);
         user.setLastName(view.getString());
 
-        view.showMessage(RegistrationConstants.enterEmail);
+        view.showMessage(RegistrationConstants.ENTER_EMAIL);
         user.setEmail(view.getString());
 
-        view.showMessage(RegistrationConstants.enterContactNumber);
+        view.showMessage(RegistrationConstants.ENTER_CONTACT_NUMBER);
         user.setContactNumber(view.getString());
 
-        view.showMessage(RegistrationConstants.enterPassword);
+        view.showMessage(RegistrationConstants.ENTER_PASSWORD);
         password = view.getString();
         while (!password.isEmpty() && validatePassword.isInvalidPassword(password)) {
-            view.showMessage(RegistrationConstants.enterPassword);
+            view.showMessage(RegistrationConstants.ENTER_PASSWORD);
             password = view.getString();
         }
         user.setPassword(password);
 
-        view.showMessage(RegistrationConstants.enterConfirmPassword);
+        view.showMessage(RegistrationConstants.ENTER_CONFIRM_PASSWORD);
         confirmPassword = view.getString();
         while (!confirmPassword.equals(password)) {
-            view.showMessage(RegistrationConstants.validConfirmPassword);
+            view.showMessage(RegistrationConstants.VALID_CONFIRM_PASSWORD);
             confirmPassword = view.getString();
         }
         user.setConfirmPassword(confirmPassword);
         user.setPassword(Hashing.doPasswordHashing(password));
 
-        view.showMessage(RegistrationConstants.enterDOB);
+        view.showMessage(RegistrationConstants.ENTER_DOB);
         user.setDateOfBirth(view.getString());
 
-        view.showMessage(RegistrationConstants.enterGender);
+        view.showMessage(RegistrationConstants.ENTER_GENDER);
         gender = RegistrationConstants.genders.get(view.getString());
         user.setGender(gender);
 
-        view.showMessage(RegistrationConstants.enterStreetAddress);
+        view.showMessage(RegistrationConstants.ENTER_STREET_ADDRESS);
         user.setStreetAddress(view.getString());
 
-        view.showMessage(RegistrationConstants.enterApartmentNumber);
+        view.showMessage(RegistrationConstants.ENTER_APARTMENT_NUMBER);
         user.setApartmentNumber(view.getString());
 
-        view.showMessage(RegistrationConstants.enterCity);
+        view.showMessage(RegistrationConstants.ENTER_CITY);
         user.setCity(view.getString());
 
-        view.showMessage(RegistrationConstants.enterProvince);
+        view.showMessage(RegistrationConstants.ENTER_PROVINCE);
         user.setProvince(view.getString());
 
-        view.showMessage(RegistrationConstants.enterZipcode);
+        view.showMessage(RegistrationConstants.ENTER_ZIPCODE);
         user.setZipcode(view.getString());
     }
 
@@ -81,20 +81,20 @@ public class Registration implements IRegistration {
 
         boolean isStudent = userType.isStudent(typeOfUser);
 
-        String title = isStudent ? RegistrationConstants.registerAsStudent : RegistrationConstants.registerAsFaculty;
+        String title = isStudent ? RegistrationConstants.REGISTER_AS_A_STUDENT : RegistrationConstants.REGISTER_AS_A_FACULTY;
         PrintHeading.printHeadingForTheScreen(title, 38);
 
         renderRegistrationForm();
         user.setUsername(username.createUsername(user.getFirstName(), user.getLastName()));
-        user.setTypeOfUser(isStudent ? RegistrationConstants.student : RegistrationConstants.faculty);
+        user.setTypeOfUser(isStudent ? RegistrationConstants.STUDENT : RegistrationConstants.FACULTY);
 
-        view.showMessage(RegistrationConstants.verifyingDetails);
+        view.showMessage(RegistrationConstants.VERIFYING_YOUR_DETAILS);
         if (saveUser.saveUserDetails() == 1) {
-            view.showMessage(RegistrationConstants.detailsVerified);
-            view.showMessage(RegistrationConstants.yourUsername.replace("username", user.getUsername()));
-            view.showMessage(RegistrationConstants.pleaseLogin);
+            view.showMessage(RegistrationConstants.DETAILS_VERIFIED);
+            view.showMessage(RegistrationConstants.YOUR_USERNAME.replace("username", user.getUsername()));
+            view.showMessage(RegistrationConstants.PLEASE_LOGIN);
         } else {
-            view.showMessage(RegistrationConstants.somethingWentWrong);
+            view.showMessage(RegistrationConstants.SOMETHING_WENT_WRONG_PLEASE_TRY_AGAIN);
         }
     }
 }

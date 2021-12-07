@@ -38,7 +38,7 @@ public class Login {
     }
 
     public User loginUser(String typeOfLogIn) throws Exception {
-        String title = typeOfLogIn.equals("student") ? "LogIn as a student" : "LogIn as a faculty";
+        String title = typeOfLogIn.equals("STUDENT") ? "LogIn as a STUDENT" : "LogIn as a FACULTY";
         final Connection connection =
                 databaseConnection.getDatabaseConnection();
         final Statement statement =
@@ -63,7 +63,7 @@ public class Login {
                 System.out.println("Credentials verified. . .");
                 System.out.println("\nForwarding you to the main page. . .");
 
-                if (typeOfLogIn.equals("student")) {
+                if (typeOfLogIn.equals("STUDENT")) {
 
                     return new User.Builder()
                             .setUserId(userId)

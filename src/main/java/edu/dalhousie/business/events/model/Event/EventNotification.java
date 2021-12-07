@@ -33,7 +33,7 @@ public class EventNotification {
 
     public void sendEventNotificationToVolunteers() {
         this.studentView.showMessage("Send notification to the students ");
-        IEmail email = this.emailFactory.getEmailTemplate("student");
+        IEmail email = this.emailFactory.getEmailTemplate("STUDENT");
         System.out.println("Enter school email address:");
         String toEmail = this.scanner.next();
         this.Email.sendEmail(toEmail,email.generateEmail());
