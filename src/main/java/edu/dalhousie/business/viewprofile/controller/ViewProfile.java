@@ -1,6 +1,7 @@
 package edu.dalhousie.business.viewprofile.controller;
 
 import edu.dalhousie.business.registration.business.ValidatePassword;
+import edu.dalhousie.business.viewprofile.business.IUserType;
 import edu.dalhousie.business.viewprofile.constants.ViewProfileConstants;
 import edu.dalhousie.business.viewprofile.database.IUpdateProfileConnection;
 import edu.dalhousie.business.viewprofile.database.IViewProfileConnection;
@@ -29,24 +30,24 @@ public class ViewProfile implements IViewProfile {
 
             view.showMessage(ViewProfileConstants.updateOption);
             String choice = view.getString();
-            if (choice.equalsIgnoreCase("Yes")) {
+            if (choice.equalsIgnoreCase(ViewProfileConstants.userChoiceYes)) {
 
                 view.showMessage(ViewProfileConstants.enterFirstName);
                 viewProfileModel.setFirstName(view.getString());
-                updateProfileConnection.executeUpdateProfile("first_name", viewProfileModel.getFirstName());
+                updateProfileConnection.executeUpdateProfile(ViewProfileConstants.firstNameColumn, viewProfileModel.getFirstName());
 
                 view.showMessage(ViewProfileConstants.enterLastName);
                 viewProfileModel.setLastName(view.getString());
-                updateProfileConnection.executeUpdateProfile("last_name", viewProfileModel.getFirstName());
+                updateProfileConnection.executeUpdateProfile(ViewProfileConstants.lastNameColumn, viewProfileModel.getFirstName());
 
                 view.showMessage(ViewProfileConstants.enterContactNumber);
                 viewProfileModel.setContactNumber(view.getString());
-                updateProfileConnection.executeUpdateProfile("contact_number", viewProfileModel.getContactNumber());
+                updateProfileConnection.executeUpdateProfile(ViewProfileConstants.contactNumberColumn, viewProfileModel.getContactNumber());
 
                 view.showMessage(ViewProfileConstants.enterPassword);
                 String password = view.getString();
 
-                if (!password.equalsIgnoreCase("No")) {
+                if (!password.equalsIgnoreCase(ViewProfileConstants.userChoiceNo)) {
                     while (!password.isEmpty() && validatePassword.isInvalidPassword(password)) {
                         view.showMessage(ViewProfileConstants.enterPassword);
                         password = view.getString();
@@ -61,38 +62,38 @@ public class ViewProfile implements IViewProfile {
                     verifyPassword = view.getString();
                 }
 
-                if (!password.equalsIgnoreCase("No") && !verifyPassword.equalsIgnoreCase("No")) {
+                if (!password.equalsIgnoreCase(ViewProfileConstants.userChoiceNo) && !verifyPassword.equalsIgnoreCase(ViewProfileConstants.userChoiceNo)) {
                     String hashed_password = performHashing.doPasswordHashing(password);
-                    updateProfileConnection.executeUpdateProfile("password", hashed_password);
+                    updateProfileConnection.executeUpdateProfile(ViewProfileConstants.passwordColumn, hashed_password);
                 }
 
                 view.showMessage(ViewProfileConstants.enterDateOfBirth);
                 viewProfileModel.setDateOfBirth(view.getString());
-                updateProfileConnection.executeUpdateProfile("dob", viewProfileModel.getDateOfBirth());
+                updateProfileConnection.executeUpdateProfile(ViewProfileConstants.dobColumn, viewProfileModel.getDateOfBirth());
 
                 view.showMessage(ViewProfileConstants.enterGender);
                 viewProfileModel.setGender(view.getString());
-                updateProfileConnection.executeUpdateProfile("gender", viewProfileModel.getGender());
+                updateProfileConnection.executeUpdateProfile(ViewProfileConstants.genderColumn, viewProfileModel.getGender());
 
                 view.showMessage(ViewProfileConstants.enterAddress);
                 viewProfileModel.setStreetAddress(view.getString());
-                updateProfileConnection.executeUpdateProfile("address", viewProfileModel.getStreetAddress());
+                updateProfileConnection.executeUpdateProfile(ViewProfileConstants.addressColumn, viewProfileModel.getStreetAddress());
 
                 view.showMessage(ViewProfileConstants.enterApartmentNumber);
                 viewProfileModel.setApartmentNumber(view.getString());
-                updateProfileConnection.executeUpdateProfile("apartment_number", viewProfileModel.getApartmentNumber());
+                updateProfileConnection.executeUpdateProfile(ViewProfileConstants.apartmentNumberColumn, viewProfileModel.getApartmentNumber());
 
                 view.showMessage(ViewProfileConstants.enterCity);
                 viewProfileModel.setCity(view.getString());
-                updateProfileConnection.executeUpdateProfile("city", viewProfileModel.getCity());
+                updateProfileConnection.executeUpdateProfile(ViewProfileConstants.cityColumn, viewProfileModel.getCity());
 
                 view.showMessage(ViewProfileConstants.enterProvince);
                 viewProfileModel.setProvince(view.getString());
-                updateProfileConnection.executeUpdateProfile("province", viewProfileModel.getProvince());
+                updateProfileConnection.executeUpdateProfile(ViewProfileConstants.provinceColumn, viewProfileModel.getProvince());
 
-                view.showMessage(ViewProfileConstants.enterZipCode);
+                view.showMessage(ViewProfileConstants.enterZipcode);
                 viewProfileModel.setZipcode(view.getString());
-                updateProfileConnection.executeUpdateProfile("zip_code", viewProfileModel.getZipcode());
+                updateProfileConnection.executeUpdateProfile(ViewProfileConstants.zipcodeColumn, viewProfileModel.getZipcode());
 
                 view.showMessage(ViewProfileConstants.updating);
                 view.showMessage(ViewProfileConstants.updated);
@@ -104,10 +105,17 @@ public class ViewProfile implements IViewProfile {
     }
 
     public void viewProfilePage(String typeOfLogIn) {
-        boolean isStudent = typeOfLogIn.equals("student");
-        String title = isStudent ? "View Student Profile" : "View Faculty Profile";
+        IUserType userType = ViewProfileFactory.initialize().getUserType();
+        boolean isStudent = userType.isStudent(typeOfLogIn);
+        String title = isStudent ? ViewProfileConstants.studentTitle : ViewProfileConstants.facultyTitle;
         PrintHeading.printHeadingForTheScreen(title, 38);
         displayAndEditProfile();
+    }
+
+    public static void main(String[] args)
+    {
+        ViewProfile vp = new ViewProfile();
+        vp.displayAndEditProfile();
     }
 
 }

@@ -26,8 +26,8 @@ public class ViewProfileConnection implements IViewProfileConnection
     {
         IStudentView view = StudentViewFactory.getInstance().getStudentView();
         IViewProfileModel viewProfileModel = ViewProfileFactory.initialize().getViewProfileModel();
-        viewProfileModel.setUserID(userSession.getUser().getUserName());
-        //viewProfileModel.setUserID("viren.malavia");
+        //viewProfileModel.setUserID(userSession.getUser().getUserName());
+        viewProfileModel.setUserID("viren.malavia");
 
         try
         {
