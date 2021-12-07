@@ -1,6 +1,7 @@
 package edu.dalhousie.business.roommatefinder.model;
 
 public class RoommateFinderObjectModel {
+
     String userName;
     int gender;
     int foodPreference;
@@ -9,6 +10,20 @@ public class RoommateFinderObjectModel {
     int campusPreference;
     int accomodationPreference;
     int priority;
+
+    public RoommateFinderObjectModel() {
+    }
+
+    public RoommateFinderObjectModel(String userName, int gender, int foodPreference, int genderPreference, String hobbies, int campusPreference, int accomodationPreference, int priority) {
+        this.userName = userName;
+        this.gender = gender;
+        this.foodPreference = foodPreference;
+        this.genderPreference = genderPreference;
+        this.hobbies = hobbies;
+        this.campusPreference = campusPreference;
+        this.accomodationPreference = accomodationPreference;
+        this.priority = priority;
+    }
 
     public int getPriority() {
         return priority;
