@@ -48,7 +48,6 @@ public class GetFacilityAvailability implements IGetFacilityAvailability {
         } catch (Exception exception) {
             ILogger logger = LoggerAbstractFactory.getFactory().newLoggerInstance();
             logger.error(GetFacilityAvailability.class.toString(), exception.getMessage());
-            System.out.println(exception.getMessage());
             exception.printStackTrace();
         }
     }

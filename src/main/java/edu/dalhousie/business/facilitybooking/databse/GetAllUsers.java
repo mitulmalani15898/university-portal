@@ -31,7 +31,6 @@ public class GetAllUsers implements IGetAllUsers {
         } catch (Exception exception) {
             ILogger logger = LoggerAbstractFactory.getFactory().newLoggerInstance();
             logger.error(GetAllUsers.class.toString(), exception.getMessage());
-            System.out.println();
             exception.printStackTrace();
         }
         return usernames;

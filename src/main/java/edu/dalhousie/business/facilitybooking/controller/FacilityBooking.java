@@ -37,8 +37,8 @@ public class FacilityBooking implements IFacilityBooking {
         view.showMessage(FacilityBookingConstants.enterChoiceForFacility);
         facilityChoice = view.getString();
         while (!facilityChoice.equals("1") && !facilityChoice.equals("2") && !facilityChoice.equals("3") && !facilityChoice.equals("4")) {
-            System.out.println(FacilityBookingConstants.provideValidChoice);
-            System.out.println(FacilityBookingConstants.enterChoiceForFacility);
+            view.showMessage(FacilityBookingConstants.provideValidChoice);
+            view.showMessage(FacilityBookingConstants.enterChoiceForFacility);
             facilityChoice = view.getString();
         }
         facilityChoice = FacilityBookingConstants.facilities.get(Integer.parseInt(facilityChoice));
@@ -49,12 +49,12 @@ public class FacilityBooking implements IFacilityBooking {
         IStudentView view = StudentViewFactory.getInstance().getStudentView();
         IValidateFacilityBooking validateFacilityBooking = FacilityBookingFactory.getInstance().getValidateFacilityBooking();
         String username = "";
-        System.out.println(FacilityBookingConstants.enterUsername);
+        view.showMessage(FacilityBookingConstants.enterUsername);
         username = view.getString();
         if (validateFacilityBooking.isValidUsername(username)) {
             bookFacilityForm();
         } else {
-            System.out.println(FacilityBookingConstants.provideValidUsername);
+            view.showMessage(FacilityBookingConstants.provideValidUsername);
         }
     }
 

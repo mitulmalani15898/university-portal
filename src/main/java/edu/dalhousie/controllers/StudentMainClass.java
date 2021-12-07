@@ -3,6 +3,8 @@ package edu.dalhousie.controllers;
 import edu.dalhousie.business.addnewapplication.constants.StringConstants;
 import edu.dalhousie.business.addnewapplication.controller.AddNewApplicationForAdmissionFactory;
 import edu.dalhousie.business.addnewapplication.controller.IAddNewApplicationForAdmission;
+import edu.dalhousie.business.courseregistration.controller.CourseRegistrationFactory;
+import edu.dalhousie.business.courseregistration.controller.ICourseRegistration;
 import edu.dalhousie.business.dalmembership.controller.menu.MenuImplementation;
 import edu.dalhousie.business.events.controller.EventApplication;
 import edu.dalhousie.business.feedback.controllers.FeedbackMenuFactory;
@@ -11,7 +13,6 @@ import edu.dalhousie.business.roommatefinder.controller.IRoommateFinder;
 import edu.dalhousie.business.roommatefinder.controller.RoommateFinderFactory;
 import edu.dalhousie.business.scholarship.controller.ScholarshipMenu;
 import edu.dalhousie.business.tender.controller.Tender.Tender;
-import edu.dalhousie.business.courseregistration.controller.CourseRegistration;
 import edu.dalhousie.business.facilitybooking.controller.FacilityBookingFactory;
 import edu.dalhousie.business.facilitybooking.controller.IFacilityBooking;
 import edu.dalhousie.business.sportnomination.controller.SportsNomination;
@@ -66,7 +67,7 @@ public class StudentMainClass {
                     viewProfile.viewProfilePage("student");
                     break;
                 case 3:
-                    CourseRegistration courseRegistration = new CourseRegistration();
+                    ICourseRegistration courseRegistration = CourseRegistrationFactory.getInstance().getCourseRegistration();
                     courseRegistration.registerForCourses();
                     break;
                 case 4:
