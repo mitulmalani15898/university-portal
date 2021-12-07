@@ -16,6 +16,7 @@ import edu.dalhousie.business.tender.controller.Tender.Tender;
 import edu.dalhousie.business.facilitybooking.controller.FacilityBookingFactory;
 import edu.dalhousie.business.facilitybooking.controller.IFacilityBooking;
 import edu.dalhousie.business.sportnomination.controller.SportsNomination;
+import edu.dalhousie.business.viewprofile.controller.IViewProfile;
 import edu.dalhousie.business.viewprofile.controller.ViewProfile;
 import edu.dalhousie.presentation.StudentView;
 import edu.dalhousie.utilities.PrintHeading;
@@ -63,7 +64,7 @@ public class StudentMainClass {
                     addNewApplicationForAdmission.showNewForm();
                     break;
                 case 2:
-                    ViewProfile viewProfile = new ViewProfile();
+                    IViewProfile viewProfile = new ViewProfile();
                     viewProfile.viewProfilePage("student");
                     break;
                 case 3:
