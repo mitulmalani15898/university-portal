@@ -3,18 +3,18 @@ package edu.dalhousie.business.viewprofile.database;
 import edu.dalhousie.business.viewprofile.controller.ViewProfileFactory;
 import edu.dalhousie.business.viewprofile.model.IViewProfileModel;
 import edu.dalhousie.controllers.UserSession;
-import edu.dalhousie.database.DatabaseConnection;
+import edu.dalhousie.database.IDatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
 
 import java.sql.Connection;
 import java.sql.Statement;
 
 public class UpdateProfileConnection implements IUpdateProfileConnection {
-    private DatabaseConnection databaseConnection;
+    private IDatabaseConnection IDatabaseConnection;
     UserSession userSession;
 
     public UpdateProfileConnection() {
-        this.databaseConnection = DatabaseConnectivity.getInstance();
+        this.IDatabaseConnection = DatabaseConnectivity.getInstance();
         userSession = new UserSession();
     }
 
@@ -26,7 +26,7 @@ public class UpdateProfileConnection implements IUpdateProfileConnection {
         if (!update_value.equalsIgnoreCase("No")) {
             try {
                 final Connection connection =
-                        databaseConnection.getDatabaseConnection();
+                        IDatabaseConnection.getDatabaseConnection();
                 final Statement statement =
                         connection.createStatement();
                 String SQL_Update = String.format("UPDATE users SET %s = '%s' WHERE user_name = '%s'", column_name, update_value, viewProfileModel.getUserID());

@@ -2,12 +2,12 @@ package edu.dalhousie.controllers;
 
 import edu.dalhousie.business.registration.controller.IRegistration;
 import edu.dalhousie.business.registration.controller.RegistrationFactory;
-import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentView;
-import edu.dalhousie.utilities.PrintHeading;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
+import edu.dalhousie.utilities.printing.PrintHeading;
 
 public class WelcomeClass {
-    private IStudentView view;
+    private ICommonPrinting view;
     private int choice;
     private static final String registerAsStudent = "Register as a Student";
     private static final String registerAsFaculty = "Register as a Faculty";
@@ -15,7 +15,7 @@ public class WelcomeClass {
     private static final String loginAsFaculty = "Login as a Faculty";
     private static final String exit = "Exit";
     public WelcomeClass(){
-        view = StudentView.getInstance();
+        view = CommonPrinting.getInstance();
     }
     public void displayWelcomeScreen() throws Exception {
 

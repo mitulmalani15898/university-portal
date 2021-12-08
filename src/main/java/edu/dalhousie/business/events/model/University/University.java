@@ -5,8 +5,8 @@
 package edu.dalhousie.business.events.model.University;
 
 import edu.dalhousie.business.events.model.Student.Student;
-import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -14,14 +14,14 @@ import java.util.Iterator;
 public class University {
     public String universityName;
     protected UniversityDetails universityDetails;
-    public IStudentView studentView;
+    public ICommonPrinting studentView;
     public ArrayList<String> University = new ArrayList<>();
 
     public University(String universityName){
         this.universityName = universityName;
         this.universityDetails = new UniversityDetails();
         University.add(universityName);
-        studentView = StudentView.getInstance();
+        studentView = CommonPrinting.getInstance();
     }
 
     public String getUniversityName() {

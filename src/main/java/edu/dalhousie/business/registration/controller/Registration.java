@@ -2,15 +2,15 @@ package edu.dalhousie.business.registration.controller;
 
 import edu.dalhousie.business.registration.business.IUserType;
 import edu.dalhousie.business.registration.constants.RegistrationConstants;
-import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 import edu.dalhousie.utilities.Constants;
-import edu.dalhousie.utilities.PrintHeading;
+import edu.dalhousie.utilities.printing.PrintHeading;
 
 public class Registration implements IRegistration {
     @Override
     public void registerUser(String typeOfUser) {
-        IStudentView view = StudentView.getInstance();
+        ICommonPrinting view = CommonPrinting.getInstance();
         IUserType userType = RegistrationFactory.getInstance().getUserType();
         IRegisterUser registerUser = RegistrationFactory.getInstance().getRegisterUser();
         IRegistrationForm registrationForm = RegistrationFactory.getInstance().getRegistrationForm();

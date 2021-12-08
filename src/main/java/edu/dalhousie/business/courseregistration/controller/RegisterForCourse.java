@@ -5,14 +5,14 @@ import edu.dalhousie.business.courseregistration.constants.CourseRegistrationCon
 import edu.dalhousie.business.courseregistration.database.IRegisterCourse;
 import edu.dalhousie.business.courseregistration.model.Course;
 import edu.dalhousie.business.courseregistration.model.ICourses;
-import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 
 
 public class RegisterForCourse implements IRegisterForCourse {
     @Override
     public int registerForSpecificCourse() {
-        IStudentView view = StudentView.getInstance();
+        ICommonPrinting view = CommonPrinting.getInstance();
         IValidateCourseRegistration validateCourse = CourseRegistrationFactory.getInstance().getValidateCourseRegistration();
         IRegisterCourse registerCourse = CourseRegistrationFactory.getInstance().getRegisterCourse();
         ICourses courses = CourseRegistrationFactory.getInstance().getCourses();

@@ -2,13 +2,13 @@ package edu.dalhousie.business.facilitybooking.controller;
 
 import edu.dalhousie.business.facilitybooking.business.IValidateFacilityBooking;
 import edu.dalhousie.business.facilitybooking.constants.FacilityBookingConstants;
-import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 
 public class BookFacilityForm implements IBookFacilityForm {
     @Override
     public void bookFacilityForm() {
-        IStudentView view = StudentView.getInstance();
+        ICommonPrinting view = CommonPrinting.getInstance();
         IValidateFacilityBooking validate = FacilityBookingFactory.getInstance().getValidateFacilityBooking();
         IBookValidFacility bookValidFacility = FacilityBookingFactory.getInstance().getBookValidFacility();
         String facilityId = "";
@@ -24,7 +24,7 @@ public class BookFacilityForm implements IBookFacilityForm {
 
     @Override
     public void renderFacilityForm() {
-        IStudentView view = StudentView.getInstance();
+        ICommonPrinting view = CommonPrinting.getInstance();
         IValidateFacilityBooking validate = FacilityBookingFactory.getInstance().getValidateFacilityBooking();
         IShowFacilityAvailability showFacility = FacilityBookingFactory.getInstance().getShowFacilityAvailability();
         String facilityChoice = "";

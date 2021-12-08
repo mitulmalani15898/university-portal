@@ -7,7 +7,7 @@ package edu.dalhousie.business.dalmembership.controller.balance;
 import edu.dalhousie.business.dalmembership.database.balance.getBalance.GetBalanceQueryBuilder;
 import edu.dalhousie.business.dalmembership.database.balance.updateBalance.UpdateBalanceQueryBuilder;
 import edu.dalhousie.controllers.UserSession;
-import edu.dalhousie.database.DatabaseConnection;
+import edu.dalhousie.database.IDatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -23,10 +23,10 @@ public class Balance implements IBalance{
         this.rechargeBalanceQueryBuilder = new UpdateBalanceQueryBuilder();
     }
     @Override
-    public void showExistingBalance(DatabaseConnection databaseConnection) {
+    public void showExistingBalance(IDatabaseConnection IDatabaseConnection) {
         try {
             final Connection connection =
-                    databaseConnection.getDatabaseConnection();
+                    IDatabaseConnection.getDatabaseConnection();
             final Statement statement =
                     connection.createStatement();
             final ResultSet balanceAmount = statement
@@ -45,10 +45,10 @@ public class Balance implements IBalance{
     }
 
     @Override
-    public void rechargeBalance(DatabaseConnection databaseConnection,double amount){
+    public void rechargeBalance(IDatabaseConnection IDatabaseConnection, double amount){
         try {
             final Connection connection =
-                    databaseConnection.getDatabaseConnection();
+                    IDatabaseConnection.getDatabaseConnection();
             final Statement statement =
                     connection.createStatement();
             statement.executeUpdate(this.rechargeBalanceQueryBuilder

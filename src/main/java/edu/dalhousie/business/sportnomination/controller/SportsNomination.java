@@ -3,15 +3,15 @@ package edu.dalhousie.business.sportnomination.controller;
 import edu.dalhousie.business.sportnomination.constants.SportsNominationConstants;
 import edu.dalhousie.business.sportnomination.model.ISportsNominationModel;
 import edu.dalhousie.controllers.StudentMainClass;
-import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentView;
-import edu.dalhousie.utilities.PrintHeading;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
+import edu.dalhousie.utilities.printing.PrintHeading;
 
 import java.util.Calendar;
 
 public class SportsNomination implements ISportsNomination
 {
-    IStudentView view = StudentView.getInstance();
+    ICommonPrinting view = CommonPrinting.getInstance();
     StudentMainClass studentMenu;
     ISportsNominationModel sportsNominationModel = SportsNominationFactory.initialize().getSportsNominationModel();
 

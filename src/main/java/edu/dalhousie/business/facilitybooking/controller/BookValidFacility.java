@@ -6,13 +6,13 @@ import edu.dalhousie.business.facilitybooking.constants.FacilityBookingConstants
 import edu.dalhousie.business.facilitybooking.databse.IBookFacility;
 import edu.dalhousie.business.facilitybooking.databse.IUsersBookedFacilities;
 import edu.dalhousie.business.facilitybooking.model.Facility;
-import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 
 
 public class BookValidFacility implements IBookValidFacility {
     public void showResultMessage(int result) {
-        IStudentView view = StudentView.getInstance();
+        ICommonPrinting view = CommonPrinting.getInstance();
         if (result == 1) {
             view.showMessage(FacilityBookingConstants.BOOKING_SUCCESSFUL);
         } else {
@@ -21,7 +21,7 @@ public class BookValidFacility implements IBookValidFacility {
     }
 
     public void checkForSlotsConflicts(Facility facility) {
-        IStudentView view =StudentView.getInstance();
+        ICommonPrinting view = CommonPrinting.getInstance();
         int result = -1;
         IValidateFacilityBooking validate = FacilityBookingFactory.getInstance().getValidateFacilityBooking();
         IBookFacility bookFacilityApi = FacilityBookingFactory.getInstance().getBookFacility();
@@ -36,7 +36,7 @@ public class BookValidFacility implements IBookValidFacility {
 
     @Override
     public void bookFacility(int facilityId) {
-        IStudentView view = StudentView.getInstance();
+        ICommonPrinting view = CommonPrinting.getInstance();
         IPickFacility pickFacility = FacilityBookingFactory.getInstance().getPickFacility();
         IUsersBookedFacilities usersBookedFacilities = FacilityBookingFactory.getInstance().getUsersBookedFacilities();
 

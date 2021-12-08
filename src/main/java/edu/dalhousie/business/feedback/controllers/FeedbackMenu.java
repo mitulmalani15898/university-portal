@@ -4,21 +4,21 @@ import edu.dalhousie.business.feedback.business.FeedbackUserInputValidation;
 import edu.dalhousie.business.feedback.business.IFeedbackUserInputValidation;
 import edu.dalhousie.business.feedback.constants.StringConstants;
 import edu.dalhousie.business.feedback.model.FeedbackUserInputValidationModel;
-import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
 public class FeedbackMenu implements IFeedbackMenu{
 
-    IStudentView view;
+    ICommonPrinting view;
     int choice = 0;
     IFeedbackUserInputValidation feedbackUserInputValidation;
     FeedbackUserInputValidationModel validation;
 
     public FeedbackMenu() {
-        view = StudentView.getInstance();
+        view = CommonPrinting.getInstance();
         feedbackUserInputValidation = new FeedbackUserInputValidation();
         validation = new FeedbackUserInputValidationModel();
     }

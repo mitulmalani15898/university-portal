@@ -4,9 +4,9 @@
  * */
 package edu.dalhousie.business.dalmembership.controller.balance;
 
-import edu.dalhousie.database.DatabaseConnection;
+import edu.dalhousie.database.IDatabaseConnection;
 
 public interface IBalance {
-    void showExistingBalance(DatabaseConnection databaseConnection);
-    void rechargeBalance(DatabaseConnection databaseConnection, double amount) throws Exception;
+    void showExistingBalance(IDatabaseConnection IDatabaseConnection);
+    void rechargeBalance(IDatabaseConnection IDatabaseConnection, double amount) throws Exception;
 }

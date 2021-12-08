@@ -6,7 +6,7 @@ package edu.dalhousie.database;
 
 import java.sql.Connection;
 
-public interface DatabaseConnection {
+public interface IDatabaseConnection {
     Connection getDatabaseConnection() throws Exception;
     void clearDatabaseConnection();
 }

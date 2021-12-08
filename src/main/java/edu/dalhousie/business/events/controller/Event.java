@@ -12,10 +12,10 @@ import edu.dalhousie.business.events.controller.State.StateAtStart;
 import edu.dalhousie.business.events.controller.State.StateContext;
 import edu.dalhousie.business.events.controller.State.StateInProgress;
 import edu.dalhousie.business.events.model.Winner.EventWinner;
-import edu.dalhousie.database.DatabaseConnection;
+import edu.dalhousie.database.IDatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
-import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 
 import java.sql.Connection;
 import java.sql.Statement;
@@ -30,11 +30,11 @@ public class Event {
     protected StateAtStart stateAtStart;
     protected StateAtEnd stateAtEnd;
     protected StateInProgress stateInProgress;
-    public IStudentView studentView;
+    public ICommonPrinting studentView;
     public EventWinner eventWinner;
     public EventJudge eventJudge;
     EventNotification eventNotification;
-    private static DatabaseConnection databaseConnection;
+    private static IDatabaseConnection IDatabaseConnection;
     private InsertWinnerNameQueryBuilder insertWinnerNameQueryBuilder;
 
     public Event(){}
@@ -53,12 +53,12 @@ public class Event {
         this.eventDate = eventDate;
         this.eventTime = eventTime;
         this.eventDescription = eventDescription;
-        this.studentView = StudentView.getInstance();
+        this.studentView = CommonPrinting.getInstance();
         this.stateAtStart.performStateTransition(stateContext);
         this.eventJudge = new EventJudge();
         this.eventWinner = new EventWinner();
         this.eventNotification = new EventNotification();
-        this.databaseConnection = DatabaseConnectivity.getInstance();
+        this.IDatabaseConnection = DatabaseConnectivity.getInstance();
         this.insertWinnerNameQueryBuilder = new InsertWinnerNameQueryBuilder();
     }
     public void EventProgress() throws Exception {
@@ -73,7 +73,7 @@ public class Event {
                 this.eventWinner.getWinnerName());
         this.eventNotification.sendWinnerMessage();
             final Connection connection =
-                    databaseConnection.getDatabaseConnection();
+                    IDatabaseConnection.getDatabaseConnection();
             final Statement statement =
                     connection.createStatement();
             statement

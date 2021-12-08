@@ -7,7 +7,7 @@ import edu.dalhousie.business.dalmembership.controller.balance.Balance;
 import edu.dalhousie.business.dalmembership.controller.services.Services;
 import edu.dalhousie.business.dalmembership.controller.subscription.SubscriptionImplementation;
 import edu.dalhousie.controllers.UserSession;
-import edu.dalhousie.database.DatabaseConnection;
+import edu.dalhousie.database.IDatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
 
 import java.util.Scanner;
@@ -15,12 +15,12 @@ import java.util.Scanner;
 public class MenuImplementation implements IMenu{
     public MainMenu menu;
     public final static Scanner input = new Scanner(System.in);
-    private final DatabaseConnection databaseConnection;
+    private final IDatabaseConnection IDatabaseConnection;
     UserSession userSession;
     public MenuImplementation(){
         userSession = UserSession.getInstance();
         menu = Menu.getInstance() ;
-        this.databaseConnection = DatabaseConnectivity.getInstance();
+        this.IDatabaseConnection = DatabaseConnectivity.getInstance();
     }
     @Override
     public void start() {
@@ -32,7 +32,7 @@ public class MenuImplementation implements IMenu{
                     case 1:
                         try{
                             Balance balance = new Balance();
-                            balance.showExistingBalance(databaseConnection);
+                            balance.showExistingBalance(IDatabaseConnection);
                         }
                         catch(Exception e){
                             System.out.println(e.getMessage());
@@ -43,7 +43,7 @@ public class MenuImplementation implements IMenu{
                             System.out.println("Enter the amount you want to recharge with:");
                             double amount = input.nextInt();
                             Balance balance = new Balance();
-                            balance.rechargeBalance(databaseConnection,amount);
+                            balance.rechargeBalance(IDatabaseConnection,amount);
                         }
                         catch(Exception e){
                             System.out.println(e.getMessage());
@@ -62,7 +62,7 @@ public class MenuImplementation implements IMenu{
                         double Duration = input.nextDouble();
                         subscriptionImplementation.subscribe(
                                 Choice,Duration,
-                                userSession.getUser(),databaseConnection);
+                                userSession.getUser(), IDatabaseConnection);
                         break;
                     case 5:
                         System.exit(0);

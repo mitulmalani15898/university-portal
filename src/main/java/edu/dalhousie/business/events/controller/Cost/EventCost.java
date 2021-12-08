@@ -4,14 +4,14 @@
  * */
 package edu.dalhousie.business.events.controller.Cost;
 
-import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 
 public class EventCost {
-    public IStudentView studentView;
+    public ICommonPrinting studentView;
 
     public EventCost() {
-        this.studentView = StudentView.getInstance();
+        this.studentView = CommonPrinting.getInstance();
     }
 
     public void studentPayment(int num) {

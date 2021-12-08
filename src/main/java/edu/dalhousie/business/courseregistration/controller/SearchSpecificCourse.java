@@ -4,13 +4,13 @@ import edu.dalhousie.business.courseregistration.business.IValidateCourseRegistr
 import edu.dalhousie.business.courseregistration.constants.CourseRegistrationConstants;
 import edu.dalhousie.business.courseregistration.database.ISpecificCourseList;
 import edu.dalhousie.business.courseregistration.model.ICourses;
-import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 
 public class SearchSpecificCourse implements ISearchSpecificCourse {
     @Override
     public void renderSearchForParticularCourseView() {
-        IStudentView view = StudentView.getInstance();
+        ICommonPrinting view = CommonPrinting.getInstance();
         ICourses courses = CourseRegistrationFactory.getInstance().getCourses();
         ISpecificCourseList specificCourseList = CourseRegistrationFactory.getInstance().getSpecificCourseList();
         ICourseListView courseListView = CourseRegistrationFactory.getInstance().getCourseListView();

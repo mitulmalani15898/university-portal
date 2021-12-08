@@ -5,7 +5,7 @@ import edu.dalhousie.business.dalmembership.controller.subscription.handler.Hand
 import edu.dalhousie.business.dalmembership.database.balance.updateBalance.UpdateBalanceQueryBuilder;
 import edu.dalhousie.business.dalmembership.database.subscription.UpdateSubscriptionQueryBuilder;
 import edu.dalhousie.controllers.User;
-import edu.dalhousie.database.DatabaseConnection;
+import edu.dalhousie.database.IDatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.Statement;
@@ -23,7 +23,7 @@ public class SubscriptionImplementation implements ISubscriptionImplmentation{
     @Override
     public Subscription subscribe(String choice, Double duration,
                                   User user,
-                                  DatabaseConnection databaseConnection) throws Exception {
+                                  IDatabaseConnection IDatabaseConnection) throws Exception {
         if (choice.isEmpty() || duration == 0 || user == null) {
             throw new NullPointerException("values can't be null");
         }
@@ -42,7 +42,7 @@ public class SubscriptionImplementation implements ISubscriptionImplmentation{
         user.setCurrentSubscription(subscription);
 
         final Connection connection =
-                databaseConnection.getDatabaseConnection();
+                IDatabaseConnection.getDatabaseConnection();
         final Statement statement =
                 connection.createStatement();
         statement.executeUpdate(this.updateSubscriptionQueryBuilder

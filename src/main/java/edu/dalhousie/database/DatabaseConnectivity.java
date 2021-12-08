@@ -12,7 +12,7 @@ import java.io.InputStream;
 import java.sql.*;
 import java.util.Properties;
 
-public class DatabaseConnectivity implements DatabaseConnection{
+public class DatabaseConnectivity implements IDatabaseConnection {
     private ILogger logger;
     private static final String DATABASE_CONFIG_FILE = "./database.properties";
     private Connection connection = null;

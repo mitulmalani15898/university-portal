@@ -7,15 +7,15 @@ package edu.dalhousie.business.events.model.University;
 import edu.dalhousie.business.events.model.Event.EventNotification;
 import edu.dalhousie.business.events.model.Student.Student;
 import edu.dalhousie.business.events.model.Student.StudentIterator;
-import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class UniversityDetails implements StudentIterator {
     public University university;
-    public IStudentView studentView;
+    public ICommonPrinting studentView;
     public static ArrayList<Student> student;
     public EventNotification eventNotification;
     public UniversityDetails(){
@@ -24,7 +24,7 @@ public class UniversityDetails implements StudentIterator {
     public UniversityDetails(String name){
         student = new ArrayList<>();
         university = new University(name);
-        studentView = StudentView.getInstance();
+        studentView = CommonPrinting.getInstance();
     }
 
     @Override

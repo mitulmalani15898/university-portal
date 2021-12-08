@@ -1,16 +1,16 @@
 package edu.dalhousie.business.scholarship.controller;
 
 import edu.dalhousie.business.scholarship.constants.StringConstants;
-import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 
 public class ScholarshipMenu {
 
-    IStudentView view;
+    ICommonPrinting view;
     int choice;
 
     public ScholarshipMenu() {
-        view = StudentView.getInstance();
+        view = CommonPrinting.getInstance();
     }
 
     public void displayMenu() throws Exception {

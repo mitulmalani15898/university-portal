@@ -2,14 +2,14 @@ package edu.dalhousie.business.addnewapplication.business;
 
 import edu.dalhousie.business.addnewapplication.model.AddNewApplicationFormObject;
 import edu.dalhousie.constants.StringConstants;
-import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 
 import java.util.Locale;
 
 public class ComputeScoreForNewApplication extends ComputeScoreForNewApplicationTemplate {
 
-    private IStudentView view;
+    private ICommonPrinting view;
     private AddNewApplicationFormObject addNewApplicationFormObject;
     private final float approvalMarks = 320;
     private final float satisfactoryMarks = 20;
@@ -23,7 +23,7 @@ public class ComputeScoreForNewApplication extends ComputeScoreForNewApplication
     public boolean isPass = true;
 
     public ComputeScoreForNewApplication(AddNewApplicationFormObject addNewApplicationFormObject) {
-        view = StudentView.getInstance();
+        view = CommonPrinting.getInstance();
         this.addNewApplicationFormObject = addNewApplicationFormObject;
     }
 

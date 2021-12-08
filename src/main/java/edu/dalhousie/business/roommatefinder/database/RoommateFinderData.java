@@ -1,7 +1,7 @@
 package edu.dalhousie.business.roommatefinder.database;
 import edu.dalhousie.business.roommatefinder.model.RoommateFinderObjectModel;
 import edu.dalhousie.controllers.UserSession;
-import edu.dalhousie.database.DatabaseConnection;
+import edu.dalhousie.database.IDatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
 
 import java.sql.Connection;
@@ -13,7 +13,7 @@ import java.util.List;
 
 public class RoommateFinderData implements IRoommateFinderData {
 
-    private static DatabaseConnection databaseConnection;
+    private static IDatabaseConnection IDatabaseConnection;
     UserSession userSession;
 
     public RoommateFinderData() {
@@ -21,7 +21,7 @@ public class RoommateFinderData implements IRoommateFinderData {
     }
 
     public void storeData(RoommateFinderObjectModel roommateFinderObject) throws SQLException {
-        databaseConnection = DatabaseConnectivity.getInstance();
+        IDatabaseConnection = DatabaseConnectivity.getInstance();
         String userName = "";
         int gender = roommateFinderObject.getGender();
         int foodPreference = roommateFinderObject.getFoodPreference();
@@ -33,7 +33,7 @@ public class RoommateFinderData implements IRoommateFinderData {
         String query = "insert into roommates " + " values ('"+ userSession.getUser().getUserName() +"', '" + gender+ "', '" + campus+ "', '" + accomodation+ "', '" +genderPreference+ "', '"+foodPreference+"', '"+hobbies+"')";
 
         try {
-            final Connection connection = databaseConnection.getDatabaseConnection();
+            final Connection connection = IDatabaseConnection.getDatabaseConnection();
             final Statement statement = connection.createStatement();
             statement.executeUpdate(query);
         } catch (Exception exception) {
@@ -67,7 +67,7 @@ public class RoommateFinderData implements IRoommateFinderData {
         }
 
         try {
-            final Connection connection = databaseConnection.getDatabaseConnection();
+            final Connection connection = IDatabaseConnection.getDatabaseConnection();
             final Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {

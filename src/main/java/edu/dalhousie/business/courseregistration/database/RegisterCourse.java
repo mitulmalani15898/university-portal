@@ -4,7 +4,7 @@ import edu.dalhousie.business.courseregistration.constants.CourseRegistrationCon
 import edu.dalhousie.business.courseregistration.model.Course;
 import edu.dalhousie.controllers.User;
 import edu.dalhousie.controllers.UserSession;
-import edu.dalhousie.database.DatabaseConnection;
+import edu.dalhousie.database.IDatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
 import edu.dalhousie.logger.ILogger;
 import edu.dalhousie.logger.LoggerAbstractFactory;
@@ -14,7 +14,7 @@ import java.sql.Connection;
 import java.sql.Statement;
 
 public class RegisterCourse implements IRegisterCourse {
-    private static DatabaseConnection databaseConnection;
+    private static IDatabaseConnection IDatabaseConnection;
 
     @Override
     public int registerForSpecificCourse(Course course) {
@@ -35,8 +35,8 @@ public class RegisterCourse implements IRegisterCourse {
             .replace("availableSeats", updatedSeats + "");
 
         try {
-            databaseConnection = DatabaseConnectivity.getInstance();
-            final Connection connection = databaseConnection.getDatabaseConnection();
+            IDatabaseConnection = DatabaseConnectivity.getInstance();
+            final Connection connection = IDatabaseConnection.getDatabaseConnection();
             final Statement statement = connection.createStatement();
             result = statement.executeUpdate(query);
             statement.executeUpdate(updateQuery);

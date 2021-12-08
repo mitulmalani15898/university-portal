@@ -5,11 +5,11 @@
 package edu.dalhousie.business.events.model.Student;
 
 import edu.dalhousie.business.events.model.Event.EventNotification;
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 
 public class Student implements IStudent{
     public String StudentName;
-    public StudentView studentView;
+    public CommonPrinting studentView;
     public EventNotification eventNotification;
     public Student(){
 

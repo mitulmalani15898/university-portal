@@ -7,24 +7,24 @@ package edu.dalhousie.business.payment.controller.FullPayment;
 import edu.dalhousie.business.payment.database.PaymentStatus.IUpdatePaymentStatusDAOQueryBuilder;
 import edu.dalhousie.business.payment.database.PaymentStatus.UpdatePaymentStatusQueryBuilder;
 import edu.dalhousie.controllers.UserSession;
-import edu.dalhousie.database.DatabaseConnection;
-import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.database.IDatabaseConnection;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 
 import java.sql.Connection;
 import java.sql.Statement;
 
 public class FullPayment implements IFullPayment{
-    private final IStudentView view;
-    private final DatabaseConnection databaseConnection;
+    private final ICommonPrinting view;
+    private final IDatabaseConnection IDatabaseConnection;
     UserSession userSession;
     IUpdatePaymentStatusDAOQueryBuilder iUpdatePaymentStatusDAOQueryBuilder;
-    public FullPayment(DatabaseConnection databaseConnection,
+    public FullPayment(IDatabaseConnection IDatabaseConnection,
                        IUpdatePaymentStatusDAOQueryBuilder
                                iUpdatePaymentStatusDAOQueryBuilder){
-        this.view = StudentView.getInstance();
+        this.view = CommonPrinting.getInstance();
         userSession = UserSession.getInstance();
-        this.databaseConnection = databaseConnection;
+        this.IDatabaseConnection = IDatabaseConnection;
         this.iUpdatePaymentStatusDAOQueryBuilder = new UpdatePaymentStatusQueryBuilder();
     }
 
@@ -35,7 +35,7 @@ public class FullPayment implements IFullPayment{
         String term = this.view.getString();
         this.view.showMessage("The amount will be deducted shortly.....");
         final Connection connection =
-                databaseConnection.getDatabaseConnection();
+                IDatabaseConnection.getDatabaseConnection();
         final Statement statement =
                 connection.createStatement();
         statement.executeUpdate(

@@ -11,9 +11,9 @@ import edu.dalhousie.business.payment.database.PaymentStatus.PaymentStatusQueryB
 import edu.dalhousie.business.payment.database.PaymentStatus.UpdatePaymentStatusQueryBuilder;
 import edu.dalhousie.business.payment.model.PaymentDetails;
 import edu.dalhousie.controllers.UserSession;
-import edu.dalhousie.database.DatabaseConnection;
-import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.database.IDatabaseConnection;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -26,18 +26,18 @@ import static edu.dalhousie.business.payment.database.PaymentDetails.PaymentDeta
 import static edu.dalhousie.business.payment.database.PaymentDetails.PaymentDetailsConstant.COURSE_TYPE;
 
 public class EMIPaymentPlans implements IEMIPaymentPlans {
-    private final IStudentView view;
-    private final DatabaseConnection databaseConnection;
+    private final ICommonPrinting view;
+    private final IDatabaseConnection IDatabaseConnection;
     private final PaymentDetailsDAOQueryBuilder paymentDetailsDAOQueryBuilder;
     private final IPaymentStatusDAOQueryBuilder paymentStatusDAOQueryBuilder;
     private final IUpdatePaymentStatusDAOQueryBuilder iUpdatePaymentStatusDAOQueryBuilder;
     UserSession userSession;
-    public EMIPaymentPlans(DatabaseConnection databaseConnection,
+    public EMIPaymentPlans(IDatabaseConnection IDatabaseConnection,
                            PaymentDetailsDAOQueryBuilder
                                    paymentDetailsDAOQueryBuilder,
                            IPaymentStatusDAOQueryBuilder iPaymentStatusDAOQueryBuilder){
-        this.view = StudentView.getInstance();
-        this.databaseConnection = databaseConnection;
+        this.view = CommonPrinting.getInstance();
+        this.IDatabaseConnection = IDatabaseConnection;
         this.paymentDetailsDAOQueryBuilder = paymentDetailsDAOQueryBuilder;
         this.paymentStatusDAOQueryBuilder = new PaymentStatusQueryBuilder();
         this.iUpdatePaymentStatusDAOQueryBuilder = new UpdatePaymentStatusQueryBuilder();
@@ -66,7 +66,7 @@ public class EMIPaymentPlans implements IEMIPaymentPlans {
         this.view.showMessage("Enter the term:");
         String term = this.view.getString();
         final Connection connection =
-                databaseConnection.getDatabaseConnection();
+                IDatabaseConnection.getDatabaseConnection();
         final Statement statement =
                 connection.createStatement();
         final ResultSet paymentStatusResultSet =

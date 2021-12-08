@@ -3,13 +3,13 @@ package edu.dalhousie.business.registration.controller;
 import edu.dalhousie.business.registration.constants.RegistrationConstants;
 import edu.dalhousie.business.registration.database.ISaveUser;
 import edu.dalhousie.business.registration.model.IUser;
-import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 
 public class RegisterUser implements IRegisterUser {
     @Override
     public void saveUserIntoDatabase() {
-        IStudentView view = StudentView.getInstance();
+        ICommonPrinting view = CommonPrinting.getInstance();
         ISaveUser saveUser = RegistrationFactory.getInstance().getSaveUser();
         IUser user = RegistrationFactory.getInstance().getUser();
 

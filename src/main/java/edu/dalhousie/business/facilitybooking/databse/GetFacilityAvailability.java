@@ -4,7 +4,7 @@ import edu.dalhousie.business.facilitybooking.constants.FacilityBookingConstants
 import edu.dalhousie.business.facilitybooking.controller.FacilityBookingFactory;
 import edu.dalhousie.business.facilitybooking.model.Facility;
 import edu.dalhousie.business.facilitybooking.model.IAvailableFacilitySlots;
-import edu.dalhousie.database.DatabaseConnection;
+import edu.dalhousie.database.IDatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
 import edu.dalhousie.logger.ILogger;
 import edu.dalhousie.logger.LoggerAbstractFactory;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GetFacilityAvailability implements IGetFacilityAvailability {
-    private static DatabaseConnection databaseConnection;
+    private static IDatabaseConnection IDatabaseConnection;
 
     @Override
     public void getFacilityAvailability(String facilityName) {
@@ -27,8 +27,8 @@ public class GetFacilityAvailability implements IGetFacilityAvailability {
             .replace("facilityName", facilityName);
 
         try {
-            databaseConnection = DatabaseConnectivity.getInstance();
-            final Connection connection = databaseConnection.getDatabaseConnection();
+            IDatabaseConnection = DatabaseConnectivity.getInstance();
+            final Connection connection = IDatabaseConnection.getDatabaseConnection();
             final Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             List<Facility> facilitySlots = new ArrayList<>();

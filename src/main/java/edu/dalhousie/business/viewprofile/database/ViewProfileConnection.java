@@ -2,34 +2,34 @@ package edu.dalhousie.business.viewprofile.database;
 
 import edu.dalhousie.business.viewprofile.model.IViewProfileModel;
 import edu.dalhousie.controllers.UserSession;
-import edu.dalhousie.database.DatabaseConnection;
+import edu.dalhousie.database.IDatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
-import edu.dalhousie.presentation.IStudentView;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
 import edu.dalhousie.business.viewprofile.controller.ViewProfileFactory;
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class ViewProfileConnection implements IViewProfileConnection {
-    private DatabaseConnection databaseConnection;
+    private IDatabaseConnection IDatabaseConnection;
     UserSession userSession;
 
     public ViewProfileConnection() {
-        this.databaseConnection = DatabaseConnectivity.getInstance();
+        this.IDatabaseConnection = DatabaseConnectivity.getInstance();
         userSession = UserSession.getInstance();
     }
 
     public void executeViewTable() {
-        IStudentView view = StudentView.getInstance();
+        ICommonPrinting view = CommonPrinting.getInstance();
         IViewProfileModel viewProfileModel = ViewProfileFactory.initialize().getViewProfileModel();
         viewProfileModel.setUserID(userSession.getUser().getUserName());
         //viewProfileModel.setUserID("viren.malavia");
 
         try {
             final Connection connection =
-                    databaseConnection.getDatabaseConnection();
+                    IDatabaseConnection.getDatabaseConnection();
             final Statement statement =
                     connection.createStatement();
             String SQL_View = String.format("SELECT * FROM users WHERE user_name = '%s'", viewProfileModel.getUserID());

@@ -8,10 +8,10 @@ import edu.dalhousie.business.payment.database.PaymentDetails.PaymentDetailsDAOQ
 import edu.dalhousie.business.payment.database.PaymentStatus.IPaymentStatusDAOQueryBuilder;
 import edu.dalhousie.business.payment.model.PaymentDetails;
 import edu.dalhousie.controllers.UserSession;
-import edu.dalhousie.database.DatabaseConnection;
+import edu.dalhousie.database.IDatabaseConnection;
 import edu.dalhousie.database.DatabaseException;
-import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 import static edu.dalhousie.business.payment.database.PaymentDetails.PaymentDetailsConstant.*;
 
 import java.sql.Connection;
@@ -22,21 +22,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShowPaymentInformation implements IPaymentInformation{
-    private final DatabaseConnection databaseConnection;
+    private final IDatabaseConnection IDatabaseConnection;
     private final PaymentDetailsDAOQueryBuilder paymentDetailsDAOQueryBuilder;
     private final IPaymentStatusDAOQueryBuilder paymentStatusDAOQueryBuilder;
-    private final IStudentView view;
+    private final ICommonPrinting view;
     UserSession userSession;
     private final int MAXIMUM_CREDITS=12;
-    public ShowPaymentInformation(DatabaseConnection databaseConnection,
+    public ShowPaymentInformation(IDatabaseConnection IDatabaseConnection,
                                   PaymentDetailsDAOQueryBuilder
                                           paymentDetailsDAOQueryBuilder,
                                   IPaymentStatusDAOQueryBuilder
                                           paymentStatusDAOQueryBuilder){
-        this.databaseConnection = databaseConnection;
+        this.IDatabaseConnection = IDatabaseConnection;
         this.paymentDetailsDAOQueryBuilder = paymentDetailsDAOQueryBuilder;
         this.paymentStatusDAOQueryBuilder = paymentStatusDAOQueryBuilder;
-        this.view = StudentView.getInstance();
+        this.view = CommonPrinting.getInstance();
         userSession = UserSession.getInstance();
     }
 
@@ -47,7 +47,7 @@ public class ShowPaymentInformation implements IPaymentInformation{
         String term = this.view.getString();
         try{
             final Connection connection =
-                    databaseConnection.getDatabaseConnection();
+                    IDatabaseConnection.getDatabaseConnection();
             final Statement statement =
                     connection.createStatement();
             final ResultSet paymentStatusResultSet =

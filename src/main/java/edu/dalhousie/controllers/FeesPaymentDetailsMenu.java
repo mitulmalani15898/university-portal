@@ -13,22 +13,22 @@ import edu.dalhousie.business.payment.database.PaymentStatus.IPaymentStatusDAOQu
 import edu.dalhousie.business.payment.database.PaymentStatus.IUpdatePaymentStatusDAOQueryBuilder;
 import edu.dalhousie.business.payment.database.PaymentStatus.PaymentStatusQueryBuilder;
 import edu.dalhousie.business.payment.database.PaymentStatus.UpdatePaymentStatusQueryBuilder;
-import edu.dalhousie.database.DatabaseConnection;
+import edu.dalhousie.database.IDatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
-import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 
 public class FeesPaymentDetailsMenu {
-    private final IStudentView view;
+    private final ICommonPrinting view;
     private final StudentMainClass studentMenu;
-    private final DatabaseConnection databaseConnection;
+    private final IDatabaseConnection IDatabaseConnection;
     private final PaymentDetailsDAOQueryBuilder paymentDetailsDAOQueryBuilder;
     private final IPaymentStatusDAOQueryBuilder iPaymentStatusDAOQueryBuilder;
     private final IUpdatePaymentStatusDAOQueryBuilder iUpdatePaymentStatusDAOQueryBuilder;
     FeesPaymentDetailsMenu(){
-        this.view = StudentView.getInstance();
+        this.view = CommonPrinting.getInstance();
         this.studentMenu = new StudentMainClass();
-        databaseConnection = DatabaseConnectivity.getInstance();
+        IDatabaseConnection = DatabaseConnectivity.getInstance();
         this.paymentDetailsDAOQueryBuilder = PaymentDetailsQueryBuilder.getInstance();
         this.iPaymentStatusDAOQueryBuilder = new PaymentStatusQueryBuilder();
         this.iUpdatePaymentStatusDAOQueryBuilder = new UpdatePaymentStatusQueryBuilder();
@@ -46,21 +46,21 @@ public class FeesPaymentDetailsMenu {
             switch (choice) {
                 case 1:
                     ShowPaymentInformation showPaymentInformation =
-                            new ShowPaymentInformation(databaseConnection,
+                            new ShowPaymentInformation(IDatabaseConnection,
                                     paymentDetailsDAOQueryBuilder,
                                     iPaymentStatusDAOQueryBuilder);
                     showPaymentInformation.showFeeDetails();
                     break;
                 case 2:
                     this.view.showMessage("Full payment");
-                    FullPayment fullPayment = new FullPayment(databaseConnection,
+                    FullPayment fullPayment = new FullPayment(IDatabaseConnection,
                             iUpdatePaymentStatusDAOQueryBuilder);
                     fullPayment.deductTotalAmount();
                     break;
                 case 3:
                     this.view.showMessage("EMI");
                     EMIPaymentPlans emiPaymentPlans = new EMIPaymentPlans(
-                            databaseConnection,
+                            IDatabaseConnection,
                             paymentDetailsDAOQueryBuilder,
                             iPaymentStatusDAOQueryBuilder);
                     emiPaymentPlans.showEMIStructure();

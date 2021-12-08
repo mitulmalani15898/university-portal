@@ -1,7 +1,7 @@
 package edu.dalhousie.business.scholarship.database;
 
 import edu.dalhousie.business.scholarship.constants.StringConstants;
-import edu.dalhousie.database.DatabaseConnection;
+import edu.dalhousie.database.IDatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
 
 import java.sql.Connection;
@@ -13,19 +13,19 @@ public class ScholarshipData {
 
     String userID;
     String courseName;
-    private static DatabaseConnection databaseConnection;
+    private static IDatabaseConnection IDatabaseConnection;
 
     public ScholarshipData(String userID, String courseName) throws SQLException {
         this.userID = userID;
         this.courseName = courseName;
-        databaseConnection = DatabaseConnectivity.getInstance();
+        IDatabaseConnection = DatabaseConnectivity.getInstance();
     }
 
     public String getData() throws SQLException {
         String score = "";
         String query = "select applicationscore from new_application_score where userName = '" + userID + "' ";
         try {
-            final Connection connection = databaseConnection.getDatabaseConnection();
+            final Connection connection = IDatabaseConnection.getDatabaseConnection();
             final Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(query);
             while(rs.next()) {

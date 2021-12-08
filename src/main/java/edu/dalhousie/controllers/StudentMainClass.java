@@ -18,12 +18,12 @@ import edu.dalhousie.business.facilitybooking.controller.IFacilityBooking;
 import edu.dalhousie.business.sportnomination.controller.SportsNomination;
 import edu.dalhousie.business.viewprofile.controller.IViewProfile;
 import edu.dalhousie.business.viewprofile.controller.ViewProfile;
-import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentView;
-import edu.dalhousie.utilities.PrintHeading;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
+import edu.dalhousie.utilities.printing.PrintHeading;
 
 public class StudentMainClass {
-    private final IStudentView view;
+    private final ICommonPrinting view;
     private static final String addNewApplication = "Add new application for admission";
     private static final String profile = "Profile (Personal information and course details)";
     private static final String listOfCourses = "List of courses for registration";
@@ -40,7 +40,7 @@ public class StudentMainClass {
     private static final String logout = "Logout";
 
     public StudentMainClass(){
-        this.view = StudentView.getInstance();
+        this.view = CommonPrinting.getInstance();
     }
     public void displayStudentMenu() throws Exception {
         while (true) {

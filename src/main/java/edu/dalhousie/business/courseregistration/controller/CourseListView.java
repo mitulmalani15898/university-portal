@@ -2,8 +2,8 @@ package edu.dalhousie.business.courseregistration.controller;
 
 import edu.dalhousie.business.courseregistration.constants.CourseRegistrationConstants;
 import edu.dalhousie.business.courseregistration.model.Course;
-import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 
 
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
 public class CourseListView implements ICourseListView {
     @Override
     public void renderCourseListView(List<Course> courses) {
-        IStudentView view = StudentView.getInstance();
+        ICommonPrinting view = CommonPrinting.getInstance();
         int count = 0;
 
         if (courses.size() > 0) {
