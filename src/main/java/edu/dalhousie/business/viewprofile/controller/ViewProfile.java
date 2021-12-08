@@ -7,14 +7,14 @@ import edu.dalhousie.business.viewprofile.database.IUpdateProfileConnection;
 import edu.dalhousie.business.viewprofile.database.IViewProfileConnection;
 import edu.dalhousie.business.viewprofile.model.IViewProfileModel;
 import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentViewFactory;
+import edu.dalhousie.presentation.StudentView;
 import edu.dalhousie.utilities.Hashing;
 import edu.dalhousie.utilities.PrintHeading;
 
 public class ViewProfile implements IViewProfile {
     Hashing performHashing;
     ValidatePassword validatePassword;
-    IStudentView view = StudentViewFactory.getInstance().getStudentView();
+    IStudentView view = StudentView.getInstance();
     IViewProfileModel viewProfileModel = ViewProfileFactory.initialize().getViewProfileModel();
     IViewProfileConnection viewProfileConnection = ViewProfileFactory.initialize().getViewProfileConnection();
     IUpdateProfileConnection updateProfileConnection = ViewProfileFactory.initialize().getUpdateProfileConnection();

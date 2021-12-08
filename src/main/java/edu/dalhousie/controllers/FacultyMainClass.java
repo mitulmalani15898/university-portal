@@ -2,18 +2,21 @@ package edu.dalhousie.controllers;
 
 import edu.dalhousie.business.viewprofile.controller.ViewProfile;
 import edu.dalhousie.business.viewprofile.controller.ViewProfile;
+import edu.dalhousie.presentation.IStudentView;
 import edu.dalhousie.presentation.StudentView;
 import edu.dalhousie.utilities.PrintHeading;
 
 public class FacultyMainClass {
-    StudentView view = new StudentView();
+    IStudentView view = null;
 
     private int userChoice;
     private static final String profile = "Profile";
     private static final String studentGrading = "Student Grading";
     private static final String eTender = "E-tender for canteen";
     private static final String logout = "Logout";
-
+    public FacultyMainClass(){
+        this.view = StudentView.getInstance();
+    }
     public void displayFacultyMenu() {
         while (true) {
             PrintHeading.printHeadingForTheScreen("Faculty Menu", 45);

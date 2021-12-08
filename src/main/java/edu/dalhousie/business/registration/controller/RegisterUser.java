@@ -4,12 +4,12 @@ import edu.dalhousie.business.registration.constants.RegistrationConstants;
 import edu.dalhousie.business.registration.database.ISaveUser;
 import edu.dalhousie.business.registration.model.IUser;
 import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentViewFactory;
+import edu.dalhousie.presentation.StudentView;
 
 public class RegisterUser implements IRegisterUser {
     @Override
     public void saveUserIntoDatabase() {
-        IStudentView view = StudentViewFactory.getInstance().getStudentView();
+        IStudentView view = StudentView.getInstance();
         ISaveUser saveUser = RegistrationFactory.getInstance().getSaveUser();
         IUser user = RegistrationFactory.getInstance().getUser();
 

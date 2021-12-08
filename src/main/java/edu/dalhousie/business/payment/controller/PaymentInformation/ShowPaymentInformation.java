@@ -10,6 +10,7 @@ import edu.dalhousie.business.payment.model.PaymentDetails;
 import edu.dalhousie.controllers.UserSession;
 import edu.dalhousie.database.DatabaseConnection;
 import edu.dalhousie.database.DatabaseException;
+import edu.dalhousie.presentation.IStudentView;
 import edu.dalhousie.presentation.StudentView;
 import static edu.dalhousie.business.payment.database.PaymentDetails.PaymentDetailsConstant.*;
 
@@ -24,9 +25,9 @@ public class ShowPaymentInformation implements IPaymentInformation{
     private final DatabaseConnection databaseConnection;
     private final PaymentDetailsDAOQueryBuilder paymentDetailsDAOQueryBuilder;
     private final IPaymentStatusDAOQueryBuilder paymentStatusDAOQueryBuilder;
-    private final StudentView view;
+    private final IStudentView view;
     UserSession userSession;
-    private final int MAXIMUM_CREDITS=9;
+    private final int MAXIMUM_CREDITS=12;
     public ShowPaymentInformation(DatabaseConnection databaseConnection,
                                   PaymentDetailsDAOQueryBuilder
                                           paymentDetailsDAOQueryBuilder,
@@ -35,7 +36,7 @@ public class ShowPaymentInformation implements IPaymentInformation{
         this.databaseConnection = databaseConnection;
         this.paymentDetailsDAOQueryBuilder = paymentDetailsDAOQueryBuilder;
         this.paymentStatusDAOQueryBuilder = paymentStatusDAOQueryBuilder;
-        this.view = new StudentView();
+        this.view = StudentView.getInstance();
         userSession = UserSession.getInstance();
     }
 

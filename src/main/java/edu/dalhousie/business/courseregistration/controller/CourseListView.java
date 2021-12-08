@@ -3,14 +3,15 @@ package edu.dalhousie.business.courseregistration.controller;
 import edu.dalhousie.business.courseregistration.constants.CourseRegistrationConstants;
 import edu.dalhousie.business.courseregistration.model.Course;
 import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentViewFactory;
+import edu.dalhousie.presentation.StudentView;
+
 
 import java.util.List;
 
 public class CourseListView implements ICourseListView {
     @Override
     public void renderCourseListView(List<Course> courses) {
-        IStudentView view = StudentViewFactory.getInstance().getStudentView();
+        IStudentView view = StudentView.getInstance();
         int count = 0;
 
         if (courses.size() > 0) {

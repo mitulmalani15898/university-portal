@@ -6,14 +6,14 @@ import edu.dalhousie.business.courseregistration.database.ICompleteCourseList;
 import edu.dalhousie.business.courseregistration.database.IRegisteredCourseList;
 import edu.dalhousie.business.courseregistration.model.ICourses;
 import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentViewFactory;
+import edu.dalhousie.presentation.StudentView;
 import edu.dalhousie.utilities.Constants;
 import edu.dalhousie.utilities.PrintHeading;
 
 public class CourseRegistration implements ICourseRegistration {
     @Override
     public String getChoiceForCourseRegistration() {
-        IStudentView view = StudentViewFactory.getInstance().getStudentView();
+        IStudentView view = StudentView.getInstance();
         IValidateCourseRegistration validate = CourseRegistrationFactory.getInstance().getValidateCourseRegistration();
         String userChoice = "";
 
@@ -28,7 +28,7 @@ public class CourseRegistration implements ICourseRegistration {
 
     @Override
     public void startRegisterForCourses() {
-        IStudentView view = StudentViewFactory.getInstance().getStudentView();
+        IStudentView view = StudentView.getInstance();
         ICourses courses = CourseRegistrationFactory.getInstance().getCourses();
         ICompleteCourseList completeCourseList = CourseRegistrationFactory.getInstance().getCompleteCourseList();
         IRegisteredCourseList registeredCourseList = CourseRegistrationFactory.getInstance().getRegisteredCourseList();

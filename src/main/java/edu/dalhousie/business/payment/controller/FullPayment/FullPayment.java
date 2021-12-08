@@ -8,20 +8,21 @@ import edu.dalhousie.business.payment.database.PaymentStatus.IUpdatePaymentStatu
 import edu.dalhousie.business.payment.database.PaymentStatus.UpdatePaymentStatusQueryBuilder;
 import edu.dalhousie.controllers.UserSession;
 import edu.dalhousie.database.DatabaseConnection;
+import edu.dalhousie.presentation.IStudentView;
 import edu.dalhousie.presentation.StudentView;
 
 import java.sql.Connection;
 import java.sql.Statement;
 
 public class FullPayment implements IFullPayment{
-    private final StudentView view;
+    private final IStudentView view;
     private final DatabaseConnection databaseConnection;
     UserSession userSession;
     IUpdatePaymentStatusDAOQueryBuilder iUpdatePaymentStatusDAOQueryBuilder;
     public FullPayment(DatabaseConnection databaseConnection,
                        IUpdatePaymentStatusDAOQueryBuilder
                                iUpdatePaymentStatusDAOQueryBuilder){
-        this.view = new StudentView();
+        this.view = StudentView.getInstance();
         userSession = UserSession.getInstance();
         this.databaseConnection = databaseConnection;
         this.iUpdatePaymentStatusDAOQueryBuilder = new UpdatePaymentStatusQueryBuilder();

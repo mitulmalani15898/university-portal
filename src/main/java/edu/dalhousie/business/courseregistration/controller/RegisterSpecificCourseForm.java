@@ -3,12 +3,13 @@ package edu.dalhousie.business.courseregistration.controller;
 import edu.dalhousie.business.courseregistration.constants.CourseRegistrationConstants;
 import edu.dalhousie.business.courseregistration.model.IRegisteredCourses;
 import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentViewFactory;
+import edu.dalhousie.presentation.StudentView;
+
 
 public class RegisterSpecificCourseForm implements IRegisterSpecificCourseForm {
     @Override
     public void renderRegisterForSpecificCourseForm() {
-        IStudentView view = StudentViewFactory.getInstance().getStudentView();
+        IStudentView view = StudentView.getInstance();
         IRegisteredCourses registeredCourses = CourseRegistrationFactory.getInstance().getRegisteredCourses();
         ICourseListView courseListView = CourseRegistrationFactory.getInstance().getCourseListView();
         IRegisterForCourse registerForCourse = CourseRegistrationFactory.getInstance().getRegisterForCourse();

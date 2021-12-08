@@ -6,6 +6,7 @@ import edu.dalhousie.business.feedback.database.FeedbackData;
 import edu.dalhousie.business.feedback.database.IFeedbackData;
 import edu.dalhousie.business.feedback.model.SentimentAnalysisFeedbackModel;
 import edu.dalhousie.business.feedback.constants.StringConstants;
+import edu.dalhousie.presentation.IStudentView;
 import edu.dalhousie.presentation.StudentView;
 
 import java.io.IOException;
@@ -14,14 +15,14 @@ import java.util.List;
 
 public class SentimentalAnalysisOfFeedback implements ISentimentalAnalysisOfFeedback{
 
-    StudentView studentView;
+    IStudentView studentView;
     IFeedbackData feedbackData;
     ISentimentalAnalysisForFeedback sentimentalAnalysisForFeedback;
 
     String courseID;
 
     public SentimentalAnalysisOfFeedback() throws SQLException, IOException {
-        studentView = new StudentView();
+        studentView = StudentView.getInstance();
         feedbackData = new FeedbackData();
         sentimentalAnalysisForFeedback = new SentimentalAnalysisForFeedback();
         inputCourseID();

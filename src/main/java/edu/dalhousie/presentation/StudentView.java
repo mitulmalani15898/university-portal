@@ -1,8 +1,21 @@
 package edu.dalhousie.presentation;
 
+
+
 import java.util.Scanner;
 
 public class StudentView implements IStudentView {
+    private static StudentView studentView= null;
+    private StudentView(){
+
+    }
+
+    public static StudentView getInstance(){
+        if(studentView==null){
+            studentView = new StudentView();
+        }
+        return studentView;
+    }
 
     public void showMessage(String message) {
         System.out.println(message);

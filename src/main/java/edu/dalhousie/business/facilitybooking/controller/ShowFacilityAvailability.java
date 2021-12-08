@@ -5,12 +5,13 @@ import edu.dalhousie.business.facilitybooking.databse.IGetFacilityAvailability;
 import edu.dalhousie.business.facilitybooking.model.Facility;
 import edu.dalhousie.business.facilitybooking.model.IAvailableFacilitySlots;
 import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentViewFactory;
+import edu.dalhousie.presentation.StudentView;
+
 
 public class ShowFacilityAvailability implements IShowFacilityAvailability {
     @Override
     public void renderFacilityAvailability(String facility) {
-        IStudentView view = StudentViewFactory.getInstance().getStudentView();
+        IStudentView view = StudentView.getInstance();
         IGetFacilityAvailability facilityAvailability = FacilityBookingFactory.getInstance().getGetFacilityAvailability();
         IAvailableFacilitySlots facilitySlots = FacilityBookingFactory.getInstance().getAvailableFacilitySlots();
 

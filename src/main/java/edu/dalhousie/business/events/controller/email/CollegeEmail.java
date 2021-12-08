@@ -4,12 +4,13 @@
  * */
 package edu.dalhousie.business.events.controller.email;
 
+import edu.dalhousie.presentation.IStudentView;
 import edu.dalhousie.presentation.StudentView;
 
 public class CollegeEmail implements IEmail{
-    StudentView studentView;
+    IStudentView studentView;
     CollegeEmail(){
-       this.studentView = new StudentView();
+       this.studentView = StudentView.getInstance();
     }
     @Override
     public Email generateEmail() {

@@ -4,14 +4,15 @@
  * */
 package edu.dalhousie.business.events.model.Judge;
 
+import edu.dalhousie.presentation.IStudentView;
 import edu.dalhousie.presentation.StudentView;
 
 public class EventJudge {
-    public StudentView studentView;
+    public IStudentView studentView;
     private String judgeName;
 
     public EventJudge(){
-        this.studentView = new StudentView();
+        this.studentView = StudentView.getInstance();
     }
 
     public String getJudgeName() {

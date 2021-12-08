@@ -4,13 +4,14 @@
  * */
 package edu.dalhousie.business.events.controller.State;
 
+import edu.dalhousie.presentation.IStudentView;
 import edu.dalhousie.presentation.StudentView;
 
 public class StateAtStart implements State{
-    public StudentView studentView;
+    public IStudentView studentView;
 
     public StateAtStart(){
-        this.studentView = new StudentView();
+        this.studentView = StudentView.getInstance();
     }
     @Override
     public void performStateTransition(StateContext stateContext) {

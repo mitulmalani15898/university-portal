@@ -14,6 +14,7 @@ import edu.dalhousie.business.events.controller.State.StateInProgress;
 import edu.dalhousie.business.events.model.Winner.EventWinner;
 import edu.dalhousie.database.DatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
+import edu.dalhousie.presentation.IStudentView;
 import edu.dalhousie.presentation.StudentView;
 
 import java.sql.Connection;
@@ -29,7 +30,7 @@ public class Event {
     protected StateAtStart stateAtStart;
     protected StateAtEnd stateAtEnd;
     protected StateInProgress stateInProgress;
-    public StudentView studentView;
+    public IStudentView studentView;
     public EventWinner eventWinner;
     public EventJudge eventJudge;
     EventNotification eventNotification;
@@ -52,7 +53,7 @@ public class Event {
         this.eventDate = eventDate;
         this.eventTime = eventTime;
         this.eventDescription = eventDescription;
-        this.studentView = new StudentView();
+        this.studentView = StudentView.getInstance();
         this.stateAtStart.performStateTransition(stateContext);
         this.eventJudge = new EventJudge();
         this.eventWinner = new EventWinner();

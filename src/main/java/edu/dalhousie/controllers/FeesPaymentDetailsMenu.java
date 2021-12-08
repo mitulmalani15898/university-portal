@@ -15,17 +15,18 @@ import edu.dalhousie.business.payment.database.PaymentStatus.PaymentStatusQueryB
 import edu.dalhousie.business.payment.database.PaymentStatus.UpdatePaymentStatusQueryBuilder;
 import edu.dalhousie.database.DatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
+import edu.dalhousie.presentation.IStudentView;
 import edu.dalhousie.presentation.StudentView;
 
 public class FeesPaymentDetailsMenu {
-    private final StudentView view;
+    private final IStudentView view;
     private final StudentMainClass studentMenu;
     private final DatabaseConnection databaseConnection;
     private final PaymentDetailsDAOQueryBuilder paymentDetailsDAOQueryBuilder;
     private final IPaymentStatusDAOQueryBuilder iPaymentStatusDAOQueryBuilder;
     private final IUpdatePaymentStatusDAOQueryBuilder iUpdatePaymentStatusDAOQueryBuilder;
     FeesPaymentDetailsMenu(){
-        this.view = new StudentView();
+        this.view = StudentView.getInstance();
         this.studentMenu = new StudentMainClass();
         databaseConnection = DatabaseConnectivity.getInstance();
         this.paymentDetailsDAOQueryBuilder = PaymentDetailsQueryBuilder.getInstance();

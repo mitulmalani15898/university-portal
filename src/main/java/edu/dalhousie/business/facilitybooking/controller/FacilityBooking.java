@@ -3,7 +3,7 @@ package edu.dalhousie.business.facilitybooking.controller;
 import edu.dalhousie.business.facilitybooking.business.IValidateFacilityBooking;
 import edu.dalhousie.business.facilitybooking.constants.FacilityBookingConstants;
 import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentViewFactory;
+import edu.dalhousie.presentation.StudentView;
 import edu.dalhousie.utilities.Constants;
 import edu.dalhousie.utilities.PrintHeading;
 
@@ -11,7 +11,7 @@ public class FacilityBooking implements IFacilityBooking {
     public static String userName = "";
 
     public void renderFacilityBookingForm() {
-        IStudentView view = StudentViewFactory.getInstance().getStudentView();
+        IStudentView view = StudentView.getInstance();
         IValidateFacilityBooking validateFacilityBooking = FacilityBookingFactory.getInstance().getValidateFacilityBooking();
         IBookFacilityForm bookFacilityForm = FacilityBookingFactory.getInstance().getBookFacilityForm();
         String username = "";
@@ -27,7 +27,7 @@ public class FacilityBooking implements IFacilityBooking {
     }
 
     public void startFacilityBookingService() {
-        IStudentView view = StudentViewFactory.getInstance().getStudentView();
+        IStudentView view = StudentView.getInstance();
 
         PrintHeading.printHeadingForTheScreen(FacilityBookingConstants.FACILITY_BOOKING, 42);
         renderFacilityBookingForm();

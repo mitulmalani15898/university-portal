@@ -4,13 +4,14 @@
  * */
 package edu.dalhousie.business.events.controller.State;
 
+import edu.dalhousie.presentation.IStudentView;
 import edu.dalhousie.presentation.StudentView;
 
 public class StateInProgress implements State{
-    public StudentView studentView;
+    public IStudentView studentView;
 
     public StateInProgress(){
-        this.studentView = new StudentView();
+        this.studentView = StudentView.getInstance();
     }
 
     @Override

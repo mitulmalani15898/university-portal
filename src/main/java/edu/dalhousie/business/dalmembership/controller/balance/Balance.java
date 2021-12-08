@@ -20,6 +20,7 @@ public class Balance implements IBalance{
     public Balance(){
         userSession = UserSession.getInstance();
         this.balanceQueryBuilder = GetBalanceQueryBuilder.getInstance();
+        this.rechargeBalanceQueryBuilder = new UpdateBalanceQueryBuilder();
     }
     @Override
     public void showExistingBalance(DatabaseConnection databaseConnection) {

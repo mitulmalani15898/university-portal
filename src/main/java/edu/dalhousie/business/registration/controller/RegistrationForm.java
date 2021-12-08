@@ -4,13 +4,13 @@ import edu.dalhousie.business.registration.business.*;
 import edu.dalhousie.business.registration.constants.RegistrationConstants;
 import edu.dalhousie.business.registration.model.IUser;
 import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentViewFactory;
+import edu.dalhousie.presentation.StudentView;
 import edu.dalhousie.utilities.Hashing;
 
 public class RegistrationForm implements IRegistrationForm {
     @Override
     public void renderRegistrationForm(String typeOfUser) {
-        IStudentView view = StudentViewFactory.getInstance().getStudentView();
+        IStudentView view = StudentView.getInstance();
         IUserType userType = RegistrationFactory.getInstance().getUserType();
         IUser user = RegistrationFactory.getInstance().getUser();
         IValidatePassword validatePassword = RegistrationFactory.getInstance().getValidatePassword();

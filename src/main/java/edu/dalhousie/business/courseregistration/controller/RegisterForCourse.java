@@ -6,12 +6,13 @@ import edu.dalhousie.business.courseregistration.database.IRegisterCourse;
 import edu.dalhousie.business.courseregistration.model.Course;
 import edu.dalhousie.business.courseregistration.model.ICourses;
 import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentViewFactory;
+import edu.dalhousie.presentation.StudentView;
+
 
 public class RegisterForCourse implements IRegisterForCourse {
     @Override
     public int registerForSpecificCourse() {
-        IStudentView view = StudentViewFactory.getInstance().getStudentView();
+        IStudentView view = StudentView.getInstance();
         IValidateCourseRegistration validateCourse = CourseRegistrationFactory.getInstance().getValidateCourseRegistration();
         IRegisterCourse registerCourse = CourseRegistrationFactory.getInstance().getRegisterCourse();
         ICourses courses = CourseRegistrationFactory.getInstance().getCourses();

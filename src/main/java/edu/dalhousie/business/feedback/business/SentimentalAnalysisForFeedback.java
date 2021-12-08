@@ -2,6 +2,7 @@ package edu.dalhousie.business.feedback.business;
 
 import edu.dalhousie.business.feedback.model.SentimentAnalysisFeedbackModel;
 import edu.dalhousie.business.feedback.constants.StringConstants;
+import edu.dalhousie.presentation.IStudentView;
 import edu.dalhousie.presentation.StudentView;
 
 import java.io.BufferedReader;
@@ -11,7 +12,7 @@ import java.util.*;
 
 public class SentimentalAnalysisForFeedback implements ISentimentalAnalysisForFeedback {
 
-    StudentView studentView;
+    IStudentView studentView;
     SentimentAnalysisFeedbackModel sentimentAnalysisFeedback;
 
     private int positiveWord = 0;
@@ -21,7 +22,7 @@ public class SentimentalAnalysisForFeedback implements ISentimentalAnalysisForFe
     private List<String> negativeWordsList;
 
     public SentimentalAnalysisForFeedback() {
-        studentView = new StudentView();
+        studentView = StudentView.getInstance();
         positiveWordsList = new ArrayList<>();
         negativeWordsList = new ArrayList<>();
     }

@@ -12,6 +12,7 @@ import edu.dalhousie.business.payment.database.PaymentStatus.UpdatePaymentStatus
 import edu.dalhousie.business.payment.model.PaymentDetails;
 import edu.dalhousie.controllers.UserSession;
 import edu.dalhousie.database.DatabaseConnection;
+import edu.dalhousie.presentation.IStudentView;
 import edu.dalhousie.presentation.StudentView;
 
 import java.sql.Connection;
@@ -25,7 +26,7 @@ import static edu.dalhousie.business.payment.database.PaymentDetails.PaymentDeta
 import static edu.dalhousie.business.payment.database.PaymentDetails.PaymentDetailsConstant.COURSE_TYPE;
 
 public class EMIPaymentPlans implements IEMIPaymentPlans {
-    private final StudentView view;
+    private final IStudentView view;
     private final DatabaseConnection databaseConnection;
     private final PaymentDetailsDAOQueryBuilder paymentDetailsDAOQueryBuilder;
     private final IPaymentStatusDAOQueryBuilder paymentStatusDAOQueryBuilder;
@@ -35,7 +36,7 @@ public class EMIPaymentPlans implements IEMIPaymentPlans {
                            PaymentDetailsDAOQueryBuilder
                                    paymentDetailsDAOQueryBuilder,
                            IPaymentStatusDAOQueryBuilder iPaymentStatusDAOQueryBuilder){
-        this.view = new StudentView();
+        this.view = StudentView.getInstance();
         this.databaseConnection = databaseConnection;
         this.paymentDetailsDAOQueryBuilder = paymentDetailsDAOQueryBuilder;
         this.paymentStatusDAOQueryBuilder = new PaymentStatusQueryBuilder();

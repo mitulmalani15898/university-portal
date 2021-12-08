@@ -4,6 +4,7 @@ import edu.dalhousie.business.feedback.business.FeedbackUserInputValidation;
 import edu.dalhousie.business.feedback.business.IFeedbackUserInputValidation;
 import edu.dalhousie.business.feedback.constants.StringConstants;
 import edu.dalhousie.business.feedback.model.FeedbackUserInputValidationModel;
+import edu.dalhousie.presentation.IStudentView;
 import edu.dalhousie.presentation.StudentView;
 
 import java.io.IOException;
@@ -11,13 +12,13 @@ import java.sql.SQLException;
 
 public class FeedbackMenu implements IFeedbackMenu{
 
-    StudentView view;
+    IStudentView view;
     int choice = 0;
     IFeedbackUserInputValidation feedbackUserInputValidation;
     FeedbackUserInputValidationModel validation;
 
     public FeedbackMenu() {
-        view = new StudentView();
+        view = StudentView.getInstance();
         feedbackUserInputValidation = new FeedbackUserInputValidation();
         validation = new FeedbackUserInputValidationModel();
     }

@@ -5,8 +5,8 @@ import edu.dalhousie.controllers.UserSession;
 import edu.dalhousie.database.DatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
 import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentViewFactory;
 import edu.dalhousie.business.viewprofile.controller.ViewProfileFactory;
+import edu.dalhousie.presentation.StudentView;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -22,7 +22,7 @@ public class ViewProfileConnection implements IViewProfileConnection {
     }
 
     public void executeViewTable() {
-        IStudentView view = StudentViewFactory.getInstance().getStudentView();
+        IStudentView view = StudentView.getInstance();
         IViewProfileModel viewProfileModel = ViewProfileFactory.initialize().getViewProfileModel();
         viewProfileModel.setUserID(userSession.getUser().getUserName());
         //viewProfileModel.setUserID("viren.malavia");

@@ -7,12 +7,13 @@ import edu.dalhousie.business.addnewapplication.model.AddNewApplicationFormObjec
 import edu.dalhousie.business.addnewapplication.model.AddNewApplicationFormValidation;
 import edu.dalhousie.business.addnewapplication.constants.StringConstants;
 import edu.dalhousie.controllers.StudentMainClass;
+import edu.dalhousie.presentation.IStudentView;
 import edu.dalhousie.presentation.StudentView;
 
 import java.sql.SQLException;
 
 public class AddNewApplicationForAdmission implements IAddNewApplicationForAdmission{
-    StudentView view;
+    IStudentView view;
     AddNewApplicationFormObject addNewApplication;
     IValidateNewApplication validateNewApplication;
     ComputeScoreForNewApplicationTemplate computeScoreTemplate;
@@ -21,7 +22,7 @@ public class AddNewApplicationForAdmission implements IAddNewApplicationForAdmis
     StudentMainClass student;
 
     public AddNewApplicationForAdmission() throws SQLException {
-        view = new StudentView();
+        view = StudentView.getInstance();
         addNewApplication = new AddNewApplicationFormObject();
         validateNewApplication = new ValidateNewApplication();
         computeScoreTemplate = new ComputeScoreForNewApplication(addNewApplication);
