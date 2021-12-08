@@ -13,7 +13,7 @@ public interface ICourse {
 
     void setAvailableSeats(int availableSeats);
 
-    int getPreRequisiteCourseId();
+    Integer getPreRequisiteCourseId();
 
     void setPreRequisiteCourseId(int preRequisiteCourseId);
 }

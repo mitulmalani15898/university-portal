@@ -3,7 +3,6 @@ package edu.dalhousie.business.facilitybooking.business;
 import edu.dalhousie.business.facilitybooking.constants.FacilityBookingConstants;
 import edu.dalhousie.business.facilitybooking.controller.FacilityBookingFactory;
 import edu.dalhousie.business.facilitybooking.databse.IGetAllUsers;
-import edu.dalhousie.business.facilitybooking.databse.IUsersBookedFacilities;
 import edu.dalhousie.business.facilitybooking.model.Facility;
 import edu.dalhousie.business.facilitybooking.model.IAvailableFacilitySlots;
 import edu.dalhousie.business.facilitybooking.model.IBookedFacilities;

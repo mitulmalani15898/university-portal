@@ -18,7 +18,6 @@ public class FacilityBooking implements IFacilityBooking {
 
         view.showMessage(FacilityBookingConstants.ENTER_YOUR_USERNAME);
         username = view.getString();
-
         if (validateFacilityBooking.isValidUsername(username)) {
             userName = username;
             bookFacilityForm.renderFacilityForm();
@@ -32,6 +31,7 @@ public class FacilityBooking implements IFacilityBooking {
 
         PrintHeading.printHeadingForTheScreen(FacilityBookingConstants.FACILITY_BOOKING, 42);
         renderFacilityBookingForm();
+
         System.out.println(Constants.PRESS_ENTER_TO_GO_BACK);
         view.getString();
     }

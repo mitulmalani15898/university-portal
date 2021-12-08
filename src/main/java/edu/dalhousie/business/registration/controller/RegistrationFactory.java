@@ -13,16 +13,28 @@ public class RegistrationFactory {
     IValidatePassword validatePassword;
     ISaveUser saveUser;
     IUser user;
-    IUsername username;
+    ICreateUsername createUsername;
     IUserType userType;
+    IRegisterUser registerUser;
+    IRegistrationForm registrationForm;
+    IValidateEmail validateEmail;
+    IValidateDateOfBirth validateDateOfBirth;
+    IValidateGender validateGender;
+    IValidateContactNumber validateContactNumber;
 
     public RegistrationFactory() {
         registration = new Registration();
         validatePassword = new ValidatePassword();
         saveUser = new SaveUser();
         user = new User();
-        username = new Username();
+        createUsername = new CreateUsername();
         userType = new UserType();
+        registerUser = new RegisterUser();
+        registrationForm = new RegistrationForm();
+        validateEmail = new ValidateEmail();
+        validateDateOfBirth = new ValidateDateOfBirth();
+        validateGender = new ValidateGender();
+        validateContactNumber = new ValidateContactNumber();
     }
 
     public static RegistrationFactory getInstance() {
@@ -48,11 +60,35 @@ public class RegistrationFactory {
         return user;
     }
 
-    public IUsername getUsername() {
-        return username;
+    public ICreateUsername getUsernameCreator() {
+        return createUsername;
     }
 
     public IUserType getUserType() {
         return userType;
+    }
+
+    public IRegisterUser getRegisterUser() {
+        return registerUser;
+    }
+
+    public IRegistrationForm getRegistrationForm() {
+        return registrationForm;
+    }
+
+    public IValidateEmail getValidateEmail() {
+        return validateEmail;
+    }
+
+    public IValidateDateOfBirth getValidateDateOfBirth() {
+        return validateDateOfBirth;
+    }
+
+    public IValidateGender getValidateGender() {
+        return validateGender;
+    }
+
+    public IValidateContactNumber getValidateContactNumber() {
+        return validateContactNumber;
     }
 }

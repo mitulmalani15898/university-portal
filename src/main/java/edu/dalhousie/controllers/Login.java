@@ -14,13 +14,13 @@ import java.util.Scanner;
 
 public class Login {
     private DatabaseConnection databaseConnection;
-    Hashing performHashing;
+
     public Login(){
         this.databaseConnection = DatabaseConnectivity.getInstance();
-        performHashing = new Hashing();
+
     }
     public static String[] getUserLoginDetails() {
-
+        Hashing performHashing = new Hashing();
         System.out.print("Enter your Username: ");
         Scanner enterusername = new Scanner(System.in);
         String username = enterusername.nextLine();
@@ -29,11 +29,11 @@ public class Login {
         Scanner enterpassword = new Scanner(System.in);
         String userpassword = enterpassword.nextLine();
 
-        //String hashedpassword = performHashing.doPasswordHashing(userpassword);
+        String hashedpassword = performHashing.doPasswordHashing(userpassword);
 
         String[] input = new String[2];
         input[0] = username;
-        input[1] = userpassword;
+        input[1] = hashedpassword;
         return input;
     }
 
