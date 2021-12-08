@@ -9,7 +9,7 @@ import edu.dalhousie.utilities.Hashing;
 
 public class RegistrationForm implements IRegistrationForm {
     @Override
-    public void renderRegistrationForm() {
+    public void renderRegistrationForm(String typeOfUser) {
         IStudentView view = StudentViewFactory.getInstance().getStudentView();
         IUserType userType = RegistrationFactory.getInstance().getUserType();
         IUser user = RegistrationFactory.getInstance().getUser();
@@ -20,7 +20,7 @@ public class RegistrationForm implements IRegistrationForm {
         IValidateGender validateGender = RegistrationFactory.getInstance().getValidateGender();
         IValidateContactNumber validateContactNumber = RegistrationFactory.getInstance().getValidateContactNumber();
 
-        String firstName = "", lastName = "", email = "", contactNumber = "", password = "", confirmPassword = "", dateOfBirth = "", gender = "", streetAddress = "", city = "", province = "", zipcode = "", typeOfUser = "";
+        String firstName = "", lastName = "", email = "", contactNumber = "", password = "", confirmPassword = "", dateOfBirth = "", gender = "", streetAddress = "", city = "", province = "", zipcode = "";
 
         view.showMessage(RegistrationConstants.ENTER_FIRST_NAME);
         firstName = view.getString();

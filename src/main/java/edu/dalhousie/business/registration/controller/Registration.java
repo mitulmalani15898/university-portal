@@ -17,7 +17,7 @@ public class Registration implements IRegistration {
 
         String title = userType.isStudent(typeOfUser) ? RegistrationConstants.REGISTER_AS_A_STUDENT : RegistrationConstants.REGISTER_AS_A_FACULTY;
         PrintHeading.printHeadingForTheScreen(title, 38);
-        registrationForm.renderRegistrationForm();
+        registrationForm.renderRegistrationForm(typeOfUser);
         registerUser.saveUserIntoDatabase();
 
         System.out.println(Constants.PRESS_ENTER_TO_GO_BACK);

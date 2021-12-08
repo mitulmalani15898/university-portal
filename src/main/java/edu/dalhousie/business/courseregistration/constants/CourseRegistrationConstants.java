@@ -1,6 +1,10 @@
 package edu.dalhousie.business.courseregistration.constants;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class CourseRegistrationConstants {
+    public static final List<String> yesNoList = Arrays.asList("yes", "no");
     public static final String LIST_OF_ALL_COURSES = "List of all courses";
     public static final String LIST_OF_COURSES_FOR_REGISTRATION = "List of courses for registration";
     public static final String NO = "no";

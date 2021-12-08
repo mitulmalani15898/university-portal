@@ -69,7 +69,7 @@ public class StudentMainClass {
                     break;
                 case 3:
                     ICourseRegistration courseRegistration = CourseRegistrationFactory.getInstance().getCourseRegistration();
-                    courseRegistration.registerForCourses();
+                    courseRegistration.startRegisterForCourses();
                     break;
                 case 4:
                     FeesPaymentDetailsMenu feesPaymentDetails = new FeesPaymentDetailsMenu();

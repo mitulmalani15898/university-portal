@@ -1,6 +1,6 @@
 package edu.dalhousie.business.courseregistration.controller;
 
-import edu.dalhousie.business.courseregistration.business.ValidateCourse;
+import edu.dalhousie.business.courseregistration.business.ValidateCourseRegistration;
 import edu.dalhousie.business.courseregistration.database.*;
 import edu.dalhousie.business.courseregistration.model.*;
 
@@ -11,22 +11,30 @@ public class CourseRegistrationFactory {
     ICourse course;
     ICourses courses;
     IRegisteredCourses registeredCourses;
-    ValidateCourse validateCourse;
+    ValidateCourseRegistration validateCourseRegistration;
     ICompleteCourseList completeCourseList;
     IRegisteredCourseList registeredCourseList;
     ISpecificCourseList specificCourseList;
     IRegisterCourse registerCourse;
+    ICourseListView courseListView;
+    ISearchSpecificCourse searchSpecificCourse;
+    IRegisterSpecificCourseForm registerSpecificCourseForm;
+    IRegisterForCourse registerForCourse;
 
     public CourseRegistrationFactory() {
         courseRegistration = new CourseRegistration();
         course = new Course();
         courses = new Courses();
         registeredCourses = new RegisteredCourses();
-        validateCourse = new ValidateCourse();
+        validateCourseRegistration = new ValidateCourseRegistration();
         completeCourseList = new CompleteCourseList();
         registeredCourseList = new RegisteredCourseList();
         specificCourseList = new SpecificCourseList();
         registerCourse = new RegisterCourse();
+        courseListView = new CourseListView();
+        searchSpecificCourse = new SearchSpecificCourse();
+        registerSpecificCourseForm = new RegisterSpecificCourseForm();
+        registerForCourse = new RegisterForCourse();
     }
 
     public static CourseRegistrationFactory getInstance() {
@@ -52,8 +60,8 @@ public class CourseRegistrationFactory {
         return registeredCourses;
     }
 
-    public ValidateCourse getValidateCourse() {
-        return validateCourse;
+    public ValidateCourseRegistration getValidateCourseRegistration() {
+        return validateCourseRegistration;
     }
 
     public ICompleteCourseList getCompleteCourseList() {
@@ -70,5 +78,21 @@ public class CourseRegistrationFactory {
 
     public IRegisterCourse getRegisterCourse() {
         return registerCourse;
+    }
+
+    public ICourseListView getCourseListView() {
+        return courseListView;
+    }
+
+    public ISearchSpecificCourse getSearchSpecificCourse() {
+        return searchSpecificCourse;
+    }
+
+    public IRegisterSpecificCourseForm getRegisterSpecificCourseForm() {
+        return registerSpecificCourseForm;
+    }
+
+    public IRegisterForCourse getRegisterForCourse() {
+        return registerForCourse;
     }
 }
