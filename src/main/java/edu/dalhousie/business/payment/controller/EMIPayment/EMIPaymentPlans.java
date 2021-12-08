@@ -4,7 +4,7 @@
  * */
 package edu.dalhousie.business.payment.controller.EMIPayment;
 
-import edu.dalhousie.business.payment.database.PaymentDetails.PaymentDetailsDAOQueryBuilder;
+import edu.dalhousie.business.payment.database.PaymentDetails.IPaymentDetailsDAOQueryBuilder;
 import edu.dalhousie.business.payment.database.PaymentStatus.IPaymentStatusDAOQueryBuilder;
 import edu.dalhousie.business.payment.database.PaymentStatus.IUpdatePaymentStatusDAOQueryBuilder;
 import edu.dalhousie.business.payment.database.PaymentStatus.PaymentStatusQueryBuilder;
@@ -28,19 +28,21 @@ import static edu.dalhousie.business.payment.database.PaymentDetails.PaymentDeta
 public class EMIPaymentPlans implements IEMIPaymentPlans {
     private final ICommonPrinting view;
     private final IDatabaseConnection IDatabaseConnection;
-    private final PaymentDetailsDAOQueryBuilder paymentDetailsDAOQueryBuilder;
+    private final IPaymentDetailsDAOQueryBuilder IPaymentDetailsDAOQueryBuilder;
     private final IPaymentStatusDAOQueryBuilder paymentStatusDAOQueryBuilder;
     private final IUpdatePaymentStatusDAOQueryBuilder iUpdatePaymentStatusDAOQueryBuilder;
     UserSession userSession;
     public EMIPaymentPlans(IDatabaseConnection IDatabaseConnection,
-                           PaymentDetailsDAOQueryBuilder
-                                   paymentDetailsDAOQueryBuilder,
-                           IPaymentStatusDAOQueryBuilder iPaymentStatusDAOQueryBuilder){
+                           IPaymentDetailsDAOQueryBuilder
+                                   IPaymentDetailsDAOQueryBuilder,
+                           IPaymentStatusDAOQueryBuilder iPaymentStatusDAOQueryBuilder,
+                           IUpdatePaymentStatusDAOQueryBuilder iUpdatePaymentStatusDAOQueryBuilder
+    ){
         this.view = CommonPrinting.getInstance();
         this.IDatabaseConnection = IDatabaseConnection;
-        this.paymentDetailsDAOQueryBuilder = paymentDetailsDAOQueryBuilder;
-        this.paymentStatusDAOQueryBuilder = new PaymentStatusQueryBuilder();
-        this.iUpdatePaymentStatusDAOQueryBuilder = new UpdatePaymentStatusQueryBuilder();
+        this.IPaymentDetailsDAOQueryBuilder = IPaymentDetailsDAOQueryBuilder;
+        this.paymentStatusDAOQueryBuilder = iPaymentStatusDAOQueryBuilder;
+        this.iUpdatePaymentStatusDAOQueryBuilder = iUpdatePaymentStatusDAOQueryBuilder;
         userSession = UserSession.getInstance();
     }
 
@@ -80,7 +82,7 @@ public class EMIPaymentPlans implements IEMIPaymentPlans {
         if(status==null){
             final ResultSet paymentDetailsResultSet =
                     statement.executeQuery(
-                            paymentDetailsDAOQueryBuilder
+                            IPaymentDetailsDAOQueryBuilder
                                     .selectEnrolledCoursesQuery(student_id));
             final List<PaymentDetails> paymentDetailsArrayList =
                     preparePaymentDetails(paymentDetailsResultSet);

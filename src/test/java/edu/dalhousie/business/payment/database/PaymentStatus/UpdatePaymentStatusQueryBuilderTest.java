@@ -11,7 +11,7 @@ public class UpdatePaymentStatusQueryBuilderTest {
     @Test
     public void updatePaymentStatus(){
         UpdatePaymentStatusQueryBuilder updatePaymentStatusQueryBuilder
-                = new UpdatePaymentStatusQueryBuilder();
+                = UpdatePaymentStatusQueryBuilder.getInstance();
         String expectedQuery = updatePaymentStatusQueryBuilder
                 .updatePaymentStatus(1,"emi","fall");
         String actualQuery = "INSERT INTO payment(payment_status, student_id, term)" +

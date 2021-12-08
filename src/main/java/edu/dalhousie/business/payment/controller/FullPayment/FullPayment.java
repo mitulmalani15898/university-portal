@@ -25,7 +25,7 @@ public class FullPayment implements IFullPayment{
         this.view = CommonPrinting.getInstance();
         userSession = UserSession.getInstance();
         this.IDatabaseConnection = IDatabaseConnection;
-        this.iUpdatePaymentStatusDAOQueryBuilder = new UpdatePaymentStatusQueryBuilder();
+        this.iUpdatePaymentStatusDAOQueryBuilder = iUpdatePaymentStatusDAOQueryBuilder;
     }
 
     @Override

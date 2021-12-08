@@ -4,7 +4,7 @@
  * */
 package edu.dalhousie.business.payment.controller.PaymentInformation;
 
-import edu.dalhousie.business.payment.database.PaymentDetails.PaymentDetailsDAOQueryBuilder;
+import edu.dalhousie.business.payment.database.PaymentDetails.IPaymentDetailsDAOQueryBuilder;
 import edu.dalhousie.business.payment.database.PaymentStatus.IPaymentStatusDAOQueryBuilder;
 import edu.dalhousie.business.payment.model.PaymentDetails;
 import edu.dalhousie.controllers.UserSession;
@@ -23,18 +23,18 @@ import java.util.List;
 
 public class ShowPaymentInformation implements IPaymentInformation{
     private final IDatabaseConnection IDatabaseConnection;
-    private final PaymentDetailsDAOQueryBuilder paymentDetailsDAOQueryBuilder;
+    private final IPaymentDetailsDAOQueryBuilder IPaymentDetailsDAOQueryBuilder;
     private final IPaymentStatusDAOQueryBuilder paymentStatusDAOQueryBuilder;
     private final ICommonPrinting view;
     UserSession userSession;
     private final int MAXIMUM_CREDITS=12;
     public ShowPaymentInformation(IDatabaseConnection IDatabaseConnection,
-                                  PaymentDetailsDAOQueryBuilder
-                                          paymentDetailsDAOQueryBuilder,
+                                  IPaymentDetailsDAOQueryBuilder
+                                          IPaymentDetailsDAOQueryBuilder,
                                   IPaymentStatusDAOQueryBuilder
                                           paymentStatusDAOQueryBuilder){
         this.IDatabaseConnection = IDatabaseConnection;
-        this.paymentDetailsDAOQueryBuilder = paymentDetailsDAOQueryBuilder;
+        this.IPaymentDetailsDAOQueryBuilder = IPaymentDetailsDAOQueryBuilder;
         this.paymentStatusDAOQueryBuilder = paymentStatusDAOQueryBuilder;
         this.view = CommonPrinting.getInstance();
         userSession = UserSession.getInstance();
@@ -62,7 +62,7 @@ public class ShowPaymentInformation implements IPaymentInformation{
             if(status==null){
                 final ResultSet paymentDetailsResultSet =
                         statement.executeQuery(
-                                paymentDetailsDAOQueryBuilder
+                                IPaymentDetailsDAOQueryBuilder
                                         .selectEnrolledCoursesQuery(student_id));
                 final List<PaymentDetails> paymentDetailsArrayList =
                         preparePaymentDetails(paymentDetailsResultSet);
