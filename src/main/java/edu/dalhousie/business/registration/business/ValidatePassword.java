@@ -12,4 +12,9 @@ public class ValidatePassword implements IValidatePassword {
         Matcher matcher = pattern.matcher(password);
         return !matcher.matches();
     }
+
+    @Override
+    public boolean isInvalidConfirmPassword(String password, String confirmPassword) {
+        return !password.equals(confirmPassword);
+    }
 }

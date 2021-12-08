@@ -1,7 +1,6 @@
 package edu.dalhousie.controllers;
 
 import edu.dalhousie.business.registration.controller.IRegistration;
-import edu.dalhousie.business.registration.controller.Registration;
 import edu.dalhousie.business.registration.controller.RegistrationFactory;
 import edu.dalhousie.presentation.StudentView;
 import edu.dalhousie.utilities.PrintHeading;
@@ -14,7 +13,6 @@ public class WelcomeClass {
     private static final String loginAsFaculty = "Login as a Faculty";
     private static final String exit = "Exit";
 
-
     public void displayWelcomeScreen() throws Exception {
         StudentView view = new StudentView();
         StudentMainClass student = new StudentMainClass();
@@ -23,44 +21,46 @@ public class WelcomeClass {
         User user;
         UserSession userSession = UserSession.getInstance();
 
-        PrintHeading.printHeadingForTheScreen("Welcome to university portal", 35);
+        while (true) {
+            PrintHeading.printHeadingForTheScreen("Welcome to university portal", 35);
 
-        view.showMessage("1. " + registerAsStudent);
-        view.showMessage("2. " + registerAsFaculty);
-        view.showMessage("3. " + loginAsStudent);
-        view.showMessage("4. " + loginAsFaculty);
-        view.showMessage("5. " + exit);
-        view.showMessage("\nEnter your choice:");
-        choice = view.getInt();
+            view.showMessage("1. " + registerAsStudent);
+            view.showMessage("2. " + registerAsFaculty);
+            view.showMessage("3. " + loginAsStudent);
+            view.showMessage("4. " + loginAsFaculty);
+            view.showMessage("5. " + exit);
+            view.showMessage("\nEnter your choice:");
+            choice = view.getInt();
 
-        switch (choice) {
-            case 1:
-                student.displayStudentMenu();
-//                IRegistration studentRegistration = RegistrationFactory.getInstance().getRegistration();
-//                studentRegistration.registerUser("STUDENT");
-                break;
-            case 2:
-                IRegistration facultyRegistration = RegistrationFactory.getInstance().getRegistration();
-                facultyRegistration.registerUser("FACULTY");
-                break;
-            case 3:
-                user = login.loginUser("STUDENT");
-                if (user != null) {
-                    userSession.newUserSession(user);
-                    student.displayStudentMenu();
-                }
-                break;
-            case 4:
-                user = login.loginUser("FACULTY");
-                if (user != null) {
-                    userSession.newUserSession(user);
-                    faculty.displayFacultyMenu();
-                }
-                break;
-            case 5:
-                System.exit(0);
-            default:
-                break;
+            switch (choice) {
+                case 1:
+//                student.displayStudentMenu();
+                    IRegistration studentRegistration = RegistrationFactory.getInstance().getRegistration();
+                    studentRegistration.registerUser("STUDENT");
+                    break;
+                case 2:
+                    IRegistration facultyRegistration = RegistrationFactory.getInstance().getRegistration();
+                    facultyRegistration.registerUser("FACULTY");
+                    break;
+                case 3:
+                    user = login.loginUser("STUDENT");
+                    if (user != null) {
+                        userSession.newUserSession(user);
+                        student.displayStudentMenu();
+                    }
+                    break;
+                case 4:
+                    user = login.loginUser("FACULTY");
+                    if (user != null) {
+                        userSession.newUserSession(user);
+                        faculty.displayFacultyMenu();
+                    }
+                    break;
+                case 5:
+                    System.exit(0);
+                default:
+                    break;
+            }
         }
     }
 }

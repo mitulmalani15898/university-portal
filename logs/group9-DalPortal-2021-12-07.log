@@ -43,3 +43,18 @@
 [INFO ] 07-12 17:23:11.506 [main] Main - Main class
 [INFO ] 07-12 17:27:00.648 [main] Main - Main class
 [INFO ] 07-12 17:28:20.022 [main] Main - Main class
+[INFO ] 07-12 18:41:21.943 [main] Main - Main class
+[INFO ] 07-12 19:33:25.744 [main] Main - Main class
+[INFO ] 07-12 19:52:30.701 [main] Main - Main class
+[INFO ] 07-12 19:55:20.772 [main] Main - Main class
+[INFO ] 07-12 19:57:19.252 [main] Main - Main class
+[INFO ] 07-12 20:01:05.019 [main] Main - Main class
+[INFO ] 07-12 20:10:27.340 [main] Main - Main class
+[INFO ] 07-12 20:12:17.439 [main] Main - Main class
+[INFO ] 07-12 20:13:31.428 [main] Main - Main class
+[INFO ] 07-12 20:15:05.559 [main] Main - Main class
+[ERROR] 07-12 20:15:35.163 [main] SaveUser - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '@gm.vom, 7894561230, 06b4ce0d2ca6be907727647fe104a4acbfd82563, 08-09-1998, Ma...' at line 1
+[INFO ] 07-12 20:16:24.395 [main] Main - Main class
+[INFO ] 07-12 20:16:56.681 [main] Main - Main class
+[INFO ] 07-12 20:19:27.038 [main] Main - Main class
+[INFO ] 07-12 20:23:31.105 [main] Main - Main class
