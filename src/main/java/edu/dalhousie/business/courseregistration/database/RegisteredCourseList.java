@@ -25,7 +25,7 @@ public class RegisteredCourseList implements IRegisteredCourseList {
         List<Course> courses = new ArrayList<>();
         ICourses coursesList = CourseRegistrationFactory.getInstance().getCourses();
 
-        String query = CourseRegistrationConstants.GET_REGISTERED_COURSES_QUERY.replace("coursesTable", Constants.CoursesTable).replace("enrollmentTable", Constants.CourseEnrolledTable).replace("studentId", studentId + "");
+        String query = CourseRegistrationConstants.GET_REGISTERED_COURSES_QUERY.replace("coursesTable", Constants.COURSES_TABLE).replace("enrollmentTable", Constants.COURSE_ENROLMENTS_TABLE).replace("studentId", studentId + "");
 
         try {
             databaseConnection = DatabaseConnectivity.getInstance();

@@ -18,7 +18,7 @@ public class RegisterCourse implements IRegisterCourse {
         int result = -1;
         int studentId = 2;
         String query = CourseRegistrationConstants.REGISTER_COURSE_QUERY
-            .replace("tableName", Constants.CourseEnrolledTable)
+            .replace("tableName", Constants.COURSE_ENROLMENTS_TABLE)
             .replace("studentId", studentId + "")
             .replace("courseId", courseId + "");
 
