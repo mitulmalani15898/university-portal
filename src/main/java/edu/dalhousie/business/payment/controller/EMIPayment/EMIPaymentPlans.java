@@ -76,7 +76,7 @@ public class EMIPaymentPlans implements IEMIPaymentPlans {
         while(paymentStatusResultSet.next()){
             status = paymentStatusResultSet.getString("payment_status");
         }
-        if(status!=null){
+        if(status==null){
             final ResultSet paymentDetailsResultSet =
                     statement.executeQuery(
                             paymentDetailsDAOQueryBuilder

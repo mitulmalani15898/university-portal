@@ -58,7 +58,7 @@ public class ShowPaymentInformation implements IPaymentInformation{
                 status = paymentStatusResultSet.getString("payment_status");
             }
 
-            if(status!=null){
+            if(status==null){
                 final ResultSet paymentDetailsResultSet =
                         statement.executeQuery(
                                 paymentDetailsDAOQueryBuilder
