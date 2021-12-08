@@ -1,12 +1,9 @@
 package edu.dalhousie.controllers;
 
-//import edu.dalhousie.database.ExecuteQuery;
 
 import edu.dalhousie.database.IDatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
 import edu.dalhousie.utilities.Hashing;
-//import java.security.MessageDigest;
-//import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -43,7 +40,8 @@ public class Login {
                 IDatabaseConnection.getDatabaseConnection();
         final Statement statement =
                 connection.createStatement();
-        String SQL = "SELECT * FROM users u INNER JOIN membership_details md on md.member_id = u.id";
+        String SQL = "SELECT * FROM users u INNER JOIN " +
+                "membership_details md on md.member_id = u.id";
         ResultSet rs = statement.executeQuery(SQL);
 
         String[] userdetails;

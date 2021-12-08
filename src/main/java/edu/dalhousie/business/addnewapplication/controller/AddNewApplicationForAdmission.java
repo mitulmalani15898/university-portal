@@ -28,7 +28,7 @@ public class AddNewApplicationForAdmission implements IAddNewApplicationForAdmis
         computeScoreTemplate = new ComputeScoreForNewApplication(addNewApplication);
         storeAdmissionInfo = new AddNewApplicationForAdmissionData();
         validation = new AddNewApplicationFormValidation();
-        student = new StudentMainClass();
+        student = StudentMainClass.getInstance();
     }
 
     public void showNewForm() throws Exception {

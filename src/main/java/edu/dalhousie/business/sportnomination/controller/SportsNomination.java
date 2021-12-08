@@ -17,7 +17,7 @@ public class SportsNomination implements ISportsNomination
 
     public SportsNomination()
     {
-        studentMenu = new StudentMainClass();
+        studentMenu = StudentMainClass.getInstance();
     }
 
     public void sportsNomination()

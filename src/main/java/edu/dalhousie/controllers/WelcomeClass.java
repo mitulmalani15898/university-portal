@@ -14,12 +14,13 @@ public class WelcomeClass {
     private static final String loginAsStudent = "Login as a Student";
     private static final String loginAsFaculty = "Login as a Faculty";
     private static final String exit = "Exit";
+    private StudentMainClass student;
     public WelcomeClass(){
         view = CommonPrinting.getInstance();
+        this.student = StudentMainClass.getInstance();
     }
     public void displayWelcomeScreen() throws Exception {
 
-        StudentMainClass student = new StudentMainClass();
         FacultyMainClass faculty = new FacultyMainClass();
         Login login = new Login();
         User user;

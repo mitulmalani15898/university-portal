@@ -10,7 +10,7 @@ public class UpdateBalanceQueryBuilderTest {
     @Test
     public void updateBalanceQuery(){
         UpdateBalanceQueryBuilder updateBalanceQueryBuilder
-                = new UpdateBalanceQueryBuilder();
+                = UpdateBalanceQueryBuilder.getInstance();
         String actualQuery = "UPDATE membership_details " +
                 "SET balance = balance + 100.0 WHERE member_id = 1";
         String expectedQuery = updateBalanceQueryBuilder

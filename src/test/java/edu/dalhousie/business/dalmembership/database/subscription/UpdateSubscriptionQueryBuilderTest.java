@@ -11,7 +11,7 @@ public class UpdateSubscriptionQueryBuilderTest {
     @Test
     public void updateSubscriptionQuery(){
         UpdateSubscriptionQueryBuilder updateSubscriptionQueryBuilder
-                = new UpdateSubscriptionQueryBuilder();
+                = UpdateSubscriptionQueryBuilder.getInstance();
         String actualQuery = updateSubscriptionQueryBuilder
                 .updateSubscriptionQuery(1,"bronze");
         String expectedQuery =  "UPDATE membership_details " +

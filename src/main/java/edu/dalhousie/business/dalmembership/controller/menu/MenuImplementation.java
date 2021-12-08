@@ -17,10 +17,17 @@ public class MenuImplementation implements IMenu{
     public final static Scanner input = new Scanner(System.in);
     private final IDatabaseConnection IDatabaseConnection;
     UserSession userSession;
-    public MenuImplementation(){
+    private static MenuImplementation menuImplementation;
+    private  MenuImplementation(){
         userSession = UserSession.getInstance();
         menu = Menu.getInstance() ;
         this.IDatabaseConnection = DatabaseConnectivity.getInstance();
+    }
+    public static MenuImplementation getInstance(){
+        if(menuImplementation == null){
+            menuImplementation = new MenuImplementation();
+        }
+        return menuImplementation;
     }
     @Override
     public void start() {

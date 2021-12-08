@@ -11,7 +11,7 @@ public class TenderWinnerQueryBuilderTest {
     @Test
     public void updateWinner(){
         TenderWinnerQueryBuilder tenderWinnerQueryBuilder
-                = new TenderWinnerQueryBuilder();
+                = TenderWinnerQueryBuilder.getInstance();
         String expectedQuery = tenderWinnerQueryBuilder.updateWinner("flash");
         String actualQuery = "INSERT INTO tender (bidder) VALUES('flash')";
         assertEquals(expectedQuery,actualQuery);

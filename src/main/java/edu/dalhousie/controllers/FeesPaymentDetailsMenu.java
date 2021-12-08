@@ -13,28 +13,39 @@ import edu.dalhousie.business.payment.database.PaymentStatus.IPaymentStatusDAOQu
 import edu.dalhousie.business.payment.database.PaymentStatus.IUpdatePaymentStatusDAOQueryBuilder;
 import edu.dalhousie.business.payment.database.PaymentStatus.PaymentStatusQueryBuilder;
 import edu.dalhousie.business.payment.database.PaymentStatus.UpdatePaymentStatusQueryBuilder;
+import edu.dalhousie.database.DatabaseException;
 import edu.dalhousie.database.IDatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
+import edu.dalhousie.logger.ILogger;
+import edu.dalhousie.logger.LoggerAbstractFactory;
 import edu.dalhousie.utilities.printing.ICommonPrinting;
 import edu.dalhousie.utilities.printing.CommonPrinting;
 
 public class FeesPaymentDetailsMenu {
+    private static FeesPaymentDetailsMenu feesPaymentDetailsMenu;
     private final ICommonPrinting view;
     private final StudentMainClass studentMenu;
     private final IDatabaseConnection IDatabaseConnection;
     private final IPaymentDetailsDAOQueryBuilder IPaymentDetailsDAOQueryBuilder;
     private final IPaymentStatusDAOQueryBuilder iPaymentStatusDAOQueryBuilder;
     private final IUpdatePaymentStatusDAOQueryBuilder iUpdatePaymentStatusDAOQueryBuilder;
-    FeesPaymentDetailsMenu(){
+    private static ILogger logger;
+
+    private FeesPaymentDetailsMenu(){
         this.view = CommonPrinting.getInstance();
-        this.studentMenu = new StudentMainClass();
+        this.studentMenu = StudentMainClass.getInstance();
         IDatabaseConnection = DatabaseConnectivity.getInstance();
         this.IPaymentDetailsDAOQueryBuilder = PaymentDetailsQueryBuilder.getInstance();
         this.iPaymentStatusDAOQueryBuilder = PaymentStatusQueryBuilder.getInstance();
         this.iUpdatePaymentStatusDAOQueryBuilder = UpdatePaymentStatusQueryBuilder.getInstance();
-
+        logger = LoggerAbstractFactory.getFactory().newLoggerInstance();
     }
-
+    public static FeesPaymentDetailsMenu getInstance(){
+        if(feesPaymentDetailsMenu == null){
+            feesPaymentDetailsMenu = new FeesPaymentDetailsMenu();
+        }
+        return feesPaymentDetailsMenu;
+    }
     protected void showPaymentInformationMenu() {
         this.view.showMessage("**************************************");
         this.view.showMessage("\t \t Fees payment Menu \t");
@@ -49,11 +60,14 @@ public class FeesPaymentDetailsMenu {
                             new ShowPaymentInformation(IDatabaseConnection,
                                     IPaymentDetailsDAOQueryBuilder,
                                     iPaymentStatusDAOQueryBuilder);
+
                     try {
                         showPaymentInformation.showFeeDetails();
-                    } catch (Exception e) {
+                    } catch (DatabaseException e) {
                         e.printStackTrace();
+                        logger.error(ShowPaymentInformation.class.toString(),e.getMessage());
                     }
+
                     break;
                 case 2:
                     this.view.showMessage("Full payment");
@@ -63,6 +77,7 @@ public class FeesPaymentDetailsMenu {
                         fullPayment.deductTotalAmount();
                     } catch (Exception e) {
                         e.printStackTrace();
+                        logger.error(ShowPaymentInformation.class.toString(),e.getMessage());
                     }
                     break;
                 case 3:
@@ -72,17 +87,16 @@ public class FeesPaymentDetailsMenu {
                             IPaymentDetailsDAOQueryBuilder,
                             iPaymentStatusDAOQueryBuilder,
                             iUpdatePaymentStatusDAOQueryBuilder);
-                    try {
+
                         emiPaymentPlans.showEMIStructure();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+
                     break;
                 case 4:
                     try {
                         this.studentMenu.displayStudentMenu();
                     } catch (Exception e) {
                         e.printStackTrace();
+                        logger.error(ShowPaymentInformation.class.toString(),e.getMessage());
                     }
                     break;
                 default:

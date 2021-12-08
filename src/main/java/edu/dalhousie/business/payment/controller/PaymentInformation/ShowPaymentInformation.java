@@ -10,6 +10,8 @@ import edu.dalhousie.business.payment.model.PaymentDetails;
 import edu.dalhousie.controllers.UserSession;
 import edu.dalhousie.database.IDatabaseConnection;
 import edu.dalhousie.database.DatabaseException;
+import edu.dalhousie.logger.ILogger;
+import edu.dalhousie.logger.LoggerAbstractFactory;
 import edu.dalhousie.utilities.printing.ICommonPrinting;
 import edu.dalhousie.utilities.printing.CommonPrinting;
 import static edu.dalhousie.business.payment.database.PaymentDetails.PaymentDetailsConstant.*;
@@ -28,6 +30,7 @@ public class ShowPaymentInformation implements IPaymentInformation{
     private final ICommonPrinting view;
     UserSession userSession;
     private final int MAXIMUM_CREDITS=12;
+    private static ILogger logger;
     public ShowPaymentInformation(IDatabaseConnection IDatabaseConnection,
                                   IPaymentDetailsDAOQueryBuilder
                                           IPaymentDetailsDAOQueryBuilder,
@@ -38,10 +41,11 @@ public class ShowPaymentInformation implements IPaymentInformation{
         this.paymentStatusDAOQueryBuilder = paymentStatusDAOQueryBuilder;
         this.view = CommonPrinting.getInstance();
         userSession = UserSession.getInstance();
+        logger = LoggerAbstractFactory.getFactory().newLoggerInstance();
     }
 
     @Override
-    public void showFeeDetails() throws Exception {
+    public void showFeeDetails() throws DatabaseException {
         int student_id = userSession.getUser().getUserId();
         this.view.showMessage("Enter the term:");
         String term = this.view.getString();
@@ -99,7 +103,8 @@ public class ShowPaymentInformation implements IPaymentInformation{
             }
 
         }
-        catch(SQLException e){
+        catch(Exception e){
+            logger.error(ShowPaymentInformation.class.toString(),e.getMessage());
             throw new DatabaseException(e.getMessage(), e);
         }
     }

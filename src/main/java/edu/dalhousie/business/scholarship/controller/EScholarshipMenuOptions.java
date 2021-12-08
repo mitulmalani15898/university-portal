@@ -13,7 +13,7 @@ public enum EScholarshipMenuOptions {
     }, N2(2) {
         @Override
         public void displayScholarshipMenu() throws Exception {
-            StudentMainClass studentMainClass = new StudentMainClass();
+            StudentMainClass studentMainClass = StudentMainClass.getInstance();
             studentMainClass.displayStudentMenu();
         }
 

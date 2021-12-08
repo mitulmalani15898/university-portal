@@ -1,4 +1,4 @@
-package edu.dalhousie.business.tender;
+package edu.dalhousie.business.tender.controller;
 
 
 import edu.dalhousie.business.tender.controller.TenderComparator;

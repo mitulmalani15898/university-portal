@@ -24,6 +24,7 @@ import edu.dalhousie.utilities.printing.PrintHeading;
 
 public class StudentMainClass {
     private final ICommonPrinting view;
+    private static StudentMainClass studentMainClass;
     private static final String addNewApplication = "Add new application for admission";
     private static final String profile = "Profile (Personal information and course details)";
     private static final String listOfCourses = "List of courses for registration";
@@ -39,9 +40,17 @@ public class StudentMainClass {
     private static final String facilityBooking = "Facility booking";
     private static final String logout = "Logout";
 
-    public StudentMainClass(){
+    private StudentMainClass(){
         this.view = CommonPrinting.getInstance();
     }
+
+    public static StudentMainClass getInstance(){
+        if(studentMainClass==null){
+            studentMainClass = new StudentMainClass();
+        }
+        return  studentMainClass;
+    }
+
     public void displayStudentMenu() throws Exception {
         while (true) {
             PrintHeading.printHeadingForTheScreen("Student Menu", 45);
@@ -76,7 +85,8 @@ public class StudentMainClass {
                     courseRegistration.startRegisterForCourses();
                     break;
                 case 4:
-                    FeesPaymentDetailsMenu feesPaymentDetails = new FeesPaymentDetailsMenu();
+                    FeesPaymentDetailsMenu feesPaymentDetails
+                            = FeesPaymentDetailsMenu.getInstance();
                     feesPaymentDetails.showPaymentInformationMenu();
                     break;
                 case 5:
@@ -88,27 +98,23 @@ public class StudentMainClass {
                     scholarshipMenu.displayMenu();
                     break;
                 case 7:
-                    EventApplication eventApplication = new EventApplication();
+                    EventApplication eventApplication = EventApplication.getInstance();
                     eventApplication.hostEvent();
                     break;
                 case 8:
                     IRoommateFinder roommateFinder = RoommateFinderFactory.getRoommateFinder(StringConstants.kRoommateFinder);
                     roommateFinder.displayForm();
                     break;
-                case 9:
-                    //call method
-                    System.out.println("You selected 9");
-                    break;
                 case 10:
                     SportsNomination sportsNomination = new SportsNomination();
                     sportsNomination.viewSportsNomination();
                     break;
                 case 11:
-                    Tender tender = new Tender();
+                    Tender tender = Tender.getInstance();
                     tender.getTenderData();
                     break;
                 case 12:
-                    MenuImplementation menu = new MenuImplementation();
+                    MenuImplementation menu = MenuImplementation.getInstance();
                     menu.start();
                     break;
                 case 13:

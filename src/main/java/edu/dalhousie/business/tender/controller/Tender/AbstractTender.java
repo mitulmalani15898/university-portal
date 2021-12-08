@@ -34,11 +34,6 @@ public abstract class AbstractTender implements ITender {
         if (auctioneers.size() == 0) {
             throw new Exception("No auctioneers turned up and hence cancelling the auction.");
         }
-        if (auctioneers.size() == 1) {
-            Auctioneer winner = auctioneers.iterator().next();
-            System.out.println(winner.getName() + " won auction for" + this.tenderEvent);
-            return winner;
-        }
 
         Auctioneer winner = findBestAuctioneer();
         System.out.println(winner.getName() + " won auction for " + this.tenderEvent);

@@ -16,6 +16,16 @@ import java.sql.Statement;
 import java.util.*;
 
 public class Tender extends AbstractTender {
+    private static Tender tenderInstance;
+    private Tender(){
+
+    }
+    public static Tender getInstance(){
+        if(tenderInstance==null){
+            tenderInstance = new Tender();
+        }
+        return tenderInstance;
+    }
 
     @Override
     public Auctioneer findBestAuctioneer() {
@@ -52,7 +62,7 @@ public class Tender extends AbstractTender {
     }
 
     public void getTenderData() throws Exception {
-        ITenderWinnerDAOQueryBuilder iTenderWinnerDAOQueryBuilder = new TenderWinnerQueryBuilder();
+        ITenderWinnerDAOQueryBuilder iTenderWinnerDAOQueryBuilder = TenderWinnerQueryBuilder.getInstance();
         IDatabaseConnection IDatabaseConnection = DatabaseConnectivity.getInstance();
         System.out.println("Enter the event name:");
         String eventName = sc.nextLine();
