@@ -34,9 +34,9 @@ public class WelcomeClass {
 
             switch (choice) {
                 case 1:
-//                    student.displayStudentMenu();
-                    IRegistration studentRegistration = RegistrationFactory.getInstance().getRegistration();
-                    studentRegistration.registerUser("student");
+                    student.displayStudentMenu();
+//                    IRegistration studentRegistration = RegistrationFactory.getInstance().getRegistration();
+//                    studentRegistration.registerUser("student");
                     break;
                 case 2:
                     IRegistration facultyRegistration = RegistrationFactory.getInstance().getRegistration();

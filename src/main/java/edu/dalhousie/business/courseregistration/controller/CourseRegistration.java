@@ -40,9 +40,10 @@ public class CourseRegistration implements ICourseRegistration {
         PrintHeading.printHeadingForTheScreen(CourseRegistrationConstants.LIST_OF_COURSES_FOR_REGISTRATION, 38);
         userChoice = getChoiceForCourseRegistration();
 
+        registeredCourseList.getRegisteredCourseList();
+
         if (userChoice.equals(CourseRegistrationConstants.NO)) {
             completeCourseList.getCompleteCourseList();
-            registeredCourseList.getRegisteredCourseList();
             courseListView.renderCourseListView(courses.getCourses());
             registerSpecificCourseForm.renderRegisterForSpecificCourseForm();
         } else if (userChoice.equals(CourseRegistrationConstants.YES)) {

@@ -16,8 +16,18 @@ public class CourseRegistrationConstants {
     public static final String ENTER_COURSE_ID_FOR_ENROLL = "Enter course id for which you would like to enroll:";
     public static final String REGISTRATION_SUCCESSFUL = "\nRegistration successful.";
     public static final String PROVIDE_VALID_COURSE_ID = "\nPlease try again and provide valid course id for registration.\n";
+    public static final String NO_COURSES_FOUND_MESSAGE = "\nNo courses found for provided keyword.\n";
+    public static final String COURSE_FULL = "\nThe course is full, no seats available for this course.\n";
+    public static final String COURSE_HAS_PRE_REQUISITE_COURSE = "\nThis course has prerequisite course, so please register for it first.\n";
+    public static final String ALREADY_REGISTERED = "\nYou have already registered for this course.\n";
+
     public static final String SELECT_COURSES_QUERY = "SELECT * from tableName";
+
     public static final String REGISTER_COURSE_QUERY = "INSERT INTO tableName(student_id, course_id) VALUES(studentId, courseId)";
+
     public static final String GET_REGISTERED_COURSES_QUERY = "SELECT * from coursesTable JOIN enrollmentTable ON coursesTable.course_id=enrollmentTable.course_id WHERE enrollmentTable.student_id=studentId";
+
     public static final String SEARCH_SPECIFIC_COURSE_QUERY = "SELECT * from coursesTable WHERE course_name LIKE '%keyword%'";
+
+    public static final String UPDATE_COURSE_AVAILABILITY_QUERY = "UPDATE tableName SET available_seats=availableSeats WHERE course_id=courseId";
 }

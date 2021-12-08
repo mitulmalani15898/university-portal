@@ -11,14 +11,19 @@ public class CourseListView implements ICourseListView {
     @Override
     public void renderCourseListView(List<Course> courses) {
         IStudentView view = StudentViewFactory.getInstance().getStudentView();
-        view.showFormattedMessage("\n%25s\n", CourseRegistrationConstants.LIST_OF_ALL_COURSES.toUpperCase());
-        view.showFormattedMessage("%5s %15s\n", "ID", "Course name");
         int count = 0;
-        for (Course course : courses) {
-            String counter = ++count + "";
-            String courseId = course.getCourseId() + "";
-            String courseName = course.getCourseName();
-            view.showFormattedMessage("%s.  %s | %s\n", counter, courseId, courseName);
+
+        if (courses.size() > 0) {
+            view.showFormattedMessage("\n%25s\n", CourseRegistrationConstants.LIST_OF_ALL_COURSES.toUpperCase());
+            view.showFormattedMessage("%5s %15s\n", "ID", "Course name");
+            for (Course course : courses) {
+                String counter = ++count + "";
+                String courseId = course.getCourseId() + "";
+                String courseName = course.getCourseName();
+                view.showFormattedMessage("%s.  %s | %s\n", counter, courseId, courseName);
+            }
+        } else {
+            view.showMessage(CourseRegistrationConstants.NO_COURSES_FOUND_MESSAGE);
         }
     }
 }

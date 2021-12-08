@@ -3,6 +3,8 @@ package edu.dalhousie.business.courseregistration.controller;
 import edu.dalhousie.business.courseregistration.business.IValidateCourseRegistration;
 import edu.dalhousie.business.courseregistration.constants.CourseRegistrationConstants;
 import edu.dalhousie.business.courseregistration.database.IRegisterCourse;
+import edu.dalhousie.business.courseregistration.model.Course;
+import edu.dalhousie.business.courseregistration.model.ICourses;
 import edu.dalhousie.presentation.IStudentView;
 import edu.dalhousie.presentation.StudentViewFactory;
 
@@ -12,16 +14,30 @@ public class RegisterForCourse implements IRegisterForCourse {
         IStudentView view = StudentViewFactory.getInstance().getStudentView();
         IValidateCourseRegistration validateCourse = CourseRegistrationFactory.getInstance().getValidateCourseRegistration();
         IRegisterCourse registerCourse = CourseRegistrationFactory.getInstance().getRegisterCourse();
+        ICourses courses = CourseRegistrationFactory.getInstance().getCourses();
+        Course course = null;
+        String courseId = "";
 
-        String courseID = "";
         view.showMessage(CourseRegistrationConstants.ENTER_COURSE_ID_FOR_ENROLL);
-        courseID = view.getString().toLowerCase();
-        if (courseID.equals(CourseRegistrationConstants.NO)) {
+        courseId = view.getString().toLowerCase();
+
+        if (courseId.equals(CourseRegistrationConstants.NO)) {
             return -1;
-        } else if (validateCourse.isValidCourseId(courseID)) {
+        } else if (validateCourse.isInvalidCourseId(courseId)) {
             view.showMessage(CourseRegistrationConstants.PROVIDE_VALID_COURSE_ID);
+        } else if (validateCourse.isAlreadyRegisteredCourse(courseId)) {
+            view.showMessage(CourseRegistrationConstants.ALREADY_REGISTERED);
+        } else if (validateCourse.isNotAvailableCourse(courseId)) {
+            view.showMessage(CourseRegistrationConstants.COURSE_FULL);
+        } else if (validateCourse.hasPreRequisiteCourse(courseId)) {
+            view.showMessage(CourseRegistrationConstants.COURSE_HAS_PRE_REQUISITE_COURSE);
         } else {
-            return registerCourse.registerForSpecificCourse(Integer.parseInt(courseID));
+            for (Course courseObject : courses.getCourses()) {
+                if (courseObject.getCourseId() == Integer.parseInt(courseId)) {
+                    course = courseObject;
+                }
+            }
+            return registerCourse.registerForSpecificCourse(course);
         }
         return -1;
     }
