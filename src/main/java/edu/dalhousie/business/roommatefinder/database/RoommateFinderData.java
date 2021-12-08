@@ -1,6 +1,7 @@
 package edu.dalhousie.business.roommatefinder.database;
 import edu.dalhousie.business.roommatefinder.model.RoommateFinderObjectModel;
 import edu.dalhousie.database.DatabaseConnection;
+import edu.dalhousie.database.DatabaseConnectivity;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -14,6 +15,7 @@ public class RoommateFinderData implements IRoommateFinderData {
     private static DatabaseConnection databaseConnection;
 
     public void storeData(RoommateFinderObjectModel roommateFinderObject) throws SQLException {
+        databaseConnection = DatabaseConnectivity.getInstance();
         String userName = "";
         int gender = roommateFinderObject.getGender();
         int foodPreference = roommateFinderObject.getFoodPreference();
@@ -21,10 +23,7 @@ public class RoommateFinderData implements IRoommateFinderData {
         String hobbies = roommateFinderObject.getHobbies();
         int campus = roommateFinderObject.getCampusPreference();
         int accomodation = roommateFinderObject.getAccomodationPreference();
-
-//        ExecuteQuery executeQuery = new ExecuteQuery();
         String query = "insert into roommates " + " values ('"+ "vignesh2" +"', '" + gender+ "', '" + campus+ "', '" + accomodation+ "', '" +genderPreference+ "', '"+foodPreference+"', '"+hobbies+"')";
-//        executeQuery.executeSQL(query);
 
         try {
             final Connection connection = databaseConnection.getDatabaseConnection();
