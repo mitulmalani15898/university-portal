@@ -1,6 +1,6 @@
 package edu.dalhousie.business.dalmembership.controller.subscription;
 
-import edu.dalhousie.business.dalmembership.model.Services;
+import edu.dalhousie.business.dalmembership.model.ServicesModel;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -11,9 +11,9 @@ public abstract class Subscription implements ISubscription{
     protected double totalAmount = 0;
     public String subscriptionName;
     public String note;
-    private final Set<Services> servicesList = new HashSet<>();
+    private final Set<ServicesModel> servicesList = new HashSet<>();
 
-    public abstract BiPredicate<Double, Double> isEligibleToSubscribe() throws Exception;
+    public abstract BiPredicate<Double, Double> checkEligibility() throws Exception;
     public abstract void initializeBasicSubscription();
 
     public abstract double calculateCharges();
@@ -40,11 +40,11 @@ public abstract class Subscription implements ISubscription{
         return subscriptionAmount - discount;
     }
 
-    protected void addServices(Collection<Services> services) {
+    protected void addServices(Collection<ServicesModel> services) {
         services.stream().forEach(service -> servicesList.add(service));
     }
 
-    public Set<Services> getServicesList() {
+    public Set<ServicesModel> getServicesList() {
         return servicesList;
     }
 

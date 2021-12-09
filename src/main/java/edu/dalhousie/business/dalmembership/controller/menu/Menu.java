@@ -15,8 +15,4 @@ public class Menu extends MainMenu{
         }
         return instance;
     }
-
-    public static void setInstance(Menu instance) {
-        Menu.instance = instance;
-    }
 }

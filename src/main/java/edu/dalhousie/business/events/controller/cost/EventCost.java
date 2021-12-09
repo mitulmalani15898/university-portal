@@ -2,12 +2,12 @@
  * Author: Abhishek karthik Manikandan
  * Banner ID: B00870510
  * */
-package edu.dalhousie.business.events.controller.Cost;
+package edu.dalhousie.business.events.controller.cost;
 
 import edu.dalhousie.utilities.printing.ICommonPrinting;
 import edu.dalhousie.utilities.printing.CommonPrinting;
 
-public class EventCost {
+public class EventCost implements IEventCost{
     public ICommonPrinting studentView;
 
     public EventCost() {

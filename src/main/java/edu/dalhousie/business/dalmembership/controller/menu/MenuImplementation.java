@@ -1,6 +1,8 @@
 /**
  * Author: Abhishek karthik Manikandan
  * Banner ID: B00870510
+ * citation: https://github.com/pravinsarode301/D2H_console_Application
+ * Used this project repo to get ideas to implement design patterns
  * */
 package edu.dalhousie.business.dalmembership.controller.menu;
 import edu.dalhousie.business.dalmembership.controller.balance.Balance;

@@ -2,7 +2,7 @@
  * Author: Abhishek karthik Manikandan
  * Banner ID: B00870510
  * */
-package edu.dalhousie.business.events.controller.State;
+package edu.dalhousie.business.events.controller.state;
 
 import edu.dalhousie.utilities.printing.ICommonPrinting;
 import edu.dalhousie.utilities.printing.CommonPrinting;

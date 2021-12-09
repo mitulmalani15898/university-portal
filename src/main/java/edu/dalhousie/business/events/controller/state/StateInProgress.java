@@ -2,15 +2,15 @@
  * Author: Abhishek karthik Manikandan
  * Banner ID: B00870510
  * */
-package edu.dalhousie.business.events.controller.State;
+package edu.dalhousie.business.events.controller.state;
 
 import edu.dalhousie.utilities.printing.ICommonPrinting;
 import edu.dalhousie.utilities.printing.CommonPrinting;
 
-public class StateAtEnd implements State{
+public class StateInProgress implements State{
     public ICommonPrinting studentView;
 
-    public StateAtEnd(){
+    public StateInProgress(){
         this.studentView = CommonPrinting.getInstance();
     }
 
@@ -19,7 +19,7 @@ public class StateAtEnd implements State{
         if (stateContext == null) {
             stateContext = new StateContext();
         }
-        this.studentView.showMessage("Event ends");
+        this.studentView.showMessage("Event is in progress");
         stateContext.setState(this);
     }
 }

@@ -12,7 +12,7 @@ public abstract class MainMenu {
         System.out.println("Welcome to Dalhousie STUDENT Membership");
     }
 
-    public void printMenu() {
+    private void printMenu() {
         final int[] count = {1};
         System.out.println("Please select an option:");
         MasterDB.menu.forEach(x -> {
@@ -21,7 +21,7 @@ public abstract class MainMenu {
         });
 
     }
-    public final void start() {
+    public void start() {
         welcomeMessage();
         printMenu();
     }

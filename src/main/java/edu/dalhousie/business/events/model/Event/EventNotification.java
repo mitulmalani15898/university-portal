@@ -6,7 +6,7 @@ package edu.dalhousie.business.events.model.Event;
 
 import edu.dalhousie.business.events.controller.email.EmailFactory;
 import edu.dalhousie.business.events.controller.email.IEmail;
-import edu.dalhousie.business.events.controller.email.SendEmail.SendEmail;
+import edu.dalhousie.business.events.controller.email.sendemail.SendEmail;
 import edu.dalhousie.utilities.printing.ICommonPrinting;
 import edu.dalhousie.utilities.printing.CommonPrinting;
 

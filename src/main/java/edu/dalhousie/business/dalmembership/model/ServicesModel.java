@@ -1,6 +1,6 @@
 package edu.dalhousie.business.dalmembership.model;
 
-public class Services {
+public class ServicesModel {
     private String name;
     private int charges;
 
@@ -21,7 +21,7 @@ public class Services {
     }
 
 
-    public Services(String name, int baseCharges) {
+    public ServicesModel(String name, int baseCharges) {
         this.name = name;
         this.charges = baseCharges;
     }

@@ -1,6 +1,6 @@
 package edu.dalhousie.business.dalmembership.controller.subscription;
 
-import edu.dalhousie.business.dalmembership.model.Services;
+import edu.dalhousie.business.dalmembership.model.ServicesModel;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -12,10 +12,10 @@ public class BronzeSubscription extends Subscription implements ISubscription{
 
     public final static double MONTHLY_CHARGES = 0;
     private final String SUBSCRIPTION_NAME = "BRONZE";
-    private List<Services> services = Arrays.asList(
-            new Services("sports",0),
-            new Services("swimming",0));
-    private Set<Services> basicServices = new HashSet<>(services);
+    private List<ServicesModel> services = Arrays.asList(
+            new ServicesModel("sports",0),
+            new ServicesModel("swimming",0));
+    private Set<ServicesModel> basicServices = new HashSet<>(services);
     private double discount;
     private double duration;
     private double subscriptionAmount;
@@ -45,17 +45,16 @@ public class BronzeSubscription extends Subscription implements ISubscription{
         this.totalAmount = amount;
     }
 
-    BiPredicate<Double, Double> isEligibleToSubscribe = (x, y) -> x > y ? true : false;
 
     @Override
-    public BiPredicate<Double, Double> isEligibleToSubscribe() throws Exception {
+    public BiPredicate<Double, Double> checkEligibility()  {
         return (durationInMonths,balance)->{
             this.duration = durationInMonths;
             this.discount = calculateDiscount(MONTHLY_CHARGES,duration);
             this.subscriptionAmount = 0;
             this.amountAfterDiscount = applyDiscount(this.subscriptionAmount,this.discount);
             setTotalAmount(this.amountAfterDiscount);
-            if (isEligibleToSubscribe.test(amountAfterDiscount, balance)) {
+            if (amountAfterDiscount > balance) {
                 return false;
             }
             return true;
