@@ -1,6 +1,5 @@
 package edu.dalhousie.controllers;
 
-import edu.dalhousie.business.gpaCalculator.constants.GPACalculatorConstants;
 import edu.dalhousie.database.IDatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
 import edu.dalhousie.utilities.Hashing;
