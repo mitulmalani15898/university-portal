@@ -8,7 +8,7 @@ import edu.dalhousie.database.DatabaseConnectivity;
 
 import java.sql.Connection;
 import java.sql.Statement;
-
+final
 public class UpdateProfileConnection implements IUpdateProfileConnection {
     private IDatabaseConnection IDatabaseConnection;
     UserSession userSession;
