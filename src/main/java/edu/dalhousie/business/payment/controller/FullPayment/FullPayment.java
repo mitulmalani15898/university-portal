@@ -4,7 +4,6 @@
  * */
 package edu.dalhousie.business.payment.controller.FullPayment;
 
-import edu.dalhousie.business.payment.controller.PaymentInformation.ShowPaymentInformation;
 import edu.dalhousie.business.payment.database.PaymentStatus.IUpdatePaymentStatusDAOQueryBuilder;
 import edu.dalhousie.controllers.UserSession;
 import edu.dalhousie.database.DatabaseException;
@@ -49,7 +48,7 @@ public class FullPayment implements IFullPayment{
                             .updatePaymentStatus(student_id,"full",term));
         }
         catch (Exception e){
-            logger.error(ShowPaymentInformation.class.toString(),e.getMessage());
+            logger.error(FullPayment.class.toString(),e.getMessage());
             throw new DatabaseException(e.getMessage(),e);
         }
 

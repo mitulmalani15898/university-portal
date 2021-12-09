@@ -5,6 +5,9 @@
 package edu.dalhousie.business.events.controller.email.sendemail;
 
 import edu.dalhousie.business.events.controller.email.Email;
+import edu.dalhousie.logger.ILogger;
+import edu.dalhousie.logger.LoggerAbstractFactory;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -12,6 +15,8 @@ import java.util.Date;
 import java.util.Properties;
 
 public class SendEmail implements ISendEmail{
+    private static ILogger logger = LoggerAbstractFactory
+            .getFactory().newLoggerInstance();
     public SendEmail(){
     }
     @Override
@@ -52,7 +57,7 @@ public class SendEmail implements ISendEmail{
 
             Transport.send(message);
         } catch (MessagingException e) {
-
+            logger.error(SendEmail.class.toString(),e.getMessage());
             e.printStackTrace();
         }
     }
