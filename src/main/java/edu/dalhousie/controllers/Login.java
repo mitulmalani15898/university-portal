@@ -1,8 +1,6 @@
-package edu.dalhousie.controllers;
-
 //import edu.dalhousie.database.ExecuteQuery;
 
-import edu.dalhousie.database.DatabaseConnection;
+import edu.dalhousie.database.IDatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
 import edu.dalhousie.utilities.Hashing;
 //import java.security.MessageDigest;
@@ -13,10 +11,10 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class Login {
-    private DatabaseConnection databaseConnection;
+    private IDatabaseConnection IDatabaseConnection;
 
     public Login(){
-        this.databaseConnection = DatabaseConnectivity.getInstance();
+        this.IDatabaseConnection = DatabaseConnectivity.getInstance();
 
     }
     public static String[] getUserLoginDetails() {
@@ -40,7 +38,7 @@ public class Login {
     public User loginUser(String typeOfLogIn) throws Exception {
         String title = typeOfLogIn.equals("STUDENT") ? "LogIn as a STUDENT" : "LogIn as a FACULTY";
         final Connection connection =
-                databaseConnection.getDatabaseConnection();
+                IDatabaseConnection.getDatabaseConnection();
         final Statement statement =
                 connection.createStatement();
         String SQL = "SELECT * FROM users u INNER JOIN membership_details md on md.member_id = u.id";

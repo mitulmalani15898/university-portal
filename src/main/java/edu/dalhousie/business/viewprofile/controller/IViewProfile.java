@@ -1,7 +1,7 @@
 package edu.dalhousie.business.viewprofile.controller;
 
 public interface IViewProfile {
-    public void displayAndEditProfile();
+    public boolean displayAndEditProfile();
 
     public void viewProfilePage(String typeOfLogIn);
 }

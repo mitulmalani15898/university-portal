@@ -17,6 +17,27 @@ public class SportsNominationModel implements ISportsNominationModel
     private int levelThree;
     private int levelFour;
 
+    public SportsNominationModel() {
+    }
+
+    public SportsNominationModel(String username, String sport, int awards, int achievementLevel, int medal, int year, int maxGapYear, int currentYear, int yearPoints, int levelZero, int levelOne, int levelTwo, int levelThree, int levelFour) {
+        this.username = username;
+        this.sport = sport;
+        this.awards = awards;
+        this.achievementLevel = achievementLevel;
+        this.medal = medal;
+        this.year = year;
+        this.maxGapYear = maxGapYear;
+        this.currentYear = currentYear;
+        this.yearPoints = yearPoints;
+        this.levelZero = levelZero;
+        this.levelOne = levelOne;
+        this.levelTwo = levelTwo;
+        this.levelThree = levelThree;
+        this.levelFour = levelFour;
+
+    }
+
     public String getUsername() {
         return username;
     }

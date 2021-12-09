@@ -9,10 +9,9 @@ import edu.dalhousie.utilities.PrintHeading;
 import java.text.DecimalFormat;
 
 public class GPACalculator implements IGPACalculator {
+    IStudentView view = StudentViewFactory.getInstance().getStudentView();
+    public String calculateGPA() {
 
-    public void calculateGPA() {
-
-        IStudentView view = StudentViewFactory.getInstance().getStudentView();
         IGPACalculatorModel gpaCalculatorModel = GPACalculatorFactory.initialize().getGpaCalculatorModel();
 
         gpaCalculatorModel.setTotalPoints(0);
@@ -115,7 +114,7 @@ public class GPACalculator implements IGPACalculator {
 
         view.showMessage(GPACalculatorConstants.totalCredits + gpaCalculatorModel.getTotalCredits());
         view.showMessage(GPACalculatorConstants.overallGPA + decimalFormat.format(gpaCalculatorModel.getOverallGPA()));
-
+        return decimalFormat.format(gpaCalculatorModel.getOverallGPA());
     }
 
     public void viewGPACalculator()
@@ -124,9 +123,4 @@ public class GPACalculator implements IGPACalculator {
         calculateGPA();
     }
 
-    public static void main(String[] args)
-    {
-        GPACalculator calc = new GPACalculator();
-        calc.viewGPACalculator();
-    }
 }

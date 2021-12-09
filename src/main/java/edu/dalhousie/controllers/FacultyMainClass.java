@@ -1,5 +1,6 @@
 package edu.dalhousie.controllers;
 
+import edu.dalhousie.business.viewprofile.controller.IViewProfile;
 import edu.dalhousie.business.viewprofile.controller.ViewProfile;
 import edu.dalhousie.business.viewprofile.controller.ViewProfile;
 import edu.dalhousie.presentation.StudentView;
@@ -32,7 +33,7 @@ public class FacultyMainClass {
                     System.out.println("You selected 1");
                     break;
                 case 2:
-                    ViewProfile viewProfile = new ViewProfile();
+                    IViewProfile viewProfile = new ViewProfile();
                     viewProfile.viewProfilePage("FACULTY");
                     break;
                 case 3:
