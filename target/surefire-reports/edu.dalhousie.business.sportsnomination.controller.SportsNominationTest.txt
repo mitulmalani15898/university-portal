@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: edu.dalhousie.business.sportsnomination.controller.SportsNominationTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in edu.dalhousie.business.sportsnomination.controller.SportsNominationTest
-testSportsNomination  Time elapsed: 0 s  <<< ERROR!
-java.lang.NoClassDefFoundError: Could not initialize class org.mockito.internal.creation.cglib.ClassImposterizer$3
-	at edu.dalhousie.business.sportsnomination.controller.SportsNominationTest.<init>(SportsNominationTest.java:14)
-
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.138 s - in edu.dalhousie.business.sportsnomination.controller.SportsNominationTest
