@@ -15,10 +15,12 @@ public class WelcomeClass {
     private static final String loginAsFaculty = "Login as a Faculty";
     private static final String exit = "Exit";
     private StudentMainClass student;
-    public WelcomeClass(){
+
+    public WelcomeClass() {
         view = CommonPrinting.getInstance();
         this.student = StudentMainClass.getInstance();
     }
+
     public void displayWelcomeScreen() throws Exception {
 
         FacultyMainClass faculty = new FacultyMainClass();
@@ -39,7 +41,6 @@ public class WelcomeClass {
 
             switch (choice) {
                 case 1:
-//                    student.displayStudentMenu();
                     IRegistration studentRegistration = RegistrationFactory.getInstance().getRegistration();
                     studentRegistration.registerUser("student");
                     break;

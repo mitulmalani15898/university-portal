@@ -11,7 +11,7 @@ public class RegisterSpecificCourseForm implements IRegisterSpecificCourseForm {
     public void renderRegisterForSpecificCourseForm() {
         ICommonPrinting view = CommonPrinting.getInstance();
         IRegisteredCourses registeredCourses = CourseRegistrationFactory.getInstance().getRegisteredCourses();
-        ICourseListView courseListView = CourseRegistrationFactory.getInstance().getCourseListView();
+        IRegisteredCourseListView registeredCourseListView = CourseRegistrationFactory.getInstance().getRegisteredCourseListView();
         IRegisterForCourse registerForCourse = CourseRegistrationFactory.getInstance().getRegisterForCourse();
         String userChoice = "";
 
@@ -22,7 +22,7 @@ public class RegisterSpecificCourseForm implements IRegisterSpecificCourseForm {
                 int result = registerForCourse.registerForSpecificCourse();
                 if (result == 1) {
                     view.showMessage(CourseRegistrationConstants.REGISTRATION_SUCCESSFUL);
-                    courseListView.renderCourseListView(registeredCourses.getRegisteredCourses());
+                    registeredCourseListView.renderRegisteredCourseList(registeredCourses.getRegisteredCourses());
                 }
             }
             view.showMessage(CourseRegistrationConstants.WANT_TO_REGISTER_FOR_COURSE);
