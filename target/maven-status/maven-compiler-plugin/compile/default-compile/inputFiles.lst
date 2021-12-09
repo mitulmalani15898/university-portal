@@ -7,7 +7,7 @@ D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\addnewapp
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\dalmembership\controller\subscription\GoldSubscription.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\registration\controller\RegisterUser.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\feedback\model\SentimentAnalysisFeedbackModel.java
-D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\events\controller\email\SendEmail\SendEmail.java
+D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\events\controller\email\sendemail\SendEmail.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\roommatefinder\database\RoommateFinderData.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\controllers\Login.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\controllers\StudentMainClass.java
@@ -41,9 +41,9 @@ D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\payment\d
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\dalmembership\controller\services\IServices.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\events\database\IInsertWinnerNameDAOQueryBuilder.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\courseregistration\database\ISpecificCourseList.java
-D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\events\controller\Cost\IEventCost.java
+D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\events\controller\cost\IEventCost.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\courseregistration\database\IRegisteredCourseList.java
-D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\events\controller\State\StateAtStart.java
+D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\events\controller\state\StateAtStart.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\addnewapplication\model\AddNewApplicationFormObject.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\gpaCalculator\controller\IGPACalculator.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\gpaCalculator\constants\GPACalculatorConstants.java
@@ -61,7 +61,7 @@ D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\registrat
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\registration\business\IUserType.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\registration\controller\IRegisterUser.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\viewprofile\database\IViewProfileConnection.java
-D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\events\controller\State\State.java
+D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\events\controller\state\State.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\payment\controller\FullPayment\IFullPayment.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\dalmembership\database\MembershipDetailsConstant.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\scholarship\business\ComputeScholarshipResult.java
@@ -70,7 +70,7 @@ D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\events\mo
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\registration\business\ValidateDateOfBirth.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\courseregistration\database\IRegisterCourse.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\feedback\controllers\IFeedbackMenu.java
-D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\events\controller\State\StateContext.java
+D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\events\controller\state\StateContext.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\utilities\printing\ICommonPrinting.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\courseregistration\model\Courses.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\dalmembership\database\balance\updateBalance\IUpdateBalanceDAOQueryBuilder.java
@@ -159,7 +159,7 @@ D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\addnewapp
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\dalmembership\controller\services\Services.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\events\model\University\University.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\tender\controller\Tender\AbstractTender.java
-D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\events\controller\State\StateAtEnd.java
+D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\events\controller\state\StateAtEnd.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\registration\business\CreateUsername.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\feedback\controllers\IDisplayFeedback.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\courseregistration\controller\ICourseListView.java
@@ -174,13 +174,13 @@ D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\coursereg
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\dalmembership\model\ServicesModel.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\addnewapplication\model\AddNewApplicationFormValidation.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\courseregistration\controller\IRegisterSpecificCourseForm.java
-D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\events\controller\Cost\EventCost.java
+D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\events\controller\cost\EventCost.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\facilitybooking\databse\BookFacility.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\dalmembership\controller\inMemoryDatabase\membership.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\events\controller\email\EmailFactory.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\facilitybooking\model\BookedFacilities.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\courseregistration\model\IRegisteredCourses.java
-D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\events\controller\email\SendEmail\ISendEmail.java
+D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\events\controller\email\sendemail\ISendEmail.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\registration\business\ICreateUsername.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\dalmembership\controller\subscription\ISubscriptionImplmentation.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\facilitybooking\controller\IBookFacilityForm.java
@@ -213,7 +213,7 @@ D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\feedback\
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\registration\model\IUser.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\scholarship\constants\StringConstants.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\facilitybooking\controller\IFacilityBooking.java
-D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\events\controller\State\StateInProgress.java
+D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\events\controller\state\StateInProgress.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\payment\database\PaymentStatus\IUpdatePaymentStatusDAOQueryBuilder.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\database\DatabaseConnectivity.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\registration\controller\IRegistration.java
