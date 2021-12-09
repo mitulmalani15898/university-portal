@@ -3,7 +3,6 @@ edu\dalhousie\business\facilitybooking\controller\ShowFacilityAvailability.class
 edu\dalhousie\business\registration\business\IValidateEmail.class
 edu\dalhousie\logger\ILogger.class
 edu\dalhousie\business\facilitybooking\controller\IFacilityBooking.class
-edu\dalhousie\business\events\controller\State\StateContext.class
 edu\dalhousie\business\events\database\WinnerConstant.class
 edu\dalhousie\business\registration\business\IValidateGender.class
 edu\dalhousie\business\registration\business\IValidateContactNumber.class
@@ -17,7 +16,6 @@ edu\dalhousie\controllers\UserSession.class
 edu\dalhousie\business\dalmembership\controller\menu\MainMenu.class
 edu\dalhousie\business\feedback\controllers\ProvideFeedbackFactory.class
 edu\dalhousie\business\facilitybooking\controller\BookFacilityForm.class
-edu\dalhousie\business\events\controller\email\SendEmail\SendEmail.class
 edu\dalhousie\business\registration\business\IValidateDateOfBirth.class
 edu\dalhousie\business\scholarship\business\ComputeScholarshipResult.class
 edu\dalhousie\business\courseregistration\controller\CourseRegistration.class
@@ -35,7 +33,6 @@ edu\dalhousie\business\courseregistration\database\CompleteCourseList.class
 edu\dalhousie\business\addnewapplication\business\ValidateNewApplication.class
 edu\dalhousie\business\events\controller\email\IEmail.class
 edu\dalhousie\business\courseregistration\business\IValidateCourseRegistration.class
-edu\dalhousie\business\events\controller\email\SendEmail\SendEmail$1.class
 edu\dalhousie\business\facilitybooking\databse\IUpdateAvailability.class
 edu\dalhousie\business\facilitybooking\controller\FacilityBooking.class
 edu\dalhousie\business\facilitybooking\business\PickFacility.class
@@ -48,6 +45,7 @@ edu\dalhousie\business\facilitybooking\databse\IBookFacility.class
 edu\dalhousie\business\viewprofile\model\IViewProfileModel.class
 edu\dalhousie\business\courseregistration\model\ICourses.class
 edu\dalhousie\business\events\model\University\UniversityDetails.class
+edu\dalhousie\business\dalmembership\controller\handler\SilverHandler.class
 edu\dalhousie\controllers\FeesPaymentDetailsMenu.class
 edu\dalhousie\business\roommatefinder\controller\RoommateFinder.class
 edu\dalhousie\business\courseregistration\database\RegisterCourse.class
@@ -66,7 +64,6 @@ edu\dalhousie\business\dalmembership\database\MembershipDetailsConstant.class
 edu\dalhousie\utilities\Hashing.class
 edu\dalhousie\business\feedback\business\ISentimentalAnalysisForFeedback.class
 edu\dalhousie\business\feedback\controllers\ProvideFeedback.class
-edu\dalhousie\business\events\controller\State\StateAtEnd.class
 edu\dalhousie\controllers\User.class
 edu\dalhousie\business\facilitybooking\databse\GetAllUsers.class
 edu\dalhousie\business\sportnomination\controller\SportsNomination.class
@@ -77,13 +74,16 @@ edu\dalhousie\business\dalmembership\controller\subscription\GoldSubscription.cl
 edu\dalhousie\constants\StringConstants.class
 edu\dalhousie\business\gpaCalculator\model\IGPACalculatorModel.class
 edu\dalhousie\business\roommatefinder\controller\RoommateFinderFactory.class
+edu\dalhousie\business\dalmembership\controller\handler\GoldHandler.class
 edu\dalhousie\business\roommatefinder\constants\StringConstants.class
 edu\dalhousie\business\facilitybooking\business\IValidateFacilityBooking.class
 edu\dalhousie\business\registration\database\SaveUser.class
 edu\dalhousie\business\scholarship\controller\EScholarshipMenuOptions$2.class
+edu\dalhousie\business\events\controller\cost\EventCost.class
 edu\dalhousie\business\feedback\constants\StringConstants.class
 edu\dalhousie\business\payment\database\PaymentDetails\PaymentDetailsQueryBuilder.class
 edu\dalhousie\business\registration\constants\RegistrationConstants$1.class
+edu\dalhousie\business\dalmembership\model\ServicesModel.class
 edu\dalhousie\logger\LoggerUtility.class
 edu\dalhousie\business\dalmembership\database\balance\updateBalance\UpdateBalanceQueryBuilder.class
 edu\dalhousie\business\sportnomination\model\SportsNominationModel.class
@@ -103,6 +103,7 @@ edu\dalhousie\business\tender\model\Auctioneer.class
 edu\dalhousie\logger\LoggerFactory.class
 edu\dalhousie\business\dalmembership\controller\inMemoryDatabase\services.class
 edu\dalhousie\business\scholarship\controller\EScholarshipMenuOptions$1.class
+edu\dalhousie\business\dalmembership\controller\handler\BronzeHandler.class
 edu\dalhousie\business\payment\database\PaymentDetails\PaymentDetailsConstant.class
 edu\dalhousie\business\facilitybooking\databse\GetFacilityAvailability.class
 edu\dalhousie\business\facilitybooking\controller\BookValidFacility.class
@@ -112,7 +113,6 @@ edu\dalhousie\business\payment\controller\EMIPayment\IEMIPaymentPlans.class
 edu\dalhousie\business\tender\controller\Tender\AbstractTender.class
 edu\dalhousie\utilities\Constants.class
 edu\dalhousie\business\viewprofile\business\UserType.class
-edu\dalhousie\business\events\controller\State\StateAtStart.class
 edu\dalhousie\business\dalmembership\controller\services\IServices.class
 edu\dalhousie\business\dalmembership\database\balance\getBalance\IGetBalanceDAOQueryBuilder.class
 edu\dalhousie\business\payment\controller\FullPayment\FullPayment.class
@@ -129,13 +129,14 @@ edu\dalhousie\business\facilitybooking\databse\IGetFacilityAvailability.class
 edu\dalhousie\business\dalmembership\controller\subscription\SubscriptionImplementation.class
 edu\dalhousie\controllers\User$1.class
 edu\dalhousie\business\roommatefinder\business\IFilterRoommates.class
-edu\dalhousie\business\events\controller\Cost\EventCost.class
 edu\dalhousie\business\events\controller\email\Email.class
 edu\dalhousie\business\courseregistration\controller\ISearchSpecificCourse.class
 edu\dalhousie\controllers\Login.class
 edu\dalhousie\business\facilitybooking\model\IBookedFacilities.class
+edu\dalhousie\business\events\controller\email\sendemail\SendEmail$1.class
 edu\dalhousie\business\registration\business\IUserType.class
 edu\dalhousie\business\feedback\controllers\EFeedbackMenuOptions$2.class
+edu\dalhousie\business\events\controller\state\StateAtStart.class
 edu\dalhousie\business\payment\model\PaymentDetails.class
 edu\dalhousie\controllers\WelcomeClass.class
 edu\dalhousie\business\payment\controller\PaymentInformation\ShowPaymentInformation.class
@@ -143,6 +144,7 @@ edu\dalhousie\business\payment\database\PaymentStatus\UpdatePaymentStatusQueryBu
 edu\dalhousie\business\viewprofile\database\UpdateProfileConnection.class
 edu\dalhousie\business\dalmembership\database\balance\getBalance\GetBalanceQueryBuilder.class
 edu\dalhousie\business\payment\controller\FullPayment\IFullPayment.class
+edu\dalhousie\business\events\controller\email\sendemail\ISendEmail.class
 edu\dalhousie\business\addnewapplication\controller\AddNewApplicationForAdmission.class
 edu\dalhousie\business\courseregistration\model\RegisteredCourses.class
 edu\dalhousie\business\events\model\University\University.class
@@ -150,6 +152,7 @@ edu\dalhousie\business\gpaCalculator\constants\GPACalculatorConstants.class
 edu\dalhousie\business\registration\controller\RegistrationForm.class
 edu\dalhousie\business\events\model\Event\EventNotification.class
 edu\dalhousie\business\facilitybooking\business\IPickFacility.class
+edu\dalhousie\business\events\controller\email\sendemail\SendEmail.class
 edu\dalhousie\business\dalmembership\controller\subscription\Subscription.class
 edu\dalhousie\business\dalmembership\controller\subscription\ISubscriptionImplmentation.class
 edu\dalhousie\database\IDatabaseConnection.class
@@ -170,14 +173,13 @@ edu\dalhousie\business\registration\constants\RegistrationConstants.class
 edu\dalhousie\business\roommatefinder\model\RoommateFinderObjectModel.class
 edu\dalhousie\business\dalmembership\controller\subscription\SilverSubscription.class
 edu\dalhousie\business\facilitybooking\databse\BookFacility.class
-edu\dalhousie\business\events\controller\email\SendEmail\ISendEmail.class
 edu\dalhousie\business\courseregistration\controller\IRegisterSpecificCourseForm.class
+edu\dalhousie\business\events\controller\state\StateInProgress.class
 edu\dalhousie\controllers\User$Builder.class
 edu\dalhousie\business\dalmembership\controller\menu\Menu.class
 edu\dalhousie\business\roommatefinder\database\RoommateFinderData.class
 edu\dalhousie\business\registration\controller\IRegistrationForm.class
 edu\dalhousie\database\DatabaseConnectivity.class
-edu\dalhousie\business\events\controller\State\StateInProgress.class
 edu\dalhousie\business\roommatefinder\business\ValidateRoommateFinder.class
 edu\dalhousie\business\feedback\controllers\IFeedbackMenu.class
 edu\dalhousie\business\feedback\controllers\IProvideFeedback.class
@@ -189,7 +191,6 @@ edu\dalhousie\business\addnewapplication\controller\AddNewApplicationForAdmissio
 edu\dalhousie\business\registration\business\ICreateUsername.class
 edu\dalhousie\business\registration\business\UserType.class
 edu\dalhousie\business\registration\controller\RegisterUser.class
-edu\dalhousie\business\events\controller\State\State.class
 edu\dalhousie\business\tender\controller\Tender\ITender.class
 edu\dalhousie\business\viewprofile\database\IUpdateProfileConnection.class
 edu\dalhousie\business\gpaCalculator\controller\GPACalculatorFactory.class
@@ -206,6 +207,8 @@ edu\dalhousie\business\dalmembership\controller\balance\IBalance.class
 edu\dalhousie\utilities\printing\PrintHeading.class
 edu\dalhousie\business\addnewapplication\model\AddNewApplicationFormValidation.class
 edu\dalhousie\business\dalmembership\database\balance\updateBalance\IUpdateBalanceDAOQueryBuilder.class
+edu\dalhousie\business\dalmembership\controller\handler\Handler.class
+edu\dalhousie\business\events\controller\state\State.class
 edu\dalhousie\business\feedback\controllers\FeedbackMenuFactory.class
 edu\dalhousie\business\events\model\Student\StudentIterator.class
 edu\dalhousie\business\registration\controller\RegistrationFactory.class
@@ -217,6 +220,7 @@ edu\dalhousie\business\sportnomination\model\ISportsNominationModel.class
 edu\dalhousie\business\registration\database\ISaveUser.class
 edu\dalhousie\business\events\controller\Event.class
 edu\dalhousie\business\courseregistration\constants\CourseRegistrationConstants.class
+edu\dalhousie\business\events\controller\cost\IEventCost.class
 edu\dalhousie\business\dalmembership\controller\menu\MenuImplementation.class
 edu\dalhousie\business\feedback\controllers\EFeedbackMenuOptions$3.class
 edu\dalhousie\business\addnewapplication\business\ComputeScoreForNewApplicationTemplate.class
@@ -260,5 +264,8 @@ edu\dalhousie\business\registration\controller\IRegisterUser.class
 edu\dalhousie\business\registration\business\ValidateDateOfBirth.class
 edu\dalhousie\business\registration\business\ValidateContactNumber.class
 edu\dalhousie\business\events\controller\email\CollegeEmail.class
+edu\dalhousie\business\payment\database\PaymentDetails\IPaymentDetailsDAOQueryBuilder.class
 edu\dalhousie\business\viewprofile\database\ViewProfileConnection.class
+edu\dalhousie\business\events\controller\state\StateAtEnd.class
+edu\dalhousie\business\events\controller\state\StateContext.class
 edu\dalhousie\business\viewprofile\controller\ViewProfileFactory.class
