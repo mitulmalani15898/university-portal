@@ -1,26 +1,22 @@
 package edu.dalhousie.controllers;
 
-//import edu.dalhousie.database.ExecuteQuery;
-
-import edu.dalhousie.database.DatabaseConnection;
+import edu.dalhousie.database.IDatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
 import edu.dalhousie.utilities.Hashing;
-//import java.security.MessageDigest;
-//import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Scanner;
 
 public class Login {
-    private DatabaseConnection databaseConnection;
-    Hashing performHashing;
+    private IDatabaseConnection IDatabaseConnection;
+
     public Login(){
-        this.databaseConnection = DatabaseConnectivity.getInstance();
-        performHashing = new Hashing();
+        this.IDatabaseConnection = DatabaseConnectivity.getInstance();
+
     }
     public static String[] getUserLoginDetails() {
-
+        Hashing performHashing = new Hashing();
         System.out.print("Enter your Username: ");
         Scanner enterusername = new Scanner(System.in);
         String username = enterusername.nextLine();
@@ -29,21 +25,22 @@ public class Login {
         Scanner enterpassword = new Scanner(System.in);
         String userpassword = enterpassword.nextLine();
 
-        //String hashedpassword = performHashing.doPasswordHashing(userpassword);
+        String hashedpassword = performHashing.doPasswordHashing(userpassword);
 
         String[] input = new String[2];
         input[0] = username;
-        input[1] = userpassword;
+        input[1] = hashedpassword;
         return input;
     }
 
     public User loginUser(String typeOfLogIn) throws Exception {
-        String title = typeOfLogIn.equals("student") ? "LogIn as a student" : "LogIn as a faculty";
+        String title = typeOfLogIn.equals("STUDENT") ? "LogIn as a STUDENT" : "LogIn as a FACULTY";
         final Connection connection =
-                databaseConnection.getDatabaseConnection();
+                IDatabaseConnection.getDatabaseConnection();
         final Statement statement =
                 connection.createStatement();
-        String SQL = "SELECT * FROM users u INNER JOIN membership_details md on md.member_id = u.id";
+        String SQL = "SELECT * FROM users u INNER JOIN " +
+                "membership_details md on md.member_id = u.id";
         ResultSet rs = statement.executeQuery(SQL);
 
         String[] userdetails;
@@ -63,7 +60,7 @@ public class Login {
                 System.out.println("Credentials verified. . .");
                 System.out.println("\nForwarding you to the main page. . .");
 
-                if (typeOfLogIn.equals("student")) {
+                if (typeOfLogIn.equals("STUDENT")) {
 
                     return new User.Builder()
                             .setUserId(userId)

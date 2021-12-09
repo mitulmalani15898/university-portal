@@ -13,7 +13,7 @@ build:
   script:
     - "mvn compile"
   only:
-    - development
+    - production
 
 test:
   stage: test
@@ -28,7 +28,7 @@ test:
       junit:
         - "./target/surefire-reports/TEST-*.xml"
   only:
-    - development
+    - production
 package:
   stage: package
   tags:
@@ -40,11 +40,11 @@ package:
     paths:
       - target/*.jar
   only:
-    - development
+    - production
 deploy:
   stage: deploy
   only:
-    - development
+    - production
   image: ruby:latest
   tags:
     - ugrad
@@ -53,5 +53,12 @@ deploy:
     - eval $(ssh-agent -s)
     - echo "$SSH_KEY" | tr -d '\r' | ssh-add -
   script:
-    - ssh -o StrictHostKeyChecking=no manikandan@timberlea.cs.dal.ca "mkdir project/${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHORT_SHA}"
-    - scp -r -o StrictHostKeyChecking=no target/group-9-1.0.0.jar "manikandan@timberlea.cs.dal.ca:project/${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHORT_SHA}/group-9-1.0.0.jar"
+    - echo "mysqlJDBCDriver=com.mysql.cj.jdbc.Driver" >> database.properties
+    - echo "databaseType=prod" >> database.properties
+    - echo "databaseURL=$PROD_DATABASE_URL" >> database.properties
+    - echo "prodDatabase=$PROD_DATABASE" >> databaseConfig.properties
+    - echo "prodUsername=$PROD_DATABASE_USERNAME" >> database.properties
+    - echo "prodPassword=$PROD_DATABASE_PASSWORD" >> database.properties
+    - ssh -o StrictHostKeyChecking=no manikandan@timberlea.cs.dal.ca "mkdir production/${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHORT_SHA}"
+    - scp -r -o StrictHostKeyChecking=no target/group-9-1.0.0.jar "manikandan@timberlea.cs.dal.ca:production/${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHORT_SHA}/group-9-1.0.0.jar"
+    - scp -r -o StrictHostKeyChecking=no database.properties "manikandan@timberlea.cs.dal.ca:production/${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHORT_SHA}/database.properties"

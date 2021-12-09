@@ -1,6 +1,6 @@
 package edu.dalhousie.controllers;
 
-import edu.dalhousie.business.DalMembership.controller.subscription.Subscription;
+import edu.dalhousie.business.dalmembership.controller.subscription.Subscription;
 
 public class User {
 
