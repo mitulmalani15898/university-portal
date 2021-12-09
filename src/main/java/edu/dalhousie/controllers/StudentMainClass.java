@@ -43,9 +43,10 @@ public class StudentMainClass {
     private static final String facilityBooking = "Facility booking";
     private static final String gpaCalclator = "GPA Calculator";
     private static final String logout = "Logout";
-
+private UserSession userSession;
     private StudentMainClass(){
         this.view = CommonPrinting.getInstance();
+        userSession = UserSession.getInstance();
     }
 
     public static StudentMainClass getInstance(){
@@ -131,6 +132,7 @@ public class StudentMainClass {
                     gpaCalculator.viewGPACalculator();
                     break;
                 case 15:
+                    userSession.destroyUserSession();
                     System.exit(0);
                     break;
                 default:

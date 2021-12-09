@@ -42,9 +42,9 @@ public class UniversityDetails implements StudentIterator {
         university.studentInfo();
     }
 
-    public boolean sendNotificationToSchool(String schoolName){
+    public boolean sendNotificationToUniversity(String universityName){
         eventNotification = new EventNotification();
-        eventNotification.sendEventNotification(schoolName);
+        eventNotification.sendEventNotification(universityName);
         return eventNotification.invitationStatus();
     }
 }
