@@ -2,59 +2,59 @@ package edu.dalhousie.business.sportnomination.model;
 
 public interface ISportsNominationModel {
 
-    public String getUsername();
+    String getUsername();
 
-    public void setUsername(String username);
+    void setUsername(String username);
 
-    public String getSport();
+    String getSport();
 
-    public void setSport(String sport);
+    void setSport(String sport);
 
-    public int getAwards();
+    int getAwards();
 
-    public void setAwards(int awards);
+    void setAwards(int awards);
 
-    public int getAchievementLevel();
+    int getAchievementLevel();
 
-    public void setAchievementLevel(int achievementLevel);
+    void setAchievementLevel(int achievementLevel);
 
-    public int getMedal();
+    int getMedal();
 
-    public void setMedal(int medal);
+    void setMedal(int medal);
 
-    public int getYear();
+    int getYear();
 
-    public void setYear(int year);
+    void setYear(int year);
 
-    public int getMaxGapYear();
+    int getMaxGapYear();
 
-    public void setMaxGapYear(int maxGapYear);
+    void setMaxGapYear(int maxGapYear);
 
-    public int getCurrentYear();
+    int getCurrentYear();
 
-    public void setCurrentYear(int currentYear);
+    void setCurrentYear(int currentYear);
 
-    public int getYearPoints();
+    int getYearPoints();
 
-    public void setYearPoints(int yearPoints);
+    void setYearPoints(int yearPoints);
 
-    public int getLevelZero();
+    int getLevelZero();
 
-    public void setLevelZero(int levelZero);
+    void setLevelZero(int levelZero);
 
-    public int getLevelOne();
+    int getLevelOne();
 
-    public void setLevelOne(int levelOne);
+    void setLevelOne(int levelOne);
 
-    public int getLevelTwo();
+    int getLevelTwo();
 
-    public void setLevelTwo(int levelTwo);
+    void setLevelTwo(int levelTwo);
 
-    public int getLevelThree();
+    int getLevelThree();
 
-    public void setLevelThree(int levelThree);
+    void setLevelThree(int levelThree);
 
-    public int getLevelFour();
+    int getLevelFour();
 
-    public void setLevelFour(int levelFour);
+    void setLevelFour(int levelFour);
 }

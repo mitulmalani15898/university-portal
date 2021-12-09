@@ -26,9 +26,19 @@ public class SportsNomination implements ISportsNomination
 
         view.showMessage(SportsNominationConstants.enterUsername);
         sportsNominationModel.setUsername(view.getString());
+        while(sportsNominationModel.getUsername().isEmpty())
+        {
+            view.showMessage(SportsNominationConstants.enterUsername);
+            sportsNominationModel.setUsername(view.getString());
+        }
 
         view.showMessage(SportsNominationConstants.enterSportName);
         sportsNominationModel.setSport(view.getString());
+        while(sportsNominationModel.getSport().isEmpty())
+        {
+            view.showMessage(SportsNominationConstants.enterSportName);
+            sportsNominationModel.setSport(view.getString());
+        }
 
         view.showMessage(SportsNominationConstants.enterAwards);
         sportsNominationModel.setAwards(view.getInt());
@@ -36,8 +46,10 @@ public class SportsNomination implements ISportsNomination
         view.showMessage(SportsNominationConstants.enterAchievement);
         sportsNominationModel.setAchievementLevel(view.getInt());
 
+
         view.showMessage(SportsNominationConstants.enterMedal);
         sportsNominationModel.setMedal(view.getInt());
+
 
         view.showMessage(SportsNominationConstants.enterYear);
         sportsNominationModel.setYear(view.getInt());
@@ -48,7 +60,6 @@ public class SportsNomination implements ISportsNomination
         if (sportsNominationModel.getYear() <= sportsNominationModel.getMaxGapYear())
         {
             view.showMessage(SportsNominationConstants.notEligibleGap);
-            //goBack();
         }
         else
         {

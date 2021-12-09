@@ -26,4 +26,5 @@ public class SportsNominationTest {
         Mockito.when(viewMock.getInt()).thenReturn(4, 2, 2, 2018);
         assertEquals("\nCongratulations viren.malavia! You are eligible to be a part of our Football sports club.", sportsNomination.sportsNominationChecker());
     }
+
 }

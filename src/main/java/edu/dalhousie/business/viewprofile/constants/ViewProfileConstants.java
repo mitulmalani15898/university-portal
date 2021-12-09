@@ -21,7 +21,7 @@ public class ViewProfileConstants {
     public static final String enterProvince = "Enter your province/state: ";
     public static final String enterZipcode = "Enter your zip code: ";
     public static final String updating = "\nUpdating your details...";
-    public static final String updated = "Details updated...\n";
+    public static final String updated = "Your details have been updated.\n";
 
     public static final String firstNameColumn = "first_name";
     public static final String lastNameColumn = "last_name";

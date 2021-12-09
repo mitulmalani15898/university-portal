@@ -1,8 +1,8 @@
 package edu.dalhousie.business.sportnomination.controller;
 
-public interface ISportsNomination
-{
-    public String sportsNominationChecker();
-    public void viewSportsNomination();
+public interface ISportsNomination {
+    String sportsNominationChecker();
+
+    void viewSportsNomination();
 }
 

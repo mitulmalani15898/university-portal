@@ -19,9 +19,10 @@ public class ViewProfileTest {
         viewField.set(viewMock);
     }
 
-//    @Test
-//    public void testViewAndUpdateProile() {
-//        Mockito.when(viewMock.getString()).thenReturn("no");
-//        assertEquals(true, viewProfile.displayAndEditProfile());
-//    }
+    @Test
+    public void testViewAndUpdateProile() {
+        Mockito.when(viewMock.getString()).thenReturn("no");
+        assertEquals(true, viewProfile.displayAndEditProfile());
+    }
+
 }
