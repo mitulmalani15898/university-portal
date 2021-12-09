@@ -8,14 +8,14 @@ import edu.dalhousie.database.DatabaseConnectivity;
 
 import java.sql.Connection;
 import java.sql.Statement;
-
+final
 public class UpdateProfileConnection implements IUpdateProfileConnection {
     private IDatabaseConnection IDatabaseConnection;
     UserSession userSession;
 
     public UpdateProfileConnection() {
         this.IDatabaseConnection = DatabaseConnectivity.getInstance();
-        userSession = new UserSession();
+        userSession = UserSession.getInstance();
     }
 
     public void executeUpdateProfile(String column_name, String update_value) {

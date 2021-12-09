@@ -10,9 +10,10 @@ import java.text.DecimalFormat;
 
 public class GPACalculator implements IGPACalculator {
 
+    ICommonPrinting view = CommonPrinting.getInstance();
+
     public String calculateGPA() {
 
-        ICommonPrinting view = CommonPrinting.getInstance();
         IGPACalculatorModel gpaCalculatorModel = GPACalculatorFactory.initialize().getGpaCalculatorModel();
 
         gpaCalculatorModel.setTotalPoints(0);
@@ -33,8 +34,7 @@ public class GPACalculator implements IGPACalculator {
 
                 try {
                     gpaCalculatorModel.setCredits(Integer.parseInt(gpaCalculatorModel.getSubjectCredits()));
-                }
-                catch (NumberFormatException exc){
+                } catch (NumberFormatException exc) {
                     view.showMessage(GPACalculatorConstants.enterValidCredits);
                     validCreditChecker = false;
                 }
@@ -74,23 +74,23 @@ public class GPACalculator implements IGPACalculator {
 
                     gpaCalculatorModel.setGradeValue(2.33);
 
-                }else if (gpaCalculatorModel.getGrade().equalsIgnoreCase("C+")) {
+                } else if (gpaCalculatorModel.getGrade().equalsIgnoreCase("C+")) {
 
                     gpaCalculatorModel.setGradeValue(2.00);
 
-                }else if (gpaCalculatorModel.getGrade().equalsIgnoreCase("C")) {
+                } else if (gpaCalculatorModel.getGrade().equalsIgnoreCase("C")) {
 
                     gpaCalculatorModel.setGradeValue(1.33);
 
-                }else if (gpaCalculatorModel.getGrade().equalsIgnoreCase("D")) {
+                } else if (gpaCalculatorModel.getGrade().equalsIgnoreCase("D")) {
 
                     gpaCalculatorModel.setGradeValue(1.00);
 
-                }else if (gpaCalculatorModel.getGrade().equalsIgnoreCase("F")) {
+                } else if (gpaCalculatorModel.getGrade().equalsIgnoreCase("F")) {
 
                     gpaCalculatorModel.setGradeValue(0);
 
-                }else {
+                } else {
 
                     view.showMessage(GPACalculatorConstants.enterValidGrade);
                     validGradeChecker = false;
@@ -111,15 +111,14 @@ public class GPACalculator implements IGPACalculator {
 
         gpaCalculatorModel.setPattern("0.00");
         DecimalFormat decimalFormat = new DecimalFormat(gpaCalculatorModel.getPattern());
-        gpaCalculatorModel.setOverallGPA(gpaCalculatorModel.getTotalPoints()/gpaCalculatorModel.getTotalCredits());
+        gpaCalculatorModel.setOverallGPA(gpaCalculatorModel.getTotalPoints() / gpaCalculatorModel.getTotalCredits());
 
         view.showMessage(GPACalculatorConstants.totalCredits + gpaCalculatorModel.getTotalCredits());
         view.showMessage(GPACalculatorConstants.overallGPA + decimalFormat.format(gpaCalculatorModel.getOverallGPA()));
         return decimalFormat.format(gpaCalculatorModel.getOverallGPA());
     }
 
-    public void viewGPACalculator()
-    {
+    public void viewGPACalculator() {
         PrintHeading.printHeadingForTheScreen(GPACalculatorConstants.GPACalculatorTitle, 38);
         calculateGPA();
     }
