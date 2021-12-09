@@ -79,8 +79,7 @@ public class MenuImplementation implements IMenu{
                                 userSession.getUser(), IDatabaseConnection);
                         break;
                     case 5:
-                        System.exit(0);
-                        break;
+                        return;
                     default:
                         break;
                 }
