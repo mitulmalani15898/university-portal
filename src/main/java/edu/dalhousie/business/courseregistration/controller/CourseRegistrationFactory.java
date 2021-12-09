@@ -20,6 +20,7 @@ public class CourseRegistrationFactory {
     ISearchSpecificCourse searchSpecificCourse;
     IRegisterSpecificCourseForm registerSpecificCourseForm;
     IRegisterForCourse registerForCourse;
+    IRegisteredCourseListView registeredCourseListView;
 
     public CourseRegistrationFactory() {
         courseRegistration = new CourseRegistration();
@@ -35,6 +36,7 @@ public class CourseRegistrationFactory {
         searchSpecificCourse = new SearchSpecificCourse();
         registerSpecificCourseForm = new RegisterSpecificCourseForm();
         registerForCourse = new RegisterForCourse();
+        registeredCourseListView = new RegisteredCourseListView();
     }
 
     public static CourseRegistrationFactory getInstance() {
@@ -94,5 +96,9 @@ public class CourseRegistrationFactory {
 
     public IRegisterForCourse getRegisterForCourse() {
         return registerForCourse;
+    }
+
+    public IRegisteredCourseListView getRegisteredCourseListView() {
+        return registeredCourseListView;
     }
 }

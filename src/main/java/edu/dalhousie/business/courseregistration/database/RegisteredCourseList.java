@@ -4,6 +4,8 @@ import edu.dalhousie.business.courseregistration.constants.CourseRegistrationCon
 import edu.dalhousie.business.courseregistration.controller.CourseRegistrationFactory;
 import edu.dalhousie.business.courseregistration.model.Course;
 import edu.dalhousie.business.courseregistration.model.IRegisteredCourses;
+import edu.dalhousie.controllers.User;
+import edu.dalhousie.controllers.UserSession;
 import edu.dalhousie.database.IDatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
 import edu.dalhousie.logger.ILogger;
@@ -21,11 +23,14 @@ public class RegisteredCourseList implements IRegisteredCourseList {
 
     @Override
     public void getRegisteredCourseList() {
-        int studentId = 2;
+        User user = UserSession.getInstance().getUser();
         List<Course> courses = new ArrayList<>();
         IRegisteredCourses registeredCourses = CourseRegistrationFactory.getInstance().getRegisteredCourses();
 
-        String query = CourseRegistrationConstants.GET_REGISTERED_COURSES_QUERY.replace("coursesTable", Constants.COURSES_TABLE).replace("enrollmentTable", Constants.COURSE_ENROLMENTS_TABLE).replace("studentId", studentId + "");
+        String query = CourseRegistrationConstants.GET_REGISTERED_COURSES_QUERY
+            .replace("coursesTable", Constants.COURSES_TABLE)
+            .replace("enrollmentTable", Constants.COURSE_ENROLMENTS_TABLE)
+            .replace("studentId", user.getUserId() + "");
 
         try {
             IDatabaseConnection = DatabaseConnectivity.getInstance();

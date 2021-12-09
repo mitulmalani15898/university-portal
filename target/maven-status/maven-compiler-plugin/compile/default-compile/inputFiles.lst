@@ -3,6 +3,7 @@ D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\sportnomi
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\addnewapplication\database\AddNewApplicationForAdmissionData.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\registration\controller\RegistrationForm.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\events\database\InsertWinnerNameQueryBuilder.java
+D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\registration\database\AddMembership.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\addnewapplication\constants\StringConstants.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\dalmembership\controller\subscription\GoldSubscription.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\registration\controller\RegisterUser.java
@@ -22,6 +23,7 @@ D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\tender\da
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\database\IDatabaseConnection.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\roommatefinder\database\IRoommateFinderData.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\payment\database\PaymentStatus\PaymentStatusConstant.java
+D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\registration\database\IAddMembership.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\registration\business\ValidatePassword.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\payment\controller\EMIPayment\IEMIPaymentPlans.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\events\controller\email\CollegeEmail.java
@@ -137,6 +139,7 @@ D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\dalmember
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\facilitybooking\model\AvailableFacilitySlots.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\tender\database\TenderWinnerQueryBuilder.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\logger\ILogger.java
+D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\registration\database\GetUser.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\events\model\Winner\EventWinner.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\facilitybooking\controller\IShowFacilityAvailability.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\facilitybooking\business\ValidateFacilityBooking.java
@@ -156,6 +159,7 @@ D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\viewprofi
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\facilitybooking\model\Facility.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\facilitybooking\business\PickFacility.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\addnewapplication\database\IAddNewApplicationForAdmissionData.java
+D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\registration\database\IGetUSer.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\dalmembership\controller\services\Services.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\events\model\University\University.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\tender\controller\Tender\AbstractTender.java
@@ -194,6 +198,7 @@ D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\viewprofi
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\registration\business\ValidateGender.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\registration\model\User.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\facilitybooking\controller\FacilityBookingFactory.java
+D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\courseregistration\controller\IRegisteredCourseListView.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\utilities\Constants.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\dalmembership\controller\balance\Balance.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\addnewapplication\business\IValidateNewApplication.java
@@ -253,6 +258,7 @@ D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\registrat
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\roommatefinder\business\ValidateRoommateFinder.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\events\controller\EventApplication.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\feedback\business\IFeedbackUserInputValidation.java
+D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\courseregistration\controller\RegisteredCourseListView.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\roommatefinder\model\RoommateFinderObjectModel.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\addnewapplication\business\ValidateNewApplication.java
 D:\Dalhousie\ASDC\Project\group-9\src\main\java\edu\dalhousie\business\facilitybooking\databse\IUpdateAvailability.java

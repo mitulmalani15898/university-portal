@@ -21,6 +21,7 @@ public class RegistrationConstants {
     public static final String YOUR_USERNAME = "Your username is 'userName'.";
     public static final String PLEASE_LOGIN = "\nPlease login using your username and password to access your portal.\n";
     public static final String SOMETHING_WENT_WRONG_PLEASE_TRY_AGAIN = "Something went wrong, please try again...\n";
+    public static final String MEMBERSHIP_CREATED = "Your membership is also created.";
 
     public static final String ENTER_FIRST_NAME = "Enter your first name: ";
     public static final String ENTER_VALID_FIRST_NAME = "Enter valid first name: ";
@@ -52,6 +53,10 @@ public class RegistrationConstants {
     public static final String CONTACT_NUMBER_REGEX = "^[0-9]{10}$";
     public static final String DATE_OF_BIRTH_REGEX = "^(\\d\\d)-(\\d\\d)-(\\d\\d\\d\\d)$";
     public static final String PASSWORD_REGEX = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!\"#$%&'()*+,-./:;<=>?@\\[\\]^_`{|}~]).{4,20}$";
+
+    public static final String GET_USER_QUERY = "SELECT * from tableName WHERE user_name='userName'";
+
+    public static final String ADD_MEMBERSHIP_QUERY = "INSERT INTO tableName(balance, subscription, member_id) VALUES(1000, 'BRONZE', userId)";
 
     public static final String INSERT_USER_QUERY = "INSERT INTO tableName(first_name, last_name, email_address, contact_number, password, dob, gender, address, apartment_number, city, province, zip_code, user_name, type_of_user) VALUES('firstName', 'lastName', 'emailAddress', 'contactNumber', 'passwordValue', 'dateOfBirth', 'genderValue', 'addressValue', 'apartmentNumber', 'cityValue', 'provinceValue', 'zipCode', 'username', 'typeOfUser')";
 }

@@ -1,8 +1,7 @@
 package edu.dalhousie.business.registration.controller;
 
 import edu.dalhousie.business.registration.business.*;
-import edu.dalhousie.business.registration.database.ISaveUser;
-import edu.dalhousie.business.registration.database.SaveUser;
+import edu.dalhousie.business.registration.database.*;
 import edu.dalhousie.business.registration.model.IUser;
 import edu.dalhousie.business.registration.model.User;
 
@@ -21,6 +20,8 @@ public class RegistrationFactory {
     IValidateDateOfBirth validateDateOfBirth;
     IValidateGender validateGender;
     IValidateContactNumber validateContactNumber;
+    IGetUSer fetchUser;
+    IAddMembership addMembership;
 
     public RegistrationFactory() {
         registration = new Registration();
@@ -35,6 +36,8 @@ public class RegistrationFactory {
         validateDateOfBirth = new ValidateDateOfBirth();
         validateGender = new ValidateGender();
         validateContactNumber = new ValidateContactNumber();
+        fetchUser = new GetUser();
+        addMembership = new AddMembership();
     }
 
     public static RegistrationFactory getInstance() {
@@ -90,5 +93,13 @@ public class RegistrationFactory {
 
     public IValidateContactNumber getValidateContactNumber() {
         return validateContactNumber;
+    }
+
+    public IGetUSer getFetchUser() {
+        return fetchUser;
+    }
+
+    public IAddMembership getAddMembership() {
+        return addMembership;
     }
 }

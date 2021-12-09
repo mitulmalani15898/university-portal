@@ -7,7 +7,7 @@ public class CourseRegistrationConstants {
     public static final List<String> yesNoList = Arrays.asList("yes", "no");
     public static final String LIST_OF_ALL_COURSES = "List of all courses";
     public static final String LIST_OF_COURSES_FOR_REGISTRATION = "List of courses for registration";
-    public static final String NO = "no";
+    public static final String LIST_OF_REGISTERED_COURSES = "List of Registered courses";    public static final String NO = "no";
     public static final String YES = "yes";
     public static final String QUIT = "quit";
     public static final String WANT_TO_REGISTER_FOR_COURSE = "\nDo you want to register for course? (Yes, No: quit)";
@@ -17,6 +17,7 @@ public class CourseRegistrationConstants {
     public static final String REGISTRATION_SUCCESSFUL = "\nRegistration successful.";
     public static final String PROVIDE_VALID_COURSE_ID = "\nPlease try again and provide valid course id for registration.\n";
     public static final String NO_COURSES_FOUND_MESSAGE = "\nNo courses found for provided keyword.\n";
+    public static final String NO_REGISTERED_COURSES_FOUND_MESSAGE = "\nYou have not registered for any course.\n";
     public static final String COURSE_FULL = "\nThe course is full, no seats available for this course.\n";
     public static final String COURSE_HAS_PRE_REQUISITE_COURSE = "\nThis course has prerequisite course, so please register for it first.\n";
     public static final String ALREADY_REGISTERED = "\nYou have already registered for this course.\n";
