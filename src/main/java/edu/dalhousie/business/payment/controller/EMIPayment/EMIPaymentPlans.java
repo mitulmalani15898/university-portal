@@ -4,12 +4,10 @@
  */
 package edu.dalhousie.business.payment.controller.EMIPayment;
 
-import edu.dalhousie.business.payment.controller.PaymentInformation.ShowPaymentInformation;
+
 import edu.dalhousie.business.payment.database.PaymentDetails.IPaymentDetailsDAOQueryBuilder;
 import edu.dalhousie.business.payment.database.PaymentStatus.IPaymentStatusDAOQueryBuilder;
 import edu.dalhousie.business.payment.database.PaymentStatus.IUpdatePaymentStatusDAOQueryBuilder;
-import edu.dalhousie.business.payment.database.PaymentStatus.PaymentStatusQueryBuilder;
-import edu.dalhousie.business.payment.database.PaymentStatus.UpdatePaymentStatusQueryBuilder;
 import edu.dalhousie.business.payment.model.PaymentDetails;
 import edu.dalhousie.controllers.UserSession;
 import edu.dalhousie.database.IDatabaseConnection;
@@ -146,7 +144,7 @@ public class EMIPaymentPlans implements IEMIPaymentPlans {
 
         } catch (Exception e ) {
             e.printStackTrace();
-            logger.error(ShowPaymentInformation.class.toString(),e.getMessage());
+            logger.error(EMIPaymentPlans.class.toString(),e.getMessage());
         }
     }
 

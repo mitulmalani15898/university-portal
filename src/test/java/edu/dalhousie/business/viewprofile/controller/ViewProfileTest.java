@@ -24,4 +24,5 @@ public class ViewProfileTest {
         Mockito.when(viewMock.getString()).thenReturn("no");
         assertEquals(true, viewProfile.displayAndEditProfile());
     }
+
 }

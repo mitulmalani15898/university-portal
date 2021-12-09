@@ -5,5 +5,5 @@
 package edu.dalhousie.business.dalmembership.controller.services;
 
 public interface IServices {
-    void getListOfServices();
+    public void getListOfServices();
 }

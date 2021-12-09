@@ -1,55 +1,55 @@
 package edu.dalhousie.business.viewprofile.model;
 
 public interface IViewProfileModel {
-    public String getUsername();
+    String getUsername();
 
-    public void setUsername(String username);
+    void setUsername(String username);
 
-    public String getFirstName();
+    String getFirstName();
 
-    public void setFirstName(String firstName);
+    void setFirstName(String firstName);
 
-    public String getLastName();
+    String getLastName();
 
-    public void setLastName(String lastName);
+    void setLastName(String lastName);
 
-    public String getEmail();
+    String getEmail();
 
-    public void setEmail(String email);
+    void setEmail(String email);
 
-    public String getContactNumber();
+    String getContactNumber();
 
-    public void setContactNumber(String contactNumber);
+    void setContactNumber(String contactNumber);
 
-    public String getDateOfBirth();
+    String getDateOfBirth();
 
-    public void setDateOfBirth(String dateOfBirth);
+    void setDateOfBirth(String dateOfBirth);
 
-    public String getGender();
+    String getGender();
 
-    public void setGender(String gender);
+    void setGender(String gender);
 
-    public String getStreetAddress();
+    String getStreetAddress();
 
-    public void setStreetAddress(String streetAddress);
+    void setStreetAddress(String streetAddress);
 
-    public String getApartmentNumber();
+    String getApartmentNumber();
 
-    public void setApartmentNumber(String apartmentNumber);
+    void setApartmentNumber(String apartmentNumber);
 
-    public String getCity();
+    String getCity();
 
-    public void setCity(String city);
+    void setCity(String city);
 
-    public String getProvince();
+    String getProvince();
 
-    public void setProvince(String province);
+    void setProvince(String province);
 
-    public String getZipcode();
+    String getZipcode();
 
-    public void setZipcode(String zipcode);
+    void setZipcode(String zipcode);
 
-    public String getUserID();
+    String getUserID();
 
-    public void setUserID(String userID);
+    void setUserID(String userID);
 }

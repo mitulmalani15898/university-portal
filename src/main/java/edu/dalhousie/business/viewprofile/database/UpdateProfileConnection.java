@@ -15,7 +15,7 @@ public class UpdateProfileConnection implements IUpdateProfileConnection {
 
     public UpdateProfileConnection() {
         this.IDatabaseConnection = DatabaseConnectivity.getInstance();
-        userSession = new UserSession();
+        userSession = UserSession.getInstance();
     }
 
     public void executeUpdateProfile(String column_name, String update_value) {

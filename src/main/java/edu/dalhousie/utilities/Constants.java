@@ -7,4 +7,5 @@ public class Constants {
     public static final String COURSE_ENROLMENTS_TABLE = "course_enrolled";
     public static final String FACILITIES_TABLE = "facilities";
     public static final String FACILITIES_BOOKINGS = "facilities_bookings";
+    public static final String MEMBERSHIPS_TABLE = "membership_details";
 }

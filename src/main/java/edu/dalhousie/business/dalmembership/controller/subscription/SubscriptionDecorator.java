@@ -1,6 +1,6 @@
 package edu.dalhousie.business.dalmembership.controller.subscription;
 
-import edu.dalhousie.business.dalmembership.model.Services;
+import edu.dalhousie.business.dalmembership.model.ServicesModel;
 import java.util.Collection;
 
 public abstract class SubscriptionDecorator extends Subscription{
@@ -25,7 +25,7 @@ public abstract class SubscriptionDecorator extends Subscription{
     }
 
     @Override
-    public void addServices(Collection<Services> services) {
+    public void addServices(Collection<ServicesModel> services) {
         super.addServices(services);
     }
 }

@@ -1,6 +1,8 @@
 /**
  * Author: Abhishek karthik Manikandan
  * Banner ID: B00870510
+ * citation: https://github.com/pravinsarode301/D2H_console_Application
+ * Used this project repo to get ideas to implement design patterns
  * */
 package edu.dalhousie.business.dalmembership.controller.menu;
 import edu.dalhousie.business.dalmembership.controller.balance.Balance;
@@ -9,6 +11,8 @@ import edu.dalhousie.business.dalmembership.controller.subscription.Subscription
 import edu.dalhousie.controllers.UserSession;
 import edu.dalhousie.database.IDatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
+import edu.dalhousie.logger.ILogger;
+import edu.dalhousie.logger.LoggerAbstractFactory;
 
 import java.util.Scanner;
 
@@ -18,6 +22,8 @@ public class MenuImplementation implements IMenu{
     private final IDatabaseConnection IDatabaseConnection;
     UserSession userSession;
     private static MenuImplementation menuImplementation;
+    private static ILogger logger = LoggerAbstractFactory
+            .getFactory().newLoggerInstance();
     private  MenuImplementation(){
         userSession = UserSession.getInstance();
         menu = Menu.getInstance() ;
@@ -53,6 +59,7 @@ public class MenuImplementation implements IMenu{
                             balance.rechargeBalance(IDatabaseConnection,amount);
                         }
                         catch(Exception e){
+                            logger.error(Balance.class.toString(),e.getMessage());
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -80,6 +87,7 @@ public class MenuImplementation implements IMenu{
             }
         }
         catch (Exception e){
+            logger.error(MenuImplementation.class.toString(),e.getMessage());
             System.out.println(e.getMessage());
         }
     }
