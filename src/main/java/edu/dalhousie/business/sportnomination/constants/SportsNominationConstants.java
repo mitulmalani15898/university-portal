@@ -1,6 +1,6 @@
 package edu.dalhousie.business.sportnomination.constants;
 
-public class SportsNominationConstants {
+    public class SportsNominationConstants {
 
     public static final String enterUsername = "1. Enter your username: ";
     public static final String enterSportName = "2. Enter the name of sport: ";

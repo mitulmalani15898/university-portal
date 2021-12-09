@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.mockito.internal.util.reflection.FieldSetter;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class GPACalculatorTest {
@@ -18,10 +19,10 @@ class GPACalculatorTest {
         viewField.set(viewMock);
     }
 
-//    @Test
-//    public void testGPACalculator() {
-//        Mockito.when(viewMock.getString()).thenReturn("3", "A-", "no");
-//        assertTrue(Math.abs(3.33 - Double.parseDouble(gpaCalculator.calculateGPA())) < 1e-5);
-//    }
+    @Test
+    public void testGPACalculator() {
+        Mockito.when(viewMock.getString()).thenReturn("3", "A-", "no");
+        assertTrue(Math.abs(3.33 - Double.parseDouble(gpaCalculator.calculateGPA())) < 1e-5);
+    }
 
 }
