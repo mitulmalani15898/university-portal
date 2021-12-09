@@ -21,11 +21,13 @@ import edu.dalhousie.business.facilitybooking.controller.IFacilityBooking;
 import edu.dalhousie.business.sportnomination.controller.SportsNomination;
 import edu.dalhousie.business.viewprofile.controller.IViewProfile;
 import edu.dalhousie.business.viewprofile.controller.ViewProfile;
-import edu.dalhousie.presentation.StudentView;
-import edu.dalhousie.utilities.PrintHeading;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
+import edu.dalhousie.utilities.printing.PrintHeading;
 
 public class StudentMainClass {
-    StudentView view = new StudentView();
+    private final ICommonPrinting view;
+    private static StudentMainClass studentMainClass;
     private static final String addNewApplication = "Add new application for admission";
     private static final String profile = "Profile (Personal information and course details)";
     private static final String listOfCourses = "List of courses for registration";
@@ -41,6 +43,17 @@ public class StudentMainClass {
     private static final String facilityBooking = "Facility booking";
     private static final String gpaCalclator = "GPA Calculator";
     private static final String logout = "Logout";
+
+    private StudentMainClass(){
+        this.view = CommonPrinting.getInstance();
+    }
+
+    public static StudentMainClass getInstance(){
+        if(studentMainClass==null){
+            studentMainClass = new StudentMainClass();
+        }
+        return  studentMainClass;
+    }
 
     public void displayStudentMenu() throws Exception {
         while (true) {
@@ -74,10 +87,11 @@ public class StudentMainClass {
                     break;
                 case 3:
                     ICourseRegistration courseRegistration = CourseRegistrationFactory.getInstance().getCourseRegistration();
-                    courseRegistration.registerForCourses();
+                    courseRegistration.startRegisterForCourses();
                     break;
                 case 4:
-                    FeesPaymentDetailsMenu feesPaymentDetails = new FeesPaymentDetailsMenu();
+                    FeesPaymentDetailsMenu feesPaymentDetails
+                            = FeesPaymentDetailsMenu.getInstance();
                     feesPaymentDetails.showPaymentInformationMenu();
                     break;
                 case 5:
@@ -89,27 +103,23 @@ public class StudentMainClass {
                     scholarshipMenu.displayMenu();
                     break;
                 case 7:
-                    EventApplication eventApplication = new EventApplication();
+                    EventApplication eventApplication = EventApplication.getInstance();
                     eventApplication.hostEvent();
                     break;
                 case 8:
                     IRoommateFinder roommateFinder = RoommateFinderFactory.getRoommateFinder(StringConstants.kRoommateFinder);
                     roommateFinder.displayForm();
                     break;
-                case 9:
-                    //call method
-                    System.out.println("You selected 9");
-                    break;
                 case 10:
                     ISportsNomination sportsNomination = new SportsNomination();
                     sportsNomination.viewSportsNomination();
                     break;
                 case 11:
-                    Tender tender = new Tender();
+                    Tender tender = Tender.getInstance();
                     tender.getTenderData();
                     break;
                 case 12:
-                    MenuImplementation menu = new MenuImplementation();
+                    MenuImplementation menu = MenuImplementation.getInstance();
                     menu.start();
                     break;
                 case 13:

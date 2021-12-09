@@ -4,13 +4,16 @@
  * */
 package edu.dalhousie.business.payment.controller.PaymentInformation;
 
-import edu.dalhousie.business.payment.database.PaymentDetails.PaymentDetailsDAOQueryBuilder;
+import edu.dalhousie.business.payment.database.PaymentDetails.IPaymentDetailsDAOQueryBuilder;
 import edu.dalhousie.business.payment.database.PaymentStatus.IPaymentStatusDAOQueryBuilder;
 import edu.dalhousie.business.payment.model.PaymentDetails;
 import edu.dalhousie.controllers.UserSession;
-import edu.dalhousie.database.DatabaseConnection;
+import edu.dalhousie.database.IDatabaseConnection;
 import edu.dalhousie.database.DatabaseException;
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.logger.ILogger;
+import edu.dalhousie.logger.LoggerAbstractFactory;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 import static edu.dalhousie.business.payment.database.PaymentDetails.PaymentDetailsConstant.*;
 
 import java.sql.Connection;
@@ -21,32 +24,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShowPaymentInformation implements IPaymentInformation{
-    private final DatabaseConnection databaseConnection;
-    private final PaymentDetailsDAOQueryBuilder paymentDetailsDAOQueryBuilder;
+    private final IDatabaseConnection IDatabaseConnection;
+    private final IPaymentDetailsDAOQueryBuilder IPaymentDetailsDAOQueryBuilder;
     private final IPaymentStatusDAOQueryBuilder paymentStatusDAOQueryBuilder;
-    private final StudentView view;
+    private final ICommonPrinting view;
     UserSession userSession;
-    private final int MAXIMUM_CREDITS=9;
-    public ShowPaymentInformation(DatabaseConnection databaseConnection,
-                                  PaymentDetailsDAOQueryBuilder
-                                          paymentDetailsDAOQueryBuilder,
+    private final int MAXIMUM_CREDITS=12;
+    private static ILogger logger;
+    public ShowPaymentInformation(IDatabaseConnection IDatabaseConnection,
+                                  IPaymentDetailsDAOQueryBuilder
+                                          IPaymentDetailsDAOQueryBuilder,
                                   IPaymentStatusDAOQueryBuilder
                                           paymentStatusDAOQueryBuilder){
-        this.databaseConnection = databaseConnection;
-        this.paymentDetailsDAOQueryBuilder = paymentDetailsDAOQueryBuilder;
+        this.IDatabaseConnection = IDatabaseConnection;
+        this.IPaymentDetailsDAOQueryBuilder = IPaymentDetailsDAOQueryBuilder;
         this.paymentStatusDAOQueryBuilder = paymentStatusDAOQueryBuilder;
-        this.view = new StudentView();
+        this.view = CommonPrinting.getInstance();
         userSession = UserSession.getInstance();
+        logger = LoggerAbstractFactory.getFactory().newLoggerInstance();
     }
 
     @Override
-    public void showFeeDetails() throws Exception {
+    public void showFeeDetails() throws DatabaseException {
         int student_id = userSession.getUser().getUserId();
         this.view.showMessage("Enter the term:");
         String term = this.view.getString();
         try{
             final Connection connection =
-                    databaseConnection.getDatabaseConnection();
+                    IDatabaseConnection.getDatabaseConnection();
             final Statement statement =
                     connection.createStatement();
             final ResultSet paymentStatusResultSet =
@@ -58,10 +63,10 @@ public class ShowPaymentInformation implements IPaymentInformation{
                 status = paymentStatusResultSet.getString("payment_status");
             }
 
-            if(status!=null){
+            if(status==null){
                 final ResultSet paymentDetailsResultSet =
                         statement.executeQuery(
-                                paymentDetailsDAOQueryBuilder
+                                IPaymentDetailsDAOQueryBuilder
                                         .selectEnrolledCoursesQuery(student_id));
                 final List<PaymentDetails> paymentDetailsArrayList =
                         preparePaymentDetails(paymentDetailsResultSet);
@@ -98,7 +103,8 @@ public class ShowPaymentInformation implements IPaymentInformation{
             }
 
         }
-        catch(SQLException e){
+        catch(Exception e){
+            logger.error(ShowPaymentInformation.class.toString(),e.getMessage());
             throw new DatabaseException(e.getMessage(), e);
         }
     }

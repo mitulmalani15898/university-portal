@@ -4,13 +4,14 @@
  * */
 package edu.dalhousie.business.events.controller.email;
 
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 
 public class StudentEmail implements IEmail{
-    StudentView studentView;
+    ICommonPrinting studentView;
     StringBuilder studentEmailBuilder;
     StudentEmail(){
-        this.studentView = new StudentView();
+        this.studentView = CommonPrinting.getInstance();
         studentEmailBuilder = new StringBuilder();
     }
     @Override

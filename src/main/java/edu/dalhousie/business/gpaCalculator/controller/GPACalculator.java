@@ -2,16 +2,17 @@ package edu.dalhousie.business.gpaCalculator.controller;
 
 import edu.dalhousie.business.gpaCalculator.constants.GPACalculatorConstants;
 import edu.dalhousie.business.gpaCalculator.model.IGPACalculatorModel;
-import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentViewFactory;
-import edu.dalhousie.utilities.PrintHeading;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
+import edu.dalhousie.utilities.printing.PrintHeading;
 
 import java.text.DecimalFormat;
 
 public class GPACalculator implements IGPACalculator {
-    IStudentView view = StudentViewFactory.getInstance().getStudentView();
+
     public String calculateGPA() {
 
+        ICommonPrinting view = CommonPrinting.getInstance();
         IGPACalculatorModel gpaCalculatorModel = GPACalculatorFactory.initialize().getGpaCalculatorModel();
 
         gpaCalculatorModel.setTotalPoints(0);

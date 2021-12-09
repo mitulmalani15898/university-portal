@@ -1,7 +1,8 @@
 package edu.dalhousie.business.feedback.database;
 
 import edu.dalhousie.business.feedback.model.FeedbackObjectModel;
-import edu.dalhousie.database.DatabaseConnection;
+import edu.dalhousie.controllers.UserSession;
+import edu.dalhousie.database.IDatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
 
 import java.sql.Connection;
@@ -13,10 +14,12 @@ import java.util.List;
 
 public class FeedbackData implements IFeedbackData {
 
-    private static DatabaseConnection databaseConnection;
+    private static IDatabaseConnection IDatabaseConnection;
+    UserSession userSession;
 
     public FeedbackData() {
-        databaseConnection = DatabaseConnectivity.getInstance();
+        IDatabaseConnection = DatabaseConnectivity.getInstance();
+        userSession = UserSession.getInstance();
     }
 
 
@@ -29,9 +32,10 @@ public class FeedbackData implements IFeedbackData {
         int professionalDevelopment = feedbackObjectModel.getProfessionalDevelopment();
         int needsMet = feedbackObjectModel.getNeedsMet();
 
-        String query = "insert into feedback " +  "values ('"+ "vignesh2" +"', '" + courseID+ "','" + feedback+ "','" + professorRating + "', '" + difficultyLevel + "', '" + recommendation + "', '" + professionalDevelopment + "', '" + needsMet + "')";
+        String query = "insert into feedback " +  "values ('"+  userSession.getUser().getUserName() +"', '" + courseID+ "','" + feedback+ "','" + professorRating + "', '" + difficultyLevel + "', '" + recommendation + "', '" + professionalDevelopment + "', '" + needsMet + "')";
+
         try {
-            final Connection connection = databaseConnection.getDatabaseConnection();
+            final Connection connection = IDatabaseConnection.getDatabaseConnection();
             final Statement statement = connection.createStatement();
             statement.executeUpdate(query);
         } catch (Exception exception) {
@@ -47,7 +51,7 @@ public class FeedbackData implements IFeedbackData {
         String feedback = "";
         String query = "select feedback from feedback where courseID = '" + courseID + "' ";
         try {
-            final Connection connection = databaseConnection.getDatabaseConnection();
+            final Connection connection = IDatabaseConnection.getDatabaseConnection();
             final Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {

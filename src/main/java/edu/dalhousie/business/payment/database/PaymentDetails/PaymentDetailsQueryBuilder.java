@@ -6,7 +6,7 @@ package edu.dalhousie.business.payment.database.PaymentDetails;
 
 import static edu.dalhousie.business.payment.database.PaymentDetails.PaymentDetailsConstant.*;
 
-public class PaymentDetailsQueryBuilder implements PaymentDetailsDAOQueryBuilder {
+public class PaymentDetailsQueryBuilder implements IPaymentDetailsDAOQueryBuilder {
     private static PaymentDetailsQueryBuilder instance;
     private PaymentDetailsQueryBuilder(){
 

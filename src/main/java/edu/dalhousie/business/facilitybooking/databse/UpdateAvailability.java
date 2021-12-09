@@ -1,7 +1,7 @@
 package edu.dalhousie.business.facilitybooking.databse;
 
 import edu.dalhousie.business.facilitybooking.constants.FacilityBookingConstants;
-import edu.dalhousie.database.DatabaseConnection;
+import edu.dalhousie.database.IDatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
 import edu.dalhousie.logger.ILogger;
 import edu.dalhousie.logger.LoggerAbstractFactory;
@@ -11,7 +11,7 @@ import java.sql.Connection;
 import java.sql.Statement;
 
 public class UpdateAvailability implements IUpdateAvailability {
-    private static DatabaseConnection databaseConnection;
+    private static IDatabaseConnection IDatabaseConnection;
 
     @Override
     public void updateSlotsAvailability(int facilityId, int availableSlots) {
@@ -21,8 +21,8 @@ public class UpdateAvailability implements IUpdateAvailability {
             .replace("facilityId", facilityId + "");
 
         try {
-            databaseConnection = DatabaseConnectivity.getInstance();
-            final Connection connection = databaseConnection.getDatabaseConnection();
+            IDatabaseConnection = DatabaseConnectivity.getInstance();
+            final Connection connection = IDatabaseConnection.getDatabaseConnection();
             final Statement statement = connection.createStatement();
             statement.executeUpdate(query);
         } catch (Exception exception) {

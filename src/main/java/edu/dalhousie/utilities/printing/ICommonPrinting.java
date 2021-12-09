@@ -1,6 +1,6 @@
-package edu.dalhousie.presentation;
+package edu.dalhousie.utilities.printing;
 
-public interface IStudentView {
+public interface ICommonPrinting {
     void showMessage(String message);
     void showFormattedMessage(String message, String... args);
     int getInt();

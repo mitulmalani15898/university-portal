@@ -1,4 +1,4 @@
-package edu.dalhousie.utilities;
+package edu.dalhousie.utilities.printing;
 
 public class PrintHeading {
     private static String starSeparator = new String(new char[100]).replace("\0", "*");

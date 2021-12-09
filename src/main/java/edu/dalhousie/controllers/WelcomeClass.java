@@ -2,20 +2,25 @@ package edu.dalhousie.controllers;
 
 import edu.dalhousie.business.registration.controller.IRegistration;
 import edu.dalhousie.business.registration.controller.RegistrationFactory;
-import edu.dalhousie.presentation.StudentView;
-import edu.dalhousie.utilities.PrintHeading;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
+import edu.dalhousie.utilities.printing.PrintHeading;
 
 public class WelcomeClass {
+    private ICommonPrinting view;
     private int choice;
     private static final String registerAsStudent = "Register as a Student";
     private static final String registerAsFaculty = "Register as a Faculty";
     private static final String loginAsStudent = "Login as a Student";
     private static final String loginAsFaculty = "Login as a Faculty";
     private static final String exit = "Exit";
-
+    private StudentMainClass student;
+    public WelcomeClass(){
+        view = CommonPrinting.getInstance();
+        this.student = StudentMainClass.getInstance();
+    }
     public void displayWelcomeScreen() throws Exception {
-        StudentView view = new StudentView();
-        StudentMainClass student = new StudentMainClass();
+
         FacultyMainClass faculty = new FacultyMainClass();
         Login login = new Login();
         User user;
@@ -34,13 +39,13 @@ public class WelcomeClass {
 
             switch (choice) {
                 case 1:
-//                student.displayStudentMenu();
+//                    student.displayStudentMenu();
                     IRegistration studentRegistration = RegistrationFactory.getInstance().getRegistration();
-                    studentRegistration.registerUser("STUDENT");
+                    studentRegistration.registerUser("student");
                     break;
                 case 2:
                     IRegistration facultyRegistration = RegistrationFactory.getInstance().getRegistration();
-                    facultyRegistration.registerUser("FACULTY");
+                    facultyRegistration.registerUser("faculty");
                     break;
                 case 3:
                     user = login.loginUser("STUDENT");

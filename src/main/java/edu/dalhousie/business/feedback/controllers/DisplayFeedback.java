@@ -3,7 +3,8 @@ package edu.dalhousie.business.feedback.controllers;
 import edu.dalhousie.business.feedback.database.FeedbackData;
 import edu.dalhousie.business.feedback.constants.StringConstants;
 import edu.dalhousie.business.feedback.database.IFeedbackData;
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,12 +14,12 @@ public class DisplayFeedback implements IDisplayFeedback {
 
     List<String> feedback;
     IFeedbackData feedbackData;
-    StudentView view;
+    ICommonPrinting view;
 
     public DisplayFeedback() {
         feedback = new ArrayList<>();
         feedbackData = new FeedbackData();
-        view = new StudentView();
+        view = CommonPrinting.getInstance();
     }
 
     public void displayFeedback() throws SQLException {

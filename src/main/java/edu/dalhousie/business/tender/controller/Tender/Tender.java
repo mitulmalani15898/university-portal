@@ -8,7 +8,7 @@ import edu.dalhousie.business.tender.controller.TenderComparator;
 import edu.dalhousie.business.tender.database.ITenderWinnerDAOQueryBuilder;
 import edu.dalhousie.business.tender.database.TenderWinnerQueryBuilder;
 import edu.dalhousie.business.tender.model.Auctioneer;
-import edu.dalhousie.database.DatabaseConnection;
+import edu.dalhousie.database.IDatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
 
 import java.sql.Connection;
@@ -16,6 +16,16 @@ import java.sql.Statement;
 import java.util.*;
 
 public class Tender extends AbstractTender {
+    private static Tender tenderInstance;
+    private Tender(){
+
+    }
+    public static Tender getInstance(){
+        if(tenderInstance==null){
+            tenderInstance = new Tender();
+        }
+        return tenderInstance;
+    }
 
     @Override
     public Auctioneer findBestAuctioneer() {
@@ -52,8 +62,8 @@ public class Tender extends AbstractTender {
     }
 
     public void getTenderData() throws Exception {
-        ITenderWinnerDAOQueryBuilder iTenderWinnerDAOQueryBuilder = new TenderWinnerQueryBuilder();
-        DatabaseConnection databaseConnection = DatabaseConnectivity.getInstance();
+        ITenderWinnerDAOQueryBuilder iTenderWinnerDAOQueryBuilder = TenderWinnerQueryBuilder.getInstance();
+        IDatabaseConnection IDatabaseConnection = DatabaseConnectivity.getInstance();
         System.out.println("Enter the event name:");
         String eventName = sc.nextLine();
         setTenderEvent(eventName);
@@ -76,7 +86,7 @@ public class Tender extends AbstractTender {
         Auctioneer winner = startTender();
         String winnerName = winner.getName();
         final Connection connection =
-                databaseConnection.getDatabaseConnection();
+                IDatabaseConnection.getDatabaseConnection();
         final Statement statement =
                 connection.createStatement();
         statement.executeUpdate(

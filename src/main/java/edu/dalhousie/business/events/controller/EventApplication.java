@@ -12,11 +12,17 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class EventApplication {
-    static Event event;
-    static boolean eventFlag = false;
-    public EventApplication(){
+    private static EventApplication eventApplication;
+    private static Event event;
+    private static boolean eventFlag = false;
+    private EventApplication(){
         event = new Event();
-
+    }
+    public static EventApplication getInstance(){
+        if(eventApplication == null){
+            eventApplication = new EventApplication();
+        }
+        return  eventApplication;
     }
     static String[] getUniversityDetails(UniversityDetails[] universities, Scanner sc){
 

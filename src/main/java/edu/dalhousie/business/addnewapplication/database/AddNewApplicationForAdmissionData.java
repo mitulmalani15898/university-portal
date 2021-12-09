@@ -1,7 +1,8 @@
 package edu.dalhousie.business.addnewapplication.database;
 
 import edu.dalhousie.business.addnewapplication.model.AddNewApplicationFormObject;
-import edu.dalhousie.database.DatabaseConnection;
+import edu.dalhousie.controllers.UserSession;
+import edu.dalhousie.database.IDatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
 
 import java.sql.Connection;
@@ -10,10 +11,12 @@ import java.sql.Statement;
 
 public class AddNewApplicationForAdmissionData implements IAddNewApplicationForAdmissionData{
 
-    private static DatabaseConnection databaseConnection;
+    private static IDatabaseConnection IDatabaseConnection;
+    UserSession userSession;
 
     public AddNewApplicationForAdmissionData() throws SQLException {
-        databaseConnection = DatabaseConnectivity.getInstance();
+        IDatabaseConnection = DatabaseConnectivity.getInstance();
+        userSession = UserSession.getInstance();
     }
 
     public void storeData(AddNewApplicationFormObject newApplication) throws SQLException {
@@ -30,9 +33,10 @@ public class AddNewApplicationForAdmissionData implements IAddNewApplicationForA
         String GMAT = newApplication.getGMAT();
         String GATE = newApplication.getGATE();
 
-        String query = "insert into new_application" + " values ('"+ "abhishek" + "','" + course+ "', '" + university + "', '"+education+"','" + Float.parseFloat(gpa) + "', '" + Float.parseFloat(tenthMarks) + "','" + Float.parseFloat(twelfthMarks) + "','" + Float.parseFloat(IELTS) + "','" + Integer.parseInt(GRE) + "', '" + Integer.parseInt(researchPapers) + "', '" + Float.parseFloat(workExp) + "', '" + Integer.parseInt(GMAT) + "', '" + Integer.parseInt(GATE) + "')";
+        String query = "insert into new_application" + " values ('"+ userSession.getUser().getUserName() + "','" + course+ "', '" + university + "', '"+education+"','" + Float.parseFloat(gpa) + "', '" + Float.parseFloat(tenthMarks) + "','" + Float.parseFloat(twelfthMarks) + "','" + Float.parseFloat(IELTS) + "','" + Integer.parseInt(GRE) + "', '" + Integer.parseInt(researchPapers) + "', '" + Float.parseFloat(workExp) + "', '" + Integer.parseInt(GMAT) + "', '" + Integer.parseInt(GATE) + "')";
+
         try {
-            final Connection connection = databaseConnection.getDatabaseConnection();
+            final Connection connection = IDatabaseConnection.getDatabaseConnection();
             final Statement statement = connection.createStatement();
             statement.executeUpdate(query);
         } catch (Exception exception) {
@@ -43,9 +47,10 @@ public class AddNewApplicationForAdmissionData implements IAddNewApplicationForA
 
     public void storeScore(AddNewApplicationFormObject newApplicationFormObject) throws SQLException {
         String score = newApplicationFormObject.getResult();
-        String query = "insert into new_application_score " + " values ('"+ "vignesh" +"', '" + Float.parseFloat(score) + "')";
+        String query = "insert into new_application_score " + " values ('"+ userSession.getUser().getUserName() +"', '" + Float.parseFloat(score) + "')";
+
         try {
-            final Connection connection = databaseConnection.getDatabaseConnection();
+            final Connection connection = IDatabaseConnection.getDatabaseConnection();
             final Statement statement = connection.createStatement();
             statement.executeUpdate(query);
         } catch (Exception exception) {

@@ -1,6 +1,6 @@
 package edu.dalhousie.business.addnewapplication.business;
 
-import edu.dalhousie.business.addnewapplication.controller.AddNewApplicationForAdmission;
+
 import edu.dalhousie.business.addnewapplication.model.AddNewApplicationFormObject;
 import org.junit.jupiter.api.Test;
 

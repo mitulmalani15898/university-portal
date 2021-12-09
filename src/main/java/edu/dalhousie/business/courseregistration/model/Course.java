@@ -4,7 +4,7 @@ public class Course implements ICourse {
     private int courseId;
     private String courseName;
     private int availableSeats;
-    private int preRequisiteCourseId;
+    private Integer preRequisiteCourseId;
 
     public int getCourseId() {
         return courseId;
@@ -30,7 +30,7 @@ public class Course implements ICourse {
         this.availableSeats = availableSeats;
     }
 
-    public int getPreRequisiteCourseId() {
+    public Integer getPreRequisiteCourseId() {
         return preRequisiteCourseId;
     }
 

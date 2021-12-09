@@ -1,8 +1,21 @@
-package edu.dalhousie.presentation;
+package edu.dalhousie.utilities.printing;
+
+
 
 import java.util.Scanner;
 
-public class StudentView implements IStudentView {
+public class CommonPrinting implements ICommonPrinting {
+    private static CommonPrinting studentView= null;
+    private CommonPrinting(){
+
+    }
+
+    public static CommonPrinting getInstance(){
+        if(studentView==null){
+            studentView = new CommonPrinting();
+        }
+        return studentView;
+    }
 
     public void showMessage(String message) {
         System.out.println(message);

@@ -4,7 +4,7 @@ import edu.dalhousie.business.facilitybooking.constants.FacilityBookingConstants
 import edu.dalhousie.business.facilitybooking.controller.FacilityBooking;
 import edu.dalhousie.business.facilitybooking.controller.FacilityBookingFactory;
 import edu.dalhousie.business.facilitybooking.model.Facility;
-import edu.dalhousie.database.DatabaseConnection;
+import edu.dalhousie.database.IDatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
 import edu.dalhousie.logger.ILogger;
 import edu.dalhousie.logger.LoggerAbstractFactory;
@@ -14,7 +14,7 @@ import java.sql.Connection;
 import java.sql.Statement;
 
 public class BookFacility implements IBookFacility {
-    private static DatabaseConnection databaseConnection;
+    private static IDatabaseConnection IDatabaseConnection;
 
     @Override
     public int bookFacility(Facility facility) {
@@ -28,8 +28,8 @@ public class BookFacility implements IBookFacility {
             .replace("facilityTime", facility.getAvailableTime());
 
         try {
-            databaseConnection = DatabaseConnectivity.getInstance();
-            final Connection connection = databaseConnection.getDatabaseConnection();
+            IDatabaseConnection = DatabaseConnectivity.getInstance();
+            final Connection connection = IDatabaseConnection.getDatabaseConnection();
             final Statement statement = connection.createStatement();
             result = statement.executeUpdate(query);
             if (result == 1) {

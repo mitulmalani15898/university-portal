@@ -3,7 +3,7 @@ package edu.dalhousie.business.registration.database;
 import edu.dalhousie.business.registration.constants.RegistrationConstants;
 import edu.dalhousie.business.registration.controller.RegistrationFactory;
 import edu.dalhousie.business.registration.model.IUser;
-import edu.dalhousie.database.DatabaseConnection;
+import edu.dalhousie.database.IDatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
 import edu.dalhousie.logger.ILogger;
 import edu.dalhousie.logger.LoggerAbstractFactory;
@@ -13,13 +13,12 @@ import java.sql.Connection;
 import java.sql.Statement;
 
 public class SaveUser implements ISaveUser {
-    private static DatabaseConnection databaseConnection;
+    private static IDatabaseConnection IDatabaseConnection;
 
     public int saveUserDetails() {
         int result = -1;
         IUser user = RegistrationFactory.getInstance().getUser();
 
-        System.out.println("user.getGender() " + user.getGender());
         String query = RegistrationConstants.INSERT_USER_QUERY
             .replace("tableName", Constants.USERS_TABLE)
             .replace("firstName", user.getFirstName())
@@ -38,8 +37,8 @@ public class SaveUser implements ISaveUser {
             .replace("typeOfUser", user.getTypeOfUser());
 
         try {
-            databaseConnection = DatabaseConnectivity.getInstance();
-            final Connection connection = databaseConnection.getDatabaseConnection();
+            IDatabaseConnection = DatabaseConnectivity.getInstance();
+            final Connection connection = IDatabaseConnection.getDatabaseConnection();
             final Statement statement = connection.createStatement();
             result = statement.executeUpdate(query);
         } catch (Exception exception) {

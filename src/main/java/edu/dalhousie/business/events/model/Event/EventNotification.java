@@ -7,18 +7,19 @@ package edu.dalhousie.business.events.model.Event;
 import edu.dalhousie.business.events.controller.email.EmailFactory;
 import edu.dalhousie.business.events.controller.email.IEmail;
 import edu.dalhousie.business.events.controller.email.SendEmail.SendEmail;
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 
 import java.util.Scanner;
 
 public class EventNotification {
-    private final StudentView studentView;
+    private final ICommonPrinting studentView;
     private final EmailFactory emailFactory;
     private final SendEmail Email;
     private final Scanner scanner = new Scanner(System.in);
 
     public EventNotification() {
-        this.studentView = new StudentView();
+        this.studentView = CommonPrinting.getInstance();
         this.emailFactory = new EmailFactory();
         this.Email = new SendEmail();
     }

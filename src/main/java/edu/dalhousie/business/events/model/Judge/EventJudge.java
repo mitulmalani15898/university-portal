@@ -4,14 +4,15 @@
  * */
 package edu.dalhousie.business.events.model.Judge;
 
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 
 public class EventJudge {
-    public StudentView studentView;
+    public ICommonPrinting studentView;
     private String judgeName;
 
     public EventJudge(){
-        this.studentView = new StudentView();
+        this.studentView = CommonPrinting.getInstance();
     }
 
     public String getJudgeName() {

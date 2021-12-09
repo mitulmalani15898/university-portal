@@ -1,7 +1,7 @@
 package edu.dalhousie.business.facilitybooking.databse;
 
 import edu.dalhousie.business.facilitybooking.constants.FacilityBookingConstants;
-import edu.dalhousie.database.DatabaseConnection;
+import edu.dalhousie.database.IDatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
 import edu.dalhousie.logger.ILogger;
 import edu.dalhousie.logger.LoggerAbstractFactory;
@@ -14,15 +14,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GetAllUsers implements IGetAllUsers {
-    private static DatabaseConnection databaseConnection;
+    private static IDatabaseConnection IDatabaseConnection;
 
     @Override
     public List<String> getAllUsers() {
         List<String> usernames = new ArrayList<>();
-        databaseConnection = DatabaseConnectivity.getInstance();
+        IDatabaseConnection = DatabaseConnectivity.getInstance();
         String query = FacilityBookingConstants.SELECT_ALL_USERS_QUERY.replace("tableName", Constants.USERS_TABLE);
         try {
-            final Connection connection = databaseConnection.getDatabaseConnection();
+            final Connection connection = IDatabaseConnection.getDatabaseConnection();
             final Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {

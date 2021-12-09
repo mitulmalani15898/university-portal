@@ -2,19 +2,21 @@ package edu.dalhousie.controllers;
 
 import edu.dalhousie.business.viewprofile.controller.IViewProfile;
 import edu.dalhousie.business.viewprofile.controller.ViewProfile;
-import edu.dalhousie.business.viewprofile.controller.ViewProfile;
-import edu.dalhousie.presentation.StudentView;
-import edu.dalhousie.utilities.PrintHeading;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
+import edu.dalhousie.utilities.printing.PrintHeading;
 
 public class FacultyMainClass {
-    StudentView view = new StudentView();
+    ICommonPrinting view = null;
 
     private int userChoice;
     private static final String profile = "Profile";
     private static final String studentGrading = "Student Grading";
     private static final String eTender = "E-tender for canteen";
     private static final String logout = "Logout";
-
+    public FacultyMainClass(){
+        this.view = CommonPrinting.getInstance();
+    }
     public void displayFacultyMenu() {
         while (true) {
             PrintHeading.printHeadingForTheScreen("Faculty Menu", 45);

@@ -4,7 +4,7 @@ import edu.dalhousie.business.courseregistration.constants.CourseRegistrationCon
 import edu.dalhousie.business.courseregistration.controller.CourseRegistrationFactory;
 import edu.dalhousie.business.courseregistration.model.Course;
 import edu.dalhousie.business.courseregistration.model.ICourses;
-import edu.dalhousie.database.DatabaseConnection;
+import edu.dalhousie.database.IDatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
 import edu.dalhousie.logger.ILogger;
 import edu.dalhousie.logger.LoggerAbstractFactory;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CompleteCourseList implements ICompleteCourseList {
-    private static DatabaseConnection databaseConnection;
+    private static IDatabaseConnection IDatabaseConnection;
 
     @Override
     public void getCompleteCourseList() {
@@ -26,8 +26,8 @@ public class CompleteCourseList implements ICompleteCourseList {
 
         String query = CourseRegistrationConstants.SELECT_COURSES_QUERY.replace("tableName", Constants.COURSES_TABLE);
         try {
-            databaseConnection = DatabaseConnectivity.getInstance();
-            final Connection connection = databaseConnection.getDatabaseConnection();
+            IDatabaseConnection = DatabaseConnectivity.getInstance();
+            final Connection connection = IDatabaseConnection.getDatabaseConnection();
             final Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {

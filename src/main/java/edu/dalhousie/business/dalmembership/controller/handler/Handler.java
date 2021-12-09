@@ -1,4 +1,4 @@
-package edu.dalhousie.business.dalmembership.controller.subscription.handler;
+package edu.dalhousie.business.dalmembership.controller.handler;
 
 import edu.dalhousie.business.dalmembership.controller.subscription.Subscription;
 

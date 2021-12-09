@@ -4,13 +4,14 @@
  * */
 package edu.dalhousie.business.events.controller.State;
 
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 
 public class StateAtEnd implements State{
-    public StudentView studentView;
+    public ICommonPrinting studentView;
 
     public StateAtEnd(){
-        this.studentView = new StudentView();
+        this.studentView = CommonPrinting.getInstance();
     }
 
     @Override

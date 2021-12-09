@@ -2,17 +2,18 @@ package edu.dalhousie.business.addnewapplication.business;
 
 import edu.dalhousie.business.addnewapplication.model.AddNewApplicationFormValidation;
 import edu.dalhousie.constants.StringConstants;
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class ValidateNewApplication implements IValidateNewApplication {
 
-    StudentView view;
+    ICommonPrinting view;
 
     public ValidateNewApplication() {
-        view = new StudentView();
+        view = CommonPrinting.getInstance();
     }
 
     public AddNewApplicationFormValidation verifyCourseName(String courseName) {

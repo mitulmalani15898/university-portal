@@ -3,11 +3,12 @@ package edu.dalhousie.business.scholarship.controller;
 import edu.dalhousie.business.scholarship.constants.StringConstants;
 import edu.dalhousie.business.scholarship.database.ScholarshipData;
 import edu.dalhousie.business.scholarship.business.ComputeScholarshipResult;
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 
 public class Scholarship {
 
-    StudentView view;
+    ICommonPrinting view;
     ComputeScholarshipResult computeScholarshipResult;
     ScholarshipData scholarShipData;
 
@@ -15,7 +16,7 @@ public class Scholarship {
     private String userName;
 
     public Scholarship() {
-        view = new StudentView();
+        view = CommonPrinting.getInstance();
         computeScholarshipResult = new ComputeScholarshipResult();
     }
 

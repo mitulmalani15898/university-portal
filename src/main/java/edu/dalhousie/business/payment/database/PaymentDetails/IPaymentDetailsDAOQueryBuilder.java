@@ -4,6 +4,6 @@
  * */
 package edu.dalhousie.business.payment.database.PaymentDetails;
 
-public interface PaymentDetailsDAOQueryBuilder {
+public interface IPaymentDetailsDAOQueryBuilder {
     String selectEnrolledCoursesQuery(int id);
 }

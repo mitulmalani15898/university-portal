@@ -3,8 +3,8 @@ package edu.dalhousie.business.courseregistration.database;
 import edu.dalhousie.business.courseregistration.constants.CourseRegistrationConstants;
 import edu.dalhousie.business.courseregistration.controller.CourseRegistrationFactory;
 import edu.dalhousie.business.courseregistration.model.Course;
-import edu.dalhousie.business.courseregistration.model.ICourses;
-import edu.dalhousie.database.DatabaseConnection;
+import edu.dalhousie.business.courseregistration.model.IRegisteredCourses;
+import edu.dalhousie.database.IDatabaseConnection;
 import edu.dalhousie.database.DatabaseConnectivity;
 import edu.dalhousie.logger.ILogger;
 import edu.dalhousie.logger.LoggerAbstractFactory;
@@ -17,19 +17,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RegisteredCourseList implements IRegisteredCourseList {
-    private static DatabaseConnection databaseConnection;
+    private static IDatabaseConnection IDatabaseConnection;
 
     @Override
     public void getRegisteredCourseList() {
         int studentId = 2;
         List<Course> courses = new ArrayList<>();
-        ICourses coursesList = CourseRegistrationFactory.getInstance().getCourses();
+        IRegisteredCourses registeredCourses = CourseRegistrationFactory.getInstance().getRegisteredCourses();
 
         String query = CourseRegistrationConstants.GET_REGISTERED_COURSES_QUERY.replace("coursesTable", Constants.COURSES_TABLE).replace("enrollmentTable", Constants.COURSE_ENROLMENTS_TABLE).replace("studentId", studentId + "");
 
         try {
-            databaseConnection = DatabaseConnectivity.getInstance();
-            final Connection connection = databaseConnection.getDatabaseConnection();
+            IDatabaseConnection = DatabaseConnectivity.getInstance();
+            final Connection connection = IDatabaseConnection.getDatabaseConnection();
             final Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
@@ -40,7 +40,7 @@ public class RegisteredCourseList implements IRegisteredCourseList {
                 course.setPreRequisiteCourseId(resultSet.getInt("prerequisite_course_id"));
                 courses.add(course);
             }
-            coursesList.setCourses(courses);
+            registeredCourses.setRegisteredCourses(courses);
         } catch (Exception exception) {
             ILogger logger = LoggerAbstractFactory.getFactory().newLoggerInstance();
             logger.error(RegisteredCourseList.class.toString(), exception.getMessage());

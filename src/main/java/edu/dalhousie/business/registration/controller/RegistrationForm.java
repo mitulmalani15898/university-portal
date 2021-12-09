@@ -3,14 +3,14 @@ package edu.dalhousie.business.registration.controller;
 import edu.dalhousie.business.registration.business.*;
 import edu.dalhousie.business.registration.constants.RegistrationConstants;
 import edu.dalhousie.business.registration.model.IUser;
-import edu.dalhousie.presentation.IStudentView;
-import edu.dalhousie.presentation.StudentViewFactory;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 import edu.dalhousie.utilities.Hashing;
 
 public class RegistrationForm implements IRegistrationForm {
     @Override
-    public void renderRegistrationForm() {
-        IStudentView view = StudentViewFactory.getInstance().getStudentView();
+    public void renderRegistrationForm(String typeOfUser) {
+        ICommonPrinting view = CommonPrinting.getInstance();
         IUserType userType = RegistrationFactory.getInstance().getUserType();
         IUser user = RegistrationFactory.getInstance().getUser();
         IValidatePassword validatePassword = RegistrationFactory.getInstance().getValidatePassword();
@@ -20,7 +20,7 @@ public class RegistrationForm implements IRegistrationForm {
         IValidateGender validateGender = RegistrationFactory.getInstance().getValidateGender();
         IValidateContactNumber validateContactNumber = RegistrationFactory.getInstance().getValidateContactNumber();
 
-        String firstName = "", lastName = "", email = "", contactNumber = "", password = "", confirmPassword = "", dateOfBirth = "", gender = "", streetAddress = "", city = "", province = "", zipcode = "", typeOfUser = "";
+        String firstName = "", lastName = "", email = "", contactNumber = "", password = "", confirmPassword = "", dateOfBirth = "", gender = "", streetAddress = "", city = "", province = "", zipcode = "";
 
         view.showMessage(RegistrationConstants.ENTER_FIRST_NAME);
         firstName = view.getString();

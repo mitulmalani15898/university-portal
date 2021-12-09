@@ -8,20 +8,21 @@ import edu.dalhousie.business.roommatefinder.database.IRoommateFinderData;
 import edu.dalhousie.business.roommatefinder.database.RoommateFinderData;
 import edu.dalhousie.business.roommatefinder.model.RoommateFinderObjectModel;
 import edu.dalhousie.business.roommatefinder.constants.StringConstants;
-import edu.dalhousie.presentation.StudentView;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
 
 import java.util.List;
 
 public class RoommateFinder implements IRoommateFinder{
 
-    StudentView view;
+    ICommonPrinting view;
     RoommateFinderObjectModel roommateFinderObject;
     IRoommateFinderData roommateFinderData;
     IValidateRoommateFinder validateRoommateFinder;
     IFilterRoommates filterRoommates;
 
     public RoommateFinder() {
-        view = new StudentView();
+        view = CommonPrinting.getInstance();
         roommateFinderObject = new RoommateFinderObjectModel();
         roommateFinderData = new RoommateFinderData();
         validateRoommateFinder = new ValidateRoommateFinder();

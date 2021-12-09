@@ -25,7 +25,7 @@ public class TenderTest {
 
     @BeforeAll
     public static void setUp() {
-        tender = new Tender();
+        tender = Tender.getInstance();
         Auctioneers = new ArrayList<>();
         tenderMock = Mockito.mock(Tender.class);
     }

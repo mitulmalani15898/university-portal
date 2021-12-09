@@ -11,7 +11,7 @@ public class PaymentStatusQueryBuilderTest {
     @Test
     public void getPaymentStatus(){
         PaymentStatusQueryBuilder paymentStatusQueryBuilder
-                = new PaymentStatusQueryBuilder();
+                = PaymentStatusQueryBuilder.getInstance();
         String expectedQuery =
                 paymentStatusQueryBuilder.getPaymentStatus(1,"fall");
         String actualQuery = "SELECT payment_status\n" +
