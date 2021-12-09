@@ -1,6 +1,6 @@
 package edu.dalhousie.business.viewprofile.controller;
 
-import edu.dalhousie.presentation.IStudentView;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ViewProfileTest {
 
-    IStudentView viewMock = Mockito.mock(IStudentView.class);
+    ICommonPrinting viewMock = Mockito.mock(ICommonPrinting.class);
     ViewProfile viewProfile = new ViewProfile();
 
     @BeforeEach
