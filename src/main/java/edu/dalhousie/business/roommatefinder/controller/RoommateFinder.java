@@ -41,7 +41,6 @@ public class RoommateFinder implements IRoommateFinder{
                 genderVerified = validateRoommateFinder.verifyGender(gender);
             }
         }
-        view.showMessage(String.valueOf(gender));
         roommateFinderObject.setGender(gender);
 
         view.showMessage(StringConstants.kFood);
@@ -55,7 +54,6 @@ public class RoommateFinder implements IRoommateFinder{
                 foodVerified = validateRoommateFinder.verifyGender(food);
             }
         }
-        view.showMessage(String.valueOf(food));
         roommateFinderObject.setFoodPreference(food);
 
         view.showMessage(StringConstants.kGenderPreference);
@@ -69,7 +67,6 @@ public class RoommateFinder implements IRoommateFinder{
                 genderPreferenceVerified = validateRoommateFinder.verifyGenderPreference(genderPreference);
             }
         }
-        view.showMessage(String.valueOf(genderPreference));
         roommateFinderObject.setGenderPreference(genderPreference);
 
         view.showMessage(StringConstants.kHobbies);
@@ -86,7 +83,6 @@ public class RoommateFinder implements IRoommateFinder{
                 campusVerified = validateRoommateFinder.verifyCampus(campus);
             }
         }
-        view.showMessage(String.valueOf(campus));
         roommateFinderObject.setCampusPreference(campus);
 
         view.showMessage(StringConstants.kAccomodation);
@@ -100,7 +96,6 @@ public class RoommateFinder implements IRoommateFinder{
                 accomodationVerified = validateRoommateFinder.verifyAccomodation(accomodation);
             }
         }
-        view.showMessage(String.valueOf(accomodation));
         roommateFinderObject.setAccomodationPreference(accomodation);
 
         roommateFinderData.storeData(roommateFinderObject);
