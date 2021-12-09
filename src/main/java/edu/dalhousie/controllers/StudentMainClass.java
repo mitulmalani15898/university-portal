@@ -1,21 +1,33 @@
 package edu.dalhousie.controllers;
 
-import edu.dalhousie.business.AddNewApplication.controller.AddNewApplicationForAdmission;
-import edu.dalhousie.business.DalMembership.controller.menu.MenuImplementation;
-import edu.dalhousie.business.Events.controller.EventApplication;
-import edu.dalhousie.business.Feedback.controllers.FeedbackMenu;
-import edu.dalhousie.business.RoommateFinder.controller.RoommateFinder;
-import edu.dalhousie.business.Tender.controller.Tender.Tender;
-import edu.dalhousie.business.Scholarship.ScholarshipMenu;
-import edu.dalhousie.business.courseregistration.controller.CourseRegistration;
-import edu.dalhousie.business.facilitybooking.controller.FacilityBooking;
+import edu.dalhousie.business.addnewapplication.constants.StringConstants;
+import edu.dalhousie.business.addnewapplication.controller.AddNewApplicationForAdmissionFactory;
+import edu.dalhousie.business.addnewapplication.controller.IAddNewApplicationForAdmission;
+import edu.dalhousie.business.courseregistration.controller.CourseRegistrationFactory;
+import edu.dalhousie.business.courseregistration.controller.ICourseRegistration;
+import edu.dalhousie.business.dalmembership.controller.menu.MenuImplementation;
+import edu.dalhousie.business.events.controller.EventApplication;
+import edu.dalhousie.business.feedback.controllers.FeedbackMenuFactory;
+import edu.dalhousie.business.feedback.controllers.IFeedbackMenu;
+import edu.dalhousie.business.gpaCalculator.controller.GPACalculator;
+import edu.dalhousie.business.gpaCalculator.controller.IGPACalculator;
+import edu.dalhousie.business.roommatefinder.controller.IRoommateFinder;
+import edu.dalhousie.business.roommatefinder.controller.RoommateFinderFactory;
+import edu.dalhousie.business.scholarship.controller.ScholarshipMenu;
+import edu.dalhousie.business.sportnomination.controller.ISportsNomination;
+import edu.dalhousie.business.tender.controller.Tender.Tender;
+import edu.dalhousie.business.facilitybooking.controller.FacilityBookingFactory;
+import edu.dalhousie.business.facilitybooking.controller.IFacilityBooking;
 import edu.dalhousie.business.sportnomination.controller.SportsNomination;
+import edu.dalhousie.business.viewprofile.controller.IViewProfile;
 import edu.dalhousie.business.viewprofile.controller.ViewProfile;
-import edu.dalhousie.presentation.StudentView;
-import edu.dalhousie.utilities.PrintHeading;
+import edu.dalhousie.utilities.printing.ICommonPrinting;
+import edu.dalhousie.utilities.printing.CommonPrinting;
+import edu.dalhousie.utilities.printing.PrintHeading;
 
 public class StudentMainClass {
-    StudentView view = new StudentView();
+    private final ICommonPrinting view;
+    private static StudentMainClass studentMainClass;
     private static final String addNewApplication = "Add new application for admission";
     private static final String profile = "Profile (Personal information and course details)";
     private static final String listOfCourses = "List of courses for registration";
@@ -27,9 +39,21 @@ public class StudentMainClass {
     private static final String healthReimbursement = "Health Reimbursement";
     private static final String nominationForSports = "Nomination for sports";
     private static final String tender = "Organize e-tender";
-    private static final String dalMembership = "Dalhousie student card";
+    private static final String dalMembership = "Dalhousie STUDENT card";
     private static final String facilityBooking = "Facility booking";
+    private static final String gpaCalclator = "GPA Calculator";
     private static final String logout = "Logout";
+
+    private StudentMainClass(){
+        this.view = CommonPrinting.getInstance();
+    }
+
+    public static StudentMainClass getInstance(){
+        if(studentMainClass==null){
+            studentMainClass = new StudentMainClass();
+        }
+        return  studentMainClass;
+    }
 
     public void displayStudentMenu() throws Exception {
         while (true) {
@@ -46,31 +70,32 @@ public class StudentMainClass {
             view.showMessage("10. " + nominationForSports);
             view.showMessage("11. " + tender);
             view.showMessage("12. " + dalMembership);
-            view.showMessage("13." + facilityBooking);
-            view.showMessage("14. " + logout);
+            view.showMessage("13. " + facilityBooking);
+            view.showMessage("14. " + gpaCalclator);
+            view.showMessage("15. " + logout);
 
-            System.out.println("Enter your choice\n");
+            System.out.println("\nEnter your choice:");
             int choice = view.getInt();
             switch (choice) {
                 case 1:
-                    //call method
-                    AddNewApplicationForAdmission addNew = new AddNewApplicationForAdmission();
-                    addNew.showNewForm();
+                    IAddNewApplicationForAdmission addNewApplicationForAdmission = AddNewApplicationForAdmissionFactory.createAddNewApplicationForAdmission(StringConstants.kAddNewApplication);
+                    addNewApplicationForAdmission.showNewForm();
                     break;
                 case 2:
-                    ViewProfile viewProfile = new ViewProfile();
-                    viewProfile.viewProfilePage("student");
+                    IViewProfile viewProfile = new ViewProfile();
+                    viewProfile.viewProfilePage("STUDENT");
                     break;
                 case 3:
-                    CourseRegistration courseRegistration = new CourseRegistration();
-                    courseRegistration.registerForCourses();
+                    ICourseRegistration courseRegistration = CourseRegistrationFactory.getInstance().getCourseRegistration();
+                    courseRegistration.startRegisterForCourses();
                     break;
                 case 4:
-                    FeesPaymentDetailsMenu feesPaymentDetails = new FeesPaymentDetailsMenu();
+                    FeesPaymentDetailsMenu feesPaymentDetails
+                            = FeesPaymentDetailsMenu.getInstance();
                     feesPaymentDetails.showPaymentInformationMenu();
                     break;
                 case 5:
-                    FeedbackMenu feedbackMenu = new FeedbackMenu();
+                    IFeedbackMenu feedbackMenu = FeedbackMenuFactory.getFeedbackMenu(StringConstants.kFeedbackMenu);
                     feedbackMenu.displayFeedbackMenu();
                     break;
                 case 6:
@@ -78,34 +103,34 @@ public class StudentMainClass {
                     scholarshipMenu.displayMenu();
                     break;
                 case 7:
-                    EventApplication eventApplication = new EventApplication();
+                    EventApplication eventApplication = EventApplication.getInstance();
                     eventApplication.hostEvent();
                     break;
                 case 8:
-                    RoommateFinder roommateFinder = new RoommateFinder();
+                    IRoommateFinder roommateFinder = RoommateFinderFactory.getRoommateFinder(StringConstants.kRoommateFinder);
                     roommateFinder.displayForm();
                     break;
-                case 9:
-                    //call method
-                    System.out.println("You selected 9");
-                    break;
                 case 10:
-                    SportsNomination sportsNomination = new SportsNomination();
+                    ISportsNomination sportsNomination = new SportsNomination();
                     sportsNomination.viewSportsNomination();
                     break;
                 case 11:
-                    Tender tender = new Tender();
+                    Tender tender = Tender.getInstance();
                     tender.getTenderData();
                     break;
                 case 12:
-                    MenuImplementation menu = new MenuImplementation();
+                    MenuImplementation menu = MenuImplementation.getInstance();
                     menu.start();
                     break;
                 case 13:
-                    FacilityBooking facilityBooking = new FacilityBooking();
+                    IFacilityBooking facilityBooking = FacilityBookingFactory.getInstance().getFacilityBooking();
                     facilityBooking.startFacilityBookingService();
                     break;
                 case 14:
+                    IGPACalculator gpaCalculator = new GPACalculator();
+                    gpaCalculator.viewGPACalculator();
+                    break;
+                case 15:
                     System.exit(0);
                     break;
                 default:

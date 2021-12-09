@@ -1,6 +1,6 @@
 package edu.dalhousie.business.viewprofile.model;
 
-public class ViewProfileModel {
+public class ViewProfileModel implements IViewProfileModel {
     private String username;
     private String firstName;
     private String lastName;
@@ -14,6 +14,25 @@ public class ViewProfileModel {
     private String province;
     private String zipcode;
     private String userID;
+
+    public ViewProfileModel() {
+    }
+
+    public ViewProfileModel(String username, String firstName, String lastName, String email, String contactNumber, String dateOfBirth, String gender, String streetAddress, String apartmentNumber, String city, String province, String zipcode, String userID) {
+        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.contactNumber = contactNumber;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.streetAddress = streetAddress;
+        this.apartmentNumber = apartmentNumber;
+        this.city = city;
+        this.province = province;
+        this.zipcode = zipcode;
+        this.userID = userID;
+    }
 
     public String getUsername() {
         return username;
@@ -120,5 +139,3 @@ public class ViewProfileModel {
     }
 
 }
-
-
