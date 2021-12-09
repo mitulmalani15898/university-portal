@@ -35,6 +35,8 @@ public class ViewProfile implements IViewProfile {
             String choice = view.getString();
             if (choice.equalsIgnoreCase(ViewProfileConstants.userChoiceYes)) {
 
+                view.showMessage("\nEnter 'No' in the fields where you do not want to update\n");
+
                 view.showMessage(ViewProfileConstants.enterFirstName);
                 viewProfileModel.setFirstName(view.getString());
                 while(viewProfileModel.getFirstName().isEmpty())

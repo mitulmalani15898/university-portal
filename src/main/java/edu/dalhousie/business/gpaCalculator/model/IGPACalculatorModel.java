@@ -2,23 +2,40 @@ package edu.dalhousie.business.gpaCalculator.model;
 
 public interface IGPACalculatorModel {
 
-    public double getTotalPoints();
-    public void setTotalPoints(double totalPoints);
-    public int getTotalCredits();
-    public void setTotalCredits(int totalCredits);
-    public int getCredits();
-    public void setCredits(int credits);
-    public String getSubjectCredits();
-    public void setSubjectCredits(String subjectCredits);
-    public double getGradeValue();
-    public void setGradeValue(double gradeValue);
-    public String getGrade();
-    public void setGrade(String grade);
-    public double getPoints();
-    public void setPoints(double points);
-    public String getPattern();
-    public void setPattern(String pattern);
-    public double getOverallGPA();
-    public void setOverallGPA(double overallGPA);
+    double getTotalPoints();
+
+    void setTotalPoints(double totalPoints);
+
+    int getTotalCredits();
+
+    void setTotalCredits(int totalCredits);
+
+    int getCredits();
+
+    void setCredits(int credits);
+
+    String getSubjectCredits();
+
+    void setSubjectCredits(String subjectCredits);
+
+    double getGradeValue();
+
+    void setGradeValue(double gradeValue);
+
+    String getGrade();
+
+    void setGrade(String grade);
+
+    double getPoints();
+
+    void setPoints(double points);
+
+    String getPattern();
+
+    void setPattern(String pattern);
+
+    double getOverallGPA();
+
+    void setOverallGPA(double overallGPA);
 
 }
