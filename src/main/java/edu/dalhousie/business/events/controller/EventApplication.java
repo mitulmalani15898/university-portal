@@ -101,7 +101,7 @@ public class EventApplication {
             for (String s : universityName) {
                 if (!s.equals(universityNameForEvent)) {
                     if (universities[0]
-                            .sendNotificationToSchool(s)) {
+                            .sendNotificationToUniversity(s)) {
                         System.out.println("Invitation was accepted by "
                                 + s + " \n");
                         eventFlag = true;

@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: edu.dalhousie.business.addnewapplication.business.ComputeScoreForNewApplicationTest
 -------------------------------------------------------------------------------
-Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.03 s - in edu.dalhousie.business.addnewapplication.business.ComputeScoreForNewApplicationTest
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.026 s - in edu.dalhousie.business.addnewapplication.business.ComputeScoreForNewApplicationTest

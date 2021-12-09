@@ -17,8 +17,8 @@ public class UniversityDetailsTest {
 
     @Test
     public void sendNotificationTest(){
-        universityDetails.sendNotificationToSchool("dalhousie");
+        universityDetails.sendNotificationToUniversity("dalhousie");
         verify(universityDetails,times(1))
-                .sendNotificationToSchool("dalhousie");
+                .sendNotificationToUniversity("dalhousie");
     }
 }
