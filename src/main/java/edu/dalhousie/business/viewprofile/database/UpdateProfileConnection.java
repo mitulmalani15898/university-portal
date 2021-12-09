@@ -21,7 +21,6 @@ public class UpdateProfileConnection implements IUpdateProfileConnection {
     public void executeUpdateProfile(String column_name, String update_value) {
         IViewProfileModel viewProfileModel = ViewProfileFactory.initialize().getViewProfileModel();
         viewProfileModel.setUserID(userSession.getUser().getUserName());
-        //viewProfileModel.setUserID("viren.malavia");
 
         if (!update_value.equalsIgnoreCase("No")) {
             try {

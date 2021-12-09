@@ -11,6 +11,21 @@ public class GPACalculatorModel implements IGPACalculatorModel{
     private String pattern;
     private double overallGPA;
 
+    public GPACalculatorModel() {
+    }
+
+    public GPACalculatorModel(double totalPoints, int totalCredits, int credits, String subjectCredits, double gradeValue, String grade, double points, String pattern, double overallGPA) {
+        this.totalPoints = totalPoints;
+        this.totalCredits = totalCredits;
+        this.credits = credits;
+        this.subjectCredits = subjectCredits;
+        this.gradeValue = gradeValue;
+        this.grade = grade;
+        this.points = points;
+        this.pattern = pattern;
+        this.overallGPA = overallGPA;
+    }
+
     public double getTotalPoints() {
         return totalPoints;
     }
