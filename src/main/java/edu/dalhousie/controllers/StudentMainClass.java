@@ -9,9 +9,12 @@ import edu.dalhousie.business.dalmembership.controller.menu.MenuImplementation;
 import edu.dalhousie.business.events.controller.EventApplication;
 import edu.dalhousie.business.feedback.controllers.FeedbackMenuFactory;
 import edu.dalhousie.business.feedback.controllers.IFeedbackMenu;
+import edu.dalhousie.business.gpaCalculator.controller.GPACalculator;
+import edu.dalhousie.business.gpaCalculator.controller.IGPACalculator;
 import edu.dalhousie.business.roommatefinder.controller.IRoommateFinder;
 import edu.dalhousie.business.roommatefinder.controller.RoommateFinderFactory;
 import edu.dalhousie.business.scholarship.controller.ScholarshipMenu;
+import edu.dalhousie.business.sportnomination.controller.ISportsNomination;
 import edu.dalhousie.business.tender.controller.Tender.Tender;
 import edu.dalhousie.business.facilitybooking.controller.FacilityBookingFactory;
 import edu.dalhousie.business.facilitybooking.controller.IFacilityBooking;
@@ -38,6 +41,7 @@ public class StudentMainClass {
     private static final String tender = "Organize e-tender";
     private static final String dalMembership = "Dalhousie STUDENT card";
     private static final String facilityBooking = "Facility booking";
+    private static final String gpaCalclator = "GPA Calculator";
     private static final String logout = "Logout";
 
     private StudentMainClass(){
@@ -67,7 +71,8 @@ public class StudentMainClass {
             view.showMessage("11. " + tender);
             view.showMessage("12. " + dalMembership);
             view.showMessage("13. " + facilityBooking);
-            view.showMessage("14. " + logout);
+            view.showMessage("14. " + gpaCalclator);
+            view.showMessage("15. " + logout);
 
             System.out.println("\nEnter your choice:");
             int choice = view.getInt();
@@ -106,7 +111,7 @@ public class StudentMainClass {
                     roommateFinder.displayForm();
                     break;
                 case 10:
-                    SportsNomination sportsNomination = new SportsNomination();
+                    ISportsNomination sportsNomination = new SportsNomination();
                     sportsNomination.viewSportsNomination();
                     break;
                 case 11:
@@ -122,6 +127,10 @@ public class StudentMainClass {
                     facilityBooking.startFacilityBookingService();
                     break;
                 case 14:
+                    IGPACalculator gpaCalculator = new GPACalculator();
+                    gpaCalculator.viewGPACalculator();
+                    break;
+                case 15:
                     System.exit(0);
                     break;
                 default:

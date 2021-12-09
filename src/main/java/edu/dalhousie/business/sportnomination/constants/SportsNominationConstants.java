@@ -10,7 +10,8 @@ public class SportsNominationConstants {
     public static final String enterYear = "6. Enter the year in which you have received your last medal: ";
     public static final String checkingEligibility = "\nChecking your eligibility for procuring a spot in the club...";
     public static final String notEligibleGap = "\nSorry! You are not eligible since you have more than 5 years of gap being an active participant in sports activities.";
-    public static final String eligible = "\nCongratulations! You are eligible to be a part of our ";
+    public static final String eligibilityCheck = "\nCongratulations ";
+    public static final String eligibilityResult = "! You are eligible to be a part of our ";
     public static final String eligibleClub = " sports club.";
     public static final String notEligible = "\nSorry! You are not eligible to be a part of our sports club.";
     public static final String sportsNominationTitle = "Nomination for Sports";

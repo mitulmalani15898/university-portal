@@ -10,7 +10,7 @@ import java.text.DecimalFormat;
 
 public class GPACalculator implements IGPACalculator {
 
-    public void calculateGPA() {
+    public String calculateGPA() {
 
         ICommonPrinting view = CommonPrinting.getInstance();
         IGPACalculatorModel gpaCalculatorModel = GPACalculatorFactory.initialize().getGpaCalculatorModel();
@@ -115,7 +115,7 @@ public class GPACalculator implements IGPACalculator {
 
         view.showMessage(GPACalculatorConstants.totalCredits + gpaCalculatorModel.getTotalCredits());
         view.showMessage(GPACalculatorConstants.overallGPA + decimalFormat.format(gpaCalculatorModel.getOverallGPA()));
-
+        return decimalFormat.format(gpaCalculatorModel.getOverallGPA());
     }
 
     public void viewGPACalculator()
@@ -124,9 +124,4 @@ public class GPACalculator implements IGPACalculator {
         calculateGPA();
     }
 
-    public static void main(String[] args)
-    {
-        GPACalculator calc = new GPACalculator();
-        calc.viewGPACalculator();
-    }
 }

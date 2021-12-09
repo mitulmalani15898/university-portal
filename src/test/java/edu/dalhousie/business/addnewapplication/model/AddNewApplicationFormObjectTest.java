@@ -75,5 +75,4 @@ class AddNewApplicationFormObjectTest {
         assertEquals("90", addNewApplicationFormObject.getGATE());
     }
 
-
 }

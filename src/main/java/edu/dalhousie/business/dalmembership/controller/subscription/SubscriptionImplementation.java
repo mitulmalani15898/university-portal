@@ -31,7 +31,7 @@ public class SubscriptionImplementation implements ISubscriptionImplmentation{
 
         subscription = subscriptionFactory(choice);
 
-        BiPredicate<Double, Double> eligibility = subscription.isEligibleToSubscribe();
+        BiPredicate<Double, Double> eligibility = subscription.checkEligibility();
 
         if (!eligibility.test(duration, user.getBalance())) {
             throw new Exception("account balance is low, refill the same " +

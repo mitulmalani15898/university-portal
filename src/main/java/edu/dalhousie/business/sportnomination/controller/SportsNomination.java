@@ -20,7 +20,7 @@ public class SportsNomination implements ISportsNomination
         studentMenu = StudentMainClass.getInstance();
     }
 
-    public void sportsNomination()
+    public String sportsNominationChecker()
     {
         int overallScore = 0;
 
@@ -108,40 +108,20 @@ public class SportsNomination implements ISportsNomination
 
         if(overallScore >= 10)
         {
-            view.showMessage(SportsNominationConstants.eligible + sportsNominationModel.getSport() + SportsNominationConstants.eligibleClub);
+            view.showMessage(SportsNominationConstants.eligibilityCheck + sportsNominationModel.getUsername() + SportsNominationConstants.eligibilityResult + sportsNominationModel.getSport() + SportsNominationConstants.eligibleClub);
+            return SportsNominationConstants.eligibilityCheck + sportsNominationModel.getUsername() + SportsNominationConstants.eligibilityResult + sportsNominationModel.getSport() + SportsNominationConstants.eligibleClub;
         }
         else
         {
             view.showMessage(SportsNominationConstants.notEligible);
+            return SportsNominationConstants.notEligible;
         }
-        //goBack();
     }
-
-    /*public void goBack()
-    {
-        view.showMessage("\nPress '0' to go back");
-        int userChoice = view.getInt();
-        if (userChoice == 0)
-        {
-            try
-            {
-                studentMenu.displayStudentMenu();
-            }
-            catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }*/
 
     public void viewSportsNomination()
     {
         PrintHeading.printHeadingForTheScreen(SportsNominationConstants.sportsNominationTitle, 38);
-        sportsNomination();
+        sportsNominationChecker();
     }
 
-    /*public static void main(String[] args)
-    {
-        SportsNomination sn = new SportsNomination();
-        sn.viewSportsNomination();
-    }*/
 }

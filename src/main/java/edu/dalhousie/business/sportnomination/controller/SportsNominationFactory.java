@@ -1,6 +1,5 @@
 package edu.dalhousie.business.sportnomination.controller;
 
-
 import edu.dalhousie.business.sportnomination.model.ISportsNominationModel;
 import edu.dalhousie.business.sportnomination.model.SportsNominationModel;
 

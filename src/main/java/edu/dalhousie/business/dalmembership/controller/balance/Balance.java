@@ -4,10 +4,13 @@
  * */
 package edu.dalhousie.business.dalmembership.controller.balance;
 
+import edu.dalhousie.Main;
 import edu.dalhousie.business.dalmembership.database.balance.getBalance.GetBalanceQueryBuilder;
 import edu.dalhousie.business.dalmembership.database.balance.updateBalance.UpdateBalanceQueryBuilder;
 import edu.dalhousie.controllers.UserSession;
 import edu.dalhousie.database.IDatabaseConnection;
+import edu.dalhousie.logger.ILogger;
+import edu.dalhousie.logger.LoggerAbstractFactory;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -17,6 +20,8 @@ public class Balance implements IBalance{
     UserSession userSession;
     GetBalanceQueryBuilder balanceQueryBuilder;
     UpdateBalanceQueryBuilder rechargeBalanceQueryBuilder;
+    private static ILogger logger = LoggerAbstractFactory
+            .getFactory().newLoggerInstance();
     public Balance(){
         userSession = UserSession.getInstance();
         this.balanceQueryBuilder = GetBalanceQueryBuilder.getInstance();
@@ -40,6 +45,7 @@ public class Balance implements IBalance{
             }
 
         }catch (Exception e){
+            logger.error(Balance.class.toString(),e.getMessage());
             System.out.println(e.getMessage());
         }
     }
@@ -57,6 +63,7 @@ public class Balance implements IBalance{
             ));
 
         }catch (Exception e){
+            logger.error(Balance.class.toString(),e.getMessage());
             System.out.println(e.getMessage());
         }
     }

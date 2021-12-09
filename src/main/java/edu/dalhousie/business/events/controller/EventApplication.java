@@ -1,10 +1,12 @@
 /**
  * Author: Abhishek karthik Manikandan
  * Banner ID: B00870510
+ * citation: https://github.com/anvitsaxena/SchoolEventManagementSystem
+ * Used this project repo to get ideas to implement design patterns
  * */
 package edu.dalhousie.business.events.controller;
 
-import edu.dalhousie.business.events.controller.Cost.EventCost;
+import edu.dalhousie.business.events.controller.cost.EventCost;
 import edu.dalhousie.business.events.model.Student.Student;
 import edu.dalhousie.business.events.model.University.UniversityDetails;
 

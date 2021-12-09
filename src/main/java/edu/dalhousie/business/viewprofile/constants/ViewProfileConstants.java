@@ -7,6 +7,8 @@ public class ViewProfileConstants {
     public static final String userChoiceNo = "No";
     public static final String enterFirstName = "Enter your first name: ";
     public static final String enterLastName = "Enter your last name: ";
+    public static final String enterEmail = "Enter your email: ";
+    public static final String enterValidEmail = "Enter your valid email: ";
     public static final String enterContactNumber = "Enter your contact number: ";
     public static final String enterPassword = "Enter your Password (Must include uppercase, lowercase letters along with numeric and special characters): ";
     public static final String enterVerifyPassword = "Verify your Password: ";
@@ -23,6 +25,7 @@ public class ViewProfileConstants {
 
     public static final String firstNameColumn = "first_name";
     public static final String lastNameColumn = "last_name";
+    public static final String emailColumn = "email_address";
     public static final String contactNumberColumn = "contact_number";
     public static final String passwordColumn = "password";
     public static final String dobColumn = "dob";
