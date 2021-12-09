@@ -18,14 +18,12 @@ public class RegisterCourse implements IRegisterCourse {
 
     @Override
     public int registerForSpecificCourse(Course course) {
+        int result = -1;
         User user = UserSession.getInstance().getUser();
 
-        int result = -1;
-        int studentId = 2;
-        System.out.println("user " + user);
         String query = CourseRegistrationConstants.REGISTER_COURSE_QUERY
             .replace("tableName", Constants.COURSE_ENROLMENTS_TABLE)
-            .replace("studentId", studentId + "")
+            .replace("studentId", user.getUserId() + "")
             .replace("courseId", course.getCourseId() + "");
 
         int updatedSeats = course.getAvailableSeats() - 1;
